@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Calculator, TrendingUp, DollarSign, Target } from 'lucide-react';
@@ -36,9 +36,8 @@ const FinancialCalculator = () => {
         totalGains: 0
     });
 
-    const calculateReturns = () => {
+    const calculateReturns = useCallback(() => {
         const { monthlyInvestment, duration, expectedReturns, topUpAmount, topUpFrequency } = formData;
-        const monthlyRate = expectedReturns / 100 / 12;
         const data: ChartData[] = [];
         let totalInvestment = 0;
         let corpus = 0;
@@ -76,11 +75,11 @@ const FinancialCalculator = () => {
             maturityValue: Math.round(corpus),
             totalGains: Math.round(corpus - totalInvestment)
         });
-    };
+    }, [formData]);
 
     useEffect(() => {
         calculateReturns();
-    }, [formData]);
+    }, [calculateReturns]);
 
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('en-IN', {

@@ -91,7 +91,7 @@ const Services = () => {
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         Comprehensive financial solutions designed to help you achieve your goals,
-                        whether you're a teacher, young professional, or working individual.
+                        whether you&apos;re a teacher, young professional, or working individual.
                     </p>
                 </motion.div>
 
@@ -103,7 +103,7 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {services.map((service, index) => (
+                    {services.map((service) => (
                         <motion.div
                             key={service.title}
                             variants={itemVariants}
@@ -155,7 +155,7 @@ const Services = () => {
                         </h3>
                         <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
                             Get personalized financial advice from our expert team led by Piyush Tembhekar.
-                            We're here to help you make informed decisions for a secure financial future.
+                            We&apos;re here to help you make informed decisions for a secure financial future.
                         </p>
                         <a
                             href="#contact"

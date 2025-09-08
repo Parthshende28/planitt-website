@@ -77,7 +77,7 @@ const Testimonials = () => {
                         What Our Clients Say
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Don't just take our word for it. Here's what our satisfied clients have to say
+                        Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say
                         about their financial journey with Planitt.
                     </p>
                 </motion.div>
@@ -105,7 +105,7 @@ const Testimonials = () => {
                                     {/* Testimonial Content */}
                                     <div className="text-center space-y-6">
                                         <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
-                                            "{testimonials[currentIndex].content}"
+                                            &ldquo;{testimonials[currentIndex].content}&rdquo;
                                         </p>
 
                                         {/* Rating */}

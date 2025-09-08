@@ -94,7 +94,7 @@ const Contact = () => {
                             </h3>
                             <p className="text-gray-600 mb-8">
                                 Reach out to Piyush Tembhekar for expert financial guidance.
-                                We're here to help you make informed decisions for a secure financial future.
+                                We&apos;re here to help you make informed decisions for a secure financial future.
                             </p>
                         </div>
 
@@ -107,7 +107,7 @@ const Contact = () => {
                                 <div>
                                     <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
                                     <p className="text-gray-600">piyush@planitt.com</p>
-                                    <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                                    <p className="text-sm text-gray-500">We&apos;ll respond within 24 hours</p>
                                 </div>
                             </div>
 
@@ -272,7 +272,7 @@ const Contact = () => {
                                     className="flex items-center space-x-2 text-green-600 bg-green-50 p-4 rounded-lg"
                                 >
                                     <CheckCircle className="h-5 w-5" />
-                                    <span>Message sent successfully! We'll get back to you soon.</span>
+                                    <span>Message sent successfully! We&apos;ll get back to you soon.</span>
                                 </motion.div>
                             )}
 
