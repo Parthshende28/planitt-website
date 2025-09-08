@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Planitt - Financial Distributor Website
 
-## Getting Started
+A modern, responsive financial distributor website built with Next.js, Tailwind CSS, and Framer Motion. This website is designed for Planitt, led by CEO & Financial Distributor Piyush Tembhekar, targeting school teachers, youths, and working professionals.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Design**: Clean, professional layout with trust-building color scheme
+- **Responsive**: Fully responsive design that works on all devices
+- **Interactive Calculator**: Financial growth calculator with real-time charts using Recharts
+- **Smooth Animations**: Beautiful transitions and animations using Framer Motion
+- **Contact Form**: Integrated contact form with EmailJS support
+- **SEO Optimized**: Proper meta tags and semantic HTML structure
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Charts**: Recharts
+- **Email Service**: EmailJS
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+
+## 📦 Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd planitt-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+Create a `.env.local` file in the root directory and add your EmailJS credentials:
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Colors
+- **Primary Navy**: #1E3A8A
+- **Primary Blue**: #3B82F6
+- **Light Blue**: #93C5FD
+- **Background Gray**: #F3F4F6
+- **Text Gray**: #374151
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Typography
+- **Headings**: Poppins (Bold, Modern)
+- **Body**: Inter (Clean, Readable)
 
-## Deploy on Vercel
+## 📱 Sections
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Hero Section**: Trust-building tagline with CTA buttons
+2. **Services**: Financial services offered (Mutual Funds, SIP, FD, Insurance, NPS)
+3. **Calculator**: Interactive financial growth calculator with charts
+4. **About Us**: Information about Planitt and Piyush Tembhekar
+5. **Testimonials**: Client testimonials carousel
+6. **Contact**: Contact form with EmailJS integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Configuration
+
+### EmailJS Setup
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create a service (Gmail, Outlook, etc.)
+3. Create an email template
+4. Add your credentials to `.env.local`
+
+### Customization
+- Update company information in components
+- Modify color scheme in `tailwind.config.js`
+- Add/remove services in `Services.tsx`
+- Update testimonials in `Testimonials.tsx`
+
+## 📈 Performance
+
+- Optimized images and assets
+- Lazy loading for better performance
+- Smooth scrolling and animations
+- Mobile-first responsive design
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy with one click
+
+### Other Platforms
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💼 Contact
+
+**Piyush Tembhekar**  
+CEO & Financial Distributor  
+Email: piyush@planitt.com  
+Phone: +91 98765 43210
+
+---
+
+Built with ❤️ for financial planning and wealth management.
