@@ -1,18 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Image as ImageIcon } from 'lucide-react';
 
-const Contact = () => {
+const BudgetingContact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         message: ''
     });
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -22,6 +24,13 @@ const Contact = () => {
         }));
     };
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedImage(file);
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -29,13 +38,18 @@ const Contact = () => {
 
         try {
             // Format message for WhatsApp
-            const whatsappMessage = `New request
+            let whatsappMessage = `New request
 
 User details:
 Full name: ${formData.name}
 Email: ${formData.email}
 Phone no.: ${formData.phone}
 Message: ${formData.message}`;
+
+            // Add image note if image is selected
+            if (selectedImage) {
+                whatsappMessage += `\n\n📸 Snapshot attached: ${selectedImage.name}`;
+            }
 
             // Encode message for URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
@@ -47,6 +61,10 @@ Message: ${formData.message}`;
 
             setSubmitStatus('success');
             setFormData({ name: '', email: '', phone: '', message: '' });
+            setSelectedImage(null);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
         } catch (error) {
             console.error('Error opening WhatsApp:', error);
             setSubmitStatus('error');
@@ -67,103 +85,18 @@ Message: ${formData.message}`;
                     className="text-center mb-16"
                 >
                     <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                        Get In Touch
+                        Get Your Financial Analysis
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Ready to start your financial journey? Contact us for a free consultation
-                        and personalized financial planning advice.
+                        Share your budgeting analysis with us for personalized financial advice and investment recommendations.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    {/* Contact Information */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="space-y-8"
-                    >
-                        <div>
-                            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
-                                Contact Information
-                            </h3>
-                            <p className="text-gray-600 mb-8">
-                                Reach out to Piyush Tembhekar for expert financial guidance.
-                                We&apos;re here to help you make informed decisions for a secure financial future.
-                            </p>
-                        </div>
-
-                        {/* Contact Details */}
-                        <div className="space-y-6">
-                            <div className="flex items-start space-x-4">
-                                <div className="bg-blue-100 p-3 rounded-lg">
-                                    <Mail className="h-6 w-6 text-blue-600" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                                    <p className="text-gray-600">planitt.official@gmail.com</p>
-                                    <p className="text-sm text-gray-500">We&apos;ll respond within 24 hours</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start space-x-4">
-                                <div className="bg-green-100 p-3 rounded-lg">
-                                    <Phone className="h-6 w-6 text-green-600" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                                    <p className="text-gray-600">+91 8605727484</p>
-                                    <p className="text-sm text-gray-500">Mon-Fri 9AM-6PM IST</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start space-x-4">
-                                <div className="bg-purple-100 p-3 rounded-lg">
-                                    <MapPin className="h-6 w-6 text-purple-600" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 mb-1">Location</h4>
-                                    <p className="text-gray-600">Gorewada, Nagpur</p>
-                                    <p className="text-sm text-gray-500">Serving clients across India</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Why Choose Us */}
-                        <div className="bg-white rounded-2xl p-6 shadow-lg">
-                            <h4 className="font-heading text-xl font-bold text-gray-900 mb-4">
-                                Why Choose Planitt?
-                            </h4>
-                            <ul className="space-y-3">
-                                <li className="flex items-center text-gray-600">
-                                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                                    Free initial consultation
-                                </li>
-                                <li className="flex items-center text-gray-600">
-                                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                                    Personalized financial planning
-                                </li>
-                                <li className="flex items-center text-gray-600">
-                                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                                    Regular portfolio reviews
-                                </li>
-                                <li className="flex items-center text-gray-600">
-                                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                                    Transparent fee structure
-                                </li>
-                                <li className="flex items-center text-gray-600">
-                                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                                    Ongoing support and guidance
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
-
+                <div className="max-w-2xl mx-auto">
                     {/* Contact Form */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                         className="bg-white rounded-2xl p-8 shadow-xl"
@@ -235,10 +168,48 @@ Message: ${formData.message}`;
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     required
-                                    rows={5}
+                                    rows={4}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
                                     placeholder="Tell us about your financial goals and how we can help..."
                                 />
+                            </div>
+
+                            {/* Image Upload Field */}
+                            <div>
+                                <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+                                    Attach Snapshot (Optional)
+                                </label>
+                                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-gray-400 transition-colors duration-200">
+                                    <div className="space-y-1 text-center">
+                                        <ImageIcon className="mx-auto h-12 w-12 text-gray-400" />
+                                        <div className="flex text-sm text-gray-600">
+                                            <label
+                                                htmlFor="image"
+                                                className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                                            >
+                                                <span>Upload snapshot</span>
+                                                <input
+                                                    ref={fileInputRef}
+                                                    id="image"
+                                                    name="image"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={handleImageChange}
+                                                    className="sr-only"
+                                                />
+                                            </label>
+                                            <p className="pl-1">or drag and drop</p>
+                                        </div>
+                                        <p className="text-xs text-gray-500">
+                                            Please attach the snapshot you took just now
+                                        </p>
+                                        {selectedImage && (
+                                            <p className="text-sm text-green-600 font-medium">
+                                                Selected: {selectedImage.name}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Submit Button */}
@@ -279,7 +250,7 @@ Message: ${formData.message}`;
                                     className="flex items-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg"
                                 >
                                     <AlertCircle className="h-5 w-5" />
-                                    <span>Failed to send message. Please try again or contact us directly.</span>
+                                    <span>Failed to open WhatsApp. Please try again or contact us directly.</span>
                                 </motion.div>
                             )}
                         </form>
@@ -290,4 +261,4 @@ Message: ${formData.message}`;
     );
 };
 
-export default Contact;
+export default BudgetingContact;

@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -20,15 +22,15 @@ const Footer = () => {
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3">
                                 <Mail className="h-5 w-5 text-blue-400" />
-                                <span className="text-gray-300 text-sm">piyush@planitt.com</span>
+                                <span className="text-gray-300 text-sm">planitt.official@gmail.com</span>
                             </div>
                             <div className="flex items-center space-x-3">
                                 <Phone className="h-5 w-5 text-blue-400" />
-                                <span className="text-gray-300 text-sm">+91 98765 43210</span>
+                                <span className="text-gray-300 text-sm">+91 8605727484</span>
                             </div>
                             <div className="flex items-center space-x-3">
                                 <MapPin className="h-5 w-5 text-blue-400" />
-                                <span className="text-gray-300 text-sm">Mumbai, Maharashtra</span>
+                                <span className="text-gray-300 text-sm">Gorewada, Nagpur</span>
                             </div>
                         </div>
                     </div>
@@ -37,12 +39,12 @@ const Footer = () => {
                     <div className="space-y-4">
                         <h4 className="font-heading text-lg font-semibold">Our Services</h4>
                         <div className="grid grid-cols-2 gap-2">
-                            <span className="text-gray-300 text-sm">Mutual Funds</span>
                             <span className="text-gray-300 text-sm">SIP</span>
-                            <span className="text-gray-300 text-sm">Fixed Deposits</span>
+                            <span className="text-gray-300 text-sm">SWP</span>
+                            <span className="text-gray-300 text-sm">Goal Setting</span>
                             <span className="text-gray-300 text-sm">Insurance</span>
                             <span className="text-gray-300 text-sm">NPS</span>
-                            <span className="text-gray-300 text-sm">Financial Planning</span>
+                            <span className="text-gray-300 text-sm">Budgeting</span>
                         </div>
                     </div>
                 </div>

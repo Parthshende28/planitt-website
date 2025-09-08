@@ -28,9 +28,9 @@ const About = () => {
     ];
 
     const achievements = [
-        '500+ Happy Clients',
+        '50+ Happy Clients',
         '₹50+ Crores Assets Under Management',
-        '15+ Years of Experience',
+        '6+ Years of Experience',
         '100% Client Satisfaction Rate'
     ];
 
@@ -52,7 +52,7 @@ const About = () => {
                             </h2>
                             <p className="text-xl text-gray-600 leading-relaxed mb-6">
                                 Planitt is a trusted financial services company led by <span className="font-semibold text-blue-700">Piyush Tembhekar</span>,
-                                a seasoned CEO and Financial Distributor with over 15 years of experience in wealth management.
+                                a seasoned CEO and Financial Distributor with over 6 years of experience in wealth management.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
                                 We specialize in providing comprehensive financial solutions to school teachers,
@@ -114,7 +114,7 @@ const About = () => {
 
                             <div className="space-y-4">
                                 <p className="text-gray-600 text-center">
-                                    With over 15 years of experience in financial services, Piyush has helped
+                                    With over 6 years of experience in financial services, Piyush has helped
                                     hundreds of clients achieve their financial goals through strategic planning
                                     and expert market insights.
                                 </p>

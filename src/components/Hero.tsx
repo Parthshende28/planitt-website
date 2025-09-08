@@ -75,10 +75,10 @@ const Hero = () => {
                             className="flex flex-col sm:flex-row gap-4"
                         >
                             <a
-                                href="#contact"
+                                href="/services/budgeting"
                                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
-                                Get Started Today
+                                Budgeting
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </a>
                             <a

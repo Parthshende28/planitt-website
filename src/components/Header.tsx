@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, TrendingUp } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,14 +19,17 @@ const Header = () => {
         <header className="bg-white shadow-lg sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Logo and Brand */}
-                    <div className="flex items-center space-x-3">
-                        <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-2 rounded-lg">
-                            <TrendingUp className="h-8 w-8 text-white" />
-                        </div>
-                        <span className="font-heading text-2xl font-bold text-gray-800">
-                            Planitt
-                        </span>
+                    {/* Brand Name */}
+                    <div className="flex items-center focus:outline-none">
+                        <Link
+                            href="/"
+                            className="text-4xl font-bold tracking-wider focus:outline-none"
+                            style={{
+                                fontFamily: 'Times New Roman, "Times", fantasy'
+                            }}
+                        >
+                            PLANITT
+                        </Link>
                     </div>
 
                     {/* Desktop Navigation */}

@@ -39,27 +39,51 @@ const FinancialCalculator = () => {
     const calculateReturns = useCallback(() => {
         const { monthlyInvestment, duration, expectedReturns, topUpAmount, topUpFrequency } = formData;
         const data: ChartData[] = [];
+        const monthlyRate = expectedReturns / 100 / 12;
         let totalInvestment = 0;
         let corpus = 0;
+        let gains = 0;
 
         for (let year = 1; year <= duration; year++) {
-            // Calculate monthly investments for this year
-            const yearlyInvestment = monthlyInvestment * 12;
-            totalInvestment += yearlyInvestment;
+            // Calculate total invested up to this year
+            totalInvestment = monthlyInvestment * 12 * year;
 
             // Add top-up if applicable
             if (topUpAmount > 0) {
                 if (topUpFrequency === 'annually') {
-                    totalInvestment += topUpAmount;
-                } else if (topUpFrequency === '6months' && year > 0.5) {
-                    totalInvestment += topUpAmount * 2;
+                    totalInvestment += topUpAmount * year;
+                } else if (topUpFrequency === '6months') {
+                    totalInvestment += topUpAmount * 2 * year;
                 }
             }
 
-            // Calculate corpus using compound interest
-            corpus = totalInvestment * Math.pow(1 + expectedReturns / 100, year);
+            // Calculate corpus using Future Value of Annuity formula (SIP formula)
+            // FV = PMT × [((1 + r)^n - 1) / r]
+            const monthsInvested = year * 12;
+            if (monthlyRate > 0) {
+                corpus = monthlyInvestment * ((Math.pow(1 + monthlyRate, monthsInvested) - 1) / monthlyRate);
+            } else {
+                corpus = monthlyInvestment * monthsInvested;
+            }
 
-            const gains = corpus - totalInvestment;
+            // Add top-up corpus if applicable
+            if (topUpAmount > 0) {
+                if (topUpFrequency === 'annually') {
+                    // Add top-up with compound interest for each year
+                    for (let topUpYear = 1; topUpYear <= year; topUpYear++) {
+                        const topUpMonthsRemaining = (year - topUpYear + 1) * 12;
+                        corpus += topUpAmount * Math.pow(1 + monthlyRate, topUpMonthsRemaining);
+                    }
+                } else if (topUpFrequency === '6months') {
+                    // Add top-up with compound interest for each 6-month period
+                    for (let topUpPeriod = 1; topUpPeriod <= year * 2; topUpPeriod++) {
+                        const topUpMonthsRemaining = (year * 2 - topUpPeriod + 1) * 6;
+                        corpus += topUpAmount * Math.pow(1 + monthlyRate, topUpMonthsRemaining);
+                    }
+                }
+            }
+
+            gains = corpus - totalInvestment;
 
             data.push({
                 year,
@@ -73,7 +97,7 @@ const FinancialCalculator = () => {
         setSummary({
             totalInvestment: Math.round(totalInvestment),
             maturityValue: Math.round(corpus),
-            totalGains: Math.round(corpus - totalInvestment)
+            totalGains: Math.round(gains)
         });
     }, [formData]);
 

@@ -2,39 +2,43 @@
 
 import { motion } from 'framer-motion';
 import {
-    TrendingUp,
+    TrendingDown,
     Calendar,
-    Shield,
+    Target,
     Heart,
     PiggyBank,
+    Calculator,
     ArrowRight
 } from 'lucide-react';
 
 const Services = () => {
     const services = [
         {
-            icon: TrendingUp,
-            title: 'Mutual Funds',
-            description: 'Diversified investment options with professional fund management for optimal returns.',
-            color: 'from-blue-500 to-blue-600',
-            bgColor: 'bg-blue-50',
-            textColor: 'text-blue-700'
-        },
-        {
             icon: Calendar,
             title: 'SIP (Systematic Investment Plan)',
             description: 'Regular investment strategy to build wealth gradually with disciplined approach.',
             color: 'from-green-500 to-green-600',
             bgColor: 'bg-green-50',
-            textColor: 'text-green-700'
+            textColor: 'text-green-700',
+            url: '/services/sip'
         },
         {
-            icon: Shield,
-            title: 'Fixed Deposits',
-            description: 'Secure and guaranteed returns with flexible tenure options for your savings.',
+            icon: TrendingDown,
+            title: 'SWP (Systematic Withdrawal Plan)',
+            description: 'Generate regular income from your lump sum investments while keeping the remaining amount invested for growth.',
+            color: 'from-blue-500 to-blue-600',
+            bgColor: 'bg-blue-50',
+            textColor: 'text-blue-700',
+            url: '/services/swp'
+        },
+        {
+            icon: Target,
+            title: 'Goal Setting',
+            description: 'Calculate the monthly SIP required to achieve your financial goals with inflation adjustment.',
             color: 'from-purple-500 to-purple-600',
             bgColor: 'bg-purple-50',
-            textColor: 'text-purple-700'
+            textColor: 'text-purple-700',
+            url: '/services/goal-setting'
         },
         {
             icon: Heart,
@@ -42,7 +46,8 @@ const Services = () => {
             description: 'Comprehensive life and health insurance solutions to protect your loved ones.',
             color: 'from-red-500 to-red-600',
             bgColor: 'bg-red-50',
-            textColor: 'text-red-700'
+            textColor: 'text-red-700',
+            url: '/services/insurance'
         },
         {
             icon: PiggyBank,
@@ -50,7 +55,17 @@ const Services = () => {
             description: 'Retirement planning with tax benefits and long-term wealth accumulation.',
             color: 'from-orange-500 to-orange-600',
             bgColor: 'bg-orange-50',
-            textColor: 'text-orange-700'
+            textColor: 'text-orange-700',
+            url: '/services/nps'
+        },
+        {
+            icon: Calculator,
+            title: 'Budgeting',
+            description: 'Track your spending and saving patterns with visual insights and financial planning tools.',
+            color: 'from-indigo-500 to-indigo-600',
+            bgColor: 'bg-indigo-50',
+            textColor: 'text-indigo-700',
+            url: '/services/budgeting'
         }
     ];
 
@@ -128,7 +143,7 @@ const Services = () => {
                                     {/* Learn More Link */}
                                     <div className="pt-4">
                                         <a
-                                            href="#contact"
+                                            href={service.url}
                                             className={`inline-flex items-center ${service.textColor} hover:opacity-80 font-medium transition-opacity duration-200`}
                                         >
                                             Learn More
@@ -158,10 +173,10 @@ const Services = () => {
                             We&apos;re here to help you make informed decisions for a secure financial future.
                         </p>
                         <a
-                            href="#contact"
+                            href="/services/budgeting"
                             className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
                         >
-                            Get Free Consultation
+                            Budgeting
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </a>
                     </div>
