@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, TrendingUp, Users } from 'lucide-react';
+import Link from 'next/link';
 
 const Hero = () => {
     return (
@@ -81,12 +82,12 @@ const Hero = () => {
                                 Budgeting
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </a>
-                            <a
-                                href="#calculator"
+                            <Link
+                                href="/#calculator"
                                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300"
                             >
                                 Try Our Calculator
-                            </a>
+                            </Link>
                         </motion.div>
                     </motion.div>
 
@@ -130,13 +131,13 @@ const Hero = () => {
                                 </div>
 
                                 <div className="text-center">
-                                    <a
-                                        href="#calculator"
+                                    <Link
+                                        href="/#calculator"
                                         className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
                                     >
                                         Calculate Your Returns
                                         <ArrowRight className="ml-1 h-4 w-4" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

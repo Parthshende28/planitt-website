@@ -4,8 +4,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
-import { Calculator, Camera, TrendingUp, DollarSign, Target } from 'lucide-react';
-import html2canvas from 'html2canvas';
+import { Calculator, Camera, TrendingUp, IndianRupee, Target } from 'lucide-react';
+import domtoimage from 'dom-to-image';
+import CombinedSnapshot1 from './CombinedSnapshot1';
+import CombinedSnapshot2 from './CombinedSnapshot2';
 
 interface BudgetData {
     monthlyIncome: number;
@@ -47,6 +49,8 @@ const BudgetingCalculator = () => {
     const [monthlySIPRequired, setMonthlySIPRequired] = useState(0);
     const chartRef = useRef<HTMLDivElement>(null);
     const dashboardRef = useRef<HTMLDivElement>(null);
+    const snapshot1Ref = useRef<HTMLDivElement>(null);
+    const snapshot2Ref = useRef<HTMLDivElement>(null);
 
     const formatCurrency = (amount: number) => {
         return new Intl.NumberFormat('en-IN', {
@@ -168,62 +172,119 @@ const BudgetingCalculator = () => {
         }));
     };
 
-    const takeSnapshot = async () => {
+    const takeSnapshot1 = async () => {
         try {
-            if (!dashboardRef.current) {
-                alert('Dashboard not found. Please try again.');
+            if (!snapshot1Ref.current) {
+                alert('Snapshot component not found. Please try again.');
                 return;
             }
 
             // Show loading message
-            const originalButtonText = document.querySelector('[data-snapshot-button]')?.textContent;
-            const snapshotButton = document.querySelector('[data-snapshot-button]') as HTMLButtonElement;
+            const originalButtonText = document.querySelector('[data-snapshot-button-1]')?.textContent;
+            const snapshotButton = document.querySelector('[data-snapshot-button-1]') as HTMLButtonElement;
             if (snapshotButton) {
                 snapshotButton.textContent = 'Capturing...';
                 snapshotButton.disabled = true;
             }
 
-            // Capture the dashboard as canvas
-            const canvas = await html2canvas(dashboardRef.current, {
-                background: '#f9fafb', // Match the background color
-                useCORS: true,
-                allowTaint: true,
-                width: dashboardRef.current.scrollWidth,
-                height: dashboardRef.current.scrollHeight
+            // Wait a bit for components to render
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Debug: Check if component has content
+            console.log('Snapshot1 element:', snapshot1Ref.current);
+            console.log('Snapshot1 innerHTML length:', snapshot1Ref.current?.innerHTML?.length);
+
+            // Capture the snapshot component using dom-to-image
+            const dataUrl = await domtoimage.toJpeg(snapshot1Ref.current, {
+                quality: 0.95,
+                bgcolor: '#ffffff',
+                width: 1200,
+                height: snapshot1Ref.current.scrollHeight
             });
 
-            // Convert canvas to JPG blob
-            canvas.toBlob((blob) => {
-                if (blob) {
-                    // Create download link
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = `financial-dashboard-snapshot-${new Date().toISOString().split('T')[0]}.jpg`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
+            // Create download link
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = `SIP Investment Projection-${new Date().toISOString().split('T')[0]}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
-                    // Show success message
-                    alert('Dashboard snapshot captured successfully! Check your downloads folder.');
-                } else {
-                    alert('Failed to generate snapshot. Please try again.');
-                }
+            // Show success message
+            alert('SIP Investment Projection snapshot captured successfully! Check your downloads folder.');
 
-                // Restore button state
-                if (snapshotButton) {
-                    snapshotButton.textContent = originalButtonText || 'Take Snapshot';
-                    snapshotButton.disabled = false;
-                }
-            }, 'image/jpeg', 0.95); // High quality JPG
+            // Restore button state
+            if (snapshotButton) {
+                snapshotButton.textContent = originalButtonText || 'Take Snapshot';
+                snapshotButton.disabled = false;
+            }
 
         } catch (error) {
             console.error('Error capturing snapshot:', error);
             alert('Failed to capture snapshot. Please try again.');
 
             // Restore button state
-            const snapshotButton = document.querySelector('[data-snapshot-button]') as HTMLButtonElement;
+            const snapshotButton = document.querySelector('[data-snapshot-button-1]') as HTMLButtonElement;
+            if (snapshotButton) {
+                snapshotButton.textContent = 'Take Snapshot';
+                snapshotButton.disabled = false;
+            }
+        }
+    };
+
+    const takeSnapshot2 = async () => {
+        try {
+            if (!snapshot2Ref.current) {
+                alert('Snapshot component not found. Please try again.');
+                return;
+            }
+
+            // Show loading message
+            const originalButtonText = document.querySelector('[data-snapshot-button-2]')?.textContent;
+            const snapshotButton = document.querySelector('[data-snapshot-button-2]') as HTMLButtonElement;
+            if (snapshotButton) {
+                snapshotButton.textContent = 'Capturing...';
+                snapshotButton.disabled = true;
+            }
+
+            // Wait a bit for components to render
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Debug: Check if component has content
+            console.log('Snapshot2 element:', snapshot2Ref.current);
+            console.log('Snapshot2 innerHTML length:', snapshot2Ref.current?.innerHTML?.length);
+
+            // Capture the snapshot component using dom-to-image
+            const dataUrl = await domtoimage.toJpeg(snapshot2Ref.current, {
+                quality: 0.95,
+                bgcolor: '#ffffff',
+                width: 1200,
+                height: snapshot2Ref.current.scrollHeight
+            });
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = `Goal Amount Calculation-${new Date().toISOString().split('T')[0]}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Show success message
+            alert('Goal Amount Calculation snapshot captured successfully! Check your downloads folder.');
+
+            // Restore button state
+            if (snapshotButton) {
+                snapshotButton.textContent = originalButtonText || 'Take Snapshot';
+                snapshotButton.disabled = false;
+            }
+
+        } catch (error) {
+            console.error('Error capturing snapshot:', error);
+            alert('Failed to capture snapshot. Please try again.');
+
+            // Restore button state
+            const snapshotButton = document.querySelector('[data-snapshot-button-2]') as HTMLButtonElement;
             if (snapshotButton) {
                 snapshotButton.textContent = 'Take Snapshot';
                 snapshotButton.disabled = false;
@@ -233,7 +294,7 @@ const BudgetingCalculator = () => {
 
     return (
         <section id="budgeting-section" className="py-20 bg-gray-50">
-            <div ref={dashboardRef} data-dashboard className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div ref={dashboardRef} data-dashboard className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -331,7 +392,7 @@ const BudgetingCalculator = () => {
                                 {/* Summary Cards */}
                                 <div className="grid grid-cols-2 gap-3 mt-6">
                                     <div className="bg-blue-50 rounded-xl p-3 text-center">
-                                        <DollarSign className="h-5 w-5 text-blue-600 mx-auto mb-1" />
+                                        <IndianRupee className="h-5 w-5 text-blue-600 mx-auto mb-1" />
                                         <h4 className="font-semibold text-gray-700 mb-1 text-xs">Total Income</h4>
                                         <p className="text-lg font-bold text-blue-700">
                                             {formatCurrency(budgetData.monthlyIncome)}
@@ -365,8 +426,8 @@ const BudgetingCalculator = () => {
                                     Spending & Saving Distribution
                                 </h3>
                                 <button
-                                    onClick={takeSnapshot}
-                                    data-snapshot-button
+                                    onClick={takeSnapshot1}
+                                    data-snapshot-button-1
                                     className="flex items-center justify-center px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-sm w-full sm:w-auto"
                                 >
                                     <Camera className="h-4 w-4 mr-2" />
@@ -627,7 +688,7 @@ const BudgetingCalculator = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div className="bg-blue-50 rounded-xl p-6 text-center">
-                                    <DollarSign className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                                    <IndianRupee className="h-8 w-8 text-blue-600 mx-auto mb-3" />
                                     <h4 className="font-semibold text-gray-700 mb-2">Total Investment</h4>
                                     <p className="text-3xl font-bold text-blue-700">
                                         {formatCurrency(sipSummary.totalInvestment)}
@@ -664,9 +725,19 @@ const BudgetingCalculator = () => {
                     className="mt-16"
                 >
                     <div className="text-center mb-12">
-                        <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                            Goal Amount Calculator
-                        </h2>
+                        <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4 mb-6">
+                            <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900">
+                                Goal Amount Calculator
+                            </h2>
+                            <button
+                                onClick={takeSnapshot2}
+                                data-snapshot-button-2
+                                className="flex items-center justify-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm w-full sm:w-auto"
+                            >
+                                <Camera className="h-4 w-4 mr-2" />
+                                Take Snapshot
+                            </button>
+                        </div>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                             Calculate the monthly SIP required to achieve your financial freedom goal at 18% annual returns.
                         </p>
@@ -821,7 +892,7 @@ const BudgetingCalculator = () => {
                                     </div>
 
                                     <div className="bg-orange-50 rounded-xl p-3 sm:p-4 text-center">
-                                        <DollarSign className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600 mx-auto mb-2" />
+                                        <IndianRupee className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600 mx-auto mb-2" />
                                         <h4 className="font-semibold text-gray-700 mb-1 text-xs sm:text-sm">Total Investment</h4>
                                         <p className="text-lg sm:text-xl font-bold text-orange-700">
                                             {formatCurrency(monthlySIPRequired * goalDuration * 12)}
@@ -832,6 +903,45 @@ const BudgetingCalculator = () => {
                         </div>
                     </div>
                 </motion.div>
+            </div>
+
+            {/* Snapshot Components - Positioned off-screen but visible for html2canvas */}
+            <div style={{
+                position: 'fixed',
+                left: '-2000px',
+                top: '0px',
+                zIndex: -1,
+                visibility: 'visible',
+                opacity: 1
+            }}>
+                <div ref={snapshot1Ref} style={{ width: '1200px' }}>
+                    <CombinedSnapshot1
+                        monthlyIncome={budgetData.monthlyIncome}
+                        monthlyExpense={budgetData.monthlyExpense}
+                        totalSavings={totalSavings}
+                        savingsPercentage={savingsPercentage}
+                        financialStatus={securityStatus}
+                        sipDuration={sipDuration}
+                        sipTotalInvestment={sipSummary.totalInvestment}
+                        sipMaturityValue={sipSummary.maturityValue}
+                        sipTotalGains={sipSummary.totalGains}
+                        sipChartData={sipChartData.map(item => ({
+                            year: item.year,
+                            totalInvested: item.investment,
+                            maturityValue: item.corpus,
+                            gains: item.gains
+                        }))}
+                    />
+                </div>
+
+                <div ref={snapshot2Ref} style={{ width: '1200px' }}>
+                    <CombinedSnapshot2
+                        goalAmount={goalAmount}
+                        goalDuration={goalDuration}
+                        monthlySIP={monthlySIPRequired}
+                        totalInvestment={monthlySIPRequired * goalDuration * 12}
+                    />
+                </div>
             </div>
         </section>
     );

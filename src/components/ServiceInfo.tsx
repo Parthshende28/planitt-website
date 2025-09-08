@@ -67,35 +67,6 @@ const ServiceInfo = ({ serviceType }: ServiceInfoProps) => {
                 'Achieve your financial goals systematically'
             ]
         },
-        'fixed-deposits': {
-            title: 'Fixed Deposits (FD)',
-            description: 'Secure and guaranteed returns with flexible tenure options for your savings.',
-            benefits: [
-                'Guaranteed returns',
-                'Capital protection',
-                'Flexible tenure options',
-                'Regular income through interest',
-                'Tax benefits on senior citizen FDs',
-                'Easy to understand and manage'
-            ],
-            features: [
-                'Tenure from 7 days to 10 years',
-                'Competitive interest rates',
-                'Auto-renewal options',
-                'Loan against FD facility',
-                'Joint account options',
-                'Online management portal'
-            ],
-            targetAudience: 'Ideal for conservative investors seeking capital protection and guaranteed returns.',
-            howItWorks: [
-                'Choose your investment amount and tenure',
-                'Select interest payout frequency',
-                'Complete KYC documentation',
-                'Deposit your money',
-                'Earn guaranteed interest',
-                'Receive maturity amount or regular interest'
-            ]
-        },
         'insurance': {
             title: 'Life & Health Insurance',
             description: 'Comprehensive life and health insurance solutions to protect your loved ones.',
@@ -225,14 +196,14 @@ const ServiceInfo = ({ serviceType }: ServiceInfoProps) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    {/* <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                         {data.title}
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         {data.description}
-                    </p>
+                    </p> */}
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

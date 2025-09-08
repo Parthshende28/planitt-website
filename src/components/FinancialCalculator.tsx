@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { Calculator, TrendingUp, DollarSign, Target } from 'lucide-react';
+import { Calculator, TrendingUp, IndianRupee, Target } from 'lucide-react';
 
 interface CalculatorData {
     monthlyInvestment: number;
@@ -358,7 +358,7 @@ const FinancialCalculator = () => {
                         {/* Summary Cards */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div className="bg-blue-50 rounded-xl p-6 text-center">
-                                <DollarSign className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                                <IndianRupee className="h-8 w-8 text-blue-600 mx-auto mb-3" />
                                 <h4 className="font-semibold text-gray-700 mb-2">Total Investment</h4>
                                 <p className="text-2xl font-bold text-blue-700">
                                     {formatCurrency(summary.totalInvestment)}

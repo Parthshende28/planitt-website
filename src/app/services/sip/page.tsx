@@ -6,7 +6,7 @@ import { Calendar } from 'lucide-react';
 export default function SIPPage() {
     return (
         <ServicePageLayout
-            serviceName="SIP (Systematic Investment Plan)"
+            serviceName="Systematic Investment Plan (SIP)"
             serviceDescription="Regular investment strategy to build wealth gradually with disciplined approach. Start your investment journey with small amounts and benefit from rupee cost averaging."
             serviceIcon={<Calendar className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-green-500 to-green-600"

@@ -14,7 +14,7 @@ export default function BudgetingPage() {
             >
                 <BudgetingCalculator />
             </ServicePageLayout>
-            <BudgetingContact />
+            {/* <BudgetingContact /> */}
         </div>
     );
 }

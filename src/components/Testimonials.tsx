@@ -159,8 +159,8 @@ const Testimonials = () => {
                             key={index}
                             onClick={() => goToTestimonial(index)}
                             className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentIndex
-                                    ? 'bg-blue-600 scale-125'
-                                    : 'bg-gray-300 hover:bg-gray-400'
+                                ? 'bg-blue-600 scale-125'
+                                : 'bg-gray-300 hover:bg-gray-400'
                                 }`}
                         />
                     ))}
@@ -175,7 +175,7 @@ const Testimonials = () => {
                     className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8"
                 >
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                        <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
                         <div className="text-gray-600">Happy Clients</div>
                     </div>
                     <div className="text-center">
@@ -183,7 +183,7 @@ const Testimonials = () => {
                         <div className="text-gray-600">Assets Managed</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-purple-600 mb-2">15+</div>
+                        <div className="text-4xl font-bold text-purple-600 mb-2">6+</div>
                         <div className="text-gray-600">Years Experience</div>
                     </div>
                     <div className="text-center">

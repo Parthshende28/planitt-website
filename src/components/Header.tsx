@@ -9,10 +9,10 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navItems = [
-        { name: 'Services', href: '#services' },
-        { name: 'Calculator', href: '#calculator' },
-        { name: 'About Us', href: '#about' },
-        { name: 'Testimonials', href: '#testimonials' },
+        { name: 'Services', href: '/#services' },
+        { name: 'Calculator', href: '/#calculator' },
+        { name: 'About Us', href: '/#about' },
+        { name: 'Testimonials', href: '/#testimonials' },
     ];
 
     return (
@@ -35,13 +35,13 @@ const Header = () => {
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex space-x-8">
                         {navItems.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
                                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
 
@@ -66,14 +66,14 @@ const Header = () => {
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {navItems.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
                                     href={item.href}
                                     className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </motion.div>
