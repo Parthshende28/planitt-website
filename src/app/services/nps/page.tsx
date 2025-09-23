@@ -1,6 +1,6 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
 import ServiceInfo from '@/components/ServiceInfo';
-import ServiceCalculator from '@/components/ServiceCalculator';
+import CombinedNPSCalculator from '@/components/CombinedNPSCalculator';
 import { PiggyBank } from 'lucide-react';
 
 export default function NPSPage() {
@@ -12,11 +12,7 @@ export default function NPSPage() {
             serviceColor="bg-gradient-to-r from-orange-500 to-orange-600"
         >
             <ServiceInfo serviceType="nps" />
-            <ServiceCalculator
-                serviceType="nps"
-                title="Investment Calculator"
-                description="Calculate your retirement corpus with NPS investments. Plan your retirement savings with tax benefits and see how your contributions can grow over time."
-            />
+            <CombinedNPSCalculator />
         </ServicePageLayout>
     );
 }

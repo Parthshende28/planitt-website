@@ -14,6 +14,7 @@ interface CalculatorData {
     withdrawalFrequency?: 'monthly' | 'quarterly' | 'annually';
     goalAmount?: number;
     inflationRate?: number;
+    oneTimeInvestment?: number;
 }
 
 interface ChartData {
@@ -30,13 +31,17 @@ interface ServiceCalculatorProps {
 }
 
 const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculatorProps) => {
+    // Add investment type state for SIP/LUMSUM toggle
+    const [investmentType, setInvestmentType] = useState<'sip' | 'lumpsum'>('sip');
+
     // Initialize form data based on service type
     const getInitialFormData = () => {
         if (serviceType === 'sip') {
             return {
                 monthlyInvestment: 25000,
                 duration: 12,
-                expectedReturns: 6
+                expectedReturns: 6,
+                oneTimeInvestment: 1000000
             };
         } else if (serviceType === 'swp') {
             return {
@@ -78,29 +83,51 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
         let corpus = 0;
         let gains = 0;
 
-        if (serviceType === 'sip' && formData.monthlyInvestment) {
-            // SIP Calculation
-            for (let year = 1; year <= formData.duration; year++) {
-                // Calculate total invested up to this year
-                totalInvested = formData.monthlyInvestment * 12 * year;
+        if (serviceType === 'sip' && (formData.monthlyInvestment || formData.oneTimeInvestment)) {
+            if (investmentType === 'sip' && formData.monthlyInvestment) {
+                // SIP Calculation
+                for (let year = 1; year <= formData.duration; year++) {
+                    // Calculate total invested up to this year
+                    totalInvested = formData.monthlyInvestment * 12 * year;
 
-                // Calculate corpus using Future Value of Annuity formula
-                // FV = PMT × [((1 + r)^n - 1) / r]
-                const monthsInvested = year * 12;
-                if (monthlyRate > 0) {
-                    corpus = formData.monthlyInvestment * ((Math.pow(1 + monthlyRate, monthsInvested) - 1) / monthlyRate);
-                } else {
-                    corpus = formData.monthlyInvestment * monthsInvested;
+                    // Calculate corpus using Future Value of Annuity formula
+                    // FV = PMT × [((1 + r)^n - 1) / r]
+                    const monthsInvested = year * 12;
+                    if (monthlyRate > 0) {
+                        corpus = formData.monthlyInvestment * ((Math.pow(1 + monthlyRate, monthsInvested) - 1) / monthlyRate);
+                    } else {
+                        corpus = formData.monthlyInvestment * monthsInvested;
+                    }
+
+                    gains = corpus - totalInvested;
+
+                    data.push({
+                        year,
+                        investment: Math.round(totalInvested),
+                        corpus: Math.round(corpus),
+                        gains: Math.round(gains)
+                    });
                 }
+            } else if (investmentType === 'lumpsum' && formData.oneTimeInvestment) {
+                // LUMSUM Calculation
+                for (let year = 1; year <= formData.duration; year++) {
+                    // For lumpsum, total invested is the same throughout
+                    totalInvested = formData.oneTimeInvestment;
 
-                gains = corpus - totalInvested;
+                    // Calculate corpus using compound interest formula
+                    // A = P(1 + r)^n
+                    const annualRate = formData.expectedReturns / 100;
+                    corpus = formData.oneTimeInvestment * Math.pow(1 + annualRate, year);
 
-                data.push({
-                    year,
-                    investment: Math.round(totalInvested),
-                    corpus: Math.round(corpus),
-                    gains: Math.round(gains)
-                });
+                    gains = corpus - totalInvested;
+
+                    data.push({
+                        year,
+                        investment: Math.round(totalInvested),
+                        corpus: Math.round(corpus),
+                        gains: Math.round(gains)
+                    });
+                }
             }
         } else if (serviceType === 'swp' && formData.totalInvestment && formData.monthlyWithdrawal) {
             // SWP Calculation
@@ -193,7 +220,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
             maturityValue: Math.round(corpus),
             totalGains: Math.round(gains)
         });
-    }, [formData, serviceType]);
+    }, [formData, serviceType, investmentType]);
 
     useEffect(() => {
         calculateReturns();
@@ -251,38 +278,77 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                         className="space-y-8"
                     >
                         <div className="bg-gray-50 rounded-2xl p-8">
-                            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
-                                Investment Parameters
-                            </h3>
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="font-heading text-2xl font-bold text-gray-900">
+                                    Investment Parameters
+                                </h3>
+                                {/* SIP/LUMSUM Toggle - Only for SIP service */}
+                                {serviceType === 'sip' && (
+                                    <div className="flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
+                                        <button
+                                            onClick={() => setInvestmentType('sip')}
+                                            className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${investmentType === 'sip'
+                                                ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200'
+                                                : 'text-gray-600 hover:text-gray-900'
+                                                }`}
+                                        >
+                                            SIP
+                                        </button>
+                                        <button
+                                            onClick={() => setInvestmentType('lumpsum')}
+                                            className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${investmentType === 'lumpsum'
+                                                ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200'
+                                                : 'text-gray-600 hover:text-gray-900'
+                                                }`}
+                                        >
+                                            LUMSUM
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
 
-                            {/* Monthly Investment - Only for SIP */}
+                            {/* Investment Input - Only for SIP service */}
                             {serviceType === 'sip' && (
                                 <div className="">
                                     <label className="block text-sm font-medium text-gray-700">
-                                        Monthly Investment (₹)
+                                        {investmentType === 'sip' ? 'Monthly Investment (₹)' : 'One Time Investment (₹)'}
                                     </label>
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="1000"
-                                            max="100000"
-                                            step="1000"
-                                            value={formData.monthlyInvestment || 0}
-                                            onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value))}
+                                            min={investmentType === 'sip' ? "100" : "100000"}
+                                            max={investmentType === 'sip' ? "100000" : "50000000"}
+                                            step={investmentType === 'sip' ? "1000" : "100000"}
+                                            value={investmentType === 'sip' ? (formData.monthlyInvestment || 0) : (formData.oneTimeInvestment || 0)}
+                                            onChange={(e) => {
+                                                if (investmentType === 'sip') {
+                                                    handleInputChange('monthlyInvestment', parseInt(e.target.value));
+                                                } else {
+                                                    handleInputChange('oneTimeInvestment', parseInt(e.target.value));
+                                                }
+                                            }}
                                             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.monthlyInvestment || 0) - 1000) / (100000 - 1000) * 100
+                                                '--slider-value': investmentType === 'sip'
+                                                    ? ((formData.monthlyInvestment || 0) - 100) / (100000 - 100) * 100
+                                                    : ((formData.oneTimeInvestment || 0) - 100000) / (50000000 - 100000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500">
-                                            <span>₹1,000</span>
-                                            <span>₹1,00,000</span>
+                                            <span>{investmentType === 'sip' ? '₹100' : '₹1,00,000'}</span>
+                                            <span>{investmentType === 'sip' ? '₹1,00,000' : '₹5,00,00,000'}</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
-                                        value={formData.monthlyInvestment || 0}
-                                        onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value) || 0)}
+                                        value={investmentType === 'sip' ? (formData.monthlyInvestment || 0) : (formData.oneTimeInvestment || 0)}
+                                        onChange={(e) => {
+                                            if (investmentType === 'sip') {
+                                                handleInputChange('monthlyInvestment', parseInt(e.target.value) || 0);
+                                            } else {
+                                                handleInputChange('oneTimeInvestment', parseInt(e.target.value) || 0);
+                                            }
+                                        }}
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     />
                                 </div>
@@ -297,19 +363,19 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="10000"
-                                            max="10000000"
+                                            min="100000"
+                                            max="50000000"
                                             step="10000"
                                             value={formData.totalInvestment || 0}
                                             onChange={(e) => handleInputChange('totalInvestment', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.totalInvestment || 0) - 10000) / (10000000 - 10000) * 100
+                                                '--slider-value': ((formData.totalInvestment || 0) - 100000) / (50000000 - 100000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500">
-                                            <span>₹10,000</span>
-                                            <span>₹1,00,00,000</span>
+                                            <span>₹1,00,000</span>
+                                            <span>₹5,00,00,000</span>
                                         </div>
                                     </div>
                                     <input
@@ -363,17 +429,17 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <input
                                         type="range"
                                         min="1"
-                                        max="30"
+                                        max="50"
                                         value={formData.duration}
                                         onChange={(e) => handleInputChange('duration', parseInt(e.target.value))}
                                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.duration - 1) / (30 - 1)) * 100
+                                            '--slider-value': ((formData.duration - 1) / (50 - 1)) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500">
                                         <span>1 Year</span>
-                                        <span>30 Years</span>
+                                        <span>50 Years</span>
                                     </div>
                                 </div>
                                 <input
@@ -393,18 +459,18 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <input
                                         type="range"
                                         min="6"
-                                        max="20"
+                                        max="50"
                                         step="0.5"
                                         value={formData.expectedReturns}
                                         onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value))}
                                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.expectedReturns - 6) / (20 - 6)) * 100
+                                            '--slider-value': ((formData.expectedReturns - 6) / (50 - 6)) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500">
                                         <span>6%</span>
-                                        <span>20%</span>
+                                        <span>50%</span>
                                     </div>
                                 </div>
                                 <input
@@ -566,7 +632,8 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                             stroke="#3B82F6"
                                             strokeWidth={3}
                                             dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
-                                            name={serviceType === 'goal-setting' ? 'Total Investment' : 'Total Invested'}
+                                            name={serviceType === 'goal-setting' ? 'Total Investment' :
+                                                (serviceType === 'sip' && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
                                         />
                                         <Line
                                             type="monotone"
@@ -595,7 +662,8 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                 <IndianRupee className="h-8 w-8 text-blue-600 mx-auto mb-3" />
                                 <h4 className="font-semibold text-gray-700 mb-2">
                                     {serviceType === 'goal-setting' ? 'Total Invested' :
-                                        serviceType === 'swp' ? 'Total Investment' : 'Total Invested'}
+                                        serviceType === 'swp' ? 'Total Investment' :
+                                            (serviceType === 'sip' && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
                                 </h4>
                                 <p className="text-2xl font-bold text-blue-700">
                                     {formatCurrency(summary.totalInvestment)}

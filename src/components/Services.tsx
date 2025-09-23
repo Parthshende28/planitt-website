@@ -124,7 +124,10 @@ const Services = () => {
                             variants={itemVariants}
                             className="group"
                         >
-                            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 h-full">
+                            <a
+                                href={service.url}
+                                className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 h-full cursor-pointer"
+                            >
                                 {/* Icon */}
                                 <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                                     <service.icon className="h-8 w-8 text-white" />
@@ -140,18 +143,12 @@ const Services = () => {
                                         {service.description}
                                     </p>
 
-                                    {/* Learn More Link */}
-                                    <div className="pt-4">
-                                        <a
-                                            href={service.url}
-                                            className={`inline-flex items-center ${service.textColor} hover:opacity-80 font-medium transition-opacity duration-200`}
-                                        >
-                                            Learn More
-                                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                                        </a>
+                                    {/* Arrow indicator */}
+                                    <div className="pt-4 flex justify-end">
+                                        <ArrowRight className={`h-5 w-5 ${service.textColor} group-hover:translate-x-1 transition-transform duration-200`} />
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </motion.div>
                     ))}
                 </motion.div>

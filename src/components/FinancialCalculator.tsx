@@ -165,7 +165,7 @@ const FinancialCalculator = () => {
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="1000"
+                                        min="100"
                                         max="100000"
                                         step="1000"
                                         value={formData.monthlyInvestment}
@@ -176,7 +176,7 @@ const FinancialCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500">
-                                        <span>₹1,000</span>
+                                        <span>₹100</span>
                                         <span>₹1,00,000</span>
                                     </div>
                                 </div>
@@ -197,17 +197,17 @@ const FinancialCalculator = () => {
                                     <input
                                         type="range"
                                         min="1"
-                                        max="30"
+                                        max="100"
                                         value={formData.duration}
                                         onChange={(e) => handleInputChange('duration', parseInt(e.target.value))}
                                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.duration - 1) / (30 - 1)) * 100
+                                            '--slider-value': ((formData.duration - 1) / (100 - 1)) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500">
                                         <span>1 Year</span>
-                                        <span>30 Years</span>
+                                        <span>100 Years</span>
                                     </div>
                                 </div>
                                 <input
@@ -227,18 +227,18 @@ const FinancialCalculator = () => {
                                     <input
                                         type="range"
                                         min="6"
-                                        max="20"
+                                        max="50"
                                         step="0.5"
                                         value={formData.expectedReturns}
                                         onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value))}
                                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.expectedReturns - 6) / (20 - 6)) * 100
+                                            '--slider-value': ((formData.expectedReturns - 6) / (50 - 6)) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500">
                                         <span>6%</span>
-                                        <span>20%</span>
+                                        <span>50%</span>
                                     </div>
                                 </div>
                                 <input
@@ -248,47 +248,6 @@ const FinancialCalculator = () => {
                                     onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 />
-                            </div>
-
-                            {/* Top-up Amount */}
-                            <div className="mt-5">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Top-up Amount (₹)
-                                </label>
-                                <input
-                                    type="number"
-                                    value={formData.topUpAmount}
-                                    onChange={(e) => handleInputChange('topUpAmount', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                    placeholder="Optional"
-                                />
-                            </div>
-
-                            {/* Top-up Frequency */}
-                            <div className="mt-5">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Top-up Frequency
-                                </label>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <button
-                                        onClick={() => handleInputChange('topUpFrequency', '6months')}
-                                        className={`px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${formData.topUpFrequency === '6months'
-                                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                            : 'border-gray-300 text-gray-700 hover:border-gray-400'
-                                            }`}
-                                    >
-                                        6 Months
-                                    </button>
-                                    <button
-                                        onClick={() => handleInputChange('topUpFrequency', 'annually')}
-                                        className={`px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${formData.topUpFrequency === 'annually'
-                                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                            : 'border-gray-300 text-gray-700 hover:border-gray-400'
-                                            }`}
-                                    >
-                                        Annually
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </motion.div>

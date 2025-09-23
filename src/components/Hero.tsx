@@ -43,7 +43,7 @@ const Hero = () => {
                                 className="text-xl text-gray-600 leading-relaxed"
                             >
                                 Led by CEO & Financial Distributor <span className="font-semibold text-blue-700">Piyush Tembhekar</span>,
-                                we provide comprehensive financial solutions for teachers, youths, and working professionals.
+                                we provide comprehensive financial solutions for Teachers, Youths, and Working Professionals.
                             </motion.p>
                         </div>
 
@@ -82,12 +82,15 @@ const Hero = () => {
                                 Budgeting
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </a>
-                            <Link
-                                href="/#calculator"
-                                className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300"
+                            <a
+                                href="https://www.assetplus.in/mfd/ARN-338883"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
-                                Try Our Calculator
-                            </Link>
+                                Contact Now
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </a>
                         </motion.div>
                     </motion.div>
 
@@ -125,7 +128,7 @@ const Hero = () => {
                                     <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg">
                                         <div className="flex justify-between items-center">
                                             <span className="text-gray-700 font-medium">Maturity Value (10 years)</span>
-                                            <span className="font-bold text-purple-700">₹11.5 Lakhs</span>
+                                            <span className="font-bold text-purple-700">₹11.7 Lakhs</span>
                                         </div>
                                     </div>
                                 </div>
