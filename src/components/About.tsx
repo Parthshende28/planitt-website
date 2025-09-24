@@ -104,9 +104,12 @@ const About = () => {
                                 <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mx-auto mb-4 flex items-center justify-center">
                                     <span className="text-white text-2xl font-bold">PT</span>
                                 </div>
-                                <h3 className="font-heading text-2xl font-bold text-gray-900 mb-2">
+                                <h3 className="font-heading text-2xl font-bold text-gray-900">
                                     Piyush Tembhekar
                                 </h3>
+                                <p className="text-gray-900 text-sm font-semibold">
+                                    (ARN - 338883)
+                                </p>
                                 <p className="text-blue-600 font-semibold">
                                     CEO & Financial Distributor
                                 </p>
