@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { PiggyBank } from 'lucide-react';
+import { Calculator, TrendingUp, IndianRupee, Target, PiggyBank } from 'lucide-react';
 
 interface SIPData {
     monthlyInvestment: number;
