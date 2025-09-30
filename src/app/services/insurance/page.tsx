@@ -1,6 +1,8 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
 import ServiceInfo from '@/components/ServiceInfo';
 import ServiceCalculator from '@/components/ServiceCalculator';
+import SIPCalculator from '@/components/SIPCalculator';
+import DailySIPCalculator from '@/components/DailySIPCalculator';
 import { Heart } from 'lucide-react';
 
 export default function InsurancePage() {
@@ -17,6 +19,8 @@ export default function InsurancePage() {
                 title="Investment Calculator"
                 description="Calculate your insurance premium and coverage needs. Plan your life and health insurance with our comprehensive calculator to ensure adequate protection."
             />
+            <SIPCalculator />
+            <DailySIPCalculator />
         </ServicePageLayout>
     );
 }
