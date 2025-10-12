@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   description: "Professional financial services including Mutual Funds, SIP, FD, Insurance, and NPS. Led by CEO & Financial Distributor Piyush Tembhekar.",
   keywords: "financial planning, mutual funds, SIP, FD, insurance, NPS, financial advisor, Piyush Tembhekar",
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
