@@ -13,6 +13,7 @@ const Header = () => {
         { name: 'Calculator', href: '/#calculator' },
         { name: 'About Us', href: '/#about' },
         { name: 'Testimonials', href: '/#testimonials' },
+        { name: 'Join Us', href: '/careers', newWindow: false },
     ];
 
     return (
@@ -39,6 +40,8 @@ const Header = () => {
                                 key={item.name}
                                 href={item.href}
                                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                                target={item.newWindow ? '_blank' : undefined}
+                                rel={item.newWindow ? 'noopener noreferrer' : undefined}
                             >
                                 {item.name}
                             </Link>
@@ -71,6 +74,8 @@ const Header = () => {
                                     href={item.href}
                                     className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
                                     onClick={() => setIsMenuOpen(false)}
+                                    target={item.newWindow ? '_blank' : undefined}
+                                    rel={item.newWindow ? 'noopener noreferrer' : undefined}
                                 >
                                     {item.name}
                                 </Link>
@@ -84,3 +89,4 @@ const Header = () => {
 };
 
 export default Header;
+

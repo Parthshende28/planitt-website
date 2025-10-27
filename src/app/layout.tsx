@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import Header from '@/components/Header';
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Planitt - Your Trusted Financial Partner",
+  title: "Planitt - Plan Your Dreams with Us",
   description: "Professional financial services including Mutual Funds, SIP, FD, Insurance, and NPS. Led by CEO & Financial Distributor Piyush Tembhekar.",
   keywords: "financial planning, mutual funds, SIP, FD, insurance, NPS, financial advisor, Piyush Tembhekar",
   icons: {
@@ -34,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
