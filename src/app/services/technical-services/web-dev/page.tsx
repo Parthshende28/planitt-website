@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
     title: 'Under Construction',
 };
@@ -32,12 +34,12 @@ export default function Page() {
                 <h1 className="text-4xl sm:text-5xl font-extrabold mb-12">Coming Soon</h1>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <a
+                    <Link
                         href="/#services"
                         className="inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-600 rounded-lg font-semibold shadow-md hover:opacity-95"
                     >
                         View Other Services
-                    </a>
+                    </Link>
 
                     <a
                         href="mailto:planitt.official@gmail.com"
