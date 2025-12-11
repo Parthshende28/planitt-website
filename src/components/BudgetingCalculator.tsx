@@ -15,6 +15,8 @@ interface BudgetData {
 }
 
 interface PieData {
+    // allow other string-indexed properties so this type is compatible with Recharts' ChartDataInput
+    [key: string]: any;
     name: string;
     value: number;
     color: string;
