@@ -32,7 +32,7 @@ const Hero = () => {
                             >
                                 Your Trusted
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
-                                    Financial Partner
+                                    Fin-Tech Partner
                                 </span>
                             </motion.h1>
 

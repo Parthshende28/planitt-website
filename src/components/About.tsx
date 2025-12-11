@@ -8,7 +8,7 @@ const About = () => {
         {
             icon: Shield,
             title: 'Trust & Transparency',
-            description: 'We believe in complete transparency in all our financial dealings and advice.'
+            description: 'We believe in complete transparency in all our dealings and advice.'
         },
         {
             icon: Target,
@@ -18,12 +18,12 @@ const About = () => {
         {
             icon: Users,
             title: 'Client-Centric Approach',
-            description: 'Your financial success is our priority, and we work tirelessly to achieve it.'
+            description: 'Your success is our priority, and we work tirelessly to achieve it.'
         },
         {
             icon: Award,
-            title: 'Expert Guidance',
-            description: 'Led by experienced professionals with deep knowledge of financial markets.'
+            title: 'Industrial-Expert Guidance',
+            description: 'Led by experienced industrial experts with deep knowledge.'
         }
     ];
 
@@ -51,13 +51,11 @@ const About = () => {
                                 About Planitt
                             </h2>
                             <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                                Planitt is a trusted financial services company led by <span className="font-semibold text-blue-700">Piyush Tembhekar</span>,
+                                Planitt is a trusted Fin-Tech service company led by <span className="font-semibold text-blue-700">Piyush Tembhekar</span>,
                                 a seasoned CEO and Financial Distributor with over 6 years of experience in wealth management.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
-                                We specialize in providing comprehensive financial solutions to school teachers,
-                                young professionals, and working individuals, helping them build a secure financial future
-                                through strategic planning and expert guidance.
+                                We specialize in providing comprehensive financial & technical solutions to organizations, school teachers, young professionals, working individuals, helping them build a secure financial or technical future through strategic planning and expert guidance.
                             </p>
                         </div>
 
