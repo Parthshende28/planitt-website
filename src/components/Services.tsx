@@ -261,7 +261,7 @@ const Services = () => {
                                     We&apos;re here to help you make informed decisions for a secure financial future.
                                 </p>
                                 <a
-                                    href="/services/budgeting"
+                                    href="/services/financial-services/budgeting"
                                     className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
                                 >
                                     Budgeting
