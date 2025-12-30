@@ -9,7 +9,10 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Company Info */}
                     <div className="space-y-4">
-                        <h3 className="font-heading text-xl font-bold">Planitt</h3>
+                        <div className="flex items-center">
+                            <img src="/planitt-logo-screenshot.png" alt="Planitt Logo" width={30} height={30} className="mr-2 rounded-full" />
+                            <h3 className="font-heading text-xl font-bold">Planitt</h3>
+                        </div>
                         <p className="text-gray-300 text-sm leading-relaxed">
                             Your trusted financial partner for comprehensive wealth management and
                             financial planning solutions.

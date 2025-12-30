@@ -22,6 +22,7 @@ const Header = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Brand Name */}
                     <div className="flex items-center focus:outline-none">
+                        <img src="/planitt-logo.png" alt="Planitt Logo" width={40} height={40} className="mr-2" />
                         <Link
                             href="/"
                             className="text-4xl font-bold tracking-wider focus:outline-none"
