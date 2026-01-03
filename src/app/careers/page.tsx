@@ -125,7 +125,7 @@ const initialJobs: Job[] = [
 
 export default function CareersPage() {
 
-    const [jobs, setJobs] = useState<Job[]>(initialJobs);
+    const [jobs] = useState<Job[]>(initialJobs);
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
     const [formData, setFormData] = useState({
         name: '',

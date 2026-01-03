@@ -1,5 +1,4 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
-import ServiceInfo from '@/components/ServiceInfo';
 import CombinedNPSCalculator from '@/components/CombinedNPSCalculator';
 import { PiggyBank } from 'lucide-react';
 
@@ -11,7 +10,6 @@ export default function NPSPage() {
             serviceIcon={<PiggyBank className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-orange-500 to-orange-600"
         >
-            <ServiceInfo serviceType="nps" />
             <CombinedNPSCalculator />
         </ServicePageLayout>
     );

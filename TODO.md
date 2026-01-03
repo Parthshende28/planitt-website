@@ -1,0 +1,5 @@
+- [x] Update app-dev/page.tsx background to light theme
+- [ ] Update web-dev/page.tsx background to light theme
+- [x] Update digital-marketing/page.tsx background to light theme
+- [ ] Update devops-automation/page.tsx background to light theme
+- [ ] Update cloud-services/page.tsx background to light theme

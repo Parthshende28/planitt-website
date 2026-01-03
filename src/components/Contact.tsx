@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, CheckCircle, MessageCircle } from 'lucide-react';
+import { CheckCircle, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 const Contact = () => {

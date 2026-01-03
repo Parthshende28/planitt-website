@@ -1,56 +1,139 @@
-import Link from 'next/link';
+import Link from "next/link";
+import ProjectSection from "@/components/ProjectSection";
+import { Cloud, Server, ShieldCheck, TrendingUp, ArrowLeft } from "lucide-react";
+import { SiAmazon, SiGooglecloud } from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
 
-export const metadata = {
-    title: 'Under Construction',
-};
 
-export default function Page() {
-    return (
-        <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white">
-            <div className="max-w-3xl mx-auto text-center p-8">
-                <div className="mx-auto w-40 h-40 rounded-full bg-white/10 flex items-center justify-center mb-6 shadow-xl">
-                    {/* Simple logo: gear + rocket style */}
-                    <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden
-                    >
-                        <path d="M12 2v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 20v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4.93 4.93l1.41 1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.66 17.66l1.41 1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M2 12h2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M20 12h2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4.93 19.07l1.41-1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.66 6.34l1.41-1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M9 15l6-6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M14 15l1-1" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </div>
+export default function CloudServicesPage() {
+  return (
+    <section className="bg-white text-gray-900">
+      <div className="container mx-auto px-6 py-20">
 
-                <h1 className="text-4xl sm:text-5xl font-extrabold mb-12">Coming Soon</h1>
 
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Link
-                        href="/#services"
-                        className="inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-600 rounded-lg font-semibold shadow-md hover:opacity-95"
-                    >
-                        View Other Services
-                    </Link>
+        <div className="max-w-4xl mx-auto mb-16 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Cloud Services
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Secure, scalable cloud infrastructure to improve performance,
+            reliability, and cost efficiency.
+          </p>
+        </div>
 
-                    <a
-                        href="mailto:planitt.official@gmail.com"
-                        className="inline-flex items-center justify-center px-6 py-3 border border-white/30 rounded-lg text-white/95 hover:underline"
-                    >
-                        Contact Us
-                    </a>
-                </div>
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <FeatureCard icon={<Cloud />} title="Cloud Migration" description="Move securely to cloud" />
+          <FeatureCard icon={<Server />} title="Infrastructure" description="Reliable cloud architecture" />
+          <FeatureCard icon={<ShieldCheck />} title="Security" description="Enterprise-grade protection" />
+          <FeatureCard icon={<TrendingUp />} title="Optimization" description="Cost & performance tuning" />
+        </div>
 
-                <p className="mt-6 text-sm text-white/80">Estimated launch: Q1 2026</p>
-            </div>
-        </main>
-    );
+        <div className="mb-20">
+          <h2 className="text-2xl font-semibold mb-8 text-center">
+            Technologies We Use
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            <TechItem icon={<SiAmazon />} label="AWS" color="text-orange-500" />
+            <TechItem icon={<FaMicrosoft />} label="Azure" color="text-blue-600" />
+            <TechItem icon={<SiGooglecloud />} label="Google Cloud" color="text-blue-500" />
+          </div>
+
+        </div>
+
+        {/* Projects */}
+        <ProjectSection
+          title="Cloud Case Studies"
+          subtitle="Our latest cloud infrastructure projects are coming soon."
+          accentColor="cyan"
+          projects={[]}
+        />
+
+        {/* CTA */}
+        <div className="bg-gradient-to-r from-blue-600 to-sky-700 rounded-2xl p-10 text-white text-center">
+          <h3 className="text-2xl font-bold mb-3">
+            Ready to Scale Your Business?
+          </h3>
+          <p className="mb-6 max-w-2xl mx-auto text-blue-50">
+            Let’s build a secure, scalable, and high-performing cloud infrastructure
+            that powers your business growth.
+          </p>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition"
+          >
+            Get Started with Cloud
+            <ArrowLeft className="rotate-180" size={18} />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Feature Card Component ---------- */
+function TechItem({
+  icon,
+  label,
+  color = "text-blue-600",
+}: {
+  icon: React.ReactNode;
+  label: string;
+  color?: string;
+}) {
+  return (
+    <div className="
+  relative overflow-hidden
+  flex flex-col items-center justify-center gap-3
+  bg-gray-50 border border-gray-200
+  rounded-xl p-6
+  text-gray-700
+  transition-all duration-300
+  hover:-translate-y-1
+  hover:border-transparent
+  group
+">
+  {/* Gradient Hover */}
+  <div className="
+    absolute inset-0
+    bg-linear-to-br from-blue-500/10 to-indigo-500/10
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-300
+  " />
+  <div className="relative z-10 flex flex-col items-center gap-3">
+    <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
+      {icon}
+    </div>
+    <span className="text-sm font-medium text-gray-900">
+      {label}
+    </span>
+  </div>
+</div>
+
+  );
+}
+
+
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition group">
+      <div className="mb-4 text-blue-600 group-hover:scale-110 transition">
+        {icon}
+      </div>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">
+        {title}
+      </h3>
+      <p className="text-gray-600 text-sm">
+        {description}
+      </p>
+    </div>
+  );
 }

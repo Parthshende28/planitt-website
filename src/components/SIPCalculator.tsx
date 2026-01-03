@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { Plus, Trash2, Edit3, Save, X } from 'lucide-react';
+import { Plus, Trash2, Edit3, Save } from 'lucide-react';
 
 interface SIPEntry {
     id: string;
@@ -36,24 +36,6 @@ const SIPCalculator: React.FC = () => {
         const months = years * 12;
         const futureValue = amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
         return futureValue;
-    };
-
-    // Calculate year-by-year growth for a SIP
-    const calculateSIPGrowth = (sip: SIPEntry) => {
-        const monthlyRate = sip.rate / 100 / 12;
-        const growth = [];
-
-        for (let year = 1; year <= sip.duration; year++) {
-            const months = year * 12;
-            const invested = sip.amount * months;
-            const maturity = sip.amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
-            growth.push({
-                year: sip.startYear + year,
-                invested,
-                maturity
-            });
-        }
-        return growth;
     };
 
     // Generate chart data

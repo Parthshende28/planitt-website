@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Calculator, TrendingUp, IndianRupee, Target } from 'lucide-react';
@@ -36,7 +36,7 @@ const FinancialCalculator = () => {
         totalGains: 0
     });
 
-    const calculateReturns = useCallback(() => {
+    useEffect(() => {
         const { monthlyInvestment, duration, expectedReturns, topUpAmount, topUpFrequency } = formData;
         const data: ChartData[] = [];
         const monthlyRate = expectedReturns / 100 / 12;
@@ -101,10 +101,6 @@ const FinancialCalculator = () => {
         });
     }, [formData]);
 
-    useEffect(() => {
-        calculateReturns();
-    }, [calculateReturns]);
-
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -114,10 +110,25 @@ const FinancialCalculator = () => {
     };
 
     const handleInputChange = (field: keyof CalculatorData, value: number | string) => {
-        setFormData(prev => ({
-            ...prev,
-            [field]: value
-        }));
+        let clampedValue: number | string = value;
+        if (typeof value === 'number') {
+            if (field === 'monthlyInvestment') {
+                clampedValue = Math.max(100, Math.min(100000, value));
+            } else if (field === 'duration') {
+                clampedValue = Math.max(1, Math.min(100, value));
+            } else if (field === 'expectedReturns') {
+                clampedValue = Math.max(6, Math.min(50, value));
+            }
+        }
+        setFormData(prev => {
+            if (prev[field] === clampedValue) {
+                return prev; // No change, prevent unnecessary re-render
+            }
+            return {
+                ...prev,
+                [field]: clampedValue
+            };
+        });
     };
 
     return (
@@ -212,6 +223,8 @@ const FinancialCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min="1"
+                                    max="100"
                                     value={formData.duration}
                                     onChange={(e) => handleInputChange('duration', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -244,6 +257,8 @@ const FinancialCalculator = () => {
                                 <input
                                     type="number"
                                     step="0.5"
+                                    min="6"
+                                    max="50"
                                     value={formData.expectedReturns}
                                     onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"

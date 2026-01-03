@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Header from './Header';
-import Footer from './Footer';
 import Contact from './Contact';
 
 interface ServicePageLayoutProps {

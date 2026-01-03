@@ -38,24 +38,6 @@ const DailySIPCalculator: React.FC = () => {
         return futureValue;
     };
 
-    // Calculate year-by-year growth for a Daily SIP
-    const calculateDailySIPGrowth = (sip: DailySIPEntry) => {
-        const dailyRate = sip.rate / 100 / 365;
-        const growth = [];
-
-        for (let year = 1; year <= sip.duration; year++) {
-            const days = year * 365;
-            const invested = sip.amount * days;
-            const maturity = sip.amount * ((Math.pow(1 + dailyRate, days) - 1) / dailyRate) * (1 + dailyRate);
-            growth.push({
-                year: sip.startYear + year,
-                invested,
-                maturity
-            });
-        }
-        return growth;
-    };
-
     // Generate chart data
     const generateChartData = useCallback(() => {
         const maxDuration = Math.max(...sipEntries.map(sip => sip.startYear + sip.duration));

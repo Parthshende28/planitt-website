@@ -15,11 +15,10 @@ interface BudgetData {
 }
 
 interface PieData {
-    // allow other string-indexed properties so this type is compatible with Recharts' ChartDataInput
-    [key: string]: any;
     name: string;
     value: number;
     color: string;
+    [key: string]: string | number | boolean | null | undefined;
 }
 
 interface SIPChartData {
@@ -168,9 +167,15 @@ const BudgetingCalculator = () => {
     }, [calculateGoalSIP]);
 
     const handleInputChange = (field: keyof BudgetData, value: number) => {
+        let clampedValue = value;
+        if (field === 'monthlyIncome') {
+            clampedValue = Math.max(10000, Math.min(500000, value));
+        } else if (field === 'monthlyExpense') {
+            clampedValue = Math.max(5000, Math.min(400000, value));
+        }
         setBudgetData(prev => ({
             ...prev,
-            [field]: value
+            [field]: clampedValue
         }));
     };
 
@@ -599,7 +604,7 @@ const BudgetingCalculator = () => {
                                             <input
                                                 type="number"
                                                 value={sipDuration}
-                                                onChange={(e) => setSipDuration(parseInt(e.target.value) || 1)}
+                                                onChange={(e) => setSipDuration(Math.max(1, Math.min(30, parseInt(e.target.value) || 1)))}
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
                                             />
                                         </div>
@@ -786,7 +791,7 @@ const BudgetingCalculator = () => {
                                         <input
                                             type="number"
                                             value={goalAmount}
-                                            onChange={(e) => setGoalAmount(parseInt(e.target.value) || 1000000)}
+                                            onChange={(e) => setGoalAmount(Math.max(1000000, Math.min(100000000, parseInt(e.target.value) || 1000000)))}
                                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
                                             placeholder="Enter your goal amount"
                                         />
@@ -817,7 +822,7 @@ const BudgetingCalculator = () => {
                                         <input
                                             type="number"
                                             value={goalDuration}
-                                            onChange={(e) => setGoalDuration(parseInt(e.target.value) || 5)}
+                                            onChange={(e) => setGoalDuration(Math.max(5, Math.min(40, parseInt(e.target.value) || 5)))}
                                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
                                             placeholder="Enter duration in years"
                                         />

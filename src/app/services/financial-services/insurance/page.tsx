@@ -1,5 +1,4 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
-import ServiceInfo from '@/components/ServiceInfo';
 import ServiceCalculator from '@/components/ServiceCalculator';
 import SIPCalculator from '@/components/SIPCalculator';
 import DailySIPCalculator from '@/components/DailySIPCalculator';
@@ -13,7 +12,6 @@ export default function InsurancePage() {
             serviceIcon={<Heart className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-red-500 to-red-600"
         >
-            <ServiceInfo serviceType="insurance" />
             <ServiceCalculator
                 serviceType="insurance"
                 title="Investment Calculator"

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,19 +21,22 @@ const Header = () => {
         <header className="bg-white shadow-lg sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Brand Name */}
-                    <div className="flex items-center focus:outline-none">
-                        <img src="/planitt-logo.png" alt="Planitt Logo" width={40} height={40} className="mr-2" />
-                        <Link
-                            href="/"
-                            className="text-4xl font-bold tracking-wider focus:outline-none"
-                            style={{
-                                fontFamily: 'Times New Roman, "Times", fantasy'
-                            }}
-                        >
-                            PLANITT
-                        </Link>
-                    </div>
+
+                 <Link
+    href="/"
+    aria-label="Planitt Home"
+    className="flex items-center focus:outline-none"
+>
+    <Image
+        src="/planitt-logo.png"   // ✅ NO /public
+        alt="Planitt Logo"
+        width={48}
+        height={48}
+        priority
+        className="transition-transform duration-200 hover:scale-105"
+    />
+</Link>
+
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex space-x-8">
@@ -54,6 +58,7 @@ const Header = () => {
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                            aria-label="Toggle menu"
                         >
                             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                         </button>
@@ -90,4 +95,3 @@ const Header = () => {
 };
 
 export default Header;
-

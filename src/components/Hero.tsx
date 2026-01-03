@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Hero = () => {
     return (
-        <section className="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
+        <section className="relative bg-linear-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0">
                 <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
@@ -31,7 +31,7 @@ const Hero = () => {
                                 className="font-heading text-4xl lg:text-6xl font-bold text-gray-900 leading-tight"
                             >
                                 Your Trusted
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                                <span className="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-800">
                                     Fin-Tech Partner
                                 </span>
                             </motion.h1>
@@ -77,7 +77,7 @@ const Hero = () => {
                         >
                             <a
                                 href="/services/financial-services/budgeting"
-                                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                                 Budgeting
                                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -86,7 +86,7 @@ const Hero = () => {
                                 href="https://www.assetplus.in/mfd/ARN-338883"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                                className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                                 Contact Now
                                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -111,21 +111,21 @@ const Hero = () => {
                                 </div>
 
                                 <div className="space-y-4">
-                                    <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg">
+                                    <div className="bg-linear-to-r from-blue-50 to-blue-100 p-4 rounded-lg">
                                         <div className="flex justify-between items-center">
                                             <span className="text-gray-700 font-medium">Monthly Investment</span>
                                             <span className="font-bold text-blue-700">₹5,000</span>
                                         </div>
                                     </div>
 
-                                    <div className="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg">
+                                    <div className="bg-linear-to-r from-green-50 to-green-100 p-4 rounded-lg">
                                         <div className="flex justify-between items-center">
                                             <span className="text-gray-700 font-medium">Expected Returns</span>
                                             <span className="font-bold text-green-700">12% p.a.</span>
                                         </div>
                                     </div>
 
-                                    <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg">
+                                    <div className="bg-linear-to-r from-purple-50 to-purple-100 p-4 rounded-lg">
                                         <div className="flex justify-between items-center">
                                             <span className="text-gray-700 font-medium">Maturity Value (10 years)</span>
                                             <span className="font-bold text-purple-700">₹11.7 Lakhs</span>

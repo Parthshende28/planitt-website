@@ -1,56 +1,92 @@
-import Link from 'next/link';
+import Link from "next/link";
+import ProjectSection from "@/components/ProjectSection";
+import { ShieldCheck, Lock, Eye, FileShield, ArrowLeft } from "lucide-react";
 
-export const metadata = {
-    title: 'Under Construction',
-};
+export default function CyberSecurityPage() {
+  return (
+    <section className="bg-white text-gray-900">
+      <div className="container mx-auto px-6 py-20">
+        
+        {/* Hero */}
+        <div className="max-w-4xl mx-auto mb-16 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Cyber Security
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Protect your digital assets with enterprise-grade security solutions
+            designed to mitigate risks and ensure business continuity.
+          </p>
+        </div>
 
-export default function Page() {
-    return (
-        <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white">
-            <div className="max-w-3xl mx-auto text-center p-8">
-                <div className="mx-auto w-40 h-40 rounded-full bg-white/10 flex items-center justify-center mb-6 shadow-xl">
-                    {/* Simple logo: gear + rocket style */}
-                    <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden
-                    >
-                        <path d="M12 2v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 20v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4.93 4.93l1.41 1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.66 17.66l1.41 1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M2 12h2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M20 12h2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4.93 19.07l1.41-1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.66 6.34l1.41-1.41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M9 15l6-6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M14 15l1-1" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </div>
+        {/* Features */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <FeatureCard
+            icon={<ShieldCheck />}
+            title="Vulnerability Assessment"
+            description="Identify and fix security loopholes before they can be exploited."
+          />
+          <FeatureCard
+            icon={<Lock />}
+            title="Data Encryption"
+            description="Ensure your sensitive data remains private and secure at rest and in transit."
+          />
+          <FeatureCard
+            icon={<Eye />}
+            title="Threat Monitoring"
+            description="24/7 monitoring to detect and respond to security threats in real-time."
+          />
+        </div>
 
-                <h1 className="text-4xl sm:text-5xl font-extrabold mb-12">Coming Soon</h1>
+        {/* Projects */}
+        <ProjectSection
+          title="Security Case Studies"
+          subtitle="Our latest cyber security projects are coming soon."
+          accentColor="indigo"
+          projects={[]}
+        />
 
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Link
-                        href="/#services"
-                        className="inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-600 rounded-lg font-semibold shadow-md hover:opacity-95"
-                    >
-                        View Other Services
-                    </Link>
+        {/* CTA */}
+        <div className="bg-gradient-to-r from-slate-800 to-indigo-900 rounded-2xl p-10 text-white text-center">
+          <h3 className="text-2xl font-bold mb-3">
+            Secure Your Digital Future
+          </h3>
+          <p className="mb-6 max-w-2xl mx-auto text-indigo-50">
+            Let’s build a robust security strategy to protect your business
+            from evolving cyber threats.
+          </p>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2 bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition"
+          >
+            Get a Security Consultation
+            <ArrowLeft className="rotate-180" size={18} />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-                    <a
-                        href="mailto:planitt.official@gmail.com"
-                        className="inline-flex items-center justify-center px-6 py-3 border border-white/30 rounded-lg text-white/95 hover:underline"
-                    >
-                        Contact Us
-                    </a>
-                </div>
-
-                <p className="mt-6 text-sm text-white/80">Estimated launch: Q1 2026</p>
-            </div>
-        </main>
-    );
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500 transition group">
+      <div className="mb-4 text-indigo-600 group-hover:scale-110 transition">
+        {icon}
+      </div>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">
+        {title}
+      </h3>
+      <p className="text-gray-600 text-sm">
+        {description}
+      </p>
+    </div>
+  );
 }

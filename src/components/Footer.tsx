@@ -1,6 +1,7 @@
 'use client';
 
 import { Mail, Phone, MapPin, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
     return (
@@ -10,7 +11,7 @@ const Footer = () => {
                     {/* Company Info */}
                     <div className="space-y-4">
                         <div className="flex items-center">
-                            <img src="/planitt-logo-screenshot.png" alt="Planitt Logo" width={30} height={30} className="mr-2 rounded-full" />
+                            <Image src="/planitt-logo-screenshot.png" alt="Planitt Logo" width={30} height={30} className="mr-2 rounded-full" />
                             <h3 className="font-heading text-xl font-bold">Planitt</h3>
                         </div>
                         <p className="text-gray-300 text-sm leading-relaxed">
