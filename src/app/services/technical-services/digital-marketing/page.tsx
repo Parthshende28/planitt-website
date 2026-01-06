@@ -13,7 +13,6 @@ export default function DigitalMarketingPage() {
   return (
     <section className="bg-white text-gray-900">
       <div className="container mx-auto px-6 py-20">
-
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -21,7 +20,8 @@ export default function DigitalMarketingPage() {
           </h1>
           <p className="text-gray-600 text-lg">
             Data-driven digital marketing strategies designed to increase brand
-            visibility, attract the right audience, and convert traffic into revenue.
+            visibility, attract the right audience, and convert traffic into
+            revenue.
           </p>
         </div>
 
@@ -58,6 +58,41 @@ export default function DigitalMarketingPage() {
             description="Track growth, measure ROI, and continuously optimize campaigns."
           />
         </div>
+{/* Key Features */}
+<section className="mb-20">
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+      Key Features
+    </h2>
+
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        SEO & SEM optimization
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Data-driven campaign strategies
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Multi-channel marketing automation
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        High-conversion landing pages
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Advanced audience segmentation
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Real-time performance tracking
+      </li>
+    </ul>
+  </div>
+</section>
 
         {/* What We Do */}
         <div className="max-w-5xl mx-auto mb-20">
@@ -67,8 +102,9 @@ export default function DigitalMarketingPage() {
 
           <p className="text-gray-600 text-center max-w-3xl mx-auto">
             We combine strategy, creativity, and analytics to deliver measurable
-            marketing results. Our approach focuses on understanding your business
-            goals and executing campaigns that drive sustainable growth.
+            marketing results. Our approach focuses on understanding your
+            business goals and executing campaigns that drive sustainable
+            growth.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-10">
@@ -95,6 +131,8 @@ export default function DigitalMarketingPage() {
           projects={[]}
         />
 
+        
+
         {/* CTA */}
         <div className="bg-gradient-to-r from-pink-500 to-rose-600 rounded-2xl p-10 text-white text-center">
           <h3 className="text-2xl font-bold mb-3">
@@ -112,22 +150,15 @@ export default function DigitalMarketingPage() {
             Get Free Marketing Consultation →
           </Link>
         </div>
-
       </div>
     </section>
-    
   );
 }
 
-function InfoBox({
-  title,
-  text,
-}: {
-  title: string;
-  text: string;
-}) {
+function InfoBox({ title, text }: { title: string; text: string }) {
   return (
-    <div className="
+    <div
+      className="
       relative overflow-hidden
       bg-gray-50 border border-gray-200
       rounded-2xl p-6
@@ -136,7 +167,8 @@ function InfoBox({
       hover:border-rose-500/30
       hover:shadow-[0_0_30px_rgba(225,29,72,0.1)]
       group
-    ">
+    "
+    >
       {/* Gradient Hover */}
       <div
         className="
@@ -148,17 +180,12 @@ function InfoBox({
       />
 
       <div className="relative z-10 text-center">
-        <h4 className="text-lg font-semibold mb-3 text-gray-900">
-          {title}
-        </h4>
-        <p className="text-gray-600 text-sm">
-          {text}
-        </p>
+        <h4 className="text-lg font-semibold mb-3 text-gray-900">{title}</h4>
+        <p className="text-gray-600 text-sm">{text}</p>
       </div>
     </div>
   );
 }
-
 
 function FeatureCard({
   icon,
@@ -174,13 +201,8 @@ function FeatureCard({
       <div className="mb-4 text-rose-500 group-hover:scale-110 transition">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-gray-900">
-        {title}
-      </h3>
-      <p className="text-gray-600 text-sm">
-        {description}
-      </p>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{description}</p>
     </div>
   );
 }
-

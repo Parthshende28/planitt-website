@@ -1,72 +1,178 @@
 import Link from "next/link";
 import ProjectSection from "@/components/ProjectSection";
-import { ShieldCheck, Lock, Eye, FileShield, ArrowLeft } from "lucide-react";
+import { Shield, Bug, Lock, AlertTriangle, Eye, FileCheck } from "lucide-react";
 
 export default function CyberSecurityPage() {
   return (
     <section className="bg-white text-gray-900">
       <div className="container mx-auto px-6 py-20">
-        
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Cyber Security
           </h1>
           <p className="text-gray-600 text-lg">
-            Protect your digital assets with enterprise-grade security solutions
-            designed to mitigate risks and ensure business continuity.
+            Comprehensive cyber security solutions to protect your systems,
+            networks, and sensitive data from evolving digital threats.
           </p>
         </div>
 
-        {/* Features */}
+        {/* Core Services */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           <FeatureCard
-            icon={<ShieldCheck />}
+            icon={<Shield />}
+            title="Threat Protection"
+            description="Multi-layered security solutions to prevent cyber attacks and breaches."
+          />
+          <FeatureCard
+            icon={<Bug />}
             title="Vulnerability Assessment"
-            description="Identify and fix security loopholes before they can be exploited."
+            description="Identify and eliminate security weaknesses before attackers do."
           />
           <FeatureCard
             icon={<Lock />}
-            title="Data Encryption"
-            description="Ensure your sensitive data remains private and secure at rest and in transit."
+            title="Data Security"
+            description="Protect sensitive business and customer data with robust encryption."
           />
           <FeatureCard
             icon={<Eye />}
-            title="Threat Monitoring"
-            description="24/7 monitoring to detect and respond to security threats in real-time."
+            title="Monitoring & Detection"
+            description="Continuous monitoring to detect threats in real time."
           />
+          <FeatureCard
+            icon={<FileCheck />}
+            title="Compliance & Audits"
+            description="Ensure compliance with security standards and regulations."
+          />
+          <FeatureCard
+            icon={<AlertTriangle />}
+            title="Risk Management"
+            description="Assess, mitigate, and manage cyber security risks effectively."
+          />
+        </div>
+{/* Key Features */}
+<section className="mb-20">
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+      Key Features
+    </h2>
+
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Advanced threat detection & response
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        End-to-end data encryption
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Regular security audits & compliance
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Secure authentication & authorization
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Vulnerability scanning & patching
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Incident response & recovery planning
+      </li>
+    </ul>
+  </div>
+</section>
+
+        {/* What We Do */}
+        <div className="max-w-5xl mx-auto mb-20">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
+            Our Cyber Security Approach
+          </h2>
+
+          <p className="text-gray-600 text-center max-w-3xl mx-auto">
+            Our security-first approach focuses on prevention, detection, and
+            response. We help businesses build strong defenses and maintain
+            trust in an increasingly connected world.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
+            <InfoBox
+              title="Assess & Analyze"
+              text="We evaluate your systems, infrastructure, and processes to identify risks."
+            />
+            <InfoBox
+              title="Protect & Monitor"
+              text="Security controls and monitoring are implemented to prevent and detect threats."
+            />
+            <InfoBox
+              title="Respond & Improve"
+              text="Rapid incident response with continuous improvement strategies."
+            />
+          </div>
         </div>
 
         {/* Projects */}
         <ProjectSection
-          title="Security Case Studies"
-          subtitle="Our latest cyber security projects are coming soon."
-          accentColor="indigo"
+          title="Cyber Security Implementations"
+          subtitle="Secure systems and successful risk mitigation stories coming soon."
+          accentColor="blue"
           projects={[]}
         />
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-slate-800 to-indigo-900 rounded-2xl p-10 text-white text-center">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-white text-center">
           <h3 className="text-2xl font-bold mb-3">
-            Secure Your Digital Future
+            Secure Your Business Today
           </h3>
-          <p className="mb-6 max-w-2xl mx-auto text-indigo-50">
-            Let’s build a robust security strategy to protect your business
-            from evolving cyber threats.
+          <p className="mb-6 max-w-2xl mx-auto text-blue-100">
+            Let’s strengthen your cyber defenses and protect your digital assets
+            with enterprise-grade security solutions.
           </p>
+
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition"
+            className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition mx-auto"
           >
-            Get a Security Consultation
-            <ArrowLeft className="rotate-180" size={18} />
+            Get Free Security Consultation →
           </Link>
         </div>
       </div>
     </section>
   );
 }
+function InfoBox({ title, text }: { title: string; text: string }) {
+  return (
+    <div
+      className="
+      relative overflow-hidden
+      bg-gray-50 border border-gray-200
+      rounded-2xl p-6
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:border-blue-500/30
+      hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]
+      group
+    "
+    >
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-br from-blue-500/5 to-indigo-500/5
+          opacity-0 group-hover:opacity-100
+          transition-opacity duration-300
+        "
+      />
 
+      <div className="relative z-10 text-center">
+        <h4 className="text-lg font-semibold mb-3 text-gray-900">{title}</h4>
+        <p className="text-gray-600 text-sm">{text}</p>
+      </div>
+    </div>
+  );
+}
 function FeatureCard({
   icon,
   title,
@@ -77,16 +183,12 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500 transition group">
-      <div className="mb-4 text-indigo-600 group-hover:scale-110 transition">
+    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition group">
+      <div className="mb-4 text-blue-600 group-hover:scale-110 transition">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-gray-900">
-        {title}
-      </h3>
-      <p className="text-gray-600 text-sm">
-        {description}
-      </p>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{description}</p>
     </div>
   );
 }

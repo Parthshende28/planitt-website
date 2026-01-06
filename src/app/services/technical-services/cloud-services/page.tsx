@@ -1,16 +1,19 @@
 import Link from "next/link";
 import ProjectSection from "@/components/ProjectSection";
-import { Cloud, Server, ShieldCheck, TrendingUp, ArrowLeft } from "lucide-react";
+import {
+  Cloud,
+  Server,
+  ShieldCheck,
+  TrendingUp,
+  ArrowLeft,
+} from "lucide-react";
 import { SiAmazon, SiGooglecloud } from "react-icons/si";
 import { FaMicrosoft } from "react-icons/fa";
-
 
 export default function CloudServicesPage() {
   return (
     <section className="bg-white text-gray-900">
       <div className="container mx-auto px-6 py-20">
-
-
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Cloud Services
@@ -22,11 +25,62 @@ export default function CloudServicesPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <FeatureCard icon={<Cloud />} title="Cloud Migration" description="Move securely to cloud" />
-          <FeatureCard icon={<Server />} title="Infrastructure" description="Reliable cloud architecture" />
-          <FeatureCard icon={<ShieldCheck />} title="Security" description="Enterprise-grade protection" />
-          <FeatureCard icon={<TrendingUp />} title="Optimization" description="Cost & performance tuning" />
+          <FeatureCard
+            icon={<Cloud />}
+            title="Cloud Migration"
+            description="Move securely to cloud"
+          />
+          <FeatureCard
+            icon={<Server />}
+            title="Infrastructure"
+            description="Reliable cloud architecture"
+          />
+          <FeatureCard
+            icon={<ShieldCheck />}
+            title="Security"
+            description="Enterprise-grade protection"
+          />
+          <FeatureCard
+            icon={<TrendingUp />}
+            title="Optimization"
+            description="Cost & performance tuning"
+          />
         </div>
+{/* Key Features */}
+<section className="mb-20">
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+      Key Features
+    </h2>
+
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Scalable infrastructure (AWS, Azure, GCP)
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        High availability & disaster recovery
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Secure cloud architecture & IAM
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Cost-efficient resource management
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Automated scaling & load balancing
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Real-time monitoring & proactive alerts
+      </li>
+    </ul>
+  </div>
+</section>
 
         <div className="mb-20">
           <h2 className="text-2xl font-semibold mb-8 text-center">
@@ -35,10 +89,17 @@ export default function CloudServicesPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
             <TechItem icon={<SiAmazon />} label="AWS" color="text-orange-500" />
-            <TechItem icon={<FaMicrosoft />} label="Azure" color="text-blue-600" />
-            <TechItem icon={<SiGooglecloud />} label="Google Cloud" color="text-blue-500" />
+            <TechItem
+              icon={<FaMicrosoft />}
+              label="Azure"
+              color="text-blue-600"
+            />
+            <TechItem
+              icon={<SiGooglecloud />}
+              label="Google Cloud"
+              color="text-blue-500"
+            />
           </div>
-
         </div>
 
         {/* Projects */}
@@ -55,8 +116,8 @@ export default function CloudServicesPage() {
             Ready to Scale Your Business?
           </h3>
           <p className="mb-6 max-w-2xl mx-auto text-blue-50">
-            Let’s build a secure, scalable, and high-performing cloud infrastructure
-            that powers your business growth.
+            Let’s build a secure, scalable, and high-performing cloud
+            infrastructure that powers your business growth.
           </p>
           <Link
             href="/#contact"
@@ -82,7 +143,8 @@ function TechItem({
   color?: string;
 }) {
   return (
-    <div className="
+    <div
+      className="
   relative overflow-hidden
   flex flex-col items-center justify-center gap-3
   bg-gray-50 border border-gray-200
@@ -92,27 +154,26 @@ function TechItem({
   hover:-translate-y-1
   hover:border-transparent
   group
-">
-  {/* Gradient Hover */}
-  <div className="
+"
+    >
+      {/* Gradient Hover */}
+      <div
+        className="
     absolute inset-0
     bg-linear-to-br from-blue-500/10 to-indigo-500/10
     opacity-0 group-hover:opacity-100
     transition-opacity duration-300
-  " />
-  <div className="relative z-10 flex flex-col items-center gap-3">
-    <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
-      {icon}
+  "
+      />
+      <div className="relative z-10 flex flex-col items-center gap-3">
+        <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
+          {icon}
+        </div>
+        <span className="text-sm font-medium text-gray-900">{label}</span>
+      </div>
     </div>
-    <span className="text-sm font-medium text-gray-900">
-      {label}
-    </span>
-  </div>
-</div>
-
   );
 }
-
 
 function FeatureCard({
   icon,
@@ -128,12 +189,8 @@ function FeatureCard({
       <div className="mb-4 text-blue-600 group-hover:scale-110 transition">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-gray-900">
-        {title}
-      </h3>
-      <p className="text-gray-600 text-sm">
-        {description}
-      </p>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{description}</p>
     </div>
   );
 }

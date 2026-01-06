@@ -23,6 +23,41 @@ export default function DevOpsPage() {
           <FeatureCard icon={<Server />} title="Infrastructure" description="Cloud & IaC" />
           <FeatureCard icon={<Activity />} title="Monitoring" description="Logs & performance" />
         </div>
+{/* Key Features */}
+<section className="mb-20">
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+      Key Features
+    </h2>
+
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Automated CI/CD pipelines
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Infrastructure as Code (Terraform/Ansible)
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Docker & Kubernetes orchestration
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Real-time logging & monitoring
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Automated testing & quality gates
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Seamless environment management
+      </li>
+    </ul>
+  </div>
+</section>
 
         {/* Projects */}
         <ProjectSection
@@ -31,6 +66,163 @@ export default function DevOpsPage() {
           accentColor="indigo"
           projects={[]}
         />
+
+        {/* Maintenance & Support Plans */}
+        <section className="mt-24 mb-24">
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Maintenance & Support Plans
+            </h2>
+            <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+              Keep your website secure, fast, and up-to-date with our flexible
+              maintenance and support plans.
+            </p>
+          </div>
+
+          {/* Plans */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Monthly Plan */}
+            <div className="rounded-2xl bg-gray-50 border border-gray-200 p-7 hover:border-indigo-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Monthly Maintenance
+              </h3>
+
+              <div className="text-4xl font-bold text-indigo-600 mb-1">
+                ₹6,999
+              </div>
+              <p className="text-gray-500 mb-6 text-sm">per month</p>
+
+              <ul className="space-y-3 text-gray-700 text-sm">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Bug fixes and minor updates
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Performance optimization
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Security updates
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Basic feature additions
+                </li>
+              </ul>
+            </div>
+
+            {/* Annual Plan */}
+            <div
+              className="relative rounded-2xl bg-gray-50 border border-gray-200 p-7 shadow-sm
+                hover:border-indigo-600 transition"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Annual Maintenance
+              </h3>
+
+              <div className="text-4xl font-bold text-indigo-600 mb-1">
+                ₹29,999
+              </div>
+              <p className="text-gray-500 mb-6 text-sm">
+                per year{" "}
+                <span className="text-green-600 font-medium">
+                  (Save ₹54,000)
+                </span>
+              </p>
+
+              <ul className="space-y-3 text-gray-700 text-sm">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Everything in Monthly Plan
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Priority support
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Advanced feature development
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Quarterly performance reviews
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      {/* Important Terms & Conditions */}
+<section className="mb-24">
+  {/* Header */}
+  <div className="text-center mb-10">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      Important Terms & Conditions
+    </h2>
+    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+      Please review the following terms carefully to ensure clarity and
+      transparency throughout the project lifecycle.
+    </p>
+  </div>
+
+  {/* Content Box */}
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4">
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        📄 Project Scope
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        The quoted price includes complete website development with backend
+        and database integration. Hosting and publishing services are included;
+        however, domain purchases or app store subscriptions must be handled
+        separately.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        ⏱ Revision Policy
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Changes requested within the first month after project completion are
+        included at no additional cost. After one month, further changes may
+        be charged based on complexity and time required.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        🛠 Maintenance Scope
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Maintenance plans cover bug fixes, feature additions, and incremental
+        improvements only. Major redevelopment or architectural changes are
+        not included and will be quoted separately.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        📝 Agreements
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Separate agreements will be signed for project development, monthly
+        maintenance, and annual maintenance. All terms must be finalized and
+        approved before work begins.
+      </p>
+    </div>
+  </div>
+</section>
 
         <CTA />
       </div>

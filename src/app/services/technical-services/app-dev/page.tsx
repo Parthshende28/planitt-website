@@ -1,23 +1,126 @@
 import Link from "next/link";
 import ProjectSection from "@/components/ProjectSection";
+import {
+  Smartphone,
+  Layers,
+  Zap,
+  Code,
+  ShieldCheck,
+  Globe,
+} from "lucide-react";
 
 export default function AppDevPage() {
   return (
     <section className="bg-white text-gray-900">
       <div className="container mx-auto px-6 py-20">
-
-
-
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          App Development
-        </h1>
+            App Development
+          </h1>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            Native and cross-platform mobile applications built with modern
+            technologies to deliver performance, scalability, and exceptional
+            user experience.
+          </p>
+        </div>
 
-        <p className="text-gray-600 max-w-3xl mb-12">
-          Native and cross-platform mobile applications built with modern
-          technologies to deliver performance, scalability, and exceptional user experience.
-        </p>
+        {/* Core Services */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <FeatureCard
+            icon={<Smartphone />}
+            title="Mobile App Development"
+            description="High-quality Android and iOS applications tailored to your business goals."
+          />
+          <FeatureCard
+            icon={<Layers />}
+            title="Cross-Platform Apps"
+            description="Single codebase applications using modern cross-platform frameworks."
+          />
+          <FeatureCard
+            icon={<Zap />}
+            title="High Performance"
+            description="Fast, responsive, and optimized applications for smooth user experience."
+          />
+          <FeatureCard
+            icon={<Code />}
+            title="Clean & Scalable Code"
+            description="Maintainable architecture designed for long-term growth."
+          />
+          <FeatureCard
+            icon={<ShieldCheck />}
+            title="Secure Applications"
+            description="Security best practices to protect data and user privacy."
+          />
+          <FeatureCard
+            icon={<Globe />}
+            title="API & Backend Integration"
+            description="Seamless integration with APIs, cloud services, and databases."
+          />
+        </div>
+{/* Key Features */}
+<section className="mb-20">
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+      Key Features
+    </h2>
+
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Modern frameworks (React Native & Flutter)
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        High performance & native-like experience
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Secure & scalable app architecture
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Fully responsive across iOS & Android
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Clean, maintainable codebase
+      </li>
+      <li className="flex items-start gap-3">
+        <span className="text-indigo-600 font-bold">•</span>
+        Offline-first capabilities & sync
+      </li>
+    </ul>
+  </div>
+</section>
+
+        {/* Our Approach */}
+        <div className="max-w-5xl mx-auto mb-20">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
+            Our App Development Approach
+          </h2>
+
+          <p className="text-gray-600 text-center max-w-3xl mx-auto">
+            We follow a structured and transparent development process that
+            ensures quality, scalability, and timely delivery of your mobile
+            applications.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
+            <InfoBox
+              title="Ideation & Planning"
+              text="We understand your requirements, users, and business goals to plan the right solution."
+            />
+            <InfoBox
+              title="Design & Development"
+              text="UI/UX design combined with clean, scalable development practices."
+            />
+            <InfoBox
+              title="Testing & Launch"
+              text="Thorough testing, deployment, and ongoing support after launch."
+            />
+          </div>
+        </div>
 
         {/* Projects */}
         <ProjectSection
@@ -27,13 +130,168 @@ export default function AppDevPage() {
           projects={[]}
         />
 
+{/* Maintenance & Support Plans */}
+        <section className="mt-24 mb-24">
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Maintenance & Support Plans
+            </h2>
+            <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+              Keep your website secure, fast, and up-to-date with our flexible
+              maintenance and support plans.
+            </p>
+          </div>
+
+          {/* Plans */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Monthly Plan */}
+            <div className="rounded-2xl bg-gray-50 border border-gray-200 p-7 hover:border-indigo-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Monthly Maintenance
+              </h3>
+
+              <div className="text-4xl font-bold text-indigo-600 mb-1">
+                ₹6,999
+              </div>
+              <p className="text-gray-500 mb-6 text-sm">per month</p>
+
+              <ul className="space-y-3 text-gray-700 text-sm">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Bug fixes and minor updates
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Performance optimization
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Security updates
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Basic feature additions
+                </li>
+              </ul>
+            </div>
+
+            {/* Annual Plan */}
+            <div
+              className="relative rounded-2xl bg-gray-50 border border-gray-200 p-7 shadow-sm
+                hover:border-indigo-600 transition"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Annual Maintenance
+              </h3>
+
+              <div className="text-4xl font-bold text-indigo-600 mb-1">
+                ₹29,999
+              </div>
+              <p className="text-gray-500 mb-6 text-sm">
+                per year{" "}
+                <span className="text-green-600 font-medium">
+                  (Save ₹54,000)
+                </span>
+              </p>
+
+              <ul className="space-y-3 text-gray-700 text-sm">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Everything in Monthly Plan
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Priority support
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Advanced feature development
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold">✓</span>
+                  Quarterly performance reviews
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      {/* Important Terms & Conditions */}
+<section className="mb-24">
+  {/* Header */}
+  <div className="text-center mb-10">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+      Important Terms & Conditions
+    </h2>
+    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+      Please review the following terms carefully to ensure clarity and
+      transparency throughout the project lifecycle.
+    </p>
+  </div>
+
+  {/* Content Box */}
+  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4">
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        📄 Project Scope
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        The quoted price includes complete website development with backend
+        and database integration. Hosting and publishing services are included;
+        however, domain purchases or app store subscriptions must be handled
+        separately.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        ⏱ Revision Policy
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Changes requested within the first month after project completion are
+        included at no additional cost. After one month, further changes may
+        be charged based on complexity and time required.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        🛠 Maintenance Scope
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Maintenance plans cover bug fixes, feature additions, and incremental
+        improvements only. Major redevelopment or architectural changes are
+        not included and will be quoted separately.
+      </p>
+    </div>
+
+    {/* Item */}
+    <div className="group rounded-xl border border-transparent p-4 transition
+                    hover:bg-white hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+        📝 Agreements
+      </h3>
+      <p className="text-gray-700 text-sm leading-relaxed">
+        Separate agreements will be signed for project development, monthly
+        maintenance, and annual maintenance. All terms must be finalized and
+        approved before work begins.
+      </p>
+    </div>
+  </div>
+</section>
         {/* CTA */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-10 text-white text-center">
-          <h3 className="text-2xl font-bold mb-3">
-            Have an App Idea?
-          </h3>
-          <p className="mb-6 max-w-2xl mx-auto text-indigo-50">
-            Let’s turn your idea into a high-performing mobile application.
+          <h3 className="text-2xl font-bold mb-3">Have an App Idea?</h3>
+          <p className="mb-6 max-w-2xl mx-auto text-indigo-100">
+            Let’s turn your idea into a high-performing mobile application that
+            users love.
           </p>
           <Link
             href="/#contact"
@@ -42,9 +300,41 @@ export default function AppDevPage() {
             Get Free Consultation →
           </Link>
         </div>
-
-      </div>
       </div>
     </section>
+  );
+}
+
+/* ---------- Components ---------- */
+
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500 transition group">
+      <div className="mb-4 text-indigo-600 group-hover:scale-110 transition">
+        {icon}
+      </div>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{description}</p>
+    </div>
+  );
+}
+
+function InfoBox({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="relative overflow-hidden bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition group">
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative z-10 text-center">
+        <h4 className="text-lg font-semibold mb-3 text-gray-900">{title}</h4>
+        <p className="text-gray-600 text-sm">{text}</p>
+      </div>
+    </div>
   );
 }

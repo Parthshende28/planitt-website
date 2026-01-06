@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
 
 export interface Project {
   title: string;
@@ -13,7 +12,7 @@ interface ProjectSectionProps {
   title?: string;
   subtitle?: string;
   projects: Project[];
-  accentColor?: string;
+  accentColor?: "blue" | "indigo" | "rose" | "orange" | "green" | "cyan";
 }
 
 export default function ProjectSection({
@@ -22,89 +21,100 @@ export default function ProjectSection({
   projects,
   accentColor = "blue",
 }: ProjectSectionProps) {
-  const getAccentClass = (color: string) => {
-    switch (color) {
-      case "blue": return "text-blue-600 border-blue-600 hover:bg-blue-600";
-      case "indigo": return "text-indigo-600 border-indigo-600 hover:bg-indigo-600";
-      case "rose": return "text-rose-600 border-rose-600 hover:bg-rose-600";
-      case "orange": return "text-orange-600 border-orange-600 hover:bg-orange-600";
-      case "green": return "text-green-600 border-green-600 hover:bg-green-600";
-      case "cyan": return "text-cyan-600 border-cyan-600 hover:bg-cyan-600";
-      default: return "text-blue-600 border-blue-600 hover:bg-blue-600";
-    }
-  };
-
-  const accentClass = getAccentClass(accentColor);
+  const spinnerColor = {
+    blue: "border-blue-600",
+    indigo: "border-indigo-600",
+    rose: "border-rose-600",
+    orange: "border-orange-600",
+    green: "border-green-600",
+    cyan: "border-cyan-600",
+  }[accentColor];
 
   return (
-    <div className="mb-20">
-      <div className="mb-10">
+    <section className="mb-24">
+      {/* Header */}
+      <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold mb-4 text-gray-900">{title}</h2>
-        <p className="text-gray-600 max-w-2xl">{subtitle}</p>
+        <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
       </div>
 
+      {/* Projects Grid */}
       {projects.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
+            <a
               key={index}
-              className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block h-72 rounded-2xl overflow-hidden
+                         border border-gray-200 bg-gray-100
+                         transition-all duration-300
+                         hover:-translate-y-1 hover:shadow-xl"
             >
-              {/* Project Image */}
-              <div className="relative h-48 w-full overflow-hidden bg-gray-100">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+              {/* Image */}
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500
+                           group-hover:scale-105"
+              />
 
-              {/* Project Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tags?.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-gray-100 text-gray-500 rounded-md"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+              {/* Hover Overlay */}
+              <div
+                className="absolute inset-0 bg-black/70 backdrop-blur-sm
+                           opacity-0 group-hover:opacity-100
+                           transition-opacity duration-300
+                           flex flex-col justify-end p-6"
+              >
+                <h3 className="text-white text-xl font-semibold mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-6 flex-grow">
+
+                <p className="text-gray-200 text-sm mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 border-2 px-4 py-2 rounded-lg font-semibold transition-colors w-fit text-sm ${accentClass} hover:text-white`}
-                  >
-                    Live Preview
-                    <ExternalLink size={14} />
-                  </a>
+                {project.tags && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 text-xs rounded-full
+                                   bg-white/10 text-white"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
-            </div>
+            </a>
           ))}
         </div>
       ) : (
-        <div className="py-20 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center text-center bg-gray-50/50">
-          <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4">
-            <div className={`w-8 h-8 rounded-full border-4 border-t-transparent animate-spin ${accentColor === 'blue' ? 'border-blue-600' : accentColor === 'indigo' ? 'border-indigo-600' : accentColor === 'rose' ? 'border-rose-600' : accentColor === 'cyan' ? 'border-cyan-600' : 'border-blue-600'}`}></div>
+        /* Empty State */
+        <div className="py-20 border-2 border-dashed border-gray-200 rounded-3xl
+                        flex flex-col items-center text-center bg-gray-50">
+          <div className="w-16 h-16 bg-white rounded-2xl shadow-sm
+                          flex items-center justify-center mb-4">
+            <div
+              className={`w-8 h-8 rounded-full border-4
+                          border-t-transparent animate-spin ${spinnerColor}`}
+            />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">Projects Coming Soon</h3>
+
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            Projects Coming Soon
+          </h3>
           <p className="text-gray-500 max-w-sm">
-            We're currently working on some amazing projects. Check back soon to see our latest work in this category.
+            We&apos;re currently working on some amazing projects. Check back soon to
+            see our latest work.
           </p>
         </div>
       )}
-    </div>
+    </section>
   );
 }
