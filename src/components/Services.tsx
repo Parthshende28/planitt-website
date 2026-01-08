@@ -158,7 +158,7 @@ const Services = () => {
     const [active, setActive] = useState('financial');
 
     return (
-        <section id="services" className="py-20 bg-gray-50">
+        <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -168,10 +168,10 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         Our Services
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Comprehensive financial solutions designed to help you achieve your goals,
                         whether you&apos;re a teacher, young professional, or working individual.
                     </p>
@@ -180,16 +180,16 @@ const Services = () => {
                 {/* Selector: show two boxes side-by-side when nothing is active */}
                 {/* Full-width subheader with toggles (always visible) */}
                 <motion.div className="w-full mb-6">
-                    <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 flex">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-sm border border-gray-100 dark:border-gray-700 flex transition-colors duration-300">
                         <button
                             onClick={() => setActive((s) => (s === 'financial' ? 'none' : 'financial'))}
-                            className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-colors duration-200 ${active === 'financial' ? 'bg-blue-600 text-white' : 'text-gray-700'}`}
+                            className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'financial' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
                         >
                             Financial Services
                         </button>
                         <button
                             onClick={() => setActive((s) => (s === 'technical' ? 'none' : 'technical'))}
-                            className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-colors duration-200 ${active === 'technical' ? 'bg-blue-600 text-white' : 'text-gray-700'}`}
+                            className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'technical' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
                         >
                             Technical Services
                         </button>
@@ -214,7 +214,7 @@ const Services = () => {
                                 >
                                     <a
                                         href={service.url}
-                                        className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 h-full cursor-pointer"
+                                        className="block bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 h-full cursor-pointer"
                                     >
                                         {/* Icon */}
                                         <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -223,17 +223,17 @@ const Services = () => {
 
                                         {/* Content */}
                                         <div className="space-y-4">
-                                            <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                                            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                                                 {service.title}
                                             </h3>
 
-                                            <p className="text-gray-600 leading-relaxed">
+                                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                                                 {service.description}
                                             </p>
 
                                             {/* Arrow indicator */}
                                             <div className="pt-4 flex justify-end">
-                                                <ArrowRight className={`h-5 w-5 ${service.textColor} group-hover:translate-x-1 transition-transform duration-200`} />
+                                                <ArrowRight className={`h-5 w-5 ${service.textColor} dark:text-blue-400 group-hover:translate-x-1 transition-transform duration-200`} />
                                             </div>
                                         </div>
                                     </a>
@@ -249,17 +249,17 @@ const Services = () => {
                             viewport={{ once: true }}
                             className="text-center mt-16"
                         >
-                            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
+                            <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 rounded-2xl p-8 text-white">
                                 <h3 className="font-heading text-2xl font-bold mb-4">
                                     Ready to Start Your Financial Journey?
                                 </h3>
-                                <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+                                <p className="text-blue-100 dark:text-blue-200 mb-6 max-w-2xl mx-auto">
                                     Get personalized financial advice from our expert team led by Piyush Tembhekar.
                                     We&apos;re here to help you make informed decisions for a secure financial future.
                                 </p>
                                 <a
                                     href="/services/financial-services/budgeting"
-                                    className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+                                    className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg"
                                 >
                                     Budgeting
                                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -289,7 +289,7 @@ const Services = () => {
                                 >
                                     <a
                                         href={service.url}
-                                        className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 h-full cursor-pointer"
+                                        className="block bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 h-full cursor-pointer"
                                     >
                                         {/* Icon */}
                                         <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -298,17 +298,17 @@ const Services = () => {
 
                                         {/* Content */}
                                         <div className="space-y-4">
-                                            <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                                            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                                                 {service.title}
                                             </h3>
 
-                                            <p className="text-gray-600 leading-relaxed">
+                                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                                                 {service.description}
                                             </p>
 
                                             {/* Arrow indicator */}
                                             <div className="pt-4 flex justify-end">
-                                                <ArrowRight className={`h-5 w-5 ${service.textColor} group-hover:translate-x-1 transition-transform duration-200`} />
+                                                <ArrowRight className={`h-5 w-5 ${service.textColor} dark:text-blue-400 group-hover:translate-x-1 transition-transform duration-200`} />
                                             </div>
                                         </div>
                                     </a>
@@ -324,17 +324,17 @@ const Services = () => {
                             viewport={{ once: true }}
                             className="text-center mt-16"
                         >
-                            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
+                            <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 rounded-2xl p-8 text-white shadow-xl">
                                 <h3 className="font-heading text-2xl font-bold mb-4">
                                     Ready to Start Your Technical Journey?
                                 </h3>
-                                <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+                                <p className="text-blue-100 dark:text-blue-200 mb-6 max-w-2xl mx-auto">
                                     Get personalized technical advice or training from our expert team led by Parth Shende.
                                     We&apos;ll help you build your technical future.
                                 </p>
                                 <a
                                     href="/services/technical-training"
-                                    className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+                                    className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg"
                                 >
                                     Technical Training
                                     <ArrowRight className="ml-2 h-5 w-5" />

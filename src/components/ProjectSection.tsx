@@ -36,8 +36,8 @@ export default function ProjectSection({
     <section className="mb-24">
       {/* Header */}
       <div className="mb-12 text-center">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">{title}</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+        <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{title}</h2>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">{subtitle}</p>
       </div>
 
       {/* Projects Grid */}
@@ -50,9 +50,9 @@ export default function ProjectSection({
               target="_blank"
               rel="noopener noreferrer"
               className="group relative block h-72 rounded-2xl overflow-hidden
-                         border border-gray-200 bg-gray-100
+                         border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800
                          transition-all duration-300
-                         hover:-translate-y-1 hover:shadow-xl"
+                         hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-gray-950/50"
             >
               {/* Image */}
               <Image
@@ -103,11 +103,11 @@ export default function ProjectSection({
       ) : (
         /* Empty State */
         <div
-          className="py-20 border-2 border-dashed border-gray-200 rounded-3xl
-                        flex flex-col items-center text-center bg-gray-50"
+          className="py-20 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl
+                        flex flex-col items-center text-center bg-gray-50 dark:bg-gray-800/50"
         >
           <div
-            className="w-16 h-16 bg-white rounded-2xl shadow-sm
+            className="w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl shadow-sm
                           flex items-center justify-center mb-4"
           >
             <div
@@ -116,10 +116,10 @@ export default function ProjectSection({
             />
           </div>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Projects Coming Soon
           </h3>
-          <p className="text-gray-500 max-w-sm">
+          <p className="text-gray-500 dark:text-gray-400 max-w-sm">
             We&apos;re currently working on some amazing projects. Check back
             soon to see our latest work.
           </p>

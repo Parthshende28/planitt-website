@@ -74,7 +74,7 @@ Message: ${formData.message}`;
     };
 
     return (
-        <section id="contact" className="py-20 bg-gray-50">
+        <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -84,10 +84,10 @@ Message: ${formData.message}`;
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         Get Your Financial Analysis
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Share your budgeting analysis with us for personalized financial advice and investment recommendations.
                     </p>
                 </motion.div>
@@ -99,16 +99,16 @@ Message: ${formData.message}`;
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-2xl p-8 shadow-xl"
+                        className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-transparent dark:border-gray-800 transition-colors"
                     >
-                        <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
+                        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
                             Send us a Message
                         </h3>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Name Field */}
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Full Name *
                                 </label>
                                 <input
@@ -118,14 +118,14 @@ Message: ${formData.message}`;
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                                     placeholder="Enter your full name"
                                 />
                             </div>
 
                             {/* Email Field */}
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Email Address *
                                 </label>
                                 <input
@@ -135,14 +135,14 @@ Message: ${formData.message}`;
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                                     placeholder="Enter your email address"
                                 />
                             </div>
 
                             {/* Phone Field */}
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Phone Number *
                                 </label>
                                 <input
@@ -152,14 +152,14 @@ Message: ${formData.message}`;
                                     value={formData.phone}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                                     placeholder="Enter your phone number"
                                 />
                             </div>
 
                             {/* Message Field */}
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Message *
                                 </label>
                                 <textarea
@@ -169,23 +169,23 @@ Message: ${formData.message}`;
                                     onChange={handleInputChange}
                                     required
                                     rows={4}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
                                     placeholder="Tell us about your financial goals and how we can help..."
                                 />
                             </div>
 
                             {/* Image Upload Field */}
                             <div>
-                                <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="image" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Attach Snapshot (Optional)
                                 </label>
-                                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-gray-400 transition-colors duration-200">
+                                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-700 border-dashed rounded-lg hover:border-gray-400 dark:hover:border-gray-500 transition-colors duration-200">
                                     <div className="space-y-1 text-center">
                                         <ImageIcon className="mx-auto h-12 w-12 text-gray-400" />
-                                        <div className="flex text-sm text-gray-600">
+                                        <div className="flex text-sm text-gray-600 dark:text-gray-400">
                                             <label
                                                 htmlFor="image"
-                                                className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                                                className="relative cursor-pointer bg-white dark:bg-gray-800 rounded-md font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
                                             >
                                                 <span>Upload snapshot</span>
                                                 <input
@@ -200,11 +200,11 @@ Message: ${formData.message}`;
                                             </label>
                                             <p className="pl-1">or drag and drop</p>
                                         </div>
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-gray-500 dark:text-gray-400">
                                             Please attach the snapshot you took just now
                                         </p>
                                         {selectedImage && (
-                                            <p className="text-sm text-green-600 font-medium">
+                                            <p className="text-sm text-green-600 dark:text-green-400 font-medium">
                                                 Selected: {selectedImage.name}
                                             </p>
                                         )}
@@ -216,7 +216,7 @@ Message: ${formData.message}`;
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold py-4 px-6 rounded-lg hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold py-4 px-6 rounded-lg hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg shadow-green-500/20"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -236,7 +236,7 @@ Message: ${formData.message}`;
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-green-600 bg-green-50 p-4 rounded-lg"
+                                    className="flex items-center space-x-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-100 dark:border-green-800/30"
                                 >
                                     <CheckCircle className="h-5 w-5" />
                                     <span>WhatsApp opened! Please send the message to complete your request.</span>
@@ -247,7 +247,7 @@ Message: ${formData.message}`;
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg"
+                                    className="flex items-center space-x-2 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-100 dark:border-red-800/30"
                                 >
                                     <AlertCircle className="h-5 w-5" />
                                     <span>Failed to open WhatsApp. Please try again or contact us directly.</span>

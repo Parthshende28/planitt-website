@@ -15,14 +15,14 @@ import {
 
 export default function WebDevPage() {
   return (
-    <section className="bg-white text-gray-900">
+    <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-6 py-20">
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Website Development
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             We build modern, fast, and scalable websites that combine stunning
             design with powerful technology to help your business grow online.
           </p>
@@ -30,12 +30,12 @@ export default function WebDevPage() {
 
 {/* Key Features */}
 <section className="mb-20">
-  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
-    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white text-center">
       Key Features
     </h2>
 
-    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 dark:text-gray-300">
       <li className="flex items-start gap-3">
         <span className="text-indigo-600 font-bold">•</span>
         Modern frameworks (Next.js & React)
@@ -105,11 +105,11 @@ export default function WebDevPage() {
 
         {/* Our Approach */}
         <div className="max-w-5xl mx-auto mb-20">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
+          <h2 className="text-2xl font-semibold mb-6 text-center dark:text-white">
             Our Web Development Approach
           </h2>
 
-          <p className="text-gray-600 text-center max-w-3xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto">
             We follow a structured and transparent development process that
             ensures quality, scalability, and timely delivery of your web
             projects.
@@ -160,10 +160,10 @@ export default function WebDevPage() {
         <section className="mt-24 mb-24">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Maintenance & Support Plans
             </h2>
-            <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Keep your website secure, fast, and up-to-date with our flexible
               maintenance and support plans.
             </p>
@@ -172,31 +172,31 @@ export default function WebDevPage() {
           {/* Plans */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Monthly Plan */}
-            <div className="rounded-2xl bg-gray-50 border border-gray-200 p-7 hover:border-indigo-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 hover:border-indigo-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Monthly Maintenance
               </h3>
 
-              <div className="text-4xl font-bold text-indigo-600 mb-1">
+              <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                 ₹6,999
               </div>
-              <p className="text-gray-500 mb-6 text-sm">per month</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">per month</p>
 
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Bug fixes and minor updates
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Performance optimization
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Security updates
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Basic feature additions
                 </li>
               </ul>
@@ -204,38 +204,38 @@ export default function WebDevPage() {
 
             {/* Annual Plan */}
             <div
-              className="relative rounded-2xl bg-gray-50 border border-gray-200 p-7 shadow-sm
+              className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 shadow-sm
                 hover:border-indigo-600 transition"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Annual Maintenance
               </h3>
 
-              <div className="text-4xl font-bold text-indigo-600 mb-1">
+              <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                 ₹29,999
               </div>
-              <p className="text-gray-500 mb-6 text-sm">
+              <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
                 per year{" "}
-                <span className="text-green-600 font-medium">
+                <span className="text-green-600 dark:text-green-400 font-medium">
                   (Save ₹54,000)
                 </span>
               </p>
 
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Everything in Monthly Plan
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Priority support
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Advanced feature development
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Quarterly performance reviews
                 </li>
               </ul>
@@ -247,24 +247,24 @@ export default function WebDevPage() {
 <section className="mb-24">
   {/* Header */}
   <div className="text-center mb-10">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
       Important Terms & Conditions
     </h2>
-    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+    <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
       Please review the following terms carefully to ensure clarity and
       transparency throughout the project lifecycle.
     </p>
   </div>
 
   {/* Content Box */}
-  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 space-y-4">
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📄 Project Scope
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         The quoted price includes complete website development with backend
         and database integration. Hosting and publishing services are included;
         however, domain purchases or app store subscriptions must be handled
@@ -274,11 +274,11 @@ export default function WebDevPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         ⏱ Revision Policy
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Changes requested within the first month after project completion are
         included at no additional cost. After one month, further changes may
         be charged based on complexity and time required.
@@ -287,11 +287,11 @@ export default function WebDevPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         🛠 Maintenance Scope
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Maintenance plans cover bug fixes, feature additions, and incremental
         improvements only. Major redevelopment or architectural changes are
         not included and will be quoted separately.
@@ -300,11 +300,11 @@ export default function WebDevPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📝 Agreements
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Separate agreements will be signed for project development, monthly
         maintenance, and annual maintenance. All terms must be finalized and
         approved before work begins.
@@ -339,11 +339,11 @@ export default function WebDevPage() {
 
 function InfoBox({ title, text }: { title: string; text: string }) {
   return (
-    <div className="relative overflow-hidden bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition group">
+    <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition group">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="relative z-10 text-center">
-        <h4 className="text-lg font-semibold mb-3 text-gray-900">{title}</h4>
-        <p className="text-gray-600 text-sm">{text}</p>
+        <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">{title}</h4>
+        <p className="text-gray-600 dark:text-gray-400 text-sm">{text}</p>
       </div>
     </div>
   );
@@ -364,9 +364,9 @@ function TechItem({
       className="
   relative overflow-hidden
   flex flex-col items-center justify-center gap-3
-  bg-gray-50 border border-gray-200
+  bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700
   rounded-xl p-6
-  text-gray-700
+  text-gray-700 dark:text-gray-300
   transition-all duration-300
   hover:-translate-y-1
   hover:border-transparent
@@ -386,7 +386,7 @@ function TechItem({
         <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
           {icon}
         </div>
-        <span className="text-sm font-medium text-gray-900">{label}</span>
+        <span className="text-sm font-medium text-gray-900 dark:text-white">{label}</span>
       </div>
     </div>
   );

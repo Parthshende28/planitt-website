@@ -145,17 +145,17 @@ const DailySIPCalculator: React.FC = () => {
     ];
 
     return (
-        <div className="max-w-7xl mx-auto p-6 min-h-screen">
+        <div className="max-w-7xl mx-auto p-6 min-h-screen bg-transparent">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-transparent dark:border-gray-800 transition-colors"
             >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-emerald-600 to-teal-700 p-6 text-white">
+                <div className="bg-gradient-to-r from-emerald-600 to-teal-700 p-6 text-white dark:from-emerald-700 dark:to-teal-800">
                     <div className="flex items-center space-x-3 mb-2">
-                        <Calendar className="h-8 w-8" />
+                        <Calendar className="h-8 w-8 text-emerald-100" />
                         <h2 className="text-3xl font-bold">Daily SIP Portfolio Calculator</h2>
                     </div>
                     <p className="text-emerald-100">Plan and track multiple daily SIP investments with enhanced compounding benefits</p>
@@ -165,8 +165,8 @@ const DailySIPCalculator: React.FC = () => {
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                         {/* Input Section */}
                         <div className="xl:col-span-1">
-                            <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center space-x-2">
-                                <Calendar className="h-5 w-5 text-emerald-600" />
+                            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center space-x-2">
+                                <Calendar className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                                 <span>Daily SIP Entries</span>
                             </h3>
                             <div className="space-y-4">
@@ -175,32 +175,32 @@ const DailySIPCalculator: React.FC = () => {
                                         key={sip.id}
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-lg p-4 border border-emerald-200"
+                                        className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-800/50 rounded-lg p-4 border border-emerald-200 dark:border-gray-700"
                                     >
                                         <div className="flex items-center justify-between mb-3">
-                                            <h4 className="font-medium text-gray-700 flex items-center space-x-2">
-                                                <Calendar className="h-4 w-4 text-emerald-600" />
+                                            <h4 className="font-medium text-gray-700 dark:text-gray-300 flex items-center space-x-2">
+                                                <Calendar className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                                 <span>Daily SIP {index + 1}</span>
                                             </h4>
                                             <div className="flex space-x-2">
                                                 {editingId === sip.id ? (
                                                     <button
                                                         onClick={stopEditing}
-                                                        className="p-1 text-green-600 hover:bg-green-100 rounded"
+                                                        className="p-1 text-green-600 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/30 rounded"
                                                     >
                                                         <Save className="h-4 w-4" />
                                                     </button>
                                                 ) : (
                                                     <button
                                                         onClick={() => startEditing(sip.id)}
-                                                        className="p-1 text-blue-600 hover:bg-blue-100 rounded"
+                                                        className="p-1 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded"
                                                     >
                                                         <Edit3 className="h-4 w-4" />
                                                     </button>
                                                 )}
                                                 <button
                                                     onClick={() => deleteSIP(sip.id)}
-                                                    className="p-1 text-red-600 hover:bg-red-100 rounded"
+                                                    className="p-1 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 rounded"
                                                 >
                                                     <Trash2 className="h-4 w-4" />
                                                 </button>
@@ -209,33 +209,33 @@ const DailySIPCalculator: React.FC = () => {
 
                                         <div className="space-y-3">
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-600 mb-1">
+                                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
                                                     Daily Amount (₹)
                                                 </label>
                                                 <input
                                                     type="number"
                                                     value={sip.amount}
                                                     onChange={(e) => updateSIP(sip.id, 'amount', Number(e.target.value))}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                                                     disabled={editingId !== sip.id}
                                                 />
                                             </div>
 
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-600 mb-1">
+                                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
                                                     Duration (Years)
                                                 </label>
                                                 <input
                                                     type="number"
                                                     value={sip.duration}
                                                     onChange={(e) => updateSIP(sip.id, 'duration', Number(e.target.value))}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                                                     disabled={editingId !== sip.id}
                                                 />
                                             </div>
 
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-600 mb-1">
+                                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
                                                     Expected Return (% p.a.)
                                                 </label>
                                                 <input
@@ -243,42 +243,42 @@ const DailySIPCalculator: React.FC = () => {
                                                     step="0.1"
                                                     value={sip.rate}
                                                     onChange={(e) => updateSIP(sip.id, 'rate', Number(e.target.value))}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                                                     disabled={editingId !== sip.id}
                                                 />
                                             </div>
 
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-600 mb-1">
+                                                <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
                                                     Start Year
                                                 </label>
                                                 <input
                                                     type="number"
                                                     value={sip.startYear}
                                                     onChange={(e) => updateSIP(sip.id, 'startYear', Number(e.target.value))}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                                                     disabled={editingId !== sip.id}
                                                 />
                                             </div>
 
                                             {/* Quick Summary */}
-                                            <div className="bg-white p-3 rounded border border-emerald-200">
-                                                <div className="text-sm text-gray-600">
+                                            <div className="bg-white dark:bg-gray-900 p-3 rounded border border-emerald-200 dark:border-gray-700">
+                                                <div className="text-sm text-gray-600 dark:text-gray-400">
                                                     <div className="flex justify-between">
                                                         <span>Daily Investment:</span>
-                                                        <span className="font-medium">{formatCurrency(sip.amount)}</span>
+                                                        <span className="font-medium text-gray-900 dark:text-white">{formatCurrency(sip.amount)}</span>
                                                     </div>
                                                     <div className="flex justify-between">
                                                         <span>Total Invested:</span>
-                                                        <span className="font-medium">{formatCurrency(sip.amount * sip.duration * 365)}</span>
+                                                        <span className="font-medium text-gray-900 dark:text-white">{formatCurrency(sip.amount * sip.duration * 365)}</span>
                                                     </div>
                                                     <div className="flex justify-between">
                                                         <span>Maturity Value:</span>
-                                                        <span className="font-medium text-emerald-600">{formatCurrency(calculateDailySIP(sip.amount, sip.rate, sip.duration))}</span>
+                                                        <span className="font-medium text-emerald-600 dark:text-emerald-400">{formatCurrency(calculateDailySIP(sip.amount, sip.rate, sip.duration))}</span>
                                                     </div>
-                                                    <div className="flex justify-between border-t pt-1 mt-1">
+                                                    <div className="flex justify-between border-t border-gray-200 dark:border-gray-700 pt-1 mt-1">
                                                         <span className="font-medium">Gain:</span>
-                                                        <span className="font-bold text-green-600">
+                                                        <span className="font-bold text-green-600 dark:text-green-400">
                                                             {formatCurrency(calculateDailySIP(sip.amount, sip.rate, sip.duration) - sip.amount * sip.duration * 365)}
                                                         </span>
                                                     </div>
@@ -292,7 +292,7 @@ const DailySIPCalculator: React.FC = () => {
                                     onClick={addSIP}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 px-4 rounded-lg font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 flex items-center justify-center space-x-2"
+                                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 px-4 rounded-lg font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20"
                                 >
                                     <Plus className="h-5 w-5" />
                                     <span>Add Daily SIP</span>
@@ -302,21 +302,23 @@ const DailySIPCalculator: React.FC = () => {
 
                         {/* Chart Section */}
                         <div className="xl:col-span-2">
-                            <h3 className="text-xl font-semibold mb-4 text-gray-800 flex items-center space-x-2">
-                                <Calendar className="h-5 w-5 text-emerald-600" />
+                            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center space-x-2">
+                                <Calendar className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                                 <span>Daily SIP Growth Visualization</span>
                             </h3>
-                            <div className="bg-white rounded-lg p-6 shadow-lg border border-gray-200">
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-800">
                                 <ResponsiveContainer width="100%" height={400}>
                                     <LineChart data={chartData}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:opacity-10" />
                                         <XAxis
                                             dataKey="year"
-                                            stroke="#6b7280"
+                                            stroke="currentColor"
+                                            className="text-gray-600 dark:text-gray-400"
                                             fontSize={12}
                                         />
                                         <YAxis
-                                            stroke="#6b7280"
+                                            stroke="currentColor"
+                                            className="text-gray-600 dark:text-gray-400"
                                             fontSize={12}
                                             tickFormatter={(value) => `₹${(value / 100000).toFixed(1)}L`}
                                         />
@@ -327,11 +329,13 @@ const DailySIPCalculator: React.FC = () => {
                                             ]}
                                             labelFormatter={(year) => `Year ${year}`}
                                             contentStyle={{
-                                                backgroundColor: 'white',
-                                                border: '1px solid #e5e7eb',
+                                                backgroundColor: 'var(--tooltip-bg)',
+                                                borderColor: 'var(--tooltip-border)',
                                                 borderRadius: '8px',
-                                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                                                color: 'var(--tooltip-text)'
                                             }}
+                                            itemStyle={{ color: 'inherit' }}
                                         />
                                         <Legend />
 
@@ -374,7 +378,7 @@ const DailySIPCalculator: React.FC = () => {
                                         <Line
                                             type="monotone"
                                             dataKey="totalMaturity"
-                                            stroke="#1f2937"
+                                            stroke={sipEntries.length > 0 ? '#10B981' : '#1f2937'}
                                             strokeWidth={4}
                                             name="Total Portfolio"
                                             dot={false}
@@ -389,7 +393,7 @@ const DailySIPCalculator: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white p-6 rounded-xl shadow-lg"
+                                    className="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white p-6 rounded-xl shadow-lg shadow-emerald-500/20"
                                 >
                                     <h4 className="text-sm font-medium opacity-90 mb-2">Total Invested</h4>
                                     <p className="text-2xl font-bold">{formatCurrency(summary.totalInvested)}</p>
@@ -399,7 +403,7 @@ const DailySIPCalculator: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.3 }}
-                                    className="bg-gradient-to-br from-teal-500 to-teal-600 text-white p-6 rounded-xl shadow-lg"
+                                    className="bg-gradient-to-br from-teal-500 to-teal-600 text-white p-6 rounded-xl shadow-lg shadow-teal-500/20"
                                 >
                                     <h4 className="text-sm font-medium opacity-90 mb-2">Total Maturity</h4>
                                     <p className="text-2xl font-bold">{formatCurrency(summary.totalMaturity)}</p>
@@ -409,7 +413,7 @@ const DailySIPCalculator: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
-                                    className="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 rounded-xl shadow-lg"
+                                    className="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 rounded-xl shadow-lg shadow-cyan-500/20"
                                 >
                                     <h4 className="text-sm font-medium opacity-90 mb-2">Total Gain</h4>
                                     <p className="text-2xl font-bold">{formatCurrency(summary.totalGain)}</p>
@@ -420,12 +424,12 @@ const DailySIPCalculator: React.FC = () => {
                             </div>
 
                             {/* Daily SIP Benefits Info */}
-                            <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg p-4 border border-emerald-200">
-                                <h4 className="font-semibold text-emerald-800 mb-2 flex items-center space-x-2">
+                            <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-800/50 rounded-lg p-4 border border-emerald-200 dark:border-gray-700">
+                                <h4 className="font-semibold text-emerald-800 dark:text-emerald-400 mb-2 flex items-center space-x-2">
                                     <Calendar className="h-5 w-5" />
                                     <span>Daily SIP Benefits</span>
                                 </h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-emerald-700">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-emerald-700 dark:text-emerald-300">
                                     <div>
                                         <p className="font-medium">Higher Compounding:</p>
                                         <p>365 compounding periods vs 12 in monthly SIPs</p>

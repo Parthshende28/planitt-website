@@ -4,14 +4,14 @@ import { Shield, Bug, Lock, AlertTriangle, Eye, FileCheck } from "lucide-react";
 
 export default function CyberSecurityPage() {
   return (
-    <section className="bg-white text-gray-900">
+    <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-6 py-20">
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Cyber Security
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             Comprehensive cyber security solutions to protect your systems,
             networks, and sensitive data from evolving digital threats.
           </p>
@@ -52,12 +52,12 @@ export default function CyberSecurityPage() {
         </div>
 {/* Key Features */}
 <section className="mb-20">
-  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
-    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white text-center">
       Key Features
     </h2>
 
-    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 dark:text-gray-300">
       <li className="flex items-start gap-3">
         <span className="text-indigo-600 font-bold">•</span>
         Advanced threat detection & response
@@ -88,11 +88,11 @@ export default function CyberSecurityPage() {
 
         {/* What We Do */}
         <div className="max-w-5xl mx-auto mb-20">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
+          <h2 className="text-2xl font-semibold mb-6 text-center dark:text-white">
             Our Cyber Security Approach
           </h2>
 
-          <p className="text-gray-600 text-center max-w-3xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto">
             Our security-first approach focuses on prevention, detection, and
             response. We help businesses build strong defenses and maintain
             trust in an increasingly connected world.
@@ -148,7 +148,7 @@ function InfoBox({ title, text }: { title: string; text: string }) {
     <div
       className="
       relative overflow-hidden
-      bg-gray-50 border border-gray-200
+      bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700
       rounded-2xl p-6
       transition-all duration-300
       hover:-translate-y-1
@@ -167,8 +167,8 @@ function InfoBox({ title, text }: { title: string; text: string }) {
       />
 
       <div className="relative z-10 text-center">
-        <h4 className="text-lg font-semibold mb-3 text-gray-900">{title}</h4>
-        <p className="text-gray-600 text-sm">{text}</p>
+        <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">{title}</h4>
+        <p className="text-gray-600 dark:text-gray-400 text-sm">{text}</p>
       </div>
     </div>
   );
@@ -183,12 +183,12 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-blue-500 transition group">
-      <div className="mb-4 text-blue-600 group-hover:scale-110 transition">
+    <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-blue-500 transition group">
+      <div className="mb-4 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
-      <p className="text-gray-600 text-sm">{description}</p>
+      <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-400 text-sm">{description}</p>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Contact from './Contact';
 
 interface ServicePageLayoutProps {
     children?: React.ReactNode;
@@ -19,9 +18,9 @@ const ServicePageLayout = ({
     serviceColor
 }: ServicePageLayoutProps) => {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
             {/* Service Hero Section */}
-            <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-100">
+            <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -33,11 +32,11 @@ const ServicePageLayout = ({
                             {serviceIcon}
                         </div>
 
-                        <h1 className="font-heading text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                        <h1 className="font-heading text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                             {serviceName}
                         </h1>
 
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                             {serviceDescription}
                         </p>
                     </motion.div>
@@ -48,9 +47,6 @@ const ServicePageLayout = ({
             <main>
                 {children}
             </main>
-
-            {/* Contact Section */}
-            <Contact />
         </div>
     );
 };

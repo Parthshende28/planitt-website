@@ -4,7 +4,7 @@ import { GitBranch, Repeat, Server, Activity } from "lucide-react";
 
 export default function DevOpsPage() {
   return (
-    <section className="bg-white text-gray-900">
+    <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-6 py-20">
 
 
@@ -12,7 +12,7 @@ export default function DevOpsPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             DevOps & Automation
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             Automate deployments and improve system reliability with DevOps.
           </p>
         </div>
@@ -25,12 +25,12 @@ export default function DevOpsPage() {
         </div>
 {/* Key Features */}
 <section className="mb-20">
-  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-8">
-    <h2 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
+    <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white text-center">
       Key Features
     </h2>
 
-    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 dark:text-gray-300">
       <li className="flex items-start gap-3">
         <span className="text-indigo-600 font-bold">•</span>
         Automated CI/CD pipelines
@@ -71,10 +71,10 @@ export default function DevOpsPage() {
         <section className="mt-24 mb-24">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Maintenance & Support Plans
             </h2>
-            <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Keep your website secure, fast, and up-to-date with our flexible
               maintenance and support plans.
             </p>
@@ -83,31 +83,31 @@ export default function DevOpsPage() {
           {/* Plans */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Monthly Plan */}
-            <div className="rounded-2xl bg-gray-50 border border-gray-200 p-7 hover:border-indigo-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 hover:border-indigo-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Monthly Maintenance
               </h3>
 
-              <div className="text-4xl font-bold text-indigo-600 mb-1">
+              <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                 ₹6,999
               </div>
-              <p className="text-gray-500 mb-6 text-sm">per month</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">per month</p>
 
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Bug fixes and minor updates
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Performance optimization
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Security updates
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Basic feature additions
                 </li>
               </ul>
@@ -115,38 +115,38 @@ export default function DevOpsPage() {
 
             {/* Annual Plan */}
             <div
-              className="relative rounded-2xl bg-gray-50 border border-gray-200 p-7 shadow-sm
+              className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 shadow-sm
                 hover:border-indigo-600 transition"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Annual Maintenance
               </h3>
 
-              <div className="text-4xl font-bold text-indigo-600 mb-1">
+              <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                 ₹29,999
               </div>
-              <p className="text-gray-500 mb-6 text-sm">
+              <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
                 per year{" "}
-                <span className="text-green-600 font-medium">
+                <span className="text-green-600 dark:text-green-400 font-medium">
                   (Save ₹54,000)
                 </span>
               </p>
 
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Everything in Monthly Plan
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Priority support
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Advanced feature development
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">✓</span>
                   Quarterly performance reviews
                 </li>
               </ul>
@@ -158,24 +158,24 @@ export default function DevOpsPage() {
 <section className="mb-24">
   {/* Header */}
   <div className="text-center mb-10">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
       Important Terms & Conditions
     </h2>
-    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+    <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
       Please review the following terms carefully to ensure clarity and
       transparency throughout the project lifecycle.
     </p>
   </div>
 
   {/* Content Box */}
-  <div className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 space-y-4">
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📄 Project Scope
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         The quoted price includes complete website development with backend
         and database integration. Hosting and publishing services are included;
         however, domain purchases or app store subscriptions must be handled
@@ -185,11 +185,11 @@ export default function DevOpsPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         ⏱ Revision Policy
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Changes requested within the first month after project completion are
         included at no additional cost. After one month, further changes may
         be charged based on complexity and time required.
@@ -198,11 +198,11 @@ export default function DevOpsPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         🛠 Maintenance Scope
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Maintenance plans cover bug fixes, feature additions, and incremental
         improvements only. Major redevelopment or architectural changes are
         not included and will be quoted separately.
@@ -211,11 +211,11 @@ export default function DevOpsPage() {
 
     {/* Item */}
     <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white hover:border-indigo-500">
-      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 mb-2">
+                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📝 Agreements
       </h3>
-      <p className="text-gray-700 text-sm leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
         Separate agreements will be signed for project development, monthly
         maintenance, and annual maintenance. All terms must be finalized and
         approved before work begins.
@@ -273,14 +273,14 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-indigo-500 transition group">
-      <div className="mb-4 text-indigo-500 group-hover:scale-110 transition">
+    <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-indigo-500 transition group">
+      <div className="mb-4 text-indigo-500 dark:text-indigo-400 group-hover:scale-110 transition">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-gray-900">
+      <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
         {title}
       </h3>
-      <p className="text-gray-600 text-sm">
+      <p className="text-gray-600 dark:text-gray-400 text-sm">
         {description}
       </p>
     </div>
