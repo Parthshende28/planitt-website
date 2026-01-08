@@ -122,13 +122,24 @@ export default function AppDevPage() {
           </div>
         </div>
 
-        {/* Projects */}
-        <ProjectSection
-          title="App Development Projects"
-          subtitle="Our latest mobile applications and digital products are coming soon."
-          accentColor="indigo"
-          projects={[]}
-        />
+      {/* Projects */}
+<ProjectSection
+  title="App Development Projects"
+  subtitle="Selected mobile applications and internal digital products."
+  accentColor="indigo"
+  projects={[
+    {
+      title: "Investor Dashboard App",
+      description:
+        "A private in-house mobile application built for our investors to track their portfolio, profits, growth analytics, and real-time performance insights. The platform focuses on security, scalability, and data transparency.",
+      image: "/planitt-logo.png",
+      imageFit: "contain", // full logo
+      darkBg: true,        // ✅ black background
+      tags: ["In-house", "Fintech", "Dashboard", "Mobile App"],
+    },
+  ]}
+/>
+
 
 {/* Maintenance & Support Plans */}
         <section className="mt-24 mb-24">

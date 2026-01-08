@@ -6,6 +6,8 @@ export interface Project {
   image: string;
   liveLink?: string;
   tags?: string[];
+  imageFit?: "cover" | "contain";
+  darkBg?: boolean; // ✅ NEW
 }
 
 interface ProjectSectionProps {
@@ -54,13 +56,17 @@ export default function ProjectSection({
             >
               {/* Image */}
               <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500
-                           group-hover:scale-105"
-              />
+  src={project.image}
+  alt={project.title}
+  fill
+  sizes="(max-width: 768px) 100vw, 33vw"
+  className={`transition-transform duration-500
+    ${project.imageFit === "contain"
+      ? "object-contain p-6"
+      : "object-cover group-hover:scale-105"}
+  `}
+/>
+
 
               {/* Hover Overlay */}
               <div
@@ -96,10 +102,14 @@ export default function ProjectSection({
         </div>
       ) : (
         /* Empty State */
-        <div className="py-20 border-2 border-dashed border-gray-200 rounded-3xl
-                        flex flex-col items-center text-center bg-gray-50">
-          <div className="w-16 h-16 bg-white rounded-2xl shadow-sm
-                          flex items-center justify-center mb-4">
+        <div
+          className="py-20 border-2 border-dashed border-gray-200 rounded-3xl
+                        flex flex-col items-center text-center bg-gray-50"
+        >
+          <div
+            className="w-16 h-16 bg-white rounded-2xl shadow-sm
+                          flex items-center justify-center mb-4"
+          >
             <div
               className={`w-8 h-8 rounded-full border-4
                           border-t-transparent animate-spin ${spinnerColor}`}
@@ -110,8 +120,8 @@ export default function ProjectSection({
             Projects Coming Soon
           </h3>
           <p className="text-gray-500 max-w-sm">
-            We&apos;re currently working on some amazing projects. Check back soon to
-            see our latest work.
+            We&apos;re currently working on some amazing projects. Check back
+            soon to see our latest work.
           </p>
         </div>
       )}

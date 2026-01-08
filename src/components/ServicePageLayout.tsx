@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Contact from './Contact';
 
 interface ServicePageLayoutProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     serviceName: string;
     serviceDescription: string;
     serviceIcon: React.ReactNode;

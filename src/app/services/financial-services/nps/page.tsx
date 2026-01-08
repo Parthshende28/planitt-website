@@ -1,6 +1,9 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
 import CombinedNPSCalculator from '@/components/CombinedNPSCalculator';
 import { PiggyBank } from 'lucide-react';
+import ServiceCalculator from '@/components/ServiceCalculator';
+import SIPCalculator from '@/components/SIPCalculator';
+import DailySIPCalculator from '@/components/DailySIPCalculator';
 
 export default function NPSPage() {
     return (
@@ -10,6 +13,13 @@ export default function NPSPage() {
             serviceIcon={<PiggyBank className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-orange-500 to-orange-600"
         >
+             <ServiceCalculator
+                            serviceType="insurance"
+                            title="Investment Calculator"
+                            description="Calculate your insurance premium and coverage needs. Plan your life and health insurance with our comprehensive calculator to ensure adequate protection."
+                        />
+                        <SIPCalculator />
+                        <DailySIPCalculator />
             <CombinedNPSCalculator />
         </ServicePageLayout>
     );

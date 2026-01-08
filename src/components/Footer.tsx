@@ -59,9 +59,14 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-blue-400" />
-                  <span className="text-gray-300 text-sm">
+                  <a
+                    href="https://maps.app.goo.gl/kmNZLRBcutkGLA7XA?g_st=aw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200"
+                  >
                     Gorewada, Nagpur
-                  </span>
+                  </a>
                 </div>
               </div>
 
