@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Award, Users, Target, Shield, CheckCircle } from 'lucide-react';
 
 const About = () => {
@@ -99,8 +100,14 @@ const About = () => {
                         {/* CEO Profile Card */}
                         <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
                             <div className="text-center mb-6">
-                                <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span className="text-white text-2xl font-bold">PT</span>
+                                <div className="relative w-64 h-64 mx-auto mb-6 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:border-blue-600 dark:hover:border-blue-400">
+                                    <Image
+                                        src="/CEO_Photo.png"
+                                        alt="Piyush Tembhekar"
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
                                 </div>
                                 <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">
                                     Piyush Tembhekar

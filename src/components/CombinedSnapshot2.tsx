@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { IndianRupee, Target, TrendingUp } from 'lucide-react';
+import { formatIndianNumber } from '../lib/numberFormat';
 
 interface CombinedSnapshot2Props {
     goalAmount: number;
@@ -35,7 +36,7 @@ const CombinedSnapshot2: React.FC<CombinedSnapshot2Props> = ({
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">Freedom Number (Goal Amount) (₹)</label>
                                 <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
-                                    <div className="text-3xl font-bold text-gray-900">₹{goalAmount.toLocaleString()}</div>
+                                    <div className="text-3xl font-bold text-gray-900">₹{formatIndianNumber(goalAmount)}</div>
                                 </div>
                                 <div className="flex justify-between text-sm text-gray-500 mt-2">
                                     <span>₹10L</span>
@@ -73,7 +74,7 @@ const CombinedSnapshot2: React.FC<CombinedSnapshot2Props> = ({
                             </div>
                             <div className="text-white">
                                 <div className="text-sm font-medium mb-2">Monthly SIP Value</div>
-                                <div className="text-4xl font-bold mb-2">₹{monthlySIP.toLocaleString()}</div>
+                                <div className="text-4xl font-bold mb-2">₹{formatIndianNumber(monthlySIP)}</div>
                                 <div className="text-sm opacity-90">Required monthly investment to achieve your goal</div>
                             </div>
                         </div>
@@ -88,7 +89,7 @@ const CombinedSnapshot2: React.FC<CombinedSnapshot2Props> = ({
                     <div className="bg-blue-50 rounded-xl p-6 text-center">
                         <Target className="h-8 w-8 text-blue-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-gray-700 mb-2">Goal Amount</h4>
-                        <p className="text-2xl font-bold text-blue-700">₹{goalAmount.toLocaleString()}</p>
+                        <p className="text-2xl font-bold text-blue-700">₹{formatIndianNumber(goalAmount)}</p>
                     </div>
 
                     <div className="bg-purple-50 rounded-xl p-6 text-center">
@@ -100,13 +101,13 @@ const CombinedSnapshot2: React.FC<CombinedSnapshot2Props> = ({
                     <div className="bg-orange-50 rounded-xl p-6 text-center">
                         <IndianRupee className="h-8 w-8 text-orange-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-gray-700 mb-2">Total Investment</h4>
-                        <p className="text-2xl font-bold text-orange-700">₹{totalInvestment.toLocaleString()}</p>
+                        <p className="text-2xl font-bold text-orange-700">₹{formatIndianNumber(totalInvestment)}</p>
                     </div>
 
                     <div className="bg-green-50 rounded-xl p-6 text-center">
                         <Target className="h-8 w-8 text-green-600 mx-auto mb-3" />
                         <h4 className="font-semibold text-gray-700 mb-2">Monthly SIP Required</h4>
-                        <p className="text-2xl font-bold text-green-700">₹{monthlySIP.toLocaleString()}</p>
+                        <p className="text-2xl font-bold text-green-700">₹{formatIndianNumber(monthlySIP)}</p>
                     </div>
                 </div>
             </div>
