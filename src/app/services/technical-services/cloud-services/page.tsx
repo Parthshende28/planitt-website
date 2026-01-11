@@ -13,7 +13,7 @@ import { FaMicrosoft } from "react-icons/fa";
 export default function CloudServicesPage() {
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <div className="container mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Cloud Services
@@ -156,15 +156,6 @@ function TechItem({
   group
 "
     >
-      {/* Gradient Hover */}
-      <div
-        className="
-    absolute inset-0
-    bg-linear-to-br from-blue-500/10 to-indigo-500/10
-    opacity-0 group-hover:opacity-100
-    transition-opacity duration-300
-  "
-      />
       <div className="relative z-10 flex flex-col items-center gap-3">
         <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
           {icon}

@@ -15,6 +15,7 @@ const Header = () => {
   const navItems = [
     { name: 'Services', href: '/#services' },
     { name: 'Blogs', href: '/#blogs' },
+    { name: 'Case Studies', href: '/#case-studies' },
     { name: 'About Us', href: '/#about' },
     { name: 'Testimonials', href: '/#testimonials' },
     { name: 'Join Us', href: '/careers', newWindow: false },
@@ -37,7 +38,7 @@ const Header = () => {
               width={48}
               height={48}
               priority
-              className="transition-transform duration-200 hover:scale-105"
+              className="transition-transform duration-200 hover:scale-105 drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]"
             />
           </Link>
 

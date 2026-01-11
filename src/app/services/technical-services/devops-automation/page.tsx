@@ -116,7 +116,7 @@ export default function DevOpsPage() {
             {/* Annual Plan */}
             <div
               className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 shadow-sm
-                hover:border-indigo-600 transition"
+                transition"
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Annual Maintenance

@@ -16,7 +16,7 @@ import {
 export default function WebDevPage() {
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <div className="container mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -88,7 +88,7 @@ export default function WebDevPage() {
             <TechItem
               icon={<SiNodedotjs />}
               label="Node.js"
-              color="text-green-600"
+              color="text-green-600"hover effect from the points in terms and conf
             />
             <TechItem
               icon={<SiPostman />}
@@ -172,7 +172,7 @@ export default function WebDevPage() {
           {/* Plans */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Monthly Plan */}
-            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 hover:border-indigo-500 transition">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:hover:bg-gray-700 hover:border-indigo-500 p-7 transition">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Monthly Maintenance
               </h3>
@@ -204,8 +204,8 @@ export default function WebDevPage() {
 
             {/* Annual Plan */}
             <div
-              className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 shadow-sm
-                hover:border-indigo-600 transition"
+              className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200  dark:hover:bg-gray-700 hover:border-indigo-500 p-7 shadow-sm
+                transition"
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Annual Maintenance
@@ -257,10 +257,9 @@ export default function WebDevPage() {
   </div>
 
   {/* Content Box */}
-  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 space-y-4">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:hover:bg-gray-700 hover:border-indigo-500 rounded-2xl p-6 space-y-4">
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📄 Project Scope
       </h3>
@@ -273,8 +272,7 @@ export default function WebDevPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         ⏱ Revision Policy
       </h3>
@@ -286,8 +284,7 @@ export default function WebDevPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         🛠 Maintenance Scope
       </h3>
@@ -299,8 +296,7 @@ export default function WebDevPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📝 Agreements
       </h3>
@@ -315,7 +311,7 @@ export default function WebDevPage() {
 
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-10 text-white text-center">
+        <div className="max-w-5xl mx-auto bg-linear-to-r from-indigo-600 to-purple-700 rounded-2xl p-10 text-white text-center">
           <h3 className="text-2xl font-bold mb-3">
             Ready to Build Your Website?
           </h3>
@@ -339,8 +335,7 @@ export default function WebDevPage() {
 
 function InfoBox({ title, text }: { title: string; text: string }) {
   return (
-    <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition group">
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 transition group">
       <div className="relative z-10 text-center">
         <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">{title}</h4>
         <p className="text-gray-600 dark:text-gray-400 text-sm">{text}</p>
@@ -373,15 +368,6 @@ function TechItem({
   group
 "
     >
-      {/* Gradient Hover */}
-      <div
-        className="
-    absolute inset-0
-    bg-linear-to-br from-blue-500/10 to-indigo-500/10
-    opacity-0 group-hover:opacity-100
-    transition-opacity duration-300
-  "
-      />
       <div className="relative z-10 flex flex-col items-center gap-3">
         <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
           {icon}

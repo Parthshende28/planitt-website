@@ -5,7 +5,7 @@ import { Shield, Bug, Lock, AlertTriangle, Eye, FileCheck } from "lucide-react";
 export default function CyberSecurityPage() {
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <div className="container mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -152,20 +152,9 @@ function InfoBox({ title, text }: { title: string; text: string }) {
       rounded-2xl p-6
       transition-all duration-300
       hover:-translate-y-1
-      hover:border-blue-500/30
-      hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]
       group
     "
     >
-      <div
-        className="
-          absolute inset-0
-          bg-gradient-to-br from-blue-500/5 to-indigo-500/5
-          opacity-0 group-hover:opacity-100
-          transition-opacity duration-300
-        "
-      />
-
       <div className="relative z-10 text-center">
         <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">{title}</h4>
         <p className="text-gray-600 dark:text-gray-400 text-sm">{text}</p>

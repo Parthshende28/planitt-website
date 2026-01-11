@@ -8,11 +8,21 @@ import {
   ShieldCheck,
   Globe,
 } from "lucide-react";
+import {
+  SiReact,
+  SiFlutter,
+  SiExpo,
+  SiFirebase,
+  SiTypescript,
+  SiApple,
+  SiAndroid,
+} from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 export default function AppDevPage() {
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <div className="container mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -93,6 +103,42 @@ export default function AppDevPage() {
     </ul>
   </div>
 </section>
+        
+        {/* Technologies */}
+        <div className="mb-20">
+          <h2 className="text-2xl text-center font-semibold mb-8">Technologies We Use</h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            <TechItem icon={<SiReact />} label="React" color="text-cyan-500" />
+            <TechItem
+              icon={<TbBrandReactNative />}
+              label="React Native"
+              color="text-sky-500"
+            />
+            <TechItem icon={<SiFlutter />} label="Flutter" color="text-blue-400" />
+            <TechItem
+              icon={<SiExpo />}
+              label="Expo"
+              color="text-gray-900 dark:text-gray-100"
+            />
+            <TechItem
+              icon={<SiTypescript />}
+              label="TypeScript"
+              color="text-blue-600"
+            />
+            <TechItem
+              icon={<SiFirebase />}
+              label="Firebase"
+              color="text-yellow-500"
+            />
+            <TechItem
+              icon={<SiAndroid />}
+              label="Android (Kotlin)"
+              color="text-green-500"
+            />
+            <TechItem icon={<SiApple />} label="iOS (Swift)" color="text-orange-600" />
+          </div>
+        </div>
 
         {/* Our Approach */}
         <div className="max-w-5xl mx-auto mb-20">
@@ -157,7 +203,7 @@ export default function AppDevPage() {
           {/* Plans */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Monthly Plan */}
-            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 hover:border-indigo-500 transition">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 transition">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Monthly Maintenance
               </h3>
@@ -190,7 +236,7 @@ export default function AppDevPage() {
             {/* Annual Plan */}
             <div
               className="relative rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-7 shadow-sm
-                hover:border-indigo-600 transition"
+                transition"
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Annual Maintenance
@@ -340,11 +386,43 @@ function FeatureCard({
 
 function InfoBox({ title, text }: { title: string; text: string }) {
   return (
-    <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition group">
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 transition group">
       <div className="relative z-10 text-center">
         <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">{title}</h4>
         <p className="text-gray-600 dark:text-gray-400 text-sm">{text}</p>
+      </div>
+    </div>
+  );
+}
+
+function TechItem({
+  icon,
+  label,
+  color = "text-blue-600",
+}: {
+  icon: React.ReactNode;
+  label: string;
+  color?: string;
+}) {
+  return (
+    <div
+      className="
+  relative overflow-hidden
+  flex flex-col items-center justify-center gap-3
+  bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700
+  rounded-xl p-6
+  text-gray-700 dark:text-gray-300
+  transition-all duration-300
+  hover:-translate-y-1
+  hover:border-transparent
+  group
+"
+    >
+      <div className="relative z-10 flex flex-col items-center gap-3">
+        <div className={`text-3xl ${color} group-hover:scale-110 transition`}>
+          {icon}
+        </div>
+        <span className="text-sm font-medium text-gray-900 dark:text-white">{label}</span>
       </div>
     </div>
   );
