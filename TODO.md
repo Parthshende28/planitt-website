@@ -1,5 +1,5 @@
-- [x] Update app-dev/page.tsx background to light theme
-- [ ] Update web-dev/page.tsx background to light theme
-- [x] Update digital-marketing/page.tsx background to light theme
-- [ ] Update devops-automation/page.tsx background to light theme
-- [ ] Update cloud-services/page.tsx background to light theme
+- [x] Align container and CTA in app-dev/page.tsx to match web-dev
+- [x] Align container and CTA in devops-automation/page.tsx to match web-dev
+- [x] Align container and CTA in digital-marketing/page.tsx to match web-dev
+- [x] Align CTA in cloud-services/page.tsx to match web-dev
+- [x] Align CTA in cyber-security/page.tsx to match web-dev

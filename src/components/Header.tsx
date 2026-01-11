@@ -19,7 +19,7 @@ const Header = () => {
     { name: 'About Us', href: '/#about' },
     { name: 'Testimonials', href: '/#testimonials' },
     { name: 'Join Us', href: '/careers', newWindow: false },
-  ];
+  ]
 
   return (
     <header className="bg-white dark:bg-gray-950 shadow-lg sticky top-0 z-50 border-b border-transparent dark:border-gray-800 transition-colors duration-300">

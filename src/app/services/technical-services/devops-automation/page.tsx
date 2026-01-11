@@ -5,7 +5,7 @@ import { GitBranch, Repeat, Server, Activity } from "lucide-react";
 export default function DevOpsPage() {
   return (
     <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <div className="container mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
 
         <div className="max-w-4xl mx-auto mb-16 text-center">
@@ -231,11 +231,7 @@ export default function DevOpsPage() {
 }
 function CTA() {
   return (
-    <div className="
-      bg-gradient-to-r from-indigo-700 to-slate-900
-      rounded-2xl p-10
-      text-white text-center
-    ">
+    <div className="max-w-5xl mx-auto bg-gradient-to-r from-indigo-700 to-slate-900 rounded-2xl p-10 text-white text-center">
       <h3 className="text-2xl font-bold mb-3">
         Ready to Automate Your Infrastructure?
       </h3>

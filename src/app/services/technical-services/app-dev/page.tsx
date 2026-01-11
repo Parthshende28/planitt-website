@@ -344,7 +344,7 @@ export default function AppDevPage() {
   </div>
 </section>
         {/* CTA */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-10 text-white text-center">
+        <div className="max-w-5xl mx-auto bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-10 text-white text-center">
           <h3 className="text-2xl font-bold mb-3">Have an App Idea?</h3>
           <p className="mb-6 max-w-2xl mx-auto text-indigo-100">
             Let’s turn your idea into a high-performing mobile application that
