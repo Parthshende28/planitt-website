@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Calculator, TrendingUp, IndianRupee, Target } from 'lucide-react';
@@ -36,7 +36,7 @@ const FinancialCalculator = () => {
         totalGains: 0
     });
 
-    const calculateReturns = useCallback(() => {
+    useEffect(() => {
         const { monthlyInvestment, duration, expectedReturns, topUpAmount, topUpFrequency } = formData;
         const data: ChartData[] = [];
         const monthlyRate = expectedReturns / 100 / 12;
@@ -101,10 +101,6 @@ const FinancialCalculator = () => {
         });
     }, [formData]);
 
-    useEffect(() => {
-        calculateReturns();
-    }, [calculateReturns]);
-
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -121,7 +117,7 @@ const FinancialCalculator = () => {
     };
 
     return (
-        <section id="calculator" className="py-20 bg-white">
+        <section id="calculator" className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -131,14 +127,14 @@ const FinancialCalculator = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full mb-6">
-                        <Calculator className="h-8 w-8 text-blue-600" />
+                    <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                        <Calculator className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                        Financial Growth Calculator
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                        Investment Calculator
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Plan your financial future with our comprehensive calculator.
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                        Plan your financial future with our comprehensive calculator. 
                         See how your investments can grow over time with different scenarios.
                     </p>
                 </motion.div>
@@ -152,45 +148,45 @@ const FinancialCalculator = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <div className="bg-gray-50 rounded-2xl p-8">
-                            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-transparent dark:border-gray-800 transition-colors">
+                            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
                                 Investment Parameters
                             </h3>
 
                             {/* Monthly Investment */}
-                            <div className="">
-                                <label className="block text-sm font-medium text-gray-700">
+                            <div className="space-y-4">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     Monthly Investment (₹)
                                 </label>
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="100"
-                                        max="100000"
+                                        min="1000"
+                                        max="1000000"
                                         step="1000"
                                         value={formData.monthlyInvestment}
                                         onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.monthlyInvestment - 1000) / (100000 - 1000)) * 100
+                                            '--slider-value': ((formData.monthlyInvestment - 1000) / (1000000 - 1000)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500">
-                                        <span>₹100</span>
-                                        <span>₹1,00,000</span>
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                                        <span>₹1,000</span>
+                                        <span>₹10,00,000</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
                                     value={formData.monthlyInvestment}
                                     onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Duration */}
-                            <div className="mt-5">
-                                <label className="block text-sm font-medium text-gray-700">
+                            <div className="mt-5 space-y-4">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     Duration (Years)
                                 </label>
                                 <div className="">
@@ -200,27 +196,29 @@ const FinancialCalculator = () => {
                                         max="100"
                                         value={formData.duration}
                                         onChange={(e) => handleInputChange('duration', parseInt(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((formData.duration - 1) / (100 - 1)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                                         <span>1 Year</span>
                                         <span>100 Years</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
+                                    min="1"
+                                    max="100"
                                     value={formData.duration}
                                     onChange={(e) => handleInputChange('duration', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Expected Returns */}
-                            <div className="mt-5">
-                                <label className="block text-sm font-medium text-gray-700">
+                            <div className="mt-5 space-y-4">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     Expected Returns (% p.a.)
                                 </label>
                                 <div className="">
@@ -231,12 +229,12 @@ const FinancialCalculator = () => {
                                         step="0.5"
                                         value={formData.expectedReturns}
                                         onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((formData.expectedReturns - 6) / (50 - 6)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                                         <span>6%</span>
                                         <span>50%</span>
                                     </div>
@@ -244,9 +242,54 @@ const FinancialCalculator = () => {
                                 <input
                                     type="number"
                                     step="0.5"
+                                    min="6"
+                                    max="50"
                                     value={formData.expectedReturns}
                                     onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                                />
+                            </div>
+
+                            {/* Top-up Amount */}
+                            <div className="mt-5 space-y-4">
+                                <div className="flex justify-between items-center">
+                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                        Periodic Top-up (Optional) (₹)
+                                    </label>
+                                    <select
+                                        value={formData.topUpFrequency}
+                                        onChange={(e) => handleInputChange('topUpFrequency', e.target.value as '6months' | 'annually')}
+                                        className="text-xs bg-gray-100 dark:bg-gray-800 border-none rounded-md px-2 py-1 text-gray-600 dark:text-gray-400"
+                                    >
+                                        <option value="annually">Every Year</option>
+                                        <option value="6months">Every 6 Months</option>
+                                    </select>
+                                </div>
+                                <div className="">
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100000"
+                                        step="1000"
+                                        value={formData.topUpAmount}
+                                        onChange={(e) => handleInputChange('topUpAmount', parseInt(e.target.value))}
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                                        style={{
+                                            '--slider-value': (formData.topUpAmount / 100000) * 100
+                                        } as React.CSSProperties}
+                                    />
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                                        <span>₹0</span>
+                                        <span>₹1,00,000</span>
+                                    </div>
+                                </div>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    max="100000"
+                                    value={formData.topUpAmount}
+                                    onChange={(e) => handleInputChange('topUpAmount', parseInt(e.target.value) || 0)}
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
                         </div>
@@ -261,25 +304,34 @@ const FinancialCalculator = () => {
                         className="space-y-8"
                     >
                         {/* Chart */}
-                        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg">
-                            <h3 className="font-heading text-xl font-bold text-gray-900 mb-6">
+                        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg transition-colors">
+                            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6">
                                 Investment Growth Projection
                             </h3>
                             <div className="h-80">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <LineChart data={chartData}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:opacity-10" />
                                         <XAxis
                                             dataKey="year"
-                                            stroke="#666"
+                                            stroke="currentColor"
                                             fontSize={12}
+                                            className="text-gray-600 dark:text-gray-400"
                                         />
                                         <YAxis
-                                            stroke="#666"
+                                            stroke="currentColor"
                                             fontSize={12}
                                             tickFormatter={(value) => `${(value / 100000).toFixed(1)}L`}
+                                            className="text-gray-600 dark:text-gray-400"
                                         />
                                         <Tooltip
+                                            contentStyle={{
+                                                backgroundColor: 'var(--tooltip-bg)',
+                                                borderColor: 'var(--tooltip-border)',
+                                                borderRadius: '8px',
+                                                color: 'var(--tooltip-text)'
+                                            }}
+                                            itemStyle={{ color: 'inherit' }}
                                             formatter={(value: number, name: string) => [
                                                 formatCurrency(value),
                                                 name === 'investment' ? 'Total Investment' :
@@ -294,6 +346,7 @@ const FinancialCalculator = () => {
                                             stroke="#3B82F6"
                                             strokeWidth={3}
                                             dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
+                                            name="Total Invested"
                                         />
                                         <Line
                                             type="monotone"
@@ -301,6 +354,7 @@ const FinancialCalculator = () => {
                                             stroke="#10B981"
                                             strokeWidth={3}
                                             dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
+                                            name="Maturity Value"
                                         />
                                         <Line
                                             type="monotone"
@@ -308,6 +362,7 @@ const FinancialCalculator = () => {
                                             stroke="#F59E0B"
                                             strokeWidth={3}
                                             dot={{ fill: '#F59E0B', strokeWidth: 2, r: 4 }}
+                                            name="Interest Gained"
                                         />
                                     </LineChart>
                                 </ResponsiveContainer>
@@ -316,26 +371,26 @@ const FinancialCalculator = () => {
 
                         {/* Summary Cards */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <div className="bg-blue-50 rounded-xl p-6 text-center">
-                                <IndianRupee className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                                <h4 className="font-semibold text-gray-700 mb-2">Total Investment</h4>
-                                <p className="text-2xl font-bold text-blue-700">
+                            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 text-center border border-transparent dark:border-blue-800/30 transition-colors">
+                                <IndianRupee className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Investment</h4>
+                                <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">
                                     {formatCurrency(summary.totalInvestment)}
                                 </p>
                             </div>
 
-                            <div className="bg-green-50 rounded-xl p-6 text-center">
-                                <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                                <h4 className="font-semibold text-gray-700 mb-2">Maturity Value</h4>
-                                <p className="text-2xl font-bold text-green-700">
+                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 text-center border border-transparent dark:border-green-800/30 transition-colors">
+                                <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Maturity Value</h4>
+                                <p className="text-2xl font-bold text-green-700 dark:text-green-400">
                                     {formatCurrency(summary.maturityValue)}
                                 </p>
                             </div>
 
-                            <div className="bg-orange-50 rounded-xl p-6 text-center">
-                                <Target className="h-8 w-8 text-orange-600 mx-auto mb-3" />
-                                <h4 className="font-semibold text-gray-700 mb-2">Total Gains</h4>
-                                <p className="text-2xl font-bold text-orange-700">
+                            <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 text-center border border-transparent dark:border-orange-800/30 transition-colors">
+                                <Target className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-3" />
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Gains</h4>
+                                <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">
                                     {formatCurrency(summary.totalGains)}
                                 </p>
                             </div>

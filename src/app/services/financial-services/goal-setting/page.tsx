@@ -1,5 +1,4 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
-import ServiceInfo from '@/components/ServiceInfo';
 import ServiceCalculator from '@/components/ServiceCalculator';
 import { Target } from 'lucide-react';
 
@@ -11,7 +10,6 @@ export default function GoalSettingPage() {
             serviceIcon={<Target className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-purple-500 to-purple-600"
         >
-            <ServiceInfo serviceType="goal-setting" />
             <ServiceCalculator
                 serviceType="goal-setting"
                 title="Goal Setting Calculator"

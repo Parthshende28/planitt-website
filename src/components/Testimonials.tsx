@@ -63,7 +63,7 @@ const Testimonials = () => {
     };
 
     return (
-        <section id="testimonials" className="py-20 bg-white">
+        <section id="testimonials" className="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -73,10 +73,10 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         What Our Clients Say
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say
                         about their financial journey with Planitt.
                     </p>
@@ -92,19 +92,19 @@ const Testimonials = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -50 }}
                                 transition={{ duration: 0.5 }}
-                                className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 lg:p-12"
+                                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 lg:p-12 border border-transparent dark:border-gray-800 transition-colors duration-300"
                             >
                                 <div className="max-w-4xl mx-auto">
                                     {/* Quote Icon */}
                                     <div className="flex justify-center mb-8">
-                                        <div className="bg-blue-600 p-4 rounded-full">
+                                        <div className="bg-blue-600 dark:bg-blue-700 p-4 rounded-full shadow-lg">
                                             <Quote className="h-8 w-8 text-white" />
                                         </div>
                                     </div>
 
                                     {/* Testimonial Content */}
                                     <div className="text-center space-y-6">
-                                        <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
+                                        <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed italic">
                                             &ldquo;{testimonials[currentIndex].content}&rdquo;
                                         </p>
 
@@ -117,16 +117,16 @@ const Testimonials = () => {
 
                                         {/* Client Info */}
                                         <div className="space-y-2">
-                                            <h3 className="font-heading text-2xl font-bold text-gray-900">
+                                            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">
                                                 {testimonials[currentIndex].name}
                                             </h3>
-                                            <p className="text-blue-600 font-semibold">
+                                            <p className="text-blue-600 dark:text-blue-400 font-semibold">
                                                 {testimonials[currentIndex].role}
                                             </p>
-                                            <p className="text-gray-600">
+                                            <p className="text-gray-600 dark:text-gray-400">
                                                 {testimonials[currentIndex].location}
                                             </p>
-                                            <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                                            <div className="inline-block bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
                                                 {testimonials[currentIndex].investment}
                                             </div>
                                         </div>
@@ -139,14 +139,14 @@ const Testimonials = () => {
                     {/* Navigation Arrows */}
                     <button
                         onClick={prevTestimonial}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-900 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-gray-100 dark:border-gray-700"
                     >
                         <ChevronLeft className="h-6 w-6" />
                     </button>
 
                     <button
                         onClick={nextTestimonial}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-900 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-gray-100 dark:border-gray-700"
                     >
                         <ChevronRight className="h-6 w-6" />
                     </button>
@@ -159,8 +159,8 @@ const Testimonials = () => {
                             key={index}
                             onClick={() => goToTestimonial(index)}
                             className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentIndex
-                                ? 'bg-blue-600 scale-125'
-                                : 'bg-gray-300 hover:bg-gray-400'
+                                ? 'bg-blue-600 dark:bg-blue-400 scale-125'
+                                : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
                                 }`}
                         />
                     ))}
@@ -175,20 +175,20 @@ const Testimonials = () => {
                     className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8"
                 >
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
-                        <div className="text-gray-600">Happy Clients</div>
+                        <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+                        <div className="text-gray-600 dark:text-gray-400">Happy Clients</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-green-600 mb-2">₹50Cr+</div>
-                        <div className="text-gray-600">Assets Managed</div>
+                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">₹50Cr+</div>
+                        <div className="text-gray-600 dark:text-gray-400">Assets Managed</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-purple-600 mb-2">6+</div>
-                        <div className="text-gray-600">Years Experience</div>
+                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">6+</div>
+                        <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-orange-600 mb-2">100%</div>
-                        <div className="text-gray-600">Client Satisfaction</div>
+                        <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">100%</div>
+                        <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
                     </div>
                 </motion.div>
             </div>

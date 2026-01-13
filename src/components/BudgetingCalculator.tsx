@@ -15,11 +15,10 @@ interface BudgetData {
 }
 
 interface PieData {
-    // allow other string-indexed properties so this type is compatible with Recharts' ChartDataInput
-    [key: string]: any;
     name: string;
     value: number;
     color: string;
+    [key: string]: string | number | boolean | null | undefined;
 }
 
 interface SIPChartData {
@@ -168,9 +167,15 @@ const BudgetingCalculator = () => {
     }, [calculateGoalSIP]);
 
     const handleInputChange = (field: keyof BudgetData, value: number) => {
+        let clampedValue = value;
+        if (field === 'monthlyIncome') {
+            clampedValue = Math.max(10000, Math.min(500000, value));
+        } else if (field === 'monthlyExpense') {
+            clampedValue = Math.max(5000, Math.min(400000, value));
+        }
         setBudgetData(prev => ({
             ...prev,
-            [field]: value
+            [field]: clampedValue
         }));
     };
 
@@ -295,7 +300,7 @@ const BudgetingCalculator = () => {
     };
 
     return (
-        <section id="budgeting-section" className="py-20 bg-gray-50">
+        <section id="budgeting-section" className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
             <div ref={dashboardRef} data-dashboard className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -304,10 +309,10 @@ const BudgetingCalculator = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         Your Style of Spending and Saving
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Track your monthly income and expenses to understand your financial patterns and optimize your savings.
                     </p>
                 </motion.div>
@@ -321,8 +326,8 @@ const BudgetingCalculator = () => {
                         viewport={{ once: true }}
                         className="flex flex-col"
                     >
-                        <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg flex-1 flex flex-col">
-                            <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 flex-1 flex flex-col transition-colors">
+                            <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                 Monthly Financial Overview
                             </h3>
 
@@ -330,7 +335,7 @@ const BudgetingCalculator = () => {
                                 <div className="space-y-4">
                                     {/* Monthly Income */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Monthly Income (₹)
                                         </label>
                                         <div className="mb-2">
@@ -341,12 +346,12 @@ const BudgetingCalculator = () => {
                                                 step="1000"
                                                 value={budgetData.monthlyIncome}
                                                 onChange={(e) => handleInputChange('monthlyIncome', parseInt(e.target.value))}
-                                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
                                                     '--slider-value': ((budgetData.monthlyIncome - 10000) / (500000 - 10000)) * 100
                                                 } as React.CSSProperties}
                                             />
-                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
+                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                                                 <span>₹10K</span>
                                                 <span>₹5L</span>
                                             </div>
@@ -355,13 +360,13 @@ const BudgetingCalculator = () => {
                                             type="number"
                                             value={budgetData.monthlyIncome}
                                             onChange={(e) => handleInputChange('monthlyIncome', parseInt(e.target.value) || 0)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                         />
                                     </div>
 
                                     {/* Monthly Expense */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Monthly Expenses (₹)
                                         </label>
                                         <div className="mb-2">
@@ -372,12 +377,12 @@ const BudgetingCalculator = () => {
                                                 step="1000"
                                                 value={budgetData.monthlyExpense}
                                                 onChange={(e) => handleInputChange('monthlyExpense', parseInt(e.target.value))}
-                                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
                                                     '--slider-value': ((budgetData.monthlyExpense - 5000) / (400000 - 5000)) * 100
                                                 } as React.CSSProperties}
                                             />
-                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
+                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                                                 <span>₹5K</span>
                                                 <span>₹4L</span>
                                             </div>
@@ -386,25 +391,25 @@ const BudgetingCalculator = () => {
                                             type="number"
                                             value={budgetData.monthlyExpense}
                                             onChange={(e) => handleInputChange('monthlyExpense', parseInt(e.target.value) || 0)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Summary Cards */}
                                 <div className="grid grid-cols-2 gap-3 mt-6">
-                                    <div className="bg-blue-50 rounded-xl p-3 text-center">
-                                        <IndianRupee className="h-5 w-5 text-blue-600 mx-auto mb-1" />
-                                        <h4 className="font-semibold text-gray-700 mb-1 text-xs">Total Income</h4>
-                                        <p className="text-lg font-bold text-blue-700">
+                                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 text-center transition-colors">
+                                        <IndianRupee className="h-5 w-5 text-blue-600 dark:text-blue-400 mx-auto mb-1" />
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-1 text-xs">Total Income</h4>
+                                        <p className="text-lg font-bold text-blue-700 dark:text-blue-300">
                                             {formatCurrency(budgetData.monthlyIncome)}
                                         </p>
                                     </div>
 
-                                    <div className="bg-red-50 rounded-xl p-3 text-center">
-                                        <TrendingUp className="h-5 w-5 text-red-600 mx-auto mb-1" />
-                                        <h4 className="font-semibold text-gray-700 mb-1 text-xs">Total Expenses</h4>
-                                        <p className="text-lg font-bold text-red-700">
+                                    <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-3 text-center transition-colors">
+                                        <TrendingUp className="h-5 w-5 text-red-600 dark:text-red-400 mx-auto mb-1" />
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-1 text-xs">Total Expenses</h4>
+                                        <p className="text-lg font-bold text-red-700 dark:text-red-300">
                                             {formatCurrency(budgetData.monthlyExpense)}
                                         </p>
                                     </div>
@@ -422,9 +427,9 @@ const BudgetingCalculator = () => {
                         className="flex flex-col"
                     >
                         {/* Pie Chart */}
-                        <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg flex-1 flex flex-col" ref={chartRef}>
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 flex-1 flex flex-col transition-colors" ref={chartRef}>
                             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
-                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900">
+                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                                     Spending & Saving Distribution
                                 </h3>
                                 <button
@@ -470,38 +475,38 @@ const BudgetingCalculator = () => {
                     viewport={{ once: true }}
                     className="mt-8"
                 >
-                    <div className="bg-white rounded-2xl p-6 shadow-lg">
-                        <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
+                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 transition-colors">
+                        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
                             Financial Health Assessment
                         </h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div className="bg-green-50 rounded-xl p-6 text-center">
-                                <Target className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                                <h4 className="font-semibold text-gray-700 mb-2">Total Savings per Month</h4>
-                                <p className="text-3xl font-bold text-green-700">
+                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 text-center transition-colors">
+                                <Target className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Savings per Month</h4>
+                                <p className="text-3xl font-bold text-green-700 dark:text-green-300">
                                     {formatCurrency(totalSavings)}
                                 </p>
                             </div>
 
-                            <div className="bg-purple-50 rounded-xl p-6 text-center">
-                                <Calculator className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-                                <h4 className="font-semibold text-gray-700 mb-2">Savings Percentage</h4>
-                                <p className="text-3xl font-bold text-purple-700">
+                            <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6 text-center transition-colors">
+                                <Calculator className="h-8 w-8 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Savings Percentage</h4>
+                                <p className="text-3xl font-bold text-purple-700 dark:text-purple-300">
                                     {savingsPercentage.toFixed(1)}%
                                 </p>
                             </div>
 
-                            <div className={`rounded-xl p-6 text-center ${securityStatus === 'Very Secure' ? 'bg-green-50' :
-                                securityStatus === 'Secure' ? 'bg-blue-50' :
-                                    securityStatus === 'Moderate' ? 'bg-yellow-50' :
-                                        'bg-red-50'
+                            <div className={`rounded-xl p-6 text-center transition-colors ${securityStatus === 'Very Secure' ? 'bg-green-50 dark:bg-green-900/20' :
+                                securityStatus === 'Secure' ? 'bg-blue-50 dark:bg-blue-900/20' :
+                                    securityStatus === 'Moderate' ? 'bg-yellow-50 dark:bg-yellow-900/20' :
+                                        'bg-red-50 dark:bg-red-900/20'
                                 }`}>
-                                <h4 className="font-semibold text-gray-700 mb-2">Financial Status</h4>
-                                <p className={`text-2xl font-bold ${securityStatus === 'Very Secure' ? 'text-green-700' :
-                                    securityStatus === 'Secure' ? 'text-blue-700' :
-                                        securityStatus === 'Moderate' ? 'text-yellow-700' :
-                                            'text-red-700'
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Financial Status</h4>
+                                <p className={`text-2xl font-bold ${securityStatus === 'Very Secure' ? 'text-green-700 dark:text-green-300' :
+                                    securityStatus === 'Secure' ? 'text-blue-700 dark:text-blue-300' :
+                                        securityStatus === 'Moderate' ? 'text-yellow-700 dark:text-yellow-300' :
+                                            'text-red-700 dark:text-red-300'
                                     }`}>
                                     {securityStatus}
                                 </p>
@@ -520,10 +525,10 @@ const BudgetingCalculator = () => {
                     className="mt-16"
                 >
                     <div className="text-center mb-12">
-                        <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                        <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                             SIP Investment Projection
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                             See how your monthly savings can grow over time with a systematic investment plan at 18% annual returns.
                         </p>
                     </div>
@@ -537,8 +542,8 @@ const BudgetingCalculator = () => {
                             viewport={{ once: true }}
                             className="flex flex-col"
                         >
-                            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg flex-1 flex flex-col">
-                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                            <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 flex-1 flex flex-col transition-colors">
+                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                     SIP Parameters
                                 </h3>
 
@@ -546,14 +551,14 @@ const BudgetingCalculator = () => {
                                     <div className="space-y-4">
                                         {/* Fixed Monthly Investment (from savings) */}
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                                 Monthly Investment (₹) - From Your Savings
                                             </label>
-                                            <div className="bg-gray-100 rounded-lg p-3">
-                                                <p className="text-lg sm:text-xl font-bold text-gray-900">
+                                            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 transition-colors">
+                                                <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                                                     {formatCurrency(totalSavings)}
                                                 </p>
-                                                <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
                                                     Automatically calculated from your budget
                                                 </p>
                                             </div>
@@ -561,14 +566,14 @@ const BudgetingCalculator = () => {
 
                                         {/* Fixed Expected Returns */}
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                                 Expected Returns (% p.a.)
                                             </label>
-                                            <div className="bg-gray-100 rounded-lg p-3">
-                                                <p className="text-lg sm:text-xl font-bold text-gray-900">
+                                            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 transition-colors">
+                                                <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                                                     18%
                                                 </p>
-                                                <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
                                                     Fixed rate for optimal growth
                                                 </p>
                                             </div>
@@ -576,7 +581,7 @@ const BudgetingCalculator = () => {
 
                                         {/* Duration */}
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                                 Duration (Years)
                                             </label>
                                             <div className="mb-2">
@@ -586,12 +591,12 @@ const BudgetingCalculator = () => {
                                                     max="30"
                                                     value={sipDuration}
                                                     onChange={(e) => setSipDuration(parseInt(e.target.value))}
-                                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                                    className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                     style={{
                                                         '--slider-value': ((sipDuration - 1) / (30 - 1)) * 100
                                                     } as React.CSSProperties}
                                                 />
-                                                <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
+                                                <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                                                     <span>1 Year</span>
                                                     <span>30 Years</span>
                                                 </div>
@@ -599,8 +604,8 @@ const BudgetingCalculator = () => {
                                             <input
                                                 type="number"
                                                 value={sipDuration}
-                                                onChange={(e) => setSipDuration(parseInt(e.target.value) || 1)}
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                                                onChange={(e) => setSipDuration(Math.max(1, Math.min(30, parseInt(e.target.value) || 1)))}
+                                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             />
                                         </div>
                                     </div>
@@ -616,26 +621,34 @@ const BudgetingCalculator = () => {
                             viewport={{ once: true }}
                             className="flex flex-col"
                         >
-                            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg flex-1 flex flex-col">
-                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                            <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 flex-1 flex flex-col transition-colors">
+                                <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                     Investment Growth Projection
                                 </h3>
 
                                 <div className="flex-1 min-h-[300px] sm:min-h-[400px]">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <LineChart data={sipChartData}>
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" className="dark:opacity-10" />
                                             <XAxis
                                                 dataKey="year"
-                                                stroke="#666"
+                                                stroke="currentColor"
+                                                className="text-gray-600 dark:text-gray-400"
                                                 fontSize={12}
                                             />
                                             <YAxis
-                                                stroke="#666"
+                                                stroke="currentColor"
+                                                className="text-gray-600 dark:text-gray-400"
                                                 fontSize={12}
                                                 tickFormatter={(value) => `${(value / 100000).toFixed(1)}L`}
                                             />
                                             <Tooltip
+                                                contentStyle={{
+                                                    backgroundColor: 'var(--tooltip-bg)',
+                                                    borderColor: 'var(--tooltip-border)',
+                                                    color: 'var(--tooltip-text)'
+                                                }}
+                                                itemStyle={{ color: 'inherit' }}
                                                 formatter={(value: number, name: string) => [
                                                     formatCurrency(value),
                                                     name === 'investment' ? 'Total Invested' :
@@ -683,32 +696,32 @@ const BudgetingCalculator = () => {
                         viewport={{ once: true }}
                         className="mt-8"
                     >
-                        <div className="bg-white rounded-2xl p-6 shadow-lg">
-                            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 transition-colors">
+                            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
                                 SIP Investment Summary
                             </h3>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div className="bg-blue-50 rounded-xl p-6 text-center">
-                                    <IndianRupee className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                                    <h4 className="font-semibold text-gray-700 mb-2">Total Investment</h4>
-                                    <p className="text-3xl font-bold text-blue-700">
+                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 text-center transition-colors">
+                                    <IndianRupee className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
+                                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Investment</h4>
+                                    <p className="text-3xl font-bold text-blue-700 dark:text-blue-300">
                                         {formatCurrency(sipSummary.totalInvestment)}
                                     </p>
                                 </div>
 
-                                <div className="bg-green-50 rounded-xl p-6 text-center">
-                                    <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                                    <h4 className="font-semibold text-gray-700 mb-2">Maturity Value</h4>
-                                    <p className="text-3xl font-bold text-green-700">
+                                <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 text-center transition-colors">
+                                    <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
+                                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Maturity Value</h4>
+                                    <p className="text-3xl font-bold text-green-700 dark:text-green-300">
                                         {formatCurrency(sipSummary.maturityValue)}
                                     </p>
                                 </div>
 
-                                <div className="bg-orange-50 rounded-xl p-6 text-center">
-                                    <Target className="h-8 w-8 text-orange-600 mx-auto mb-3" />
-                                    <h4 className="font-semibold text-gray-700 mb-2">Total Gains</h4>
-                                    <p className="text-3xl font-bold text-orange-700">
+                                <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 text-center transition-colors">
+                                    <Target className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-3" />
+                                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Total Gains</h4>
+                                    <p className="text-3xl font-bold text-orange-700 dark:text-orange-300">
                                         {formatCurrency(sipSummary.totalGains)}
                                     </p>
                                 </div>
@@ -728,7 +741,7 @@ const BudgetingCalculator = () => {
                 >
                     <div className="text-center mb-12">
                         <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-4 mb-6">
-                            <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900">
+                            <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
                                 Goal Amount Calculator
                             </h2>
                             <button
@@ -740,13 +753,13 @@ const BudgetingCalculator = () => {
                                 Take Snapshot
                             </button>
                         </div>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                             Calculate the monthly SIP required to achieve your financial freedom goal at 18% annual returns.
                         </p>
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-lg dark:shadow-gray-950/50 border border-transparent dark:border-gray-800 transition-colors">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                 {/* Input Section */}
                                 <motion.div
@@ -756,13 +769,13 @@ const BudgetingCalculator = () => {
                                     viewport={{ once: true }}
                                     className="space-y-4"
                                 >
-                                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                         Set Your Financial Goal
                                     </h3>
 
                                     {/* Freedom Number (Goal Amount) */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Freedom Number (Goal Amount) (₹)
                                         </label>
                                         <div className="mb-2">
@@ -773,12 +786,12 @@ const BudgetingCalculator = () => {
                                                 step="100000"
                                                 value={goalAmount}
                                                 onChange={(e) => setGoalAmount(parseInt(e.target.value))}
-                                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
                                                     '--slider-value': ((goalAmount - 1000000) / (100000000 - 1000000)) * 100
                                                 } as React.CSSProperties}
                                             />
-                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
+                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                                                 <span>₹10L</span>
                                                 <span>₹10Cr</span>
                                             </div>
@@ -786,15 +799,15 @@ const BudgetingCalculator = () => {
                                         <input
                                             type="number"
                                             value={goalAmount}
-                                            onChange={(e) => setGoalAmount(parseInt(e.target.value) || 1000000)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                                            onChange={(e) => setGoalAmount(Math.max(1000000, Math.min(100000000, parseInt(e.target.value) || 1000000)))}
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             placeholder="Enter your goal amount"
                                         />
                                     </div>
 
                                     {/* Duration */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Duration (Years)
                                         </label>
                                         <div className="mb-2">
@@ -804,12 +817,12 @@ const BudgetingCalculator = () => {
                                                 max="40"
                                                 value={goalDuration}
                                                 onChange={(e) => setGoalDuration(parseInt(e.target.value))}
-                                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
                                                     '--slider-value': ((goalDuration - 5) / (40 - 5)) * 100
                                                 } as React.CSSProperties}
                                             />
-                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
+                                            <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                                                 <span>5 Years</span>
                                                 <span>40 Years</span>
                                             </div>
@@ -817,22 +830,22 @@ const BudgetingCalculator = () => {
                                         <input
                                             type="number"
                                             value={goalDuration}
-                                            onChange={(e) => setGoalDuration(parseInt(e.target.value) || 5)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                                            onChange={(e) => setGoalDuration(Math.max(5, Math.min(40, parseInt(e.target.value) || 5)))}
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             placeholder="Enter duration in years"
                                         />
                                     </div>
 
                                     {/* Fixed Expected Returns */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Expected Returns (% p.a.)
                                         </label>
-                                        <div className="bg-gray-100 rounded-lg p-3">
-                                            <p className="text-lg sm:text-xl font-bold text-gray-900">
+                                        <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 transition-colors">
+                                            <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                                                 18%
                                             </p>
-                                            <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
                                                 Fixed rate for optimal growth
                                             </p>
                                         </div>
@@ -847,12 +860,12 @@ const BudgetingCalculator = () => {
                                     viewport={{ once: true }}
                                     className="space-y-4"
                                 >
-                                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                         Monthly SIP Required
                                     </h3>
 
                                     {/* Main Result Card */}
-                                    <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-4 sm:p-6 text-center text-white">
+                                    <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-4 sm:p-6 text-center text-white shadow-lg shadow-green-500/20">
                                         <Calculator className="h-8 w-8 sm:h-10 sm:w-10 mx-auto mb-3" />
                                         <h4 className="text-base sm:text-lg font-semibold mb-2">Monthly SIP Value</h4>
                                         <p className="text-2xl sm:text-3xl font-bold mb-2">
@@ -873,30 +886,30 @@ const BudgetingCalculator = () => {
                                 viewport={{ once: true }}
                                 className="mt-6 sm:mt-8"
                             >
-                                <h4 className="font-heading text-lg sm:text-xl font-bold text-gray-900 mb-4 text-center">
+                                <h4 className="font-heading text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
                                     Goal Summary
                                 </h4>
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-                                    <div className="bg-blue-50 rounded-xl p-3 sm:p-4 text-center">
-                                        <Target className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 mx-auto mb-2" />
-                                        <h4 className="font-semibold text-gray-700 mb-1 text-xs sm:text-sm">Goal Amount</h4>
-                                        <p className="text-lg sm:text-xl font-bold text-blue-700">
+                                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 sm:p-4 text-center transition-colors">
+                                        <Target className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-1 text-xs sm:text-sm">Goal Amount</h4>
+                                        <p className="text-lg sm:text-xl font-bold text-blue-700 dark:text-blue-300">
                                             {formatCurrency(goalAmount)}
                                         </p>
                                     </div>
 
-                                    <div className="bg-purple-50 rounded-xl p-3 sm:p-4 text-center">
-                                        <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600 mx-auto mb-2" />
-                                        <h4 className="font-semibold text-gray-700 mb-1 text-xs sm:text-sm">Duration</h4>
-                                        <p className="text-lg sm:text-xl font-bold text-purple-700">
+                                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-3 sm:p-4 text-center transition-colors">
+                                        <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-1 text-xs sm:text-sm">Duration</h4>
+                                        <p className="text-lg sm:text-xl font-bold text-purple-700 dark:text-purple-300">
                                             {goalDuration} Years
                                         </p>
                                     </div>
 
-                                    <div className="bg-orange-50 rounded-xl p-3 sm:p-4 text-center">
-                                        <IndianRupee className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600 mx-auto mb-2" />
-                                        <h4 className="font-semibold text-gray-700 mb-1 text-xs sm:text-sm">Total Investment</h4>
-                                        <p className="text-lg sm:text-xl font-bold text-orange-700">
+                                    <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-3 sm:p-4 text-center transition-colors">
+                                        <IndianRupee className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-1 text-xs sm:text-sm">Total Investment</h4>
+                                        <p className="text-lg sm:text-xl font-bold text-orange-700 dark:text-orange-300">
                                             {formatCurrency(monthlySIPRequired * goalDuration * 12)}
                                         </p>
                                     </div>

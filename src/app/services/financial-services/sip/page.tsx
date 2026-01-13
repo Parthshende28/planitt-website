@@ -1,5 +1,4 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
-import ServiceInfo from '@/components/ServiceInfo';
 import ServiceCalculator from '@/components/ServiceCalculator';
 import { Calendar } from 'lucide-react';
 
@@ -11,7 +10,6 @@ export default function SIPPage() {
             serviceIcon={<Calendar className="h-12 w-12 text-white" />}
             serviceColor="bg-gradient-to-r from-green-500 to-green-600"
         >
-            <ServiceInfo serviceType="sip" />
             <ServiceCalculator
                 serviceType="sip"
                 title="Investment Calculator"

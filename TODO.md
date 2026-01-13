@@ -1,0 +1,5 @@
+- [x] Align container and CTA in app-dev/page.tsx to match web-dev
+- [x] Align container and CTA in devops-automation/page.tsx to match web-dev
+- [x] Align container and CTA in digital-marketing/page.tsx to match web-dev
+- [x] Align CTA in cloud-services/page.tsx to match web-dev
+- [x] Align CTA in cyber-security/page.tsx to match web-dev

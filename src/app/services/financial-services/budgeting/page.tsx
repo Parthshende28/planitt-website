@@ -1,6 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
 import BudgetingCalculator from '@/components/BudgetingCalculator';
-import BudgetingContact from '@/components/BudgetingContact';
 import { Calculator } from 'lucide-react';
 
 export default function BudgetingPage() {

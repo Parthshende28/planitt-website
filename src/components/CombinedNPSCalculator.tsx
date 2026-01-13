@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { Calculator, TrendingUp, IndianRupee, Target, PiggyBank } from 'lucide-react';
+import { PiggyBank } from 'lucide-react';
 
 interface SIPData {
     monthlyInvestment: number;
@@ -230,7 +230,7 @@ const CombinedNPSCalculator = () => {
     };
 
     return (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -240,13 +240,13 @@ const CombinedNPSCalculator = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center justify-center p-3 bg-orange-100 rounded-full mb-6">
-                        <PiggyBank className="h-8 w-8 text-orange-600" />
+                    <div className="inline-flex items-center justify-center p-3 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-6 transition-colors">
+                        <PiggyBank className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                     </div>
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         NPS Investment & Withdrawal Calculator
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
                         Plan your retirement with NPS. First, build your corpus through SIP or lump-sum investments,
                         then plan your systematic withdrawals during retirement.
                     </p>
@@ -262,17 +262,17 @@ const CombinedNPSCalculator = () => {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg dark:shadow-gray-950/50 border border-gray-100 dark:border-gray-800 transition-colors">
                             <div className="flex justify-between items-center mb-6">
-                                <h3 className="font-heading text-2xl font-bold text-gray-900">
+                                <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">
                                     SIP Calculator
                                 </h3>
-                                <div className="flex bg-gray-100 rounded-lg p-1">
+                                <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1 transition-colors">
                                     <button
                                         onClick={() => setSipInvestmentType('sip')}
                                         className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${sipInvestmentType === 'sip'
-                                            ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200'
-                                            : 'text-gray-600 hover:text-gray-900'
+                                            ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200 dark:ring-blue-900/50'
+                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                             }`}
                                     >
                                         SIP
@@ -280,8 +280,8 @@ const CombinedNPSCalculator = () => {
                                     <button
                                         onClick={() => setSipInvestmentType('lumpsum')}
                                         className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${sipInvestmentType === 'lumpsum'
-                                            ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200'
-                                            : 'text-gray-600 hover:text-gray-900'
+                                            ? 'bg-blue-500 text-white shadow-lg ring-2 ring-blue-200 dark:ring-blue-900/50'
+                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                             }`}
                                     >
                                         LUMSUM
@@ -291,7 +291,7 @@ const CombinedNPSCalculator = () => {
 
                             {/* Investment Input */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     {sipInvestmentType === 'sip' ? 'Monthly Investment (₹)' : 'One Time Investment (₹)'}
                                 </label>
                                 <div className="mb-2">
@@ -308,14 +308,14 @@ const CombinedNPSCalculator = () => {
                                                 handleSipInputChange('oneTimeInvestment', parseInt(e.target.value));
                                             }
                                         }}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': sipInvestmentType === 'sip'
                                                 ? ((sipData.monthlyInvestment - 100) / (100000 - 100)) * 100
                                                 : ((sipData.oneTimeInvestment - 100000) / (50000000 - 100000)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>{sipInvestmentType === 'sip' ? '₹100' : '₹1,00,000'}</span>
                                         <span>{sipInvestmentType === 'sip' ? '₹1,00,000' : '₹5,00,00,000'}</span>
                                     </div>
@@ -330,13 +330,13 @@ const CombinedNPSCalculator = () => {
                                             handleSipInputChange('oneTimeInvestment', parseInt(e.target.value) || 0);
                                         }
                                     }}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Duration */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Duration (Years)
                                 </label>
                                 <div className="mb-2">
@@ -346,12 +346,12 @@ const CombinedNPSCalculator = () => {
                                         max="50"
                                         value={sipData.duration}
                                         onChange={(e) => handleSipInputChange('duration', parseInt(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((sipData.duration - 1) / (50 - 1)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>1 Year</span>
                                         <span>50 Years</span>
                                     </div>
@@ -360,13 +360,13 @@ const CombinedNPSCalculator = () => {
                                     type="number"
                                     value={sipData.duration}
                                     onChange={(e) => handleSipInputChange('duration', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Expected Returns */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Expected Returns (% p.a.)
                                 </label>
                                 <div className="mb-2">
@@ -377,12 +377,12 @@ const CombinedNPSCalculator = () => {
                                         step="0.5"
                                         value={sipData.expectedReturns}
                                         onChange={(e) => handleSipInputChange('expectedReturns', parseFloat(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((sipData.expectedReturns - 6) / (50 - 6)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>6%</span>
                                         <span>50%</span>
                                     </div>
@@ -392,29 +392,29 @@ const CombinedNPSCalculator = () => {
                                     step="0.5"
                                     value={sipData.expectedReturns}
                                     onChange={(e) => handleSipInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* SIP Summary */}
-                            <div className="bg-blue-50 rounded-xl p-6">
-                                <h4 className="font-semibold text-gray-700 mb-4 text-center">SIP Summary</h4>
+                            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 transition-colors">
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-4 text-center">SIP Summary</h4>
                                 <div className="grid grid-cols-1 gap-4">
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Total Invested</p>
-                                        <p className="text-xl font-bold text-blue-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Total Invested</p>
+                                        <p className="text-xl font-bold text-blue-700 dark:text-blue-300">
                                             {formatCurrency(sipSummary.totalInvestment)}
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Maturity Value</p>
-                                        <p className="text-xl font-bold text-green-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Maturity Value</p>
+                                        <p className="text-xl font-bold text-green-700 dark:text-green-300">
                                             {formatCurrency(sipSummary.maturityValue)}
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Total Gains</p>
-                                        <p className="text-xl font-bold text-orange-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Total Gains</p>
+                                        <p className="text-xl font-bold text-orange-700 dark:text-orange-300">
                                             {formatCurrency(sipSummary.totalGains)}
                                         </p>
                                     </div>
@@ -431,28 +431,28 @@ const CombinedNPSCalculator = () => {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg dark:shadow-gray-950/50 border border-gray-100 dark:border-gray-800 transition-colors">
+                            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
                                 SWP Calculator
                             </h3>
 
                             {/* Total Investment (Auto-filled from SIP) */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Total Investment (₹) - From SIP Maturity
                                 </label>
                                 <input
                                     type="number"
                                     value={swpData.totalInvestment}
                                     disabled
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 cursor-not-allowed transition-colors"
                                 />
-                                <p className="text-xs text-gray-500 mt-1">This value is automatically set from SIP maturity value</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">This value is automatically set from SIP maturity value</p>
                             </div>
 
                             {/* Monthly Withdrawal */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Withdrawal per Month (₹)
                                 </label>
                                 <div className="mb-2">
@@ -463,12 +463,12 @@ const CombinedNPSCalculator = () => {
                                         step="1000"
                                         value={swpData.monthlyWithdrawal}
                                         onChange={(e) => handleSwpInputChange('monthlyWithdrawal', parseInt(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((swpData.monthlyWithdrawal - 1000) / (100000 - 1000)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>₹1,000</span>
                                         <span>₹1,00,000</span>
                                     </div>
@@ -477,13 +477,13 @@ const CombinedNPSCalculator = () => {
                                     type="number"
                                     value={swpData.monthlyWithdrawal}
                                     onChange={(e) => handleSwpInputChange('monthlyWithdrawal', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Duration */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Duration (Years)
                                 </label>
                                 <div className="mb-2">
@@ -493,12 +493,12 @@ const CombinedNPSCalculator = () => {
                                         max="30"
                                         value={swpData.duration}
                                         onChange={(e) => handleSwpInputChange('duration', parseInt(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((swpData.duration - 1) / (30 - 1)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>1 Year</span>
                                         <span>30 Years</span>
                                     </div>
@@ -507,13 +507,13 @@ const CombinedNPSCalculator = () => {
                                     type="number"
                                     value={swpData.duration}
                                     onChange={(e) => handleSwpInputChange('duration', parseInt(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Expected Returns */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Expected Returns (% p.a.)
                                 </label>
                                 <div className="mb-2">
@@ -524,12 +524,12 @@ const CombinedNPSCalculator = () => {
                                         step="0.5"
                                         value={swpData.expectedReturns}
                                         onChange={(e) => handleSwpInputChange('expectedReturns', parseFloat(e.target.value))}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                        className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
                                             '--slider-value': ((swpData.expectedReturns - 6) / (50 - 6)) * 100
                                         } as React.CSSProperties}
                                     />
-                                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         <span>6%</span>
                                         <span>50%</span>
                                     </div>
@@ -539,39 +539,39 @@ const CombinedNPSCalculator = () => {
                                     step="0.5"
                                     value={swpData.expectedReturns}
                                     onChange={(e) => handleSwpInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                 />
                             </div>
 
                             {/* Withdrawal Frequency */}
                             <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Withdrawal Frequency
                                 </label>
                                 <div className="grid grid-cols-3 gap-2">
                                     <button
                                         onClick={() => handleSwpInputChange('withdrawalFrequency', 'monthly')}
-                                        className={`px-3 py-2 rounded-lg border-2 transition-colors duration-200 text-sm ${swpData.withdrawalFrequency === 'monthly'
-                                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                            : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                                        className={`px-3 py-2 rounded-lg border-2 transition-all duration-200 text-sm font-medium ${swpData.withdrawalFrequency === 'monthly'
+                                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                            : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-600'
                                             }`}
                                     >
                                         Monthly
                                     </button>
                                     <button
                                         onClick={() => handleSwpInputChange('withdrawalFrequency', 'quarterly')}
-                                        className={`px-3 py-2 rounded-lg border-2 transition-colors duration-200 text-sm ${swpData.withdrawalFrequency === 'quarterly'
-                                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                            : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                                        className={`px-3 py-2 rounded-lg border-2 transition-all duration-200 text-sm font-medium ${swpData.withdrawalFrequency === 'quarterly'
+                                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                            : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-600'
                                             }`}
                                     >
                                         Quarterly
                                     </button>
                                     <button
                                         onClick={() => handleSwpInputChange('withdrawalFrequency', 'annually')}
-                                        className={`px-3 py-2 rounded-lg border-2 transition-colors duration-200 text-sm ${swpData.withdrawalFrequency === 'annually'
-                                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                            : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                                        className={`px-3 py-2 rounded-lg border-2 transition-all duration-200 text-sm font-medium ${swpData.withdrawalFrequency === 'annually'
+                                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                            : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-600'
                                             }`}
                                     >
                                         Annually
@@ -580,24 +580,24 @@ const CombinedNPSCalculator = () => {
                             </div>
 
                             {/* SWP Summary */}
-                            <div className="bg-green-50 rounded-xl p-6">
-                                <h4 className="font-semibold text-gray-700 mb-4 text-center">SWP Summary</h4>
+                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 transition-colors">
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-4 text-center">SWP Summary</h4>
                                 <div className="grid grid-cols-1 gap-4">
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Total Investment</p>
-                                        <p className="text-xl font-bold text-blue-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Total Investment</p>
+                                        <p className="text-xl font-bold text-green-700 dark:text-green-300">
                                             {formatCurrency(swpSummary.totalInvestment)}
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Final Value</p>
-                                        <p className="text-xl font-bold text-green-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Final Value</p>
+                                        <p className="text-xl font-bold text-green-700 dark:text-green-300">
                                             {formatCurrency(swpSummary.maturityValue)}
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-600">Total Withdrawal</p>
-                                        <p className="text-xl font-bold text-orange-700">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Total Withdrawal</p>
+                                        <p className="text-xl font-bold text-orange-700 dark:text-orange-300">
                                             {formatCurrency(swpSummary.totalGains)}
                                         </p>
                                     </div>
@@ -616,25 +616,33 @@ const CombinedNPSCalculator = () => {
                     className="grid grid-cols-1 xl:grid-cols-2 gap-8"
                 >
                     {/* SIP Chart */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg">
-                        <h3 className="font-heading text-xl font-bold text-gray-900 mb-6">
+                    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-950/50 transition-colors">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6">
                             SIP Investment Growth Projection
                         </h3>
                         <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={chartData}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" className="dark:opacity-10" />
                                     <XAxis
                                         dataKey="year"
-                                        stroke="#666"
+                                        stroke="currentColor"
+                                        className="text-gray-600 dark:text-gray-400"
                                         fontSize={12}
                                     />
                                     <YAxis
-                                        stroke="#666"
+                                        stroke="currentColor"
+                                        className="text-gray-600 dark:text-gray-400"
                                         fontSize={12}
                                         tickFormatter={(value) => `${(value / 100000).toFixed(1)}L`}
                                     />
                                     <Tooltip
+                                        contentStyle={{
+                                            backgroundColor: 'var(--tooltip-bg)',
+                                            borderColor: 'var(--tooltip-border)',
+                                            color: 'var(--tooltip-text)'
+                                        }}
+                                        itemStyle={{ color: 'inherit' }}
                                         formatter={(value: number, name: string) => [
                                             formatCurrency(value),
                                             name === 'sipInvestment' ? 'Total Invested' :
@@ -673,25 +681,33 @@ const CombinedNPSCalculator = () => {
                     </div>
 
                     {/* SWP Chart */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg">
-                        <h3 className="font-heading text-xl font-bold text-gray-900 mb-6">
+                    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-950/50 transition-colors">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6">
                             SWP Withdrawal Projection
                         </h3>
                         <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={chartData}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" className="dark:opacity-10" />
                                     <XAxis
                                         dataKey="year"
-                                        stroke="#666"
+                                        stroke="currentColor"
+                                        className="text-gray-600 dark:text-gray-400"
                                         fontSize={12}
                                     />
                                     <YAxis
-                                        stroke="#666"
+                                        stroke="currentColor"
+                                        className="text-gray-600 dark:text-gray-400"
                                         fontSize={12}
                                         tickFormatter={(value) => `${(value / 100000).toFixed(1)}L`}
                                     />
                                     <Tooltip
+                                        contentStyle={{
+                                            backgroundColor: 'var(--tooltip-bg)',
+                                            borderColor: 'var(--tooltip-border)',
+                                            color: 'var(--tooltip-text)'
+                                        }}
+                                        itemStyle={{ color: 'inherit' }}
                                         formatter={(value: number, name: string) => [
                                             formatCurrency(value),
                                             name === 'swpInvestment' ? 'Total Investment' :

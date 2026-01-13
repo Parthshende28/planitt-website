@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, CheckCircle, MessageCircle } from 'lucide-react';
+import { CheckCircle, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 const Contact = () => {
@@ -23,7 +23,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gray-50 relative overflow-hidden">
+        <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
             {/* Full Section Gradient Noodles Illustration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* WhatsApp Green Noodles - Top Left */}
@@ -158,63 +158,31 @@ const Contact = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         Get In Touch
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Ready to start your financial journey? Contact us for a free consultation
                         and personalized financial planning advice.
                     </p>
                 </motion.div>
 
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+                        className="flex justify-center"
                     >
-                        {/* Left Side - Contact Information */}
-                        <div className="space-y-8">
-                            {/* Why Choose Us */}
-                            <div className="bg-white rounded-2xl p-6 shadow-lg">
-                                <h4 className="font-heading text-xl font-bold text-gray-900 mb-4 text-center lg:text-left">
-                                    Why Choose Planitt?
-                                </h4>
-                                <div className="space-y-3">
-                                    <div className="flex items-center text-gray-600">
-                                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                                        <span className="text-sm">Free initial consultation</span>
-                                    </div>
-                                    <div className="flex items-center text-gray-600">
-                                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                                        <span className="text-sm">Personalized financial planning</span>
-                                    </div>
-                                    <div className="flex items-center text-gray-600">
-                                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                                        <span className="text-sm">Regular portfolio reviews</span>
-                                    </div>
-                                    <div className="flex items-center text-gray-600">
-                                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                                        <span className="text-sm">Transparent fee structure</span>
-                                    </div>
-                                    <div className="flex items-center text-gray-600">
-                                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                                        <span className="text-sm">Ongoing support and guidance</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Right Side - Contact Form */}
-                        <div className="bg-white rounded-2xl p-8 shadow-lg">
-                            <h4 className="font-heading text-2xl font-bold text-gray-900 mb-6 text-center">
+                        {/* Centered Contact Form */}
+                        <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-transparent dark:border-gray-800 transition-colors duration-300">
+                            <h4 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                                 Send Message on WhatsApp
                             </h4>
                             <form onSubmit={handleWhatsAppMessage} className="space-y-6">
                                 <div>
-                                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         First Name *
                                     </label>
                                     <input
@@ -222,14 +190,14 @@ const Contact = () => {
                                         id="firstName"
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                                         placeholder="Enter your first name"
                                         required
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Phone Number (Optional)
                                     </label>
                                     <input
@@ -237,11 +205,10 @@ const Contact = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                                         placeholder="Enter your phone number"
                                     />
                                 </div>
-
 
                                 <button
                                     type="submit"

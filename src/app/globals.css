@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.js";
 
 :root {
   --background: #ffffff;
@@ -7,6 +8,11 @@
   --primary-blue: #3B82F6;
   --light-blue: #93C5FD;
   --background-gray: #F3F4F6;
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #f9fafb;
 }
 
 @theme inline {
@@ -61,6 +67,10 @@ body {
   position: relative;
 }
 
+.dark .slider::-webkit-slider-track {
+  background: #374151;
+}
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -72,6 +82,12 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 2;
+  border: 2px solid #3b82f6;
+}
+
+.dark .slider::-webkit-slider-thumb {
+  background: #1f2937;
+  border-color: #60a5fa;
 }
 
 .slider::-webkit-slider-thumb:hover {
@@ -94,6 +110,10 @@ body {
   transition: width 0.1s ease;
 }
 
+.dark .slider::before {
+  background: #60a5fa;
+}
+
 .slider::-moz-range-track {
   background: #e5e7eb;
   height: 8px;
@@ -101,10 +121,18 @@ body {
   border: none;
 }
 
+.dark .slider::-moz-range-track {
+  background: #374151;
+}
+
 .slider::-moz-range-progress {
   background: #3b82f6;
   height: 8px;
   border-radius: 4px;
+}
+
+.dark .slider::-moz-range-progress {
+  background: #60a5fa;
 }
 
 .slider::-moz-range-thumb {
@@ -114,6 +142,12 @@ body {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 2px solid #3b82f6;
+}
+
+.dark .slider::-moz-range-thumb {
+  background: #1f2937;
+  border-color: #60a5fa;
 }
 
 .slider::-moz-range-thumb:hover {
