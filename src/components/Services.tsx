@@ -279,12 +279,18 @@ const Services = () => {
                     informed decisions for a secure financial future.
                   </p>
                   <a
-                    href="/services/financial-services/budgeting"
-                    className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg"
-                  >
-                    Budgeting
-                    <ArrowRight className="ml-2 h-5 w-5 text-white" />
-                  </a>
+  href="/services/financial-services/budgeting"
+  className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900
+             text-blue-600 dark:text-blue-400
+             font-semibold rounded-lg
+             hover:text-blue-700 dark:hover:text-blue-300
+             dark:hover:bg-gray-800
+             transition-colors duration-300 shadow-lg"
+>
+  Budgeting
+  <ArrowRight className="ml-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+</a>
+
                 </div>
               </motion.div>
             </>

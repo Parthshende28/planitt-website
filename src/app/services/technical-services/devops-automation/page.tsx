@@ -154,7 +154,7 @@ export default function DevOpsPage() {
           </div>
         </section>
 
-      {/* Important Terms & Conditions */}
+    {/* Important Terms & Conditions */}
 <section className="mb-24">
   {/* Header */}
   <div className="text-center mb-10">
@@ -168,10 +168,9 @@ export default function DevOpsPage() {
   </div>
 
   {/* Content Box */}
-  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 space-y-4">
+  <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:hover:bg-gray-700 hover:border-indigo-500 rounded-2xl p-6 space-y-4">
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📄 Project Scope
       </h3>
@@ -184,8 +183,7 @@ export default function DevOpsPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         ⏱ Revision Policy
       </h3>
@@ -197,8 +195,7 @@ export default function DevOpsPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         🛠 Maintenance Scope
       </h3>
@@ -210,8 +207,7 @@ export default function DevOpsPage() {
     </div>
 
     {/* Item */}
-    <div className="group rounded-xl border border-transparent p-4 transition
-                    hover:bg-white dark:hover:bg-gray-700 hover:border-indigo-500">
+    <div className="group rounded-xl border border-transparent p-4 transition">
       <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white mb-2">
         📝 Agreements
       </h3>

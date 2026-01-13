@@ -15,30 +15,34 @@ const Header = () => {
   const navItems = [
     { name: 'Services', href: '/#services' },
     { name: 'Blogs', href: '/#blogs' },
-    { name: 'Case Studies', href: '/#case-studies' },
+    { name: 'Case Studies', href: '/case-studies' },
     { name: 'About Us', href: '/#about' },
     { name: 'Testimonials', href: '/#testimonials' },
-    { name: 'Join Us', href: '/careers', newWindow: false },
-  ]
+    { name: 'Join Us', href: '/careers' },
+  ];
 
   return (
-    <header className="bg-white dark:bg-gray-950 shadow-lg sticky top-0 z-50 border-b border-transparent dark:border-gray-800 transition-colors duration-300">
+    <header
+      className="
+        sticky top-0 z-50
+        backdrop-blur-xl
+        bg-white/80 dark:bg-black/70
+        border-b border-gray-200 dark:border-gray-800
+        transition-colors duration-300
+      "
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
           {/* Logo */}
-          <Link
-            href="/"
-            aria-label="Planitt Home"
-            className="flex items-center focus:outline-none"
-          >
+          <Link href="/" aria-label="Planitt Home" className="flex items-center">
             <Image
               src="/planitt-logo.png"
               alt="Planitt Logo"
               width={48}
               height={48}
               priority
-              className="transition-transform duration-200 hover:scale-105 drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]"
+              className="transition-transform duration-200 hover:scale-105"
             />
           </Link>
 
@@ -49,21 +53,30 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200"
-                  target={item.newWindow ? '_blank' : undefined}
-                  rel={item.newWindow ? 'noopener noreferrer' : undefined}
+                  className="
+                    text-gray-700 dark:text-gray-300
+                    hover:text-blue-600 dark:hover:text-blue-400
+                    font-medium transition-colors
+                  "
                 >
                   {item.name}
                 </Link>
               ))}
             </nav>
 
-            {/* 🔍 Search Bar (DESKTOP) */}
+            {/* Search + Theme */}
             <div className="flex items-center gap-4">
               <SearchBar />
+
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                className="
+                  p-2 rounded-lg
+                  border border-gray-200 dark:border-gray-800
+                  bg-gray-100 dark:bg-gray-900
+                  hover:bg-gray-200 dark:hover:bg-gray-800
+                  transition
+                "
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
@@ -75,12 +88,15 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Buttons */}
+          <div className="md:hidden flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-              aria-label="Toggle theme"
+              className="
+                p-2 rounded-lg
+                border border-gray-200 dark:border-gray-800
+                bg-gray-100 dark:bg-gray-900
+              "
             >
               {theme === "dark" ? (
                 <Sun className="h-5 w-5 text-yellow-400" />
@@ -88,17 +104,18 @@ const Header = () => {
                 <Moon className="h-5 w-5 text-gray-700" />
               )}
             </button>
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              className="text-gray-700 dark:text-gray-300"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -106,15 +123,23 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-gray-200 dark:border-gray-800"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 py-4 space-y-3">
+
+              {/* 🔍 Mobile Search */}
+              <div className="mb-3">
+                <SearchBar />
+              </div>
+
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
-                  target={item.newWindow ? '_blank' : undefined}
-                  rel={item.newWindow ? 'noopener noreferrer' : undefined}
+                  className="
+                    block px-3 py-2 rounded-md
+                    text-gray-700 dark:text-gray-300
+                    hover:bg-gray-100 dark:hover:bg-gray-900
+                  "
                 >
                   {item.name}
                 </Link>

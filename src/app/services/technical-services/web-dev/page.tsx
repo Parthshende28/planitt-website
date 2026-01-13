@@ -88,7 +88,7 @@ export default function WebDevPage() {
             <TechItem
               icon={<SiNodedotjs />}
               label="Node.js"
-              color="text-green-600"hover effect from the points in terms and conf
+              color="text-green-600"
             />
             <TechItem
               icon={<SiPostman />}
