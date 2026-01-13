@@ -186,9 +186,7 @@ const Services = () => {
           <motion.div className="w-full mb-6">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-sm border border-gray-100 dark:border-gray-700 flex transition-colors duration-300">
               <button
-                onClick={() =>
-                  setActive((s) => (s === "financial" ? "none" : "financial"))
-                }
+                onClick={() => setActive("financial")}
                 className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${
                   active === "financial"
                     ? "bg-blue-600 text-white shadow-lg"
@@ -198,9 +196,7 @@ const Services = () => {
                 Financial Services
               </button>
               <button
-                onClick={() =>
-                  setActive((s) => (s === "technical" ? "none" : "technical"))
-                }
+                onClick={() => setActive("technical")}
                 className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${
                   active === "technical"
                     ? "bg-blue-600 text-white shadow-lg"
