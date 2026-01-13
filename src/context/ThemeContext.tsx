@@ -17,11 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Load saved theme
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    const finalTheme = saved ?? (systemPrefersDark ? "dark" : "light");
+    const finalTheme = saved ?? "light";
     setTheme(finalTheme);
     document.documentElement.classList.toggle("dark", finalTheme === "dark");
   }, []);
