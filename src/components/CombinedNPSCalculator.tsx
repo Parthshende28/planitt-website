@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { PiggyBank } from 'lucide-react';
+import { TrendingDown } from 'lucide-react';
 
 interface SIPData {
     monthlyInvestment: number;
@@ -241,14 +241,13 @@ const CombinedNPSCalculator = () => {
                     className="text-center mb-16"
                 >
                     <div className="inline-flex items-center justify-center p-3 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-6 transition-colors">
-                        <PiggyBank className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+                        < TrendingDown className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                     </div>
                     <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                        NPS Investment & Withdrawal Calculator
+                        SIP & SWP Calculator
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-                        Plan your retirement with NPS. First, build your corpus through SIP or lump-sum investments,
-                        then plan your systematic withdrawals during retirement.
+                        Build wealth gradually through disciplined SIPs or generate steady retirement income from lump sum investments. Ideal for both long-term growth and consistent monthly payouts.
                     </p>
                 </motion.div>
 

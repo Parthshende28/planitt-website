@@ -3,11 +3,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    TrendingDown,
-    Calendar,
     Target,
     Heart,
-    PiggyBank,
+    Calendar,
     Calculator,
     ArrowRight,
     Globe,
@@ -21,24 +19,6 @@ import {
 const Services = () => {
     const financialServices = [
         {
-            icon: Calendar,
-            title: 'SIP (Systematic Investment Plan)',
-            description: 'Regular investment strategy to build wealth gradually with disciplined approach.',
-            color: 'from-green-500 to-green-600',
-            bgColor: 'bg-green-50',
-            textColor: 'text-green-700',
-            url: '/services/financial-services/sip'
-        },
-        {
-            icon: TrendingDown,
-            title: 'SWP (Systematic Withdrawal Plan)',
-            description: 'Generate regular income from your lump sum investments while keeping the remaining amount invested for growth.',
-            color: 'from-blue-500 to-blue-600',
-            bgColor: 'bg-blue-50',
-            textColor: 'text-blue-700',
-            url: '/services/financial-services/swp'
-        },
-        {
             icon: Target,
             title: 'Goal Setting',
             description: 'Calculate the monthly SIP required to achieve your financial goals with inflation adjustment.',
@@ -49,7 +29,7 @@ const Services = () => {
         },
         {
             icon: Heart,
-            title: 'Insurance',
+            title: 'Insurance & NPS (National Pension System)',
             description: 'Comprehensive life and health insurance solutions to protect your loved ones.',
             color: 'from-red-500 to-red-600',
             bgColor: 'bg-red-50',
@@ -57,8 +37,8 @@ const Services = () => {
             url: '/services/financial-services/insurance'
         },
         {
-            icon: PiggyBank,
-            title: 'NPS (National Pension System)',
+            icon: Calendar,
+            title: 'SIP (Systematic Investment Plan) & SWP (Systematic Withdrawal Plan)',
             description: 'Retirement planning with tax benefits and long-term wealth accumulation.',
             color: 'from-orange-500 to-orange-600',
             bgColor: 'bg-orange-50',

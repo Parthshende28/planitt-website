@@ -25,7 +25,7 @@ interface ChartData {
 }
 
 interface ServiceCalculatorProps {
-    serviceType: 'swp' | 'sip' | 'goal-setting' | 'insurance' | 'nps';
+    serviceType: 'swp' | 'sip' | 'goal-setting' | 'insurance' | 'nps' | 'sip + swp';
     title: string;
     description: string;
 }
@@ -36,7 +36,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
 
     // Initialize form data based on service type
     const getInitialFormData = () => {
-        if (serviceType === 'sip') {
+        if (serviceType === 'sip' || serviceType === 'sip + swp') {
             return {
                 monthlyInvestment: 25000,
                 duration: 12,
@@ -83,7 +83,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
         let corpus = 0;
         let gains = 0;
 
-        if (serviceType === 'sip' && (formData.monthlyInvestment || formData.oneTimeInvestment)) {
+        if ((serviceType === 'sip' || serviceType === 'sip + swp') && (formData.monthlyInvestment || formData.oneTimeInvestment)) {
             if (investmentType === 'sip' && formData.monthlyInvestment) {
                 // SIP Calculation
                 for (let year = 1; year <= formData.duration; year++) {
@@ -283,7 +283,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     Investment Parameters
                                 </h3>
                                 {/* SIP/LUMSUM Toggle - Only for SIP service */}
-                                {serviceType === 'sip' && (
+                                {(serviceType === 'sip' || serviceType === 'sip + swp') && (
                                     <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1 shadow-sm border border-gray-200 dark:border-gray-700">
                                         <button
                                             onClick={() => setInvestmentType('sip')}
@@ -308,7 +308,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                             </div>
 
                             {/* Investment Input - Only for SIP service */}
-                            {serviceType === 'sip' && (
+                            {(serviceType === 'sip' || serviceType === 'sip + swp') && (
                                 <div className="space-y-4">
                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                         {investmentType === 'sip' ? 'Monthly Investment (₹)' : 'One Time Investment (₹)'}
@@ -642,7 +642,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                             strokeWidth={3}
                                             dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
                                             name={serviceType === 'goal-setting' ? 'Total Investment' :
-                                                (serviceType === 'sip' && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
+                                                ((serviceType === 'sip' || serviceType === 'sip + swp') && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
                                         />
                                         <Line
                                             type="monotone"
@@ -672,7 +672,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                 <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">
                                     {serviceType === 'goal-setting' ? 'Total Invested' :
                                         serviceType === 'swp' ? 'Total Investment' :
-                                            (serviceType === 'sip' && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
+                                            ((serviceType === 'sip' || serviceType === 'sip + swp') && investmentType === 'lumpsum') ? 'One Time Investment' : 'Total Invested'}
                                 </h4>
                                 <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">
                                     {formatCurrency(summary.totalInvestment)}

@@ -42,7 +42,7 @@ const Header = () => {
               width={48}
               height={48}
               priority
-              className="transition-transform duration-200 hover:scale-105"
+              className="transition-transform duration-200 hover:scale-105 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
             />
           </Link>
 
