@@ -7,6 +7,7 @@ import {
     Heart,
     Calendar,
     Calculator,
+    Wallet,
     ArrowRight,
     Globe,
     SmartphoneCharging,
@@ -29,7 +30,7 @@ const Services = () => {
         },
         {
             icon: Heart,
-            title: 'Insurance & NPS (National Pension System)',
+            title: 'Insurance & NPS',
             description: 'Comprehensive life and health insurance solutions to protect your loved ones.',
             color: 'from-red-500 to-red-600',
             bgColor: 'bg-red-50',
@@ -38,7 +39,7 @@ const Services = () => {
         },
         {
             icon: Calendar,
-            title: 'SIP (Systematic Investment Plan) & SWP (Systematic Withdrawal Plan)',
+            title: 'SIP & SWP',
             description: 'Retirement planning with tax benefits and long-term wealth accumulation.',
             color: 'from-orange-500 to-orange-600',
             bgColor: 'bg-orange-50',
@@ -49,6 +50,15 @@ const Services = () => {
             icon: Calculator,
             title: 'Budgeting',
             description: 'Track your spending and saving patterns with visual insights and financial planning tools.',
+            color: 'from-indigo-500 to-indigo-600',
+            bgColor: 'bg-indigo-50',
+            textColor: 'text-indigo-700',
+            url: '/services/financial-services/budgeting'
+        },
+        {
+            icon: Wallet,
+            title: 'Daily SIP Tracker',
+            description: 'Monitor and manage your daily expenses effectively to stay within your budget.',
             color: 'from-indigo-500 to-indigo-600',
             bgColor: 'bg-indigo-50',
             textColor: 'text-indigo-700',

@@ -1,6 +1,7 @@
 'use client';
 
 import ServicePageLayout from '@/components/ServicePageLayout';
+import Image from 'next/image';
 import { TrendingUp, ShieldCheck, Calculator, Heart } from 'lucide-react';
 import NPSCalculator from '@/components/NPSCalculator';
 
@@ -53,12 +54,7 @@ const insurancePlans = {
 
 export default function InsurancePage() {
     return (
-        <ServicePageLayout
-            serviceName="Insurance & NPS Calculator"
-            serviceDescription="Comprehensive life and health insurance solutions to protect your loved ones. Secure your family's future with our range of insurance products. And Retirement planning with tax benefits and long-term wealth accumulation. Build your retirement corpus with India&apos;s most tax-efficient pension scheme."
-            serviceIcon={<Heart className="h-12 w-12 text-white" />}
-            serviceColor="bg-gradient-to-r from-red-500 to-red-600"
-        >
+       
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Health Insurance Section */}
                 <section className="mb-20">
@@ -73,9 +69,11 @@ export default function InsurancePage() {
                         {insurancePlans.health.map((plan, index) => (
                             <div key={index} className="group bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
                                 <div className="h-32 mb-6 flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800/50 rounded-xl">
-                                    <img 
+                                    <Image 
                                         src={plan.logo} 
                                         alt={plan.name} 
+                                        width={200}
+                                        height={100}
                                         className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-300 group-hover:scale-110" 
                                     />
                                 </div>
@@ -101,9 +99,11 @@ export default function InsurancePage() {
                         {insurancePlans.term.map((plan, index) => (
                             <div key={index} className="group bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
                                 <div className="h-32 mb-6 flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800/50 rounded-xl">
-                                    <img 
+                                    <Image 
                                         src={plan.logo} 
                                         alt={plan.name} 
+                                        width={200}
+                                        height={100}
                                         className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-300 group-hover:scale-110" 
                                     />
                                 </div>
@@ -208,6 +208,5 @@ export default function InsurancePage() {
     
                 <NPSCalculator />
             </div>
-        </ServicePageLayout>
     );
 }
