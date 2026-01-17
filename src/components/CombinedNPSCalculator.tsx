@@ -216,16 +216,29 @@ const CombinedNPSCalculator = () => {
     };
 
     const handleSipInputChange = (field: keyof SIPData, value: number) => {
+        let sanitizedValue = value;
+        if (field === 'monthlyInvestment') sanitizedValue = Math.min(100000, Math.max(100, value));
+        if (field === 'oneTimeInvestment') sanitizedValue = Math.min(50000000, Math.max(100000, value));
+        if (field === 'duration') sanitizedValue = Math.min(50, Math.max(1, value));
+        if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(1, value));
+
         setSipData(prev => ({
             ...prev,
-            [field]: value
+            [field]: sanitizedValue
         }));
     };
 
     const handleSwpInputChange = (field: keyof SWPData, value: number | string) => {
+        let sanitizedValue = value;
+        if (typeof value === 'number') {
+            if (field === 'monthlyWithdrawal') sanitizedValue = Math.min(100000, Math.max(1000, value));
+            if (field === 'duration') sanitizedValue = Math.min(30, Math.max(1, value));
+            if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(1, value));
+        }
+
         setSwpData(prev => ({
             ...prev,
-            [field]: value
+            [field]: sanitizedValue
         }));
     };
 
@@ -321,6 +334,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={sipInvestmentType === 'sip' ? 100 : 100000}
+                                    max={sipInvestmentType === 'sip' ? 100000 : 50000000}
                                     value={sipInvestmentType === 'sip' ? sipData.monthlyInvestment : sipData.oneTimeInvestment}
                                     onChange={(e) => {
                                         if (sipInvestmentType === 'sip') {
@@ -357,6 +372,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={1}
+                                    max={50}
                                     value={sipData.duration}
                                     onChange={(e) => handleSipInputChange('duration', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -388,6 +405,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={1}
+                                    max={50}
                                     step="0.5"
                                     value={sipData.expectedReturns}
                                     onChange={(e) => handleSipInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
@@ -474,6 +493,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={1000}
+                                    max={100000}
                                     value={swpData.monthlyWithdrawal}
                                     onChange={(e) => handleSwpInputChange('monthlyWithdrawal', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -504,6 +525,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={1}
+                                    max={30}
                                     value={swpData.duration}
                                     onChange={(e) => handleSwpInputChange('duration', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -535,6 +558,8 @@ const CombinedNPSCalculator = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    min={1}
+                                    max={50}
                                     step="0.5"
                                     value={swpData.expectedReturns}
                                     onChange={(e) => handleSwpInputChange('expectedReturns', parseFloat(e.target.value) || 0)}

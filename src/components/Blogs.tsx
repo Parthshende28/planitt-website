@@ -1,61 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-
-interface Blog {
-  title: string;
-  excerpt: string;
-  image: string;
-  url: string;
-  platform?: string;
-}
-
-const blogs: Blog[] = [
-  {
-    title: "How Technology Is Transforming Financial Planning",
-    excerpt:
-      "Discover how modern applications, dashboards, and automation are reshaping investment management.",
-    image: "/blogs/fintech.jpg",
-    url: "https://yourblog.blogspot.com/2024/technology-financial-planning",
-    platform: "Blogger",
-  },
-  {
-    title: "Why Scalable App Architecture Matters",
-    excerpt:
-      "Learn why scalability, security, and performance are critical when building modern mobile apps.",
-    image: "/blogs/app-architecture.jpg",
-    url: "https://yourblog.blogspot.com/2024/scalable-app-architecture",
-    platform: "Blogger",
-  },
-  {
-    title: "Web Performance Optimization Best Practices",
-    excerpt:
-      "Practical techniques to improve website speed, UX, and Core Web Vitals.",
-    image: "/blogs/web-performance.jpg",
-    url: "https://yourblog.blogspot.com/2024/web-performance",
-    platform: "Blogger",
-  },
-];
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
+import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 export default function Blogs() {
   return (
@@ -79,63 +25,24 @@ export default function Blogs() {
         </motion.div>
 
         {/* Blog Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {blogs.map((blog, index) => (
-            <motion.a
-              key={index}
-              variants={cardVariants}
-              href={blog.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block rounded-2xl overflow-hidden
-                         border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900
-                         transition-all duration-300
-                         hover:-translate-y-1 hover:shadow-xl"
-            >
-              {/* Image */}
-              <div className="relative h-56 w-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className="object-cover transition-transform duration-500
-                             group-hover:scale-105"
-                />
-              </div>
-
-              {/* Hover Overlay */}
-              <div
-                className="absolute inset-0 bg-black/70 backdrop-blur-sm
-                           opacity-0 group-hover:opacity-100
-                           transition-opacity duration-300
-                           flex flex-col justify-end p-6"
-              >
-                <span className="text-xs font-semibold uppercase tracking-wide text-indigo-300 mb-2">
-                  {blog.platform}
-                </span>
-
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  {blog.title}
-                </h3>
-
-                <p className="text-gray-200 text-sm mb-4 line-clamp-3">
-                  {blog.excerpt}
-                </p>
-
-                <div className="flex items-center gap-2 text-indigo-300 font-medium">
-                  Read Article
-                  <ArrowUpRight size={16} />
-                </div>
-              </div>
-            </motion.a>
-          ))}
-        </motion.div>
+        <div className="flex justify-center items-center min-h-[400px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center p-12 rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
+          >
+            <div className="inline-flex items-center justify-center p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mb-6">
+              <Loader2 className="h-8 w-8 text-indigo-600 dark:text-indigo-400 animate-spin" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              Coming Soon
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 max-w-sm mx-auto">
+              Our team is working on insightful articles. Stay tuned for updates on technology, finance, and innovation.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
