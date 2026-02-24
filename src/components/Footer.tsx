@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -141,7 +142,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
+            © {currentYear} Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
             <a
               href="#about"
               className="text-gray-400 hover:text-blue-400 transition-colors duration-200 cursor-pointer"

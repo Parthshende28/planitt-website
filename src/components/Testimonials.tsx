@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
 const Testimonials = () => {
+    const startYear = 2020;
+    const currentYear = new Date().getFullYear();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const testimonials = [
@@ -183,7 +185,7 @@ const Testimonials = () => {
                         <div className="text-gray-600 dark:text-gray-400">Assets Managed</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">6+</div>
+                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{currentYear - startYear}+</div>
                         <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
                     </div>
                     <div className="text-center">

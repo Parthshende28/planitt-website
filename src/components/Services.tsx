@@ -265,10 +265,9 @@ const Services = () => {
                                 <a
                                     href="/services/financial-services/budgeting"
                                     className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900
-             text-blue-600 dark:text-blue-400
+             text-blue-600 dark:text-white
              font-semibold rounded-lg
-             hover:text-blue-700 dark:hover:text-blue-300
-             dark:hover:bg-gray-800
+             hover:text-blue-700
              transition-colors duration-300 shadow-lg"
                                 >
                                     Budgeting
