@@ -1,56 +1,92 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
-const Testimonials = () => {
+type HomeMode = 'all' | 'financial' | 'technical';
+
+type Testimonial = {
+    name: string;
+    role: string;
+    location: string;
+    content: string;
+    rating: number;
+    investment: string;
+};
+
+type TestimonialsProps = {
+    mode?: HomeMode;
+};
+
+const financialTestimonials: Testimonial[] = [
+    {
+        name: 'Priya Sharma',
+        role: 'School Teacher',
+        location: 'Mumbai',
+        content: 'Piyush helped me start my SIP journey 3 years ago. I built a corpus through disciplined investing and structured guidance.',
+        rating: 5,
+        investment: 'Rs 10,000/month SIP',
+    },
+    {
+        name: 'Rajesh Kumar',
+        role: 'Software Engineer',
+        location: 'Bangalore',
+        content: 'I was confused about planning. The team gave me a clear roadmap across insurance, mutual funds, and retirement planning.',
+        rating: 5,
+        investment: 'Rs 25,000/month diversified',
+    },
+    {
+        name: 'Amit Singh',
+        role: 'Business Owner',
+        location: 'Pune',
+        content: 'The balance of growth and safety in my portfolio was exactly what I needed. The advisory quality has been consistent.',
+        rating: 5,
+        investment: 'Rs 50,000/month portfolio',
+    },
+];
+
+const technicalTestimonials: Testimonial[] = [
+    {
+        name: 'Nikita Rao',
+        role: 'Startup Founder',
+        location: 'Hyderabad',
+        content: 'Planitt delivered our web platform quickly with a clean architecture. Their communication and release discipline were excellent.',
+        rating: 5,
+        investment: 'Website + cloud deployment',
+    },
+    {
+        name: 'Vikram Deshmukh',
+        role: 'Operations Head',
+        location: 'Pune',
+        content: 'Their team automated key manual workflows and cut our turnaround time significantly. Execution was practical and stable.',
+        rating: 5,
+        investment: 'DevOps and automation rollout',
+    },
+    {
+        name: 'Sneha Kulkarni',
+        role: 'Product Manager',
+        location: 'Mumbai',
+        content: 'We got app, backend, and cloud support in one engagement. Delivery quality and documentation were better than expected.',
+        rating: 5,
+        investment: 'Cross-platform app delivery',
+    },
+];
+
+const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
     const startYear = 2020;
     const currentYear = new Date().getFullYear();
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const testimonials = [
-        {
-            name: 'Priya Sharma',
-            role: 'School Teacher',
-            location: 'Mumbai',
-            content: 'Piyush helped me start my SIP journey 3 years ago. Today, I have built a corpus of ₹5 lakhs through disciplined investing. His guidance on mutual funds has been invaluable for my retirement planning.',
-            rating: 5,
-            investment: '₹10,000/month SIP'
-        },
-        {
-            name: 'Rajesh Kumar',
-            role: 'Software Engineer',
-            location: 'Bangalore',
-            content: 'As a young professional, I was confused about financial planning. Piyush simplified everything and created a comprehensive plan including insurance, mutual funds, and NPS. I feel secure about my financial future.',
-            rating: 5,
-            investment: '₹25,000/month diversified'
-        },
-        {
-            name: 'Sunita Patel',
-            role: 'Bank Manager',
-            location: 'Delhi',
-            content: 'The financial calculator on this website helped me understand the power of compounding. Piyush\'s expertise in NPS and tax-saving investments has helped me optimize my tax planning significantly.',
-            rating: 5,
-            investment: '₹15,000/month NPS + MF'
-        },
-        {
-            name: 'Amit Singh',
-            role: 'Business Owner',
-            location: 'Pune',
-            content: 'I needed help with my children\'s education fund and retirement planning. Piyush created a perfect balance of growth and safety investments. The returns have exceeded my expectations.',
-            rating: 5,
-            investment: '₹50,000/month portfolio'
-        },
-        {
-            name: 'Meera Joshi',
-            role: 'Government Employee',
-            location: 'Ahmedabad',
-            content: 'Piyush helped me understand the importance of insurance and created a comprehensive protection plan for my family. His patient approach and clear explanations made complex financial concepts easy to understand.',
-            rating: 5,
-            investment: '₹20,000/month + Insurance'
-        }
-    ];
+    const testimonials = useMemo(() => {
+        if (mode === 'financial') return financialTestimonials;
+        if (mode === 'technical') return technicalTestimonials;
+        return [...financialTestimonials, ...technicalTestimonials];
+    }, [mode]);
+
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [mode]);
 
     const nextTestimonial = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -67,7 +103,6 @@ const Testimonials = () => {
     return (
         <section id="testimonials" className="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -76,15 +111,17 @@ const Testimonials = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                        What Our Clients Say
+                        {mode === 'financial' ? 'Financial Client Feedback' : mode === 'technical' ? 'Technical Client Feedback' : 'What Our Clients Say'}
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                        Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say
-                        about their financial journey with Planitt.
+                        {mode === 'financial'
+                            ? 'Feedback from clients who used our planning, protection, and wealth advisory services.'
+                            : mode === 'technical'
+                                ? 'Feedback from clients who partnered with us for product delivery, cloud, and automation.'
+                                : 'Client outcomes across both financial advisory and technical services.'}
                     </p>
                 </motion.div>
 
-                {/* Testimonials Carousel */}
                 <div className="relative">
                     <div className="overflow-hidden">
                         <AnimatePresence mode="wait">
@@ -97,27 +134,23 @@ const Testimonials = () => {
                                 className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 lg:p-12 border border-transparent dark:border-gray-800 transition-colors duration-300"
                             >
                                 <div className="max-w-4xl mx-auto">
-                                    {/* Quote Icon */}
                                     <div className="flex justify-center mb-8">
                                         <div className="bg-blue-600 dark:bg-blue-700 p-4 rounded-full shadow-lg">
                                             <Quote className="h-8 w-8 text-white" />
                                         </div>
                                     </div>
 
-                                    {/* Testimonial Content */}
                                     <div className="text-center space-y-6">
                                         <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed italic">
                                             &ldquo;{testimonials[currentIndex].content}&rdquo;
                                         </p>
 
-                                        {/* Rating */}
                                         <div className="flex justify-center space-x-1">
                                             {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                                                 <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
                                             ))}
                                         </div>
 
-                                        {/* Client Info */}
                                         <div className="space-y-2">
                                             <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">
                                                 {testimonials[currentIndex].name}
@@ -138,7 +171,6 @@ const Testimonials = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Navigation Arrows */}
                     <button
                         onClick={prevTestimonial}
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-gray-100 dark:border-gray-700"
@@ -154,7 +186,6 @@ const Testimonials = () => {
                     </button>
                 </div>
 
-                {/* Dots Indicator */}
                 <div className="flex justify-center space-x-2 mt-8">
                     {testimonials.map((_, index) => (
                         <button
@@ -168,7 +199,6 @@ const Testimonials = () => {
                     ))}
                 </div>
 
-                {/* Stats Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -181,8 +211,8 @@ const Testimonials = () => {
                         <div className="text-gray-600 dark:text-gray-400">Happy Clients</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">₹50Cr+</div>
-                        <div className="text-gray-600 dark:text-gray-400">Assets Managed</div>
+                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">{mode === 'technical' ? '30+' : 'Rs 50L+'}</div>
+                        <div className="text-gray-600 dark:text-gray-400">{mode === 'technical' ? 'Tech Deliveries' : 'Financial Portfolio Managed'}</div>
                     </div>
                     <div className="text-center">
                         <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{currentYear - startYear}+</div>

@@ -4,7 +4,13 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
-const Contact = () => {
+type HomeMode = 'all' | 'financial' | 'technical';
+
+type ContactProps = {
+    mode?: HomeMode;
+};
+
+const Contact = ({ mode = 'all' }: ContactProps) => {
     const [firstName, setFirstName] = useState('');
     const [phone, setPhone] = useState('');
 
@@ -15,7 +21,14 @@ const Contact = () => {
             return;
         }
 
-        const message = `Hello I am ${firstName} and I am interested in investing. Please guide me...`;
+        const inquiryType =
+            mode === 'financial'
+                ? 'financial planning'
+                : mode === 'technical'
+                    ? 'technical services'
+                    : 'financial and technical services';
+
+        const message = `Hello I am ${firstName} and I am interested in ${inquiryType}. Please guide me.`;
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/918605727484?text=${encodedMessage}`;
 
@@ -162,8 +175,11 @@ const Contact = () => {
                         Get In Touch
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                        Ready to start your financial journey? Contact us for a free consultation
-                        and personalized financial planning advice.
+                        {mode === 'financial'
+                            ? 'Ready to start your financial journey? Contact us for personalized planning advice.'
+                            : mode === 'technical'
+                                ? 'Ready to build your product or platform? Contact us for technical consultation and delivery planning.'
+                                : 'Ready to grow with finance and technology support? Contact us for a free consultation.'}
                     </p>
                 </motion.div>
 
@@ -178,7 +194,11 @@ const Contact = () => {
                         {/* Centered Contact Form */}
                         <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-transparent dark:border-gray-800 transition-colors duration-300">
                             <h4 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                                Send Message on WhatsApp
+                                {mode === 'financial'
+                                    ? 'Send Financial Inquiry'
+                                    : mode === 'technical'
+                                        ? 'Send Technical Inquiry'
+                                        : 'Send Message on WhatsApp'}
                             </h4>
                             <form onSubmit={handleWhatsAppMessage} className="space-y-6">
                                 <div>

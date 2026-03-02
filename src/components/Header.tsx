@@ -13,8 +13,8 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
-    { name: 'Services', href: '/#services' },
-    { name: 'Blogs', href: '/#blogs' },
+    { name: 'Solutions', href: '/#services' },
+    // { name: 'Blogs', href: '/#blogs' }, // Blog/Insights section hidden on homepage
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'About Us', href: '/#about' },
     { name: 'Testimonials', href: '/#testimonials' },
