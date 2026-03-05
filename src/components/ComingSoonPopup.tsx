@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Sparkles, X } from "lucide-react";
+import { Sparkles, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ComingSoonPopup() {
@@ -73,14 +72,6 @@ export default function ComingSoonPopup() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/services/technical-services/app-dev"
-                    onClick={() => setOpen(false)}
-                    className="btn-depth inline-flex items-center gap-2 rounded-xl bg-white text-zinc-900 px-6 py-3 font-semibold"
-                  >
-                    Know More
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
                   <button
                     onClick={() => setOpen(false)}
                     className="inline-flex items-center rounded-xl bg-white/10 border border-white/20 px-6 py-3 font-semibold"
