@@ -83,6 +83,30 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
         if (mode === 'technical') return technicalTestimonials;
         return [...financialTestimonials, ...technicalTestimonials];
     }, [mode]);
+    const palette =
+        mode === 'technical'
+            ? {
+                panel: 'from-zinc-100 to-slate-200 dark:from-zinc-900 dark:to-slate-900',
+                quoteBg: 'bg-zinc-600 dark:bg-zinc-700',
+                role: 'text-zinc-700 dark:text-zinc-300',
+                chip: 'bg-zinc-700 dark:bg-zinc-600',
+                dotActive: 'bg-zinc-600 dark:bg-zinc-400',
+                statA: 'text-zinc-700 dark:text-zinc-300',
+                statB: 'text-slate-600 dark:text-slate-300',
+                statC: 'text-neutral-600 dark:text-neutral-300',
+                statD: 'text-zinc-500 dark:text-zinc-400',
+            }
+            : {
+                panel: 'from-[#fff3d4] to-[#f2deab] dark:from-[#3b2f17] dark:to-[#4d3c1d]',
+                quoteBg: 'bg-[#b78622] dark:bg-[#8d6923]',
+                role: 'text-[#a9791a] dark:text-[#e7c973]',
+                chip: 'bg-[#b78622] dark:bg-[#8d6923]',
+                dotActive: 'bg-[#b78622] dark:bg-[#e7c973]',
+                statA: 'text-[#b78622] dark:text-[#e7c973]',
+                statB: 'text-[#9e721f] dark:text-[#d8b25d]',
+                statC: 'text-[#85652a] dark:text-[#c2a463]',
+                statD: 'text-[#b58a3a] dark:text-[#e6c16a]',
+            };
 
     useEffect(() => {
         setCurrentIndex(0);
@@ -131,11 +155,11 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -50 }}
                                 transition={{ duration: 0.5 }}
-                                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 lg:p-12 border border-transparent dark:border-gray-800 transition-colors duration-300"
+                                className={`bg-gradient-to-br ${palette.panel} rounded-3xl p-8 lg:p-12 border border-transparent dark:border-gray-800 transition-colors duration-300`}
                             >
                                 <div className="max-w-4xl mx-auto">
                                     <div className="flex justify-center mb-8">
-                                        <div className="bg-blue-600 dark:bg-blue-700 p-4 rounded-full shadow-lg">
+                                        <div className={`${palette.quoteBg} p-4 rounded-full shadow-lg`}>
                                             <Quote className="h-8 w-8 text-white" />
                                         </div>
                                     </div>
@@ -155,13 +179,13 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                                             <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">
                                                 {testimonials[currentIndex].name}
                                             </h3>
-                                            <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                                            <p className={`${palette.role} font-semibold`}>
                                                 {testimonials[currentIndex].role}
                                             </p>
                                             <p className="text-gray-600 dark:text-gray-400">
                                                 {testimonials[currentIndex].location}
                                             </p>
-                                            <div className="inline-block bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">
+                                            <div className={`inline-block ${palette.chip} text-white px-4 py-2 rounded-full text-sm font-medium shadow-md`}>
                                                 {testimonials[currentIndex].investment}
                                             </div>
                                         </div>
@@ -192,7 +216,7 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                             key={index}
                             onClick={() => goToTestimonial(index)}
                             className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentIndex
-                                ? 'bg-blue-600 dark:bg-blue-400 scale-125'
+                                ? `${palette.dotActive} scale-125`
                                 : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
                                 }`}
                         />
@@ -207,19 +231,19 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                     className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8"
                 >
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+                        <div className={`text-4xl font-bold ${palette.statA} mb-2`}>50+</div>
                         <div className="text-gray-600 dark:text-gray-400">Happy Clients</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">{mode === 'technical' ? '30+' : 'Rs 50L+'}</div>
+                        <div className={`text-4xl font-bold ${palette.statB} mb-2`}>{mode === 'technical' ? '30+' : 'Rs 50L+'}</div>
                         <div className="text-gray-600 dark:text-gray-400">{mode === 'technical' ? 'Tech Deliveries' : 'Financial Portfolio Managed'}</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{currentYear - startYear}+</div>
+                        <div className={`text-4xl font-bold ${palette.statC} mb-2`}>{currentYear - startYear}+</div>
                         <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">100%</div>
+                        <div className={`text-4xl font-bold ${palette.statD} mb-2`}>100%</div>
                         <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
                     </div>
                 </motion.div>

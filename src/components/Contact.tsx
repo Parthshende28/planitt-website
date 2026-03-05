@@ -13,6 +13,24 @@ type ContactProps = {
 const Contact = ({ mode = 'all' }: ContactProps) => {
     const [firstName, setFirstName] = useState('');
     const [phone, setPhone] = useState('');
+    const palette =
+        mode === 'technical'
+            ? {
+                bg: 'bg-zinc-50 dark:bg-zinc-950',
+                ring: 'focus:ring-zinc-500',
+                button: 'from-zinc-600 to-slate-700 hover:from-zinc-700 hover:to-slate-800',
+            }
+            : mode === 'financial'
+                ? {
+                    bg: 'bg-[#fffbef] dark:bg-[#2a2111]',
+                    ring: 'focus:ring-[#b78622]',
+                    button: 'from-[#b78622] to-[#d8b35c] hover:from-[#a7771b] hover:to-[#c7a149]',
+                }
+                : {
+                    bg: 'bg-gray-50 dark:bg-gray-950',
+                    ring: 'focus:ring-blue-500',
+                    button: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
+                };
 
     const handleWhatsAppMessage = (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,7 +54,7 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
+        <section id="contact" className={`py-20 ${palette.bg} relative overflow-hidden transition-colors duration-300`}>
             {/* Full Section Gradient Noodles Illustration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* WhatsApp Green Noodles - Top Left */}
@@ -210,7 +228,7 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
                                         id="firstName"
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your first name"
                                         required
                                     />
@@ -225,14 +243,14 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your phone number"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+                                    className={`w-full bg-gradient-to-r ${palette.button} text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center`}
                                 >
                                     <MessageCircle className="mr-2 h-5 w-5" />
                                     Send Message on WhatsApp

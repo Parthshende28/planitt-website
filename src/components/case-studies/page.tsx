@@ -1,10 +1,16 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { FileText, ArrowUpRight } from "lucide-react";
+
+type StudyDomain = "financial" | "technical";
 
 interface CaseStudy {
   title: string;
   description: string;
   industry: string;
   pdf: string;
+  domain: StudyDomain;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -12,8 +18,9 @@ const caseStudies: CaseStudy[] = [
     title: "Investor Dashboard Platform",
     description:
       "An in-house private fintech platform built for investors to track portfolios, profits, and growth analytics securely.",
-    industry: "Fintech • In-house",
+    industry: "Fintech | In-house",
     pdf: "/case-studies/investor-dashboard.pdf",
+    domain: "financial",
   },
   {
     title: "ZeyNix E-commerce Platform",
@@ -21,73 +28,118 @@ const caseStudies: CaseStudy[] = [
       "A high-performance fashion e-commerce platform focused on scalability, UX, and conversion optimization.",
     industry: "E-commerce",
     pdf: "/case-studies/zeynix-case-study.pdf",
+    domain: "technical",
   },
   {
     title: "Krypsm Trading Dashboard",
     description:
       "A secure crypto trading dashboard with real-time analytics, charts, and role-based access control.",
-    industry: "Fintech • Web App",
+    industry: "Fintech | Web App",
     pdf: "/case-studies/krypsm-case-study.pdf",
+    domain: "financial",
   },
 ];
 
 export default function CaseStudiesPage() {
-  return (
-    <section className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-      <div className="container mx-auto px-6 py-20">
+  const [mode, setMode] = useState<StudyDomain>("financial");
 
-        {/* Header */}
+  const isFinancial = mode === "financial";
+
+  const palette = isFinancial
+    ? {
+        page: "from-[#fff8e8] via-white to-[#f3e0af] dark:from-[#1f1a11] dark:via-[#221c13] dark:to-[#3b2d17]",
+        tabActive: "from-[#b78622] to-[#d8b35c] text-white",
+        tabIdle:
+          "text-gray-700 dark:text-gray-300 hover:bg-[#fff5dc] dark:hover:bg-[#44351b]",
+        headerAccent: "text-[#b78622] dark:text-[#e7c973]",
+        cardHover: "hover:border-[#c79a3a] dark:hover:border-[#e7c973]",
+        iconTone:
+          "bg-[#fff1cf] dark:bg-[#4a3818]/70 text-[#b78622] dark:text-[#e7c973]",
+        textTone: "text-[#a9781e] dark:text-[#e7c973]",
+      }
+    : {
+        page: "from-zinc-100 via-white to-slate-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-slate-900",
+        tabActive: "from-zinc-600 to-slate-600 text-white",
+        tabIdle:
+          "text-gray-700 dark:text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800",
+        headerAccent: "text-zinc-700 dark:text-zinc-300",
+        cardHover: "hover:border-zinc-500 dark:hover:border-zinc-400",
+        iconTone:
+          "bg-zinc-200 dark:bg-zinc-700/60 text-zinc-700 dark:text-zinc-300",
+        textTone: "text-zinc-700 dark:text-zinc-300",
+      };
+
+  const filteredStudies = useMemo(
+    () => caseStudies.filter((item) => item.domain === mode),
+    [mode]
+  );
+
+  return (
+    <section
+      className={`bg-gradient-to-br ${palette.page} text-gray-900 dark:text-gray-100 transition-colors duration-300`}
+    >
+      <div className="container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Case Studies
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Case Studies</h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Detailed breakdowns of our projects, processes, and results —
+            Detailed breakdowns of our projects, processes, and results,
             available as downloadable PDFs.
           </p>
         </div>
 
-        {/* Cards */}
+        <div className="max-w-md mx-auto mb-10">
+          <div className="bg-white/80 dark:bg-gray-900/70 rounded-2xl p-1.5 border border-gray-200 dark:border-gray-700 grid grid-cols-2 gap-1">
+            <button
+              onClick={() => setMode("financial")}
+              className={`h-11 rounded-xl font-semibold transition-all duration-200 ${
+                isFinancial
+                  ? `bg-gradient-to-r ${palette.tabActive}`
+                  : palette.tabIdle
+              }`}
+            >
+              Financial
+            </button>
+            <button
+              onClick={() => setMode("technical")}
+              className={`h-11 rounded-xl font-semibold transition-all duration-200 ${
+                !isFinancial
+                  ? `bg-gradient-to-r ${palette.tabActive}`
+                  : palette.tabIdle
+              }`}
+            >
+              Technical
+            </button>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((item, index) => (
+          {filteredStudies.map((item) => (
             <a
-              key={index}
+              key={item.title}
               href={item.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="
-                group relative
-                bg-gray-50 dark:bg-gray-900
-                border border-gray-200 dark:border-gray-800
-                rounded-2xl p-6
-                hover:border-indigo-500 dark:hover:border-indigo-400
-                hover:shadow-xl
-                transition
-              "
+              className={`group relative bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 ${palette.cardHover} hover:shadow-xl transition`}
             >
-              {/* Icon */}
-              <div className="mb-4 inline-flex items-center justify-center
-                              w-12 h-12 rounded-xl
-                              bg-indigo-100 dark:bg-indigo-500/20
-                              text-indigo-600 dark:text-indigo-400">
+              <div
+                className={`mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl ${palette.iconTone}`}
+              >
                 <FileText />
               </div>
 
-              {/* Content */}
-              <h3 className="text-xl font-semibold mb-2">
-                {item.title}
-              </h3>
+              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
 
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                 {item.description}
               </p>
 
-              <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+              <span className={`text-xs font-medium ${palette.textTone}`}>
                 {item.industry}
               </span>
 
-              {/* CTA */}
-              <div className="mt-6 flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium">
+              <div
+                className={`mt-6 flex items-center gap-2 ${palette.textTone} font-medium`}
+              >
                 View Case Study
                 <ArrowUpRight
                   size={16}
@@ -97,7 +149,12 @@ export default function CaseStudiesPage() {
             </a>
           ))}
         </div>
+
+        <p className={`text-center mt-10 text-sm ${palette.headerAccent}`}>
+          Showing {isFinancial ? "financial" : "technical"} case studies
+        </p>
       </div>
     </section>
   );
 }
+

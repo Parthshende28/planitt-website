@@ -13,7 +13,7 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
-    { name: 'Solutions', href: '/#services' },
+    { name: 'Services', href: '/#services' },
     // { name: 'Blogs', href: '/#blogs' }, // Blog/Insights section hidden on homepage
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'About Us', href: '/#about' },
@@ -37,12 +37,12 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" aria-label="Planitt Home" className="flex items-center">
             <Image
-              src="/planitt-logo.png"
+              src="/planitt-app-black.png"
               alt="Planitt Logo"
-              width={48}
-              height={48}
+              width={120}
+              height={40}
               priority
-              className="transition-transform duration-200 hover:scale-105 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+              className="h-10 w-auto transition-transform duration-200 hover:scale-105 drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
             />
           </Link>
 
@@ -54,9 +54,11 @@ const Header = () => {
                   key={item.name}
                   href={item.href}
                   className="
+                    nav-gradient-underline
                     text-gray-700 dark:text-gray-300
-                    hover:text-blue-600 dark:hover:text-blue-400
+                    hover:text-[#b78622] dark:hover:text-zinc-300
                     font-medium transition-colors
+                    focus:outline-none focus-visible:outline-none
                   "
                 >
                   {item.name}
@@ -139,6 +141,7 @@ const Header = () => {
                     block px-3 py-2 rounded-md
                     text-gray-700 dark:text-gray-300
                     hover:bg-gray-100 dark:hover:bg-gray-900
+                    focus:outline-none focus-visible:outline-none
                   "
                 >
                   {item.name}
