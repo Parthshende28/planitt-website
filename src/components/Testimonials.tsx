@@ -48,14 +48,6 @@ const financialTestimonials: Testimonial[] = [
 
 const technicalTestimonials: Testimonial[] = [
     {
-        name: 'Piyush Tembhekar',
-        role: 'Planitt',
-        location: 'India',
-        content: "Lancers.io transformed our financial planning platform with cutting-edge AI integration. The team's expertise in data visualization exceeded our expectations. Our clients now can plan their financial decisions easily.",
-        rating: 5,
-        investment: 'AI-powered planning platform',
-    },
-    {
         name: 'Vipin Soni',
         role: 'Bhav App',
         location: 'India',
@@ -67,7 +59,7 @@ const technicalTestimonials: Testimonial[] = [
         name: 'Mohak Wankhede',
         role: 'Zeynix.Co',
         location: 'India',
-        content: 'Working with Lancers.io was a game-changer for our e-commerce platform. They delivered a seamless shopping experience with robust payment systems and intuitive product management. Our sales have increased by 40% since the launch.',
+        content: 'Working with Planitt Solutions was a game-changer for our e-commerce platform. They delivered a seamless shopping experience with robust payment systems and intuitive product management. Our sales have increased by 40% since the launch.',
         rating: 4,
         investment: 'E-commerce platform delivery',
     },
@@ -75,10 +67,10 @@ const technicalTestimonials: Testimonial[] = [
         name: 'Mubashshir Ali',
         role: 'Krypsm',
         location: 'India',
-        content: "The Krypsm platform showcases Lancers.io's mastery of complex financial applications. Their implementation of advanced security measures and blockchain integration has given us a competitive edge in the crypto market. Exceptional work!",
+        content: "The Krypsm platform showcases Planitt mastery of complex financial applications. Their implementation of advanced security measures and blockchain integration has given us a competitive edge in the crypto market. Exceptional work!",
         rating: 4,
         investment: 'Crypto platform and security',
-    },
+    }
 ];
 
 const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {

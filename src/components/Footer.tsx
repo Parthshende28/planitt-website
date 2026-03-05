@@ -16,13 +16,13 @@ const Footer = () => {
               {/* Logo Wrapper */}
               <div className="mr-3 h-10 w-10 flex items-center justify-center rounded-full bg-gradient-to-br from-[#f5d37a] to-[#b8bcc3] p-[2px]">
                 <div className="h-full w-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                <Image
-                  src="/planitt-app-black.png"
-                  alt="Planitt Logo"
-                  width={30}
-                  height={30}
-                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]"
-                />
+                  <Image
+                    src="/planitt-app-black.png"
+                    alt="Planitt Logo"
+                    width={30}
+                    height={30}
+                    className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]"
+                  />
                 </div>
               </div>
 
@@ -43,8 +43,8 @@ const Footer = () => {
             <div className="flex gap-8">
               {/* Left Side - Contact Info */}
               <div className="space-y-3 flex-1">
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-[#f3cf72]" />
+                <div className="flex items-center space-x-3 hover:text-[#f3cf72]">
+                  <Mail className="h-5 w-5" />
                   <a
                     href="mailto:planitt.official@gmail.com"
                     className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
@@ -52,8 +52,8 @@ const Footer = () => {
                     planitt.official@gmail.com
                   </a>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-[#f3cf72]" />
+                <div className="flex items-center hover:text-[#f3cf72] space-x-3">
+                  <Phone className="h-5 w-5" />
                   <a
                     href="tel:+918605727484"
                     className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
@@ -61,13 +61,13 @@ const Footer = () => {
                     +91 8605727484
                   </a>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-[#bfc3ca]" />
+                <div className="flex items-center hover:text-[#f3cf72] space-x-3">
+                  <MapPin className="h-5 w-5" />
                   <a
                     href="https://maps.app.goo.gl/kmNZLRBcutkGLA7XA?g_st=aw"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 text-sm hover:text-[#bfc3ca] transition-colors duration-200"
+                    className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
                   >
                     Gorewada, Nagpur
                   </a>
@@ -89,7 +89,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/company/planittt/posts/?feedView=all"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-[#bfc3ca] transition-colors duration-200"
+                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
                 >
                   <Linkedin className="h-5 w-5" />
                   <span>planitt</span>
@@ -145,7 +145,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            (c) {currentYear} Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
+            &copy; {currentYear} Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
             <a
               href="#about"
               className="text-gray-400 hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
