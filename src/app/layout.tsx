@@ -18,8 +18,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Planitt - Plan Your Dreams with Us",
-  description: "Professional financial services including Mutual Funds, SIP, FD, Insurance, and NPS. Led by CEO & Financial Distributor Piyush Tembhekar.",
-  keywords: "financial planning, mutual funds, SIP, FD, insurance, NPS, financial advisor, Piyush Tembhekar",
+  description: "Planitt provides integrated financial advisory and technical solutions including SIP, insurance, NPS, app development, web development, cloud, and cybersecurity services.",
+  keywords: "fintech, financial planning, mutual funds, SIP, insurance, NPS, app development, website development, cloud services, cybersecurity, digital transformation",
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',

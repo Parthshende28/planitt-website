@@ -189,7 +189,7 @@ Thank You.`;
         <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
 
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <section className="relative bg-gradient-to-r from-[#b78622] to-zinc-600 text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center">
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">Join Our Team</h1>
@@ -207,7 +207,7 @@ Thank You.`;
                     <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">Why Work With Us</h2>
                     <div className="grid md:grid-cols-2 gap-12">
                         <div>
-                            <h3 className="text-xl font-semibold mb-4 dark:text-blue-400">Our Culture</h3>
+                            <h3 className="text-xl font-semibold mb-4 dark:text-[#e7c973]">Our Culture</h3>
                             <p className="text-gray-700 dark:text-gray-300 mb-6">
                                 At Planitt, we believe in fostering a collaborative environment where innovation thrives. Our team is dedicated to making financial planning accessible to everyone, and we&apos;re passionate about helping our clients achieve their goals.
                             </p>
@@ -216,7 +216,7 @@ Thank You.`;
                             </p>
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold mb-4 dark:text-blue-400">Growth & Development</h3>
+                            <h3 className="text-xl font-semibold mb-4 dark:text-[#e7c973]">Growth & Development</h3>
                             <p className="text-gray-700 dark:text-gray-300 mb-6">
                                 We&apos;re committed to helping our team members grow both personally and professionally. We provide ongoing training, mentorship, and opportunities to work on challenging projects that expand your skills and knowledge.
                             </p>
@@ -229,15 +229,15 @@ Thank You.`;
                         <h3 className="text-xl font-semibold mb-4 dark:text-white">Benefits & Perks</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm dark:shadow-gray-950/50 border border-transparent dark:border-gray-700">
-                                <h4 className="font-medium text-blue-600 dark:text-blue-400">Competitive Salary</h4>
+                                <h4 className="font-medium text-[#b78622] dark:text-[#e7c973]">Competitive Salary</h4>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Compensation that values your expertise</p>
                             </div>
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm dark:shadow-gray-950/50 border border-transparent dark:border-gray-700">
-                                <h4 className="font-medium text-blue-600 dark:text-blue-400">Learning Budget</h4>
+                                <h4 className="font-medium text-[#b78622] dark:text-[#e7c973]">Learning Budget</h4>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Resources for professional development</p>
                             </div>
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm dark:shadow-gray-950/50 border border-transparent dark:border-gray-700">
-                                <h4 className="font-medium text-blue-600 dark:text-blue-400">Flexible Work</h4>
+                                <h4 className="font-medium text-[#b78622] dark:text-[#e7c973]">Flexible Work</h4>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Hybrid work policy for better work-life balance</p>
                             </div>
                         </div>
@@ -254,7 +254,7 @@ Thank You.`;
                         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-950/50 p-6 mb-8 border border-transparent dark:border-gray-700">
                             <button
                                 onClick={() => setSelectedJob(null)}
-                                className="text-blue-600 dark:text-blue-400 mb-4 flex items-center hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                                className="text-[#b78622] dark:text-[#e7c973] mb-4 flex items-center hover:text-[#9f7220] dark:hover:text-[#f0d996] transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -264,7 +264,7 @@ Thank You.`;
 
                             <h3 className="text-2xl font-bold mb-2 dark:text-white">{selectedJob.title}</h3>
                             <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm px-3 py-1 rounded-full">{selectedJob.department}</span>
+                                <span className="bg-[#fff1cf] dark:bg-[#4a3818]/60 text-[#8f651a] dark:text-[#e7c973] text-sm px-3 py-1 rounded-full">{selectedJob.department}</span>
                                 <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm px-3 py-1 rounded-full">{selectedJob.location}</span>
                                 <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-sm px-3 py-1 rounded-full">{selectedJob.type}</span>
                             </div>
@@ -310,7 +310,7 @@ Thank You.`;
                             </div>
 
                             <div className="text-center">
-                                <a href="#application-form" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300">
+                                <a href="#application-form" className="inline-block bg-[#b78622] hover:bg-[#9f7220] text-white font-medium py-2 px-6 rounded-md transition-colors duration-300">
                                     Apply for this Position
                                 </a>
                             </div>
@@ -322,14 +322,14 @@ Thank You.`;
                                     <div className="p-6">
                                         <h3 className="text-xl font-bold mb-2 dark:text-white">{job.title}</h3>
                                         <div className="flex flex-wrap gap-2 mb-3">
-                                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded-full">{job.department}</span>
+                                            <span className="bg-[#fff1cf] dark:bg-[#4a3818]/60 text-[#8f651a] dark:text-[#e7c973] text-xs px-2 py-1 rounded-full">{job.department}</span>
                                             <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs px-2 py-1 rounded-full">{job.location}</span>
                                             <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs px-2 py-1 rounded-full">{job.type}</span>
                                         </div>
                                         <p className="text-gray-600 dark:text-gray-400 mb-4">{job.snippet}</p>
                                         <button
                                             onClick={() => setSelectedJob(job)}
-                                            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center transition-colors"
+                                            className="text-[#b78622] dark:text-[#e7c973] hover:text-[#8f651a] dark:hover:text-[#f0d996] font-medium flex items-center transition-colors"
                                         >
                                             View Details
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
@@ -373,7 +373,7 @@ Thank You.`;
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
@@ -385,7 +385,7 @@ Thank You.`;
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -400,7 +400,7 @@ Thank You.`;
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
@@ -411,7 +411,7 @@ Thank You.`;
                                         name="linkedin"
                                         value={formData.linkedin}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                        className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                         placeholder="https://linkedin.com/in/yourprofile"
                                     />
                                 </div>
@@ -425,7 +425,7 @@ Thank You.`;
                                     value={formData.position}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                 >
                                     <option value="">Select a position</option>
                                     {jobs.map((job) => (
@@ -443,7 +443,7 @@ Thank You.`;
                                     onChange={handleFileChange}
                                     required
                                     accept=".pdf,.doc,.docx"
-                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white"
+                                    className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b78622] text-gray-900 dark:text-white"
                                 />
                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Maximum file size: 5MB</p>
                             </div>
@@ -451,7 +451,7 @@ Thank You.`;
                             <div className="text-center">
                                 <button
                                     type="submit"
-                                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
+                                    className="bg-[#b78622] hover:bg-[#9f7220] text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
                                 >
                                     Submit Application
                                 </button>
@@ -469,15 +469,15 @@ Thank You.`;
                     <div className="max-w-4xl mx-auto">
                         <div className="relative">
                             {/* Timeline line */}
-                            <div className="absolute left-0 md:left-1/2 h-full w-0.5 bg-blue-200 dark:bg-blue-900/50 transform -translate-x-1/2"></div>
+                            <div className="absolute left-0 md:left-1/2 h-full w-0.5 bg-[#e9c978] dark:bg-zinc-700/50 transform -translate-x-1/2"></div>
 
                             {/* Timeline items */}
                             <div className="space-y-12">
                                 {/* Step 1 */}
                                 <div className="relative flex flex-col md:flex-row items-center">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">1</div>
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#b78622] text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">1</div>
                                     <div className="mt-4 md:mt-0 md:w-1/2 md:pr-8 md:text-right md:mr-4">
-                                        <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">Resume Review</h3>
+                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Resume Review</h3>
                                         <p className="text-gray-600 dark:text-gray-400">Our team reviews your application and resume</p>
                                     </div>
                                     <div className="hidden md:block md:w-1/2 md:pl-12"></div>
@@ -485,19 +485,19 @@ Thank You.`;
 
                                 {/* Step 2 */}
                                 <div className="relative flex flex-col md:flex-row items-center">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">2</div>
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#b78622] text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">2</div>
                                     <div className="hidden md:block md:w-1/2 md:pr-8"></div>
                                     <div className="mt-4 md:mt-0 md:w-1/2 md:pl-12">
-                                        <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">Initial Phone Confirmation</h3>
+                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Initial Phone Confirmation</h3>
                                         <p className="text-gray-600 dark:text-gray-400">A 10-minute call to discuss your background and interest</p>
                                     </div>
                                 </div>
 
                                 {/* Step 3 */}
                                 <div className="relative flex flex-col md:flex-row items-center">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">3</div>
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#b78622] text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">3</div>
                                     <div className="mt-4 md:mt-0 md:w-1/2 md:pr-8 md:text-right md:mr-4">
-                                        <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">Final Interview</h3>
+                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Final Interview</h3>
                                         <p className="text-gray-600 dark:text-gray-400">In-depth discussion with the team and leadership</p>
                                     </div>
                                     <div className="hidden md:block md:w-1/2 md:pl-12"></div>
@@ -505,10 +505,10 @@ Thank You.`;
 
                                 {/* Step 4 */}
                                 <div className="relative flex flex-col md:flex-row items-center">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">4</div>
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#b78622] text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">4</div>
                                     <div className="hidden md:block md:w-1/2 md:pr-8"></div>
                                     <div className="mt-4 md:mt-0 md:w-1/2 md:pl-12">
-                                        <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">Offer Letter</h3>
+                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Offer Letter</h3>
                                         <p className="text-gray-600 dark:text-gray-400">If selected, you&apos;ll receive our offer</p>
                                     </div>
                                 </div>
@@ -519,7 +519,7 @@ Thank You.`;
                             <p className="text-gray-700 dark:text-gray-300 mb-4">The entire process typically takes 4-6 weeks from application to offer.</p>
                             <p className="text-gray-700 dark:text-gray-300">
                                 For any questions about the hiring process, please contact our HR team at{' '}
-                                <a href="mailto:planitt.official@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">planitt.official@gmail.com</a>
+                                <a href="mailto:planitt.official@gmail.com" className="text-[#b78622] dark:text-[#e7c973] hover:underline">planitt.official@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -528,3 +528,4 @@ Thank You.`;
         </div>
     );
 }
+

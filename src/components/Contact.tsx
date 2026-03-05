@@ -4,9 +4,33 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
-const Contact = () => {
+type HomeMode = 'all' | 'financial' | 'technical';
+
+type ContactProps = {
+    mode?: HomeMode;
+};
+
+const Contact = ({ mode = 'all' }: ContactProps) => {
     const [firstName, setFirstName] = useState('');
     const [phone, setPhone] = useState('');
+    const palette =
+        mode === 'technical'
+            ? {
+                bg: 'bg-zinc-50 dark:bg-zinc-950',
+                ring: 'focus:ring-zinc-500',
+                button: 'from-zinc-600 to-slate-700 hover:from-zinc-700 hover:to-slate-800',
+            }
+            : mode === 'financial'
+                ? {
+                    bg: 'bg-[#fffbef] dark:bg-[#2a2111]',
+                    ring: 'focus:ring-[#b78622]',
+                    button: 'from-[#b78622] to-[#d8b35c] hover:from-[#a7771b] hover:to-[#c7a149]',
+                }
+                : {
+                    bg: 'bg-gray-50 dark:bg-gray-950',
+                    ring: 'focus:ring-blue-500',
+                    button: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
+                };
 
     const handleWhatsAppMessage = (e: React.FormEvent) => {
         e.preventDefault();
@@ -15,7 +39,14 @@ const Contact = () => {
             return;
         }
 
-        const message = `Hello I am ${firstName} and I am interested in investing. Please guide me...`;
+        const inquiryType =
+            mode === 'financial'
+                ? 'financial planning'
+                : mode === 'technical'
+                    ? 'technical services'
+                    : 'financial and technical services';
+
+        const message = `Hello I am ${firstName} and I am interested in ${inquiryType}. Please guide me.`;
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/918605727484?text=${encodedMessage}`;
 
@@ -23,7 +54,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-950 relative overflow-hidden transition-colors duration-300">
+        <section id="contact" className={`py-20 ${palette.bg} relative overflow-hidden transition-colors duration-300`}>
             {/* Full Section Gradient Noodles Illustration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* WhatsApp Green Noodles - Top Left */}
@@ -162,8 +193,11 @@ const Contact = () => {
                         Get In Touch
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                        Ready to start your financial journey? Contact us for a free consultation
-                        and personalized financial planning advice.
+                        {mode === 'financial'
+                            ? 'Ready to start your financial journey? Contact us for personalized planning advice.'
+                            : mode === 'technical'
+                                ? 'Ready to build your product or platform? Contact us for technical consultation and delivery planning.'
+                                : 'Ready to grow with finance and technology support? Contact us for a free consultation.'}
                     </p>
                 </motion.div>
 
@@ -178,7 +212,11 @@ const Contact = () => {
                         {/* Centered Contact Form */}
                         <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-transparent dark:border-gray-800 transition-colors duration-300">
                             <h4 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                                Send Message on WhatsApp
+                                {mode === 'financial'
+                                    ? 'Send Financial Inquiry'
+                                    : mode === 'technical'
+                                        ? 'Send Technical Inquiry'
+                                        : 'Send Message on WhatsApp'}
                             </h4>
                             <form onSubmit={handleWhatsAppMessage} className="space-y-6">
                                 <div>
@@ -190,7 +228,7 @@ const Contact = () => {
                                         id="firstName"
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your first name"
                                         required
                                     />
@@ -205,14 +243,14 @@ const Contact = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your phone number"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+                                    className={`w-full bg-gradient-to-r ${palette.button} text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center`}
                                 >
                                     <MessageCircle className="mr-2 h-5 w-5" />
                                     Send Message on WhatsApp

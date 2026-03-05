@@ -5,21 +5,23 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300">
+    <footer className="bg-gradient-to-r from-[#111111] via-[#1f1f1f] to-[#111111] text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center">
               {/* Logo Wrapper */}
-              <div className="mr-2 h-8 w-8 flex items-center justify-center rounded-full bg-white overflow-hidden">
+              <div className="mr-3 h-10 w-10 flex items-center justify-center rounded-full bg-gradient-to-br from-[#f5d37a] to-[#b8bcc3] p-[2px]">
+                <div className="h-full w-full rounded-full bg-white flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/planitt-logo-screenshot.png"
+                  src="/planitt-app-black.png"
                   alt="Planitt Logo"
-                  width={24}
-                  height={24}
-                  className="object-contain"
+                  width={30}
+                  height={30}
+                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]"
                 />
+                </div>
               </div>
 
               <h3 className="font-heading text-xl font-bold">Planitt</h3>
@@ -40,30 +42,30 @@ const Footer = () => {
               {/* Left Side - Contact Info */}
               <div className="space-y-3 flex-1">
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-blue-400" />
+                  <Mail className="h-5 w-5 text-[#f3cf72]" />
                   <a
                     href="mailto:planitt.official@gmail.com"
-                    className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200"
+                    className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
                   >
                     planitt.official@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-blue-400" />
+                  <Phone className="h-5 w-5 text-[#f3cf72]" />
                   <a
                     href="tel:+918605727484"
-                    className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200"
+                    className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
                   >
                     +91 8605727484
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-blue-400" />
+                  <MapPin className="h-5 w-5 text-[#bfc3ca]" />
                   <a
                     href="https://maps.app.goo.gl/kmNZLRBcutkGLA7XA?g_st=aw"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200"
+                    className="text-gray-300 text-sm hover:text-[#bfc3ca] transition-colors duration-200"
                   >
                     Gorewada, Nagpur
                   </a>
@@ -76,7 +78,7 @@ const Footer = () => {
                   href="https://www.instagram.com/planitt_official/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-pink-400 transition-colors duration-200"
+                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200"
                 >
                   <Instagram className="h-5 w-5" />
                   <span>planitt_official</span>
@@ -85,7 +87,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/company/planittt/posts/?feedView=all"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200"
+                  className="flex items-center space-x-2 text-gray-300 text-sm hover:text-[#bfc3ca] transition-colors duration-200"
                 >
                   <Linkedin className="h-5 w-5" />
                   <span>planitt</span>
@@ -100,37 +102,37 @@ const Footer = () => {
             <div className="grid grid-cols-2 gap-2">
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 SIP
               </a>
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 SWP
               </a>
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 Goal Setting
               </a>
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 Insurance
               </a>
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 NPS
               </a>
               <a
                 href="#services"
-                className="text-gray-300 text-sm hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 text-sm hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
               >
                 Budgeting
               </a>
@@ -139,12 +141,16 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
+<<<<<<< HEAD
             © 2025 Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
+=======
+            (c) {currentYear} Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
+>>>>>>> 4ac0031de80e4c2d83ba06ac10b22bebf182e52b
             <a
               href="#about"
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+              className="text-gray-400 hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
             >
               Piyush Tembhekar
             </a>
@@ -156,3 +162,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
