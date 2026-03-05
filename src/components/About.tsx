@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -15,14 +15,14 @@ const About = ({ mode = 'all' }: AboutProps) => {
     const isTechnical = mode === 'technical';
     const palette = isTechnical
         ? {
-            leadName: 'text-[#5f6874] dark:text-[#c9d0d9]',
-            valueBg: 'bg-[#eef1f4] dark:bg-[#2b3440]/80',
-            valueIcon: 'text-[#5f6874] dark:text-[#c9d0d9]',
-            roleText: 'text-[#697380] dark:text-[#c2cad3]',
-            leadBadge: 'bg-[#eef1f4] dark:bg-[#2b3440]/70 text-[#5f6874] dark:text-[#c9d0d9]',
-            impactBg: 'from-[#7f8792] to-[#aab2bc] dark:from-[#5c6672] dark:to-[#7b8591]',
-            impactIcon: 'text-[#e3e8ee]',
-            impactText: 'text-[#f4f7fa]',
+            leadName: 'text-[#444747] dark:text-[#c7cccc]',
+            valueBg: 'bg-[#ebeeee] dark:bg-[#2f3232]/80',
+            valueIcon: 'text-[#444747] dark:text-[#c7cccc]',
+            roleText: 'text-[#4b4e4e] dark:text-[#bcc0c0]',
+            leadBadge: 'bg-[#ebeeee] dark:bg-[#2f3232]/70 text-[#444747] dark:text-[#c7cccc]',
+            impactBg: 'from-[#4b4e4e] to-[#525555] dark:from-[#3d4040] dark:to-[#4b4e4e]',
+            impactIcon: 'text-[#ecebe4]',
+            impactText: 'text-[#fbfaf6]',
         }
         : {
             leadName: 'text-[#b78622] dark:text-[#e7c973]',
@@ -106,7 +106,7 @@ const About = ({ mode = 'all' }: AboutProps) => {
                                 ) : isTechnical ? (
                                     <>Planitt provides modern technical execution led by <span className={`font-semibold ${palette.leadName}`}>Parth Shende</span>.</>
                                 ) : (
-                                    <>Planitt is a fintech and technology solutions company, led by <span className="font-semibold text-[#b78622] dark:text-[#e7c973]">Piyush Tembhekar</span> and <span className="font-semibold text-[#5f6874] dark:text-[#c9d0d9]">Parth Shende</span>.</>
+                                    <>Planitt is a fintech and technology solutions company, led by <span className="font-semibold text-[#b78622] dark:text-[#e7c973]">Piyush Tembhekar</span> and <span className="font-semibold text-[#444747] dark:text-[#c7cccc]">Parth Shende</span>.</>
                                 )}
                             </p>
                             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -185,13 +185,13 @@ const About = ({ mode = 'all' }: AboutProps) => {
                             {!isFinancial && (
                                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
                                 <div className="text-center mb-4">
-                                    <div className="w-36 h-36 mx-auto mb-4 rounded-full bg-[#eef1f4] dark:bg-[#2b3440]/70 border-4 border-white dark:border-gray-800 flex items-center justify-center shadow-xl">
-                                        <Code2 className="h-14 w-14 text-[#5f6874] dark:text-[#c9d0d9]" />
+                                    <div className="w-36 h-36 mx-auto mb-4 rounded-full bg-[#ebeeee] dark:bg-[#2f3232]/70 border-4 border-white dark:border-gray-800 flex items-center justify-center shadow-xl">
+                                        <Code2 className="h-14 w-14 text-[#444747] dark:text-[#c7cccc]" />
                                     </div>
                                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
                                         Parth Shende
                                     </h3>
-                                    <p className="text-[#697380] dark:text-[#c2cad3] font-semibold text-sm">
+                                    <p className="text-[#4b4e4e] dark:text-[#bcc0c0] font-semibold text-sm">
                                         Technical Lead
                                     </p>
                                 </div>
@@ -236,3 +236,5 @@ const About = ({ mode = 'all' }: AboutProps) => {
 };
 
 export default About;
+
+

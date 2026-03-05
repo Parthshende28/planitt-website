@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -28,8 +28,8 @@ export default function ProofHighlights({ mode }: { mode: HomeMode }) {
   const accent = isTechnical
     ? {
         wrap: "glass-silver",
-        text: "text-zinc-700 dark:text-zinc-300",
-        chip: "from-zinc-600 to-slate-600",
+        text: "text-[#444747] dark:text-[#c7cccc]",
+        chip: "from-[#4b4e4e] to-[#525555]",
       }
     : {
         wrap: "glass-gold",
@@ -110,3 +110,5 @@ export default function ProofHighlights({ mode }: { mode: HomeMode }) {
     </section>
   );
 }
+
+

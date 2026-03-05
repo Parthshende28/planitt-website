@@ -196,7 +196,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                              <button
                                  onClick={() => setActive('technical')}
                                  className={`py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'technical'
-                                     ? 'bg-gradient-to-r from-[#7f8792] to-[#aab2bc] text-white shadow-lg'
+                                     ? 'bg-gradient-to-r from-[#4b4e4e] to-[#525555] text-white shadow-lg'
                                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                                      }`}
                              >
@@ -226,13 +226,13 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                                     : 'from-[#8d949f] to-[#cfd3d9]';
                                  const hoverTitle = isFinancialCard
                                      ? 'group-hover:text-[#b78622] dark:group-hover:text-[#e7c973]'
-                                     : 'group-hover:text-[#66707c] dark:group-hover:text-[#c9d0d9]';
+                                     : 'group-hover:text-[#4b4e4e] dark:group-hover:text-[#c7cccc]';
                                  const domainBadge = isFinancialCard
                                      ? 'bg-[#fff6df] text-[#9e721f] dark:bg-[#3d3118] dark:text-[#e3c46d]'
-                                     : 'bg-[#eef1f4] text-[#606a75] dark:bg-[#39414c] dark:text-[#d2d8df]';
+                                     : 'bg-[#ebeeee] text-[#444747] dark:bg-[#323535] dark:text-[#c7cccc]';
                                  const arrowColor = isFinancialCard
                                      ? 'text-[#b78622] dark:text-[#e7c973]'
-                                     : 'text-[#7a838e] dark:text-[#c9d0d9]';
+                                     : 'text-[#525555] dark:text-[#c7cccc]';
 
                                 return (
                             <a
@@ -285,7 +285,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                          effectiveMode === 'financial'
                              ? 'from-[#b78622] via-[#cfaa4f] to-[#e5c46f]'
                          : effectiveMode === 'technical'
-                                ? 'from-[#7f8792] via-[#9ca4ae] to-[#b8bfc8]'
+                                ? 'from-[#444747] via-[#4b4e4e] to-[#525555]'
                                 : 'from-[#b78622] via-[#cfaa4f] to-zinc-600'
                      } rounded-2xl p-8 text-white shadow-xl`}>
                         <h3 className="font-heading text-2xl font-bold mb-4">
@@ -315,7 +315,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                              {effectiveMode !== 'financial' && (
                                  <a
                                      href="/services/technical-training"
-                                     className="inline-flex items-center px-7 py-3 bg-[#eef1f4] text-[#59636f] font-semibold rounded-lg hover:bg-[#f7f9fb] transition-colors duration-300 shadow-lg"
+                                     className="inline-flex items-center px-7 py-3 bg-[#ebeeee] text-[#3d4040] font-semibold rounded-lg hover:bg-[#f3f5f5] transition-colors duration-300 shadow-lg"
                                  >
                                      Explore Technical
                                      <ArrowRight className="ml-2 h-5 w-5" />
@@ -330,4 +330,6 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
 };
 
 export default Services;
+
+
 

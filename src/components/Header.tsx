@@ -1,16 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import SearchBar from "@/components/SearchBar";
-import { useTheme } from "@/context/ThemeContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { name: 'Services', href: '/#services' },
@@ -66,47 +64,14 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Search + Theme */}
+            {/* Search */}
             <div className="flex items-center gap-4">
               <SearchBar />
-
-              <button
-                onClick={toggleTheme}
-                className="
-                  p-2 rounded-lg
-                  border border-gray-200 dark:border-gray-800
-                  bg-gray-100 dark:bg-gray-900
-                  hover:bg-gray-200 dark:hover:bg-gray-800
-                  transition
-                "
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5 text-yellow-400" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-700" />
-                )}
-              </button>
             </div>
           </div>
 
           {/* Mobile Buttons */}
           <div className="md:hidden flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="
-                p-2 rounded-lg
-                border border-gray-200 dark:border-gray-800
-                bg-gray-100 dark:bg-gray-900
-              "
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5 text-yellow-400" />
-              ) : (
-                <Moon className="h-5 w-5 text-gray-700" />
-              )}
-            </button>
-
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 dark:text-gray-300"

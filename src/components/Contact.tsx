@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
@@ -17,8 +17,8 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
         mode === 'technical'
             ? {
                 bg: 'bg-[#f4f7fa] dark:bg-[#141a22]',
-                ring: 'focus:ring-[#7f8792]',
-                button: 'from-[#7f8792] to-[#9ca4ae] hover:from-[#707a86] hover:to-[#8f98a3]',
+                ring: 'focus:ring-[#525555]',
+                button: 'from-[#4b4e4e] to-[#525555] hover:from-[#434646] hover:to-[#4f5252]',
             }
             : mode === 'financial'
                 ? {
@@ -265,3 +265,5 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
 };
 
 export default Contact;
+
+

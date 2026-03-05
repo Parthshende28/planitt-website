@@ -86,15 +86,15 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
     const palette =
         mode === 'technical'
             ? {
-                panel: 'from-[#eef1f4] to-[#d8dee6] dark:from-[#1c232d] dark:to-[#252f3a]',
-                quoteBg: 'bg-[#7f8792] dark:bg-[#66707d]',
-                role: 'text-[#5f6874] dark:text-[#c9d0d9]',
-                chip: 'bg-[#727b87] dark:bg-[#5d6672]',
-                dotActive: 'bg-[#7f8792] dark:bg-[#c2cad3]',
-                statA: 'text-[#5f6874] dark:text-[#c9d0d9]',
-                statB: 'text-[#707b88] dark:text-[#b8c0ca]',
-                statC: 'text-[#5a6471] dark:text-[#aeb7c2]',
-                statD: 'text-[#8a939e] dark:text-[#c8cfd8]',
+                panel: 'from-[#eef0f0] to-[#dde1e1] dark:from-[#181b1b] dark:to-[#222525]',
+                quoteBg: 'bg-[#525555] dark:bg-[#444747]',
+                role: 'text-[#444747] dark:text-[#c7cccc]',
+                chip: 'bg-[#4b4e4e] dark:bg-[#3d4040]',
+                dotActive: 'bg-[#525555] dark:bg-[#bcc0c0]',
+                statA: 'text-[#444747] dark:text-[#c7cccc]',
+                statB: 'text-[#4b4e4e] dark:text-[#adb2b2]',
+                statC: 'text-[#3d4040] dark:text-[#a2a7a7]',
+                statD: 'text-[#525555] dark:text-[#bcc0c0]',
             }
             : {
                 panel: 'from-[#fff3d4] to-[#f2deab] dark:from-[#3b2f17] dark:to-[#4d3c1d]',
@@ -253,4 +253,6 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
 };
 
 export default Testimonials;
+
+
 

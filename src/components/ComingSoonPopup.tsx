@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { Sparkles, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -71,31 +71,32 @@ export default function ComingSoonPopup() {
                   <span className="px-4 py-2 rounded-full bg-zinc-500/25 border border-zinc-300/25 text-sm font-semibold">Dashboard</span>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    onClick={() => setOpen(false)}
-                    className="inline-flex items-center rounded-xl bg-white/10 border border-white/20 px-6 py-3 font-semibold"
-                  >
-                    Maybe Later
-                  </button>
-                </div>
               </div>
 
               <div className="lg:col-span-2 border-t lg:border-t-0 lg:border-l border-white/10 bg-black/20 p-7 sm:p-8">
                 <div className="h-full rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-5 flex flex-col items-center justify-center text-center">
-                  <div className="relative h-28 w-28 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden mb-4">
-                    <Image
-                      src="/planitt-app-black.png"
-                      alt="In-house app logo"
-                      width={92}
-                      height={92}
-                      className="h-20 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]"
+                  <div className="relative w-full overflow-hidden rounded-2xl bg-white/10 border border-white/20 mb-4">
+                    <video
+                      className="w-full h-52 object-cover"
+                      src="/planitt-animated-video-remake.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
                     />
                   </div>
 
                   <p className="text-xs uppercase tracking-[0.18em] text-zinc-400 mb-2">Project Status</p>
                   <p className="text-2xl font-bold text-[#f2d789] mb-1">Launching Soon</p>
                   <p className="text-sm text-zinc-300">Private beta preview is under development.</p>
+                  <Link
+                    href="/in-house-product"
+                    onClick={() => setOpen(false)}
+                    className="mt-4 inline-flex items-center justify-center rounded-xl bg-[#b78622]/85 hover:bg-[#b78622] border border-[#f0d996]/30 px-6 py-2.5 font-semibold text-[#fff1ca] transition-colors duration-200"
+                  >
+                    Know more
+                  </Link>
                 </div>
               </div>
             </div>
