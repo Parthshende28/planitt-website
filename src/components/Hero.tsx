@@ -15,22 +15,22 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
     const isTechnical = mode === 'technical';
     const palette = isTechnical
         ? {
-            bg: 'from-slate-100 via-white to-zinc-200 dark:from-zinc-900 dark:via-zinc-950 dark:to-slate-900',
-            orbA: 'bg-zinc-300 dark:bg-zinc-700',
-            orbB: 'bg-slate-300 dark:bg-slate-700',
-            orbC: 'bg-neutral-300 dark:bg-neutral-700',
-            toggleBorder: 'border-zinc-300/70 dark:border-zinc-700/60',
-            toggleShadow: 'shadow-[0_8px_30px_rgba(82,82,91,0.22)]',
-            toggleActive: 'from-zinc-500 to-slate-600',
-            heading: 'from-zinc-500 to-slate-700 dark:from-zinc-300 dark:to-slate-200',
-            shield: 'text-zinc-600 dark:text-zinc-300',
-            secondary: 'text-slate-600 dark:text-slate-300',
-            people: 'text-neutral-600 dark:text-neutral-300',
-            primaryBtn: 'from-zinc-600 to-slate-700 hover:from-zinc-700 hover:to-slate-800',
-            secondaryBtn: 'from-slate-600 to-zinc-700 hover:from-slate-700 hover:to-zinc-800',
-            cardBg: 'from-zinc-50 to-slate-100 dark:from-zinc-900/30 dark:to-slate-900/30',
-            cardBorder: 'border-zinc-300/40 dark:border-zinc-700/60',
-            cardLabel: 'text-zinc-700 dark:text-zinc-300',
+            bg: 'from-[#edf1f5] via-white to-[#d8dee6] dark:from-[#141a22] dark:via-[#1b232d] dark:to-[#252f3a]',
+            orbA: 'bg-[#c2cad3] dark:bg-[#4f5966]',
+            orbB: 'bg-[#b8c0ca] dark:bg-[#596472]',
+            orbC: 'bg-[#aeb7c2] dark:bg-[#66707d]',
+            toggleBorder: 'border-[#c3ccd6]/70 dark:border-[#4c5764]/60',
+            toggleShadow: 'shadow-[0_8px_30px_rgba(87,96,107,0.24)]',
+            toggleActive: 'from-[#7f8792] to-[#aab2bc]',
+            heading: 'from-[#5f6874] to-[#7b8591] dark:from-[#d3dae2] dark:to-[#b8c0ca]',
+            shield: 'text-[#697380] dark:text-[#c2cad3]',
+            secondary: 'text-[#5f6874] dark:text-[#c2cad3]',
+            people: 'text-[#7b8591] dark:text-[#aeb7c2]',
+            primaryBtn: 'from-[#7f8792] to-[#9ca4ae] hover:from-[#707a86] hover:to-[#8f98a3]',
+            secondaryBtn: 'from-[#5f6874] to-[#7b8591] hover:from-[#525a66] hover:to-[#6f7883]',
+            cardBg: 'from-[#f4f7fa] to-[#e5ebf1] dark:from-[#1b232d]/70 dark:to-[#252f3a]/70',
+            cardBorder: 'border-[#c3ccd6]/40 dark:border-[#4c5764]/60',
+            cardLabel: 'text-[#5f6874] dark:text-[#c9d0d9]',
         }
         : {
             bg: 'from-[#fef5dc] via-white to-[#f8e3a7] dark:from-[#2f2712] dark:via-[#1c1a14] dark:to-[#2a2212]',
@@ -82,7 +82,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                 className={`h-12 rounded-xl px-4 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                                     !isTechnical
                                         ? 'text-white'
-                                        : 'text-gray-700 dark:text-gray-300 hover:text-[#b78622] dark:hover:text-[#e7c973]'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-[#697380] dark:hover:text-[#c9d0d9]'
                                 }`}
                             >
                                 <Landmark className="h-4 w-4" />
@@ -93,7 +93,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                 className={`h-12 rounded-xl px-4 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                                     isTechnical
                                         ? 'text-white'
-                                        : 'text-gray-700 dark:text-gray-300 hover:text-zinc-700 dark:hover:text-zinc-300'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-[#697380] dark:hover:text-[#c9d0d9]'
                                 }`}
                             >
                                 <Cpu className="h-4 w-4" />

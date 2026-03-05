@@ -1,12 +1,9 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
-<<<<<<< HEAD
-const Testimonials = () => {
-=======
 type HomeMode = 'all' | 'financial' | 'technical';
 
 type Testimonial = {
@@ -79,7 +76,6 @@ const technicalTestimonials: Testimonial[] = [
 const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
     const startYear = 2020;
     const currentYear = new Date().getFullYear();
->>>>>>> 4ac0031de80e4c2d83ba06ac10b22bebf182e52b
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const testimonials = useMemo(() => {
@@ -90,15 +86,15 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
     const palette =
         mode === 'technical'
             ? {
-                panel: 'from-zinc-100 to-slate-200 dark:from-zinc-900 dark:to-slate-900',
-                quoteBg: 'bg-zinc-600 dark:bg-zinc-700',
-                role: 'text-zinc-700 dark:text-zinc-300',
-                chip: 'bg-zinc-700 dark:bg-zinc-600',
-                dotActive: 'bg-zinc-600 dark:bg-zinc-400',
-                statA: 'text-zinc-700 dark:text-zinc-300',
-                statB: 'text-slate-600 dark:text-slate-300',
-                statC: 'text-neutral-600 dark:text-neutral-300',
-                statD: 'text-zinc-500 dark:text-zinc-400',
+                panel: 'from-[#eef1f4] to-[#d8dee6] dark:from-[#1c232d] dark:to-[#252f3a]',
+                quoteBg: 'bg-[#7f8792] dark:bg-[#66707d]',
+                role: 'text-[#5f6874] dark:text-[#c9d0d9]',
+                chip: 'bg-[#727b87] dark:bg-[#5d6672]',
+                dotActive: 'bg-[#7f8792] dark:bg-[#c2cad3]',
+                statA: 'text-[#5f6874] dark:text-[#c9d0d9]',
+                statB: 'text-[#707b88] dark:text-[#b8c0ca]',
+                statC: 'text-[#5a6471] dark:text-[#aeb7c2]',
+                statD: 'text-[#8a939e] dark:text-[#c8cfd8]',
             }
             : {
                 panel: 'from-[#fff3d4] to-[#f2deab] dark:from-[#3b2f17] dark:to-[#4d3c1d]',
@@ -243,11 +239,7 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                         <div className="text-gray-600 dark:text-gray-400">{mode === 'technical' ? 'Tech Deliveries' : 'Financial Portfolio Managed'}</div>
                     </div>
                     <div className="text-center">
-<<<<<<< HEAD
-                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">6+</div>
-=======
                         <div className={`text-4xl font-bold ${palette.statC} mb-2`}>{currentYear - startYear}+</div>
->>>>>>> 4ac0031de80e4c2d83ba06ac10b22bebf182e52b
                         <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
                     </div>
                     <div className="text-center">
@@ -261,3 +253,4 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
 };
 
 export default Testimonials;
+

@@ -1,9 +1,11 @@
-"use client";
+﻿"use client";
 
 import { Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-gradient-to-r from-[#111111] via-[#1f1f1f] to-[#111111] text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -143,11 +145,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-<<<<<<< HEAD
-            © 2025 Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
-=======
             (c) {currentYear} Planitt. All Rights Reserved. | CEO & Financial Distributor:{" "}
->>>>>>> 4ac0031de80e4c2d83ba06ac10b22bebf182e52b
             <a
               href="#about"
               className="text-gray-400 hover:text-[#f3cf72] transition-colors duration-200 cursor-pointer"
@@ -162,4 +160,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

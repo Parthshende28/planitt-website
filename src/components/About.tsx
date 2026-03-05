@@ -15,14 +15,14 @@ const About = ({ mode = 'all' }: AboutProps) => {
     const isTechnical = mode === 'technical';
     const palette = isTechnical
         ? {
-            leadName: 'text-zinc-700 dark:text-zinc-300',
-            valueBg: 'bg-zinc-100 dark:bg-zinc-800/80',
-            valueIcon: 'text-zinc-700 dark:text-zinc-300',
-            roleText: 'text-zinc-600 dark:text-zinc-300',
-            leadBadge: 'bg-zinc-100 dark:bg-zinc-800/70 text-zinc-700 dark:text-zinc-300',
-            impactBg: 'from-zinc-600 to-slate-700 dark:from-zinc-700 dark:to-slate-800',
-            impactIcon: 'text-zinc-200',
-            impactText: 'text-zinc-100',
+            leadName: 'text-[#5f6874] dark:text-[#c9d0d9]',
+            valueBg: 'bg-[#eef1f4] dark:bg-[#2b3440]/80',
+            valueIcon: 'text-[#5f6874] dark:text-[#c9d0d9]',
+            roleText: 'text-[#697380] dark:text-[#c2cad3]',
+            leadBadge: 'bg-[#eef1f4] dark:bg-[#2b3440]/70 text-[#5f6874] dark:text-[#c9d0d9]',
+            impactBg: 'from-[#7f8792] to-[#aab2bc] dark:from-[#5c6672] dark:to-[#7b8591]',
+            impactIcon: 'text-[#e3e8ee]',
+            impactText: 'text-[#f4f7fa]',
         }
         : {
             leadName: 'text-[#b78622] dark:text-[#e7c973]',
@@ -106,7 +106,7 @@ const About = ({ mode = 'all' }: AboutProps) => {
                                 ) : isTechnical ? (
                                     <>Planitt provides modern technical execution led by <span className={`font-semibold ${palette.leadName}`}>Parth Shende</span>.</>
                                 ) : (
-                                    <>Planitt is a fintech and technology solutions company, led by <span className="font-semibold text-[#b78622] dark:text-[#e7c973]">Piyush Tembhekar</span> and <span className="font-semibold text-zinc-700 dark:text-zinc-300">Parth Shende</span>.</>
+                                    <>Planitt is a fintech and technology solutions company, led by <span className="font-semibold text-[#b78622] dark:text-[#e7c973]">Piyush Tembhekar</span> and <span className="font-semibold text-[#5f6874] dark:text-[#c9d0d9]">Parth Shende</span>.</>
                                 )}
                             </p>
                             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -185,13 +185,13 @@ const About = ({ mode = 'all' }: AboutProps) => {
                             {!isFinancial && (
                                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
                                 <div className="text-center mb-4">
-                                    <div className="w-36 h-36 mx-auto mb-4 rounded-full bg-zinc-100 dark:bg-zinc-800/70 border-4 border-white dark:border-gray-800 flex items-center justify-center shadow-xl">
-                                        <Code2 className="h-14 w-14 text-zinc-700 dark:text-zinc-300" />
+                                    <div className="w-36 h-36 mx-auto mb-4 rounded-full bg-[#eef1f4] dark:bg-[#2b3440]/70 border-4 border-white dark:border-gray-800 flex items-center justify-center shadow-xl">
+                                        <Code2 className="h-14 w-14 text-[#5f6874] dark:text-[#c9d0d9]" />
                                     </div>
                                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
                                         Parth Shende
                                     </h3>
-                                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold text-sm">
+                                    <p className="text-[#697380] dark:text-[#c2cad3] font-semibold text-sm">
                                         Technical Lead
                                     </p>
                                 </div>

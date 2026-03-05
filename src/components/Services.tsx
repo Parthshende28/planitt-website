@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -193,13 +193,13 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                             >
                                 Financial
                             </button>
-                            <button
-                                onClick={() => setActive('technical')}
-                                className={`py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'technical'
-                                    ? 'bg-gradient-to-r from-zinc-600 to-slate-600 text-white shadow-lg'
-                                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                                    }`}
-                            >
+                             <button
+                                 onClick={() => setActive('technical')}
+                                 className={`py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'technical'
+                                     ? 'bg-gradient-to-r from-[#7f8792] to-[#aab2bc] text-white shadow-lg'
+                                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                                     }`}
+                             >
                                 Technical
                             </button>
                         </div>
@@ -224,15 +224,15 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                                 const iconGradient = isFinancialCard
                                     ? 'from-[#b78622] to-[#e6c671]'
                                     : 'from-[#8d949f] to-[#cfd3d9]';
-                                const hoverTitle = isFinancialCard
-                                    ? 'group-hover:text-[#b78622] dark:group-hover:text-[#e7c973]'
-                                    : 'group-hover:text-zinc-700 dark:group-hover:text-zinc-300';
-                                const domainBadge = isFinancialCard
-                                    ? 'bg-[#fff6df] text-[#9e721f] dark:bg-[#3d3118] dark:text-[#e3c46d]'
-                                    : 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300';
-                                const arrowColor = isFinancialCard
-                                    ? 'text-[#b78622] dark:text-[#e7c973]'
-                                    : 'text-zinc-600 dark:text-zinc-300';
+                                 const hoverTitle = isFinancialCard
+                                     ? 'group-hover:text-[#b78622] dark:group-hover:text-[#e7c973]'
+                                     : 'group-hover:text-[#66707c] dark:group-hover:text-[#c9d0d9]';
+                                 const domainBadge = isFinancialCard
+                                     ? 'bg-[#fff6df] text-[#9e721f] dark:bg-[#3d3118] dark:text-[#e3c46d]'
+                                     : 'bg-[#eef1f4] text-[#606a75] dark:bg-[#39414c] dark:text-[#d2d8df]';
+                                 const arrowColor = isFinancialCard
+                                     ? 'text-[#b78622] dark:text-[#e7c973]'
+                                     : 'text-[#7a838e] dark:text-[#c9d0d9]';
 
                                 return (
                             <a
@@ -281,13 +281,13 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                     viewport={{ once: true }}
                     className="text-center mt-16"
                 >
-                    <div className={`bg-gradient-to-r ${
-                        effectiveMode === 'financial'
-                            ? 'from-[#b78622] via-[#cfaa4f] to-[#e5c46f]'
-                            : effectiveMode === 'technical'
-                                ? 'from-zinc-600 via-slate-600 to-zinc-500'
+                     <div className={`bg-gradient-to-r ${
+                         effectiveMode === 'financial'
+                             ? 'from-[#b78622] via-[#cfaa4f] to-[#e5c46f]'
+                         : effectiveMode === 'technical'
+                                ? 'from-[#7f8792] via-[#9ca4ae] to-[#b8bfc8]'
                                 : 'from-[#b78622] via-[#cfaa4f] to-zinc-600'
-                    } rounded-2xl p-8 text-white shadow-xl`}>
+                     } rounded-2xl p-8 text-white shadow-xl`}>
                         <h3 className="font-heading text-2xl font-bold mb-4">
                             {effectiveMode === 'financial'
                                 ? 'Plan Your Financial Growth'
@@ -306,28 +306,19 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                             {effectiveMode !== 'technical' && (
                                 <a
                                     href="/services/financial-services/budgeting"
-<<<<<<< HEAD
-                                    className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900
-             text-blue-600 dark:text-blue-400
-             font-semibold rounded-lg
-             hover:text-blue-700 dark:hover:text-blue-300
-             dark:hover:bg-gray-800
-             transition-colors duration-300 shadow-lg"
-=======
                                     className="inline-flex items-center px-7 py-3 bg-white text-[#9f7220] font-semibold rounded-lg hover:bg-[#fff8ea] transition-colors duration-300 shadow-lg"
->>>>>>> 4ac0031de80e4c2d83ba06ac10b22bebf182e52b
                                 >
                                     Explore Financial
                                     <ArrowRight className="ml-2 h-5 w-5" />
                                 </a>
                             )}
-                            {effectiveMode !== 'financial' && (
-                                <a
-                                    href="/services/technical-training"
-                                    className="inline-flex items-center px-7 py-3 bg-zinc-100 text-zinc-700 font-semibold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg"
-                                >
-                                    Explore Technical
-                                    <ArrowRight className="ml-2 h-5 w-5" />
+                             {effectiveMode !== 'financial' && (
+                                 <a
+                                     href="/services/technical-training"
+                                     className="inline-flex items-center px-7 py-3 bg-[#eef1f4] text-[#59636f] font-semibold rounded-lg hover:bg-[#f7f9fb] transition-colors duration-300 shadow-lg"
+                                 >
+                                     Explore Technical
+                                     <ArrowRight className="ml-2 h-5 w-5" />
                                 </a>
                             )}
                         </div>
@@ -339,3 +330,4 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
 };
 
 export default Services;
+
