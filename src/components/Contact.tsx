@@ -16,9 +16,9 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
     const palette =
         mode === 'technical'
             ? {
-                bg: 'bg-[#f4f7fa] dark:bg-[#141a22]',
-                ring: 'focus:ring-[#525555]',
-                button: 'from-[#4b4e4e] to-[#525555] hover:from-[#434646] hover:to-[#4f5252]',
+                bg: 'bg-sky-50 dark:bg-slate-950',
+                ring: 'focus:ring-cyan-400',
+                button: 'from-cyan-500 to-sky-600 hover:from-cyan-600 hover:to-sky-700',
             }
             : mode === 'financial'
                 ? {

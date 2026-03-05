@@ -154,7 +154,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
     return (
         <section
             id="services"
-            className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+            className={`py-20 ${effectiveMode === 'technical' ? 'bg-sky-50 dark:bg-slate-950' : 'bg-gray-50 dark:bg-gray-900'} transition-colors duration-300`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
@@ -196,7 +196,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                              <button
                                  onClick={() => setActive('technical')}
                                  className={`py-3 px-4 text-center rounded-lg font-medium transition-all duration-200 ${active === 'technical'
-                                     ? 'bg-gradient-to-r from-[#4b4e4e] to-[#525555] text-white shadow-lg'
+                                     ? 'bg-gradient-to-r from-cyan-500 to-sky-600 text-white shadow-lg'
                                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                                      }`}
                              >
@@ -223,16 +223,16 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                                 const isFinancialCard = service.domain === 'financial';
                                 const iconGradient = isFinancialCard
                                     ? 'from-[#b78622] to-[#e6c671]'
-                                    : 'from-[#8d949f] to-[#cfd3d9]';
+                                    : 'from-cyan-400 to-sky-500';
                                  const hoverTitle = isFinancialCard
                                      ? 'group-hover:text-[#b78622] dark:group-hover:text-[#e7c973]'
-                                     : 'group-hover:text-[#4b4e4e] dark:group-hover:text-[#c7cccc]';
+                                     : 'group-hover:text-sky-700 dark:group-hover:text-cyan-300';
                                  const domainBadge = isFinancialCard
                                      ? 'bg-[#fff6df] text-[#9e721f] dark:bg-[#3d3118] dark:text-[#e3c46d]'
-                                     : 'bg-[#ebeeee] text-[#444747] dark:bg-[#323535] dark:text-[#c7cccc]';
+                                     : 'bg-sky-100 text-sky-700 dark:bg-cyan-900/40 dark:text-cyan-300';
                                  const arrowColor = isFinancialCard
                                      ? 'text-[#b78622] dark:text-[#e7c973]'
-                                     : 'text-[#525555] dark:text-[#c7cccc]';
+                                     : 'text-sky-700 dark:text-cyan-300';
 
                                 return (
                             <a
@@ -285,7 +285,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                          effectiveMode === 'financial'
                              ? 'from-[#b78622] via-[#cfaa4f] to-[#e5c46f]'
                          : effectiveMode === 'technical'
-                                ? 'from-[#444747] via-[#4b4e4e] to-[#525555]'
+                                ? 'from-cyan-500 via-sky-500 to-sky-600'
                                 : 'from-[#b78622] via-[#cfaa4f] to-zinc-600'
                      } rounded-2xl p-8 text-white shadow-xl`}>
                         <h3 className="font-heading text-2xl font-bold mb-4">
@@ -315,7 +315,7 @@ const Services = ({ mode = 'all' }: ServicesProps) => {
                              {effectiveMode !== 'financial' && (
                                  <a
                                      href="/services/technical-training"
-                                     className="inline-flex items-center px-7 py-3 bg-[#ebeeee] text-[#3d4040] font-semibold rounded-lg hover:bg-[#f3f5f5] transition-colors duration-300 shadow-lg"
+                                     className="inline-flex items-center px-7 py-3 bg-sky-50 text-sky-700 font-semibold rounded-lg hover:bg-cyan-100 transition-colors duration-300 shadow-lg"
                                  >
                                      Explore Technical
                                      <ArrowRight className="ml-2 h-5 w-5" />

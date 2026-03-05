@@ -15,14 +15,14 @@ const About = ({ mode = 'all' }: AboutProps) => {
     const isTechnical = mode === 'technical';
     const palette = isTechnical
         ? {
-            leadName: 'text-[#444747] dark:text-[#c7cccc]',
-            valueBg: 'bg-[#ebeeee] dark:bg-[#2f3232]/80',
-            valueIcon: 'text-[#444747] dark:text-[#c7cccc]',
-            roleText: 'text-[#4b4e4e] dark:text-[#bcc0c0]',
-            leadBadge: 'bg-[#ebeeee] dark:bg-[#2f3232]/70 text-[#444747] dark:text-[#c7cccc]',
-            impactBg: 'from-[#4b4e4e] to-[#525555] dark:from-[#3d4040] dark:to-[#4b4e4e]',
-            impactIcon: 'text-[#ecebe4]',
-            impactText: 'text-[#fbfaf6]',
+            leadName: 'text-sky-700 dark:text-cyan-300',
+            valueBg: 'bg-sky-100 dark:bg-cyan-900/40',
+            valueIcon: 'text-cyan-600 dark:text-cyan-300',
+            roleText: 'text-sky-700 dark:text-cyan-300',
+            leadBadge: 'bg-sky-100 dark:bg-cyan-900/40 text-sky-700 dark:text-cyan-300',
+            impactBg: 'from-cyan-500 to-sky-600 dark:from-cyan-700 dark:to-sky-800',
+            impactIcon: 'text-sky-50',
+            impactText: 'text-sky-50',
         }
         : {
             leadName: 'text-[#b78622] dark:text-[#e7c973]',
@@ -86,7 +86,7 @@ const About = ({ mode = 'all' }: AboutProps) => {
     });
 
     return (
-        <section id="about" className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+        <section id="about" className={`py-20 ${isTechnical ? 'bg-sky-50 dark:bg-slate-950' : 'bg-gray-50 dark:bg-gray-950'} transition-colors duration-300`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div
@@ -185,13 +185,19 @@ const About = ({ mode = 'all' }: AboutProps) => {
                             {!isFinancial && (
                                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
                                 <div className="text-center mb-4">
-                                    <div className="w-36 h-36 mx-auto mb-4 rounded-full bg-[#ebeeee] dark:bg-[#2f3232]/70 border-4 border-white dark:border-gray-800 flex items-center justify-center shadow-xl">
-                                        <Code2 className="h-14 w-14 text-[#444747] dark:text-[#c7cccc]" />
+                                    <div className="relative w-36 h-36 mx-auto mb-4 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-xl border-4 border-white dark:border-gray-800 transition-all duration-300">
+                                        <Image
+                                            src="/Parth_shende(Technical_Head).jpeg"
+                                            alt="Parth Shende"
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
                                     </div>
                                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
                                         Parth Shende
                                     </h3>
-                                    <p className="text-[#4b4e4e] dark:text-[#bcc0c0] font-semibold text-sm">
+                                    <p className="text-sky-700 dark:text-cyan-300 font-semibold text-sm">
                                         Technical Lead
                                     </p>
                                 </div>

@@ -33,7 +33,7 @@ export default function StickyMobileCTA({ mode }: { mode: HomeMode }) {
           <Link
             href={isTechnical ? "/#contact" : "/services/financial-services/budgeting"}
             className={`btn-depth min-h-11 rounded-xl flex items-center justify-center gap-1.5 text-white ${
-              isTechnical ? "bg-[#525555]" : "bg-[#b78622]"
+              isTechnical ? "bg-gradient-to-r from-cyan-500 to-sky-600" : "bg-[#b78622]"
             }`}
           >
             <Send className="h-4 w-4" />

@@ -27,9 +27,10 @@ export default function ProofHighlights({ mode }: { mode: HomeMode }) {
 
   const accent = isTechnical
     ? {
-        wrap: "glass-silver",
-        text: "text-[#444747] dark:text-[#c7cccc]",
-        chip: "from-[#4b4e4e] to-[#525555]",
+        wrap:
+          "bg-gradient-to-br from-sky-50 to-cyan-100 dark:from-sky-950/50 dark:to-cyan-950/50 border border-cyan-200/70 dark:border-cyan-800/60",
+        text: "text-sky-700 dark:text-cyan-300",
+        chip: "from-cyan-500 to-sky-600",
       }
     : {
         wrap: "glass-gold",

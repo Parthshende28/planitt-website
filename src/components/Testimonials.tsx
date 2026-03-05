@@ -48,28 +48,36 @@ const financialTestimonials: Testimonial[] = [
 
 const technicalTestimonials: Testimonial[] = [
     {
-        name: 'Nikita Rao',
-        role: 'Startup Founder',
-        location: 'Hyderabad',
-        content: 'Planitt delivered our web platform quickly with a clean architecture. Their communication and release discipline were excellent.',
+        name: 'Piyush Tembhekar',
+        role: 'Planitt',
+        location: 'India',
+        content: "Lancers.io transformed our financial planning platform with cutting-edge AI integration. The team's expertise in data visualization exceeded our expectations. Our clients now can plan their financial decisions easily.",
         rating: 5,
-        investment: 'Website + cloud deployment',
+        investment: 'AI-powered planning platform',
     },
     {
-        name: 'Vikram Deshmukh',
-        role: 'Operations Head',
-        location: 'Pune',
-        content: 'Their team automated key manual workflows and cut our turnaround time significantly. Execution was practical and stable.',
+        name: 'Vipin Soni',
+        role: 'Bhav App',
+        location: 'India',
+        content: "The Bhav app revolutionized how we track bullion investments. The real-time market updates and secure payment integration have streamlined our operations significantly. The team's attention to security and user experience is outstanding.",
         rating: 5,
-        investment: 'DevOps and automation rollout',
+        investment: 'Bullion investment platform',
     },
     {
-        name: 'Sneha Kulkarni',
-        role: 'Product Manager',
-        location: 'Mumbai',
-        content: 'We got app, backend, and cloud support in one engagement. Delivery quality and documentation were better than expected.',
-        rating: 5,
-        investment: 'Cross-platform app delivery',
+        name: 'Mohak Wankhede',
+        role: 'Zeynix.Co',
+        location: 'India',
+        content: 'Working with Lancers.io was a game-changer for our e-commerce platform. They delivered a seamless shopping experience with robust payment systems and intuitive product management. Our sales have increased by 40% since the launch.',
+        rating: 4,
+        investment: 'E-commerce platform delivery',
+    },
+    {
+        name: 'Mubashshir Ali',
+        role: 'Krypsm',
+        location: 'India',
+        content: "The Krypsm platform showcases Lancers.io's mastery of complex financial applications. Their implementation of advanced security measures and blockchain integration has given us a competitive edge in the crypto market. Exceptional work!",
+        rating: 4,
+        investment: 'Crypto platform and security',
     },
 ];
 
@@ -86,15 +94,15 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
     const palette =
         mode === 'technical'
             ? {
-                panel: 'from-[#eef0f0] to-[#dde1e1] dark:from-[#181b1b] dark:to-[#222525]',
-                quoteBg: 'bg-[#525555] dark:bg-[#444747]',
-                role: 'text-[#444747] dark:text-[#c7cccc]',
-                chip: 'bg-[#4b4e4e] dark:bg-[#3d4040]',
-                dotActive: 'bg-[#525555] dark:bg-[#bcc0c0]',
-                statA: 'text-[#444747] dark:text-[#c7cccc]',
-                statB: 'text-[#4b4e4e] dark:text-[#adb2b2]',
-                statC: 'text-[#3d4040] dark:text-[#a2a7a7]',
-                statD: 'text-[#525555] dark:text-[#bcc0c0]',
+                panel: 'from-sky-50 to-cyan-100 dark:from-sky-950/50 dark:to-cyan-950/50',
+                quoteBg: 'bg-cyan-500 dark:bg-cyan-600',
+                role: 'text-sky-700 dark:text-cyan-300',
+                chip: 'bg-cyan-600 dark:bg-cyan-700',
+                dotActive: 'bg-cyan-500 dark:bg-cyan-300',
+                statA: 'text-sky-700 dark:text-cyan-300',
+                statB: 'text-cyan-700 dark:text-sky-300',
+                statC: 'text-sky-600 dark:text-cyan-200',
+                statD: 'text-cyan-600 dark:text-sky-300',
             }
             : {
                 panel: 'from-[#fff3d4] to-[#f2deab] dark:from-[#3b2f17] dark:to-[#4d3c1d]',
