@@ -154,7 +154,9 @@ const BudgetingCalculator = () => {
 
         // Calculate monthly SIP required using PMT formula
         // PMT = FV / [((1 + r)^n - 1) / r]
-        if (monthlyRate > 0) {
+        if (totalMonths <= 0) {
+            setMonthlySIPRequired(0);
+        } else if (monthlyRate > 0) {
             const monthlySIP = goalAmount / (((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate));
             setMonthlySIPRequired(monthlySIP);
         } else {
@@ -169,9 +171,9 @@ const BudgetingCalculator = () => {
     const handleInputChange = (field: keyof BudgetData, value: number) => {
         let clampedValue = value;
         if (field === 'monthlyIncome') {
-            clampedValue = Math.max(10000, Math.min(500000, value));
+            clampedValue = Math.max(0, Math.min(500000, value));
         } else if (field === 'monthlyExpense') {
-            clampedValue = Math.max(5000, Math.min(400000, value));
+            clampedValue = Math.max(0, Math.min(400000, value));
         }
         setBudgetData(prev => ({
             ...prev,
@@ -341,18 +343,18 @@ const BudgetingCalculator = () => {
                                         <div className="mb-2">
                                             <input
                                                 type="range"
-                                                min="10000"
+                                                min="0"
                                                 max="500000"
                                                 step="1000"
                                                 value={budgetData.monthlyIncome}
                                                 onChange={(e) => handleInputChange('monthlyIncome', parseInt(e.target.value))}
                                                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
-                                                    '--slider-value': ((budgetData.monthlyIncome - 10000) / (500000 - 10000)) * 100
+                                                    '--slider-value': (budgetData.monthlyIncome / 500000) * 100
                                                 } as React.CSSProperties}
                                             />
                                             <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                <span>₹10K</span>
+                                                <span>₹0</span>
                                                 <span>₹5L</span>
                                             </div>
                                         </div>
@@ -372,18 +374,18 @@ const BudgetingCalculator = () => {
                                         <div className="mb-2">
                                             <input
                                                 type="range"
-                                                min="5000"
+                                                min="0"
                                                 max="400000"
                                                 step="1000"
                                                 value={budgetData.monthlyExpense}
                                                 onChange={(e) => handleInputChange('monthlyExpense', parseInt(e.target.value))}
                                                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
-                                                    '--slider-value': ((budgetData.monthlyExpense - 5000) / (400000 - 5000)) * 100
+                                                    '--slider-value': (budgetData.monthlyExpense / 400000) * 100
                                                 } as React.CSSProperties}
                                             />
                                             <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                <span>₹5K</span>
+                                                <span>₹0</span>
                                                 <span>₹4L</span>
                                             </div>
                                         </div>
@@ -587,7 +589,7 @@ const BudgetingCalculator = () => {
                                             <div className="mb-2">
                                                 <input
                                                     type="range"
-                                                    min="1"
+                                                    min="0"
                                                     max="30"
                                                     value={sipDuration}
                                                     onChange={(e) => setSipDuration(parseInt(e.target.value))}
@@ -597,14 +599,14 @@ const BudgetingCalculator = () => {
                                                     } as React.CSSProperties}
                                                 />
                                                 <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                    <span>1 Year</span>
+                                                    <span>0 Year</span>
                                                     <span>30 Years</span>
                                                 </div>
                                             </div>
                                             <input
                                                 type="number"
                                                 value={sipDuration}
-                                                onChange={(e) => setSipDuration(Math.max(1, Math.min(30, parseInt(e.target.value) || 1)))}
+                                                onChange={(e) => setSipDuration(Math.max(0, Math.min(30, parseInt(e.target.value) || 0)))}
                                                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             />
                                         </div>
@@ -781,25 +783,25 @@ const BudgetingCalculator = () => {
                                         <div className="mb-2">
                                             <input
                                                 type="range"
-                                                min="1000000"
+                                                min="0"
                                                 max="100000000"
                                                 step="100000"
                                                 value={goalAmount}
                                                 onChange={(e) => setGoalAmount(parseInt(e.target.value))}
                                                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
-                                                    '--slider-value': ((goalAmount - 1000000) / (100000000 - 1000000)) * 100
+                                                    '--slider-value': (goalAmount / 100000000) * 100
                                                 } as React.CSSProperties}
                                             />
                                             <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                <span>₹10L</span>
+                                                <span>₹0</span>
                                                 <span>₹10Cr</span>
                                             </div>
                                         </div>
                                         <input
                                             type="number"
                                             value={goalAmount}
-                                            onChange={(e) => setGoalAmount(Math.max(1000000, Math.min(100000000, parseInt(e.target.value) || 1000000)))}
+                                            onChange={(e) => setGoalAmount(Math.max(0, Math.min(100000000, parseInt(e.target.value) || 0)))}
                                             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             placeholder="Enter your goal amount"
                                         />
@@ -813,24 +815,24 @@ const BudgetingCalculator = () => {
                                         <div className="mb-2">
                                             <input
                                                 type="range"
-                                                min="5"
+                                                min="0"
                                                 max="40"
                                                 value={goalDuration}
                                                 onChange={(e) => setGoalDuration(parseInt(e.target.value))}
                                                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                                 style={{
-                                                    '--slider-value': ((goalDuration - 5) / (40 - 5)) * 100
+                                                    '--slider-value': (goalDuration / 40) * 100
                                                 } as React.CSSProperties}
                                             />
                                             <div className="flex justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                <span>5 Years</span>
+                                                <span>0 Years</span>
                                                 <span>40 Years</span>
                                             </div>
                                         </div>
                                         <input
                                             type="number"
                                             value={goalDuration}
-                                            onChange={(e) => setGoalDuration(Math.max(5, Math.min(40, parseInt(e.target.value) || 5)))}
+                                            onChange={(e) => setGoalDuration(Math.max(0, Math.min(40, parseInt(e.target.value) || 0)))}
                                             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-colors"
                                             placeholder="Enter duration in years"
                                         />

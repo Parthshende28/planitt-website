@@ -20,6 +20,18 @@ interface ChartData {
     gains: number;
 }
 
+const LIMITS = {
+    monthlyInvestment: { min: 0, max: 1000000 },
+    duration: { min: 0, max: 100 },
+    expectedReturns: { min: 0, max: 50 },
+    topUpAmount: { min: 0, max: 100000 },
+} as const;
+
+const clampValue = (value: number, min: number, max: number) => {
+    if (!Number.isFinite(value)) return min;
+    return Math.min(max, Math.max(min, value));
+};
+
 const FinancialCalculator = () => {
     const [formData, setFormData] = useState<CalculatorData>({
         monthlyInvestment: 5000,
@@ -110,9 +122,30 @@ const FinancialCalculator = () => {
     };
 
     const handleInputChange = (field: keyof CalculatorData, value: number | string) => {
+        if (field === 'topUpFrequency') {
+            setFormData(prev => ({
+                ...prev,
+                topUpFrequency: value as '6months' | 'annually'
+            }));
+            return;
+        }
+
+        const numericValue = Number(value);
+        let clampedValue = numericValue;
+
+        if (field === 'monthlyInvestment') {
+            clampedValue = clampValue(numericValue, LIMITS.monthlyInvestment.min, LIMITS.monthlyInvestment.max);
+        } else if (field === 'duration') {
+            clampedValue = clampValue(numericValue, LIMITS.duration.min, LIMITS.duration.max);
+        } else if (field === 'expectedReturns') {
+            clampedValue = clampValue(numericValue, LIMITS.expectedReturns.min, LIMITS.expectedReturns.max);
+        } else if (field === 'topUpAmount') {
+            clampedValue = clampValue(numericValue, LIMITS.topUpAmount.min, LIMITS.topUpAmount.max);
+        }
+
         setFormData(prev => ({
             ...prev,
-            [field]: value
+            [field]: clampedValue
         }));
     };
 
@@ -161,23 +194,25 @@ const FinancialCalculator = () => {
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="1000"
+                                        min="0"
                                         max="1000000"
                                         step="1000"
                                         value={formData.monthlyInvestment}
                                         onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value))}
                                         className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.monthlyInvestment - 1000) / (1000000 - 1000)) * 100
+                                            '--slider-value': (formData.monthlyInvestment / 1000000) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                        <span>₹1,000</span>
+                                        <span>₹0</span>
                                         <span>₹10,00,000</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
+                                    min={LIMITS.monthlyInvestment.min}
+                                    max={LIMITS.monthlyInvestment.max}
                                     value={formData.monthlyInvestment}
                                     onChange={(e) => handleInputChange('monthlyInvestment', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -192,23 +227,23 @@ const FinancialCalculator = () => {
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="1"
+                                        min="0"
                                         max="100"
                                         value={formData.duration}
                                         onChange={(e) => handleInputChange('duration', parseInt(e.target.value))}
                                         className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.duration - 1) / (100 - 1)) * 100
+                                            '--slider-value': (formData.duration / 100) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                        <span>1 Year</span>
+                                        <span>0 Year</span>
                                         <span>100 Years</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min="1"
+                                    min="0"
                                     max="100"
                                     value={formData.duration}
                                     onChange={(e) => handleInputChange('duration', parseInt(e.target.value) || 0)}
@@ -224,25 +259,25 @@ const FinancialCalculator = () => {
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="6"
+                                        min="0"
                                         max="50"
                                         step="0.5"
                                         value={formData.expectedReturns}
                                         onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value))}
                                         className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.expectedReturns - 6) / (50 - 6)) * 100
+                                            '--slider-value': (formData.expectedReturns / 50) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                        <span>6%</span>
+                                        <span>0%</span>
                                         <span>50%</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
                                     step="0.5"
-                                    min="6"
+                                    min="0"
                                     max="50"
                                     value={formData.expectedReturns}
                                     onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value) || 0)}

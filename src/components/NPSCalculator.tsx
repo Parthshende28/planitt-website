@@ -96,22 +96,22 @@ const NPSCalculator = () => {
 
         switch (field) {
             case 'monthlyContribution':
-                clampedValue = Math.min(Math.max(value, 500), 1000000);
+                clampedValue = Math.min(Math.max(value, 0), 1000000);
                 break;
             case 'age':
-                clampedValue = Math.min(Math.max(value, 18), 60);
+                clampedValue = Math.min(Math.max(value, 0), 60);
                 break;
             case 'retirementAge':
-                clampedValue = Math.min(Math.max(value, formData.age + 1), 75);
+                clampedValue = Math.min(Math.max(value, formData.age), 75);
                 break;
             case 'expectedReturns':
-                clampedValue = Math.min(Math.max(value, 1), 15);
+                clampedValue = Math.min(Math.max(value, 0), 15);
                 break;
             case 'annuityPercent':
-                clampedValue = Math.min(Math.max(value, 40), 100);
+                clampedValue = Math.min(Math.max(value, 0), 100);
                 break;
             case 'expectedAnnuityReturns':
-                clampedValue = Math.min(Math.max(value, 1), 15);
+                clampedValue = Math.min(Math.max(value, 0), 15);
                 break;
         }
 
@@ -119,8 +119,8 @@ const NPSCalculator = () => {
 
         setFormData(prev => {
             const newData = { ...prev, [field]: clampedValue };
-            if (field === 'age' && newData.retirementAge <= clampedValue) {
-                newData.retirementAge = Math.min(clampedValue + 1, 75);
+            if (field === 'age' && newData.retirementAge < clampedValue) {
+                newData.retirementAge = Math.min(clampedValue, 75);
             }
             return newData;
         });
@@ -171,7 +171,7 @@ const NPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="500"
+                                        min="0"
                                         max="1000000"
                                         step="500"
                                         value={formData.monthlyContribution}
@@ -203,14 +203,14 @@ const NPSCalculator = () => {
                                     <div className="mb-2">
                                         <input
                                             type="range"
-                                            min="18"
+                                            min="0"
                                             max="60"
                                             value={formData.age}
                                             onChange={(e) => handleInputChange('age', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
                                         />
                                         <div className="flex justify-between text-xs text-gray-500 mt-1">
-                                            <span>18</span>
+                                            <span>0</span>
                                             <span>60</span>
                                         </div>
                                     </div>
@@ -231,14 +231,14 @@ const NPSCalculator = () => {
                                     <div className="mb-2">
                                         <input
                                             type="range"
-                                            min={formData.age + 1}
+                                            min={formData.age}
                                             max="75"
                                             value={formData.retirementAge}
                                             onChange={(e) => handleInputChange('retirementAge', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
                                         />
                                         <div className="flex justify-between text-xs text-gray-500 mt-1">
-                                            <span>{formData.age + 1}</span>
+                                            <span>{formData.age}</span>
                                             <span>75</span>
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@ const NPSCalculator = () => {
                                     <div className="mb-2">
                                         <input
                                             type="range"
-                                            min="1"
+                                            min="0"
                                             max="15"
                                             step="0.5"
                                             value={formData.expectedReturns}
@@ -293,14 +293,14 @@ const NPSCalculator = () => {
                                     <div className="mb-2">
                                         <input
                                             type="range"
-                                            min="40"
+                                            min="0"
                                             max="100"
                                             value={formData.annuityPercent}
                                             onChange={(e) => handleInputChange('annuityPercent', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
                                         />
                                         <div className="flex justify-between text-xs text-gray-500 mt-1">
-                                            <span>40%</span>
+                                            <span>0%</span>
                                             <span>100%</span>
                                         </div>
                                     </div>
@@ -323,7 +323,7 @@ const NPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="1"
+                                        min="0"
                                         max="15"
                                         step="0.5"
                                         value={formData.expectedAnnuityReturns}

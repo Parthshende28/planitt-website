@@ -18,6 +18,18 @@ interface ChartData {
     [key: string]: number;
 }
 
+const SIP_LIMITS = {
+    amount: { min: 0, max: 1000000 },
+    duration: { min: 0, max: 50 },
+    rate: { min: 0, max: 50 },
+    startYear: { min: 0, max: 50 },
+} as const;
+
+const clampValue = (value: number, min: number, max: number) => {
+    if (!Number.isFinite(value)) return min;
+    return Math.min(max, Math.max(min, value));
+};
+
 const SIPCalculator: React.FC = () => {
     const [sipEntries, setSipEntries] = useState<SIPEntry[]>([
         { id: '1', amount: 5000, duration: 5, rate: 12, startYear: 0 }
@@ -34,7 +46,9 @@ const SIPCalculator: React.FC = () => {
     const calculateSIP = (amount: number, rate: number, years: number) => {
         const monthlyRate = rate / 100 / 12;
         const months = years * 12;
-        const futureValue = amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+        const futureValue = monthlyRate > 0
+            ? amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate)
+            : amount * months;
         return futureValue;
     };
 
@@ -54,7 +68,9 @@ const SIPCalculator: React.FC = () => {
                     const monthlyRate = sip.rate / 100 / 12;
                     const months = sipYear * 12;
                     const invested = sip.amount * months;
-                    const maturity = sip.amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+                    const maturity = monthlyRate > 0
+                        ? sip.amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate)
+                        : invested;
 
                     yearData[`sip${index + 1}_invested`] = invested;
                     yearData[`sip${index + 1}_maturity`] = maturity;
@@ -114,8 +130,14 @@ const SIPCalculator: React.FC = () => {
     };
 
     const updateSIP = (id: string, field: keyof SIPEntry, value: number) => {
+        let clampedValue = value;
+        if (field === 'amount') clampedValue = clampValue(value, SIP_LIMITS.amount.min, SIP_LIMITS.amount.max);
+        if (field === 'duration') clampedValue = clampValue(value, SIP_LIMITS.duration.min, SIP_LIMITS.duration.max);
+        if (field === 'rate') clampedValue = clampValue(value, SIP_LIMITS.rate.min, SIP_LIMITS.rate.max);
+        if (field === 'startYear') clampedValue = clampValue(value, SIP_LIMITS.startYear.min, SIP_LIMITS.startYear.max);
+
         setSipEntries(sipEntries.map(sip =>
-            sip.id === id ? { ...sip, [field]: value } : sip
+            sip.id === id ? { ...sip, [field]: clampedValue } : sip
         ));
     };
 
@@ -205,6 +227,9 @@ const SIPCalculator: React.FC = () => {
                                                 </label>
                                                 <input
                                                     type="number"
+                                                    min={SIP_LIMITS.amount.min}
+                                                    max={SIP_LIMITS.amount.max}
+                                                    step="100"
                                                     value={sip.amount}
                                                     onChange={(e) => updateSIP(sip.id, 'amount', Number(e.target.value))}
                                                     className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -218,6 +243,8 @@ const SIPCalculator: React.FC = () => {
                                                 </label>
                                                 <input
                                                     type="number"
+                                                    min={SIP_LIMITS.duration.min}
+                                                    max={SIP_LIMITS.duration.max}
                                                     value={sip.duration}
                                                     onChange={(e) => updateSIP(sip.id, 'duration', Number(e.target.value))}
                                                     className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -232,6 +259,8 @@ const SIPCalculator: React.FC = () => {
                                                 <input
                                                     type="number"
                                                     step="0.1"
+                                                    min={SIP_LIMITS.rate.min}
+                                                    max={SIP_LIMITS.rate.max}
                                                     value={sip.rate}
                                                     onChange={(e) => updateSIP(sip.id, 'rate', Number(e.target.value))}
                                                     className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -245,6 +274,8 @@ const SIPCalculator: React.FC = () => {
                                                 </label>
                                                 <input
                                                     type="number"
+                                                    min={SIP_LIMITS.startYear.min}
+                                                    max={SIP_LIMITS.startYear.max}
                                                     value={sip.startYear}
                                                     onChange={(e) => updateSIP(sip.id, 'startYear', Number(e.target.value))}
                                                     className="w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"

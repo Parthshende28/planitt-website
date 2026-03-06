@@ -30,6 +30,22 @@ interface ServiceCalculatorProps {
     description: string;
 }
 
+const LIMITS = {
+    monthlyInvestment: { min: 0, max: 100000 },
+    oneTimeInvestment: { min: 0, max: 50000000 },
+    totalInvestment: { min: 0, max: 50000000 },
+    goalAmount: { min: 0, max: 10000000 },
+    duration: { min: 0, max: 50 },
+    expectedReturns: { min: 0, max: 50 },
+    inflationRate: { min: 0, max: 10 },
+    monthlyWithdrawal: { min: 0, max: 100000 },
+} as const;
+
+const clampValue = (value: number, min: number, max: number) => {
+    if (!Number.isFinite(value)) return min;
+    return Math.min(max, Math.max(min, value));
+};
+
 const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculatorProps) => {
     // Add investment type state for SIP/LUMSUM toggle
     const [investmentType, setInvestmentType] = useState<'sip' | 'lumpsum'>('sip');
@@ -187,7 +203,9 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
             const totalMonths = formData.duration * 12;
             let monthlySIP = 0;
 
-            if (monthlyRate > 0) {
+            if (totalMonths <= 0) {
+                monthlySIP = 0;
+            } else if (monthlyRate > 0) {
                 monthlySIP = inflationAdjustedGoal / (((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate));
             } else {
                 monthlySIP = inflationAdjustedGoal / totalMonths;
@@ -235,9 +253,38 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
     };
 
     const handleInputChange = (field: keyof CalculatorData, value: number | string) => {
+        if (field === 'withdrawalFrequency') {
+            setFormData(prev => ({
+                ...prev,
+                withdrawalFrequency: value as 'monthly' | 'quarterly' | 'annually'
+            }));
+            return;
+        }
+
+        const numericValue = Number(value);
+        let clampedValue = numericValue;
+
+        if (field === 'monthlyInvestment') {
+            clampedValue = clampValue(numericValue, LIMITS.monthlyInvestment.min, LIMITS.monthlyInvestment.max);
+        } else if (field === 'oneTimeInvestment') {
+            clampedValue = clampValue(numericValue, LIMITS.oneTimeInvestment.min, LIMITS.oneTimeInvestment.max);
+        } else if (field === 'totalInvestment') {
+            clampedValue = clampValue(numericValue, LIMITS.totalInvestment.min, LIMITS.totalInvestment.max);
+        } else if (field === 'goalAmount') {
+            clampedValue = clampValue(numericValue, LIMITS.goalAmount.min, LIMITS.goalAmount.max);
+        } else if (field === 'duration') {
+            clampedValue = clampValue(numericValue, LIMITS.duration.min, LIMITS.duration.max);
+        } else if (field === 'expectedReturns') {
+            clampedValue = clampValue(numericValue, LIMITS.expectedReturns.min, LIMITS.expectedReturns.max);
+        } else if (field === 'inflationRate') {
+            clampedValue = clampValue(numericValue, LIMITS.inflationRate.min, LIMITS.inflationRate.max);
+        } else if (field === 'monthlyWithdrawal') {
+            clampedValue = clampValue(numericValue, LIMITS.monthlyWithdrawal.min, LIMITS.monthlyWithdrawal.max);
+        }
+
         setFormData(prev => ({
             ...prev,
-            [field]: value
+            [field]: clampedValue
         }));
     };
 
@@ -316,7 +363,7 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min={investmentType === 'sip' ? "100" : "100000"}
+                                            min="0"
                                             max={investmentType === 'sip' ? "100000" : "50000000"}
                                             step={investmentType === 'sip' ? "1000" : "100000"}
                                             value={investmentType === 'sip' ? (formData.monthlyInvestment || 0) : (formData.oneTimeInvestment || 0)}
@@ -330,17 +377,19 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
                                                 '--slider-value': investmentType === 'sip'
-                                                    ? ((formData.monthlyInvestment || 0) - 100) / (100000 - 100) * 100
-                                                    : ((formData.oneTimeInvestment || 0) - 100000) / (50000000 - 100000) * 100
+                                                    ? ((formData.monthlyInvestment || 0) / 100000) * 100
+                                                    : ((formData.oneTimeInvestment || 0) / 50000000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                            <span>{investmentType === 'sip' ? '₹100' : '₹1,00,000'}</span>
+                                            <span>₹0</span>
                                             <span>{investmentType === 'sip' ? '₹1,00,000' : '₹5,00,00,000'}</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
+                                        min={investmentType === 'sip' ? LIMITS.monthlyInvestment.min : LIMITS.oneTimeInvestment.min}
+                                        max={investmentType === 'sip' ? LIMITS.monthlyInvestment.max : LIMITS.oneTimeInvestment.max}
                                         value={investmentType === 'sip' ? (formData.monthlyInvestment || 0) : (formData.oneTimeInvestment || 0)}
                                         onChange={(e) => {
                                             if (investmentType === 'sip') {
@@ -363,23 +412,25 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="100000"
+                                            min="0"
                                             max="50000000"
                                             step="10000"
                                             value={formData.totalInvestment || 0}
                                             onChange={(e) => handleInputChange('totalInvestment', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.totalInvestment || 0) - 100000) / (50000000 - 100000) * 100
+                                                '--slider-value': ((formData.totalInvestment || 0) / 50000000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                            <span>₹1,00,000</span>
+                                            <span>₹0</span>
                                             <span>₹5,00,00,000</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
+                                        min={LIMITS.totalInvestment.min}
+                                        max={LIMITS.totalInvestment.max}
                                         value={formData.totalInvestment || 0}
                                         onChange={(e) => handleInputChange('totalInvestment', parseInt(e.target.value) || 0)}
                                         className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -396,23 +447,25 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="100000"
+                                            min="0"
                                             max="10000000"
                                             step="100000"
                                             value={formData.goalAmount || 0}
                                             onChange={(e) => handleInputChange('goalAmount', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.goalAmount || 0) - 100000) / (10000000 - 100000) * 100
+                                                '--slider-value': ((formData.goalAmount || 0) / 10000000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                            <span>₹1,00,000</span>
+                                            <span>₹0</span>
                                             <span>₹1,00,00,000</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
+                                        min={LIMITS.goalAmount.min}
+                                        max={LIMITS.goalAmount.max}
                                         value={formData.goalAmount || 0}
                                         onChange={(e) => handleInputChange('goalAmount', parseInt(e.target.value) || 0)}
                                         className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -428,22 +481,24 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="1"
+                                        min="0"
                                         max="50"
                                         value={formData.duration}
                                         onChange={(e) => handleInputChange('duration', parseInt(e.target.value))}
                                         className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.duration - 1) / (50 - 1)) * 100
+                                            '--slider-value': (formData.duration / 50) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                        <span>1 Year</span>
+                                        <span>0 Year</span>
                                         <span>50 Years</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
+                                    min={LIMITS.duration.min}
+                                    max={LIMITS.duration.max}
                                     value={formData.duration}
                                     onChange={(e) => handleInputChange('duration', parseInt(e.target.value) || 0)}
                                     className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -458,24 +513,26 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                 <div className="">
                                     <input
                                         type="range"
-                                        min="6"
+                                        min="0"
                                         max="50"
                                         step="0.5"
                                         value={formData.expectedReturns}
                                         onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value))}
                                         className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                         style={{
-                                            '--slider-value': ((formData.expectedReturns - 6) / (50 - 6)) * 100
+                                            '--slider-value': (formData.expectedReturns / 50) * 100
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                        <span>6%</span>
+                                        <span>0%</span>
                                         <span>50%</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
                                     step="0.5"
+                                    min={LIMITS.expectedReturns.min}
+                                    max={LIMITS.expectedReturns.max}
                                     value={formData.expectedReturns}
                                     onChange={(e) => handleInputChange('expectedReturns', parseFloat(e.target.value) || 0)}
                                     className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -491,24 +548,26 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="3"
+                                            min="0"
                                             max="10"
                                             step="0.5"
                                             value={formData.inflationRate || 0}
                                             onChange={(e) => handleInputChange('inflationRate', parseFloat(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.inflationRate || 0) - 3) / (10 - 3) * 100
+                                                '--slider-value': ((formData.inflationRate || 0) / 10) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                            <span>3%</span>
+                                            <span>0%</span>
                                             <span>10%</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
                                         step="0.5"
+                                        min={LIMITS.inflationRate.min}
+                                        max={LIMITS.inflationRate.max}
                                         value={formData.inflationRate || 0}
                                         onChange={(e) => handleInputChange('inflationRate', parseFloat(e.target.value) || 0)}
                                         className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"
@@ -525,23 +584,25 @@ const ServiceCalculator = ({ serviceType, title, description }: ServiceCalculato
                                     <div className="">
                                         <input
                                             type="range"
-                                            min="1000"
+                                            min="0"
                                             max="100000"
                                             step="1000"
                                             value={formData.monthlyWithdrawal || 0}
                                             onChange={(e) => handleInputChange('monthlyWithdrawal', parseInt(e.target.value))}
                                             className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                                             style={{
-                                                '--slider-value': ((formData.monthlyWithdrawal || 0) - 1000) / (100000 - 1000) * 100
+                                                '--slider-value': ((formData.monthlyWithdrawal || 0) / 100000) * 100
                                             } as React.CSSProperties}
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                                            <span>₹1,000</span>
+                                            <span>₹0</span>
                                             <span>₹1,00,000</span>
                                         </div>
                                     </div>
                                     <input
                                         type="number"
+                                        min={LIMITS.monthlyWithdrawal.min}
+                                        max={LIMITS.monthlyWithdrawal.max}
                                         value={formData.monthlyWithdrawal || 0}
                                         onChange={(e) => handleInputChange('monthlyWithdrawal', parseInt(e.target.value) || 0)}
                                         className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white"

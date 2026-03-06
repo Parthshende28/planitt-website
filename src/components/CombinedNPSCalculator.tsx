@@ -217,10 +217,10 @@ const CombinedNPSCalculator = () => {
 
     const handleSipInputChange = (field: keyof SIPData, value: number) => {
         let sanitizedValue = value;
-        if (field === 'monthlyInvestment') sanitizedValue = Math.min(100000, Math.max(100, value));
-        if (field === 'oneTimeInvestment') sanitizedValue = Math.min(50000000, Math.max(100000, value));
-        if (field === 'duration') sanitizedValue = Math.min(50, Math.max(1, value));
-        if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(1, value));
+        if (field === 'monthlyInvestment') sanitizedValue = Math.min(100000, Math.max(0, value));
+        if (field === 'oneTimeInvestment') sanitizedValue = Math.min(50000000, Math.max(0, value));
+        if (field === 'duration') sanitizedValue = Math.min(50, Math.max(0, value));
+        if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(0, value));
 
         setSipData(prev => ({
             ...prev,
@@ -231,9 +231,9 @@ const CombinedNPSCalculator = () => {
     const handleSwpInputChange = (field: keyof SWPData, value: number | string) => {
         let sanitizedValue = value;
         if (typeof value === 'number') {
-            if (field === 'monthlyWithdrawal') sanitizedValue = Math.min(100000, Math.max(1000, value));
-            if (field === 'duration') sanitizedValue = Math.min(30, Math.max(1, value));
-            if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(1, value));
+            if (field === 'monthlyWithdrawal') sanitizedValue = Math.min(100000, Math.max(0, value));
+            if (field === 'duration') sanitizedValue = Math.min(30, Math.max(0, value));
+            if (field === 'expectedReturns') sanitizedValue = Math.min(50, Math.max(0, value));
         }
 
         setSwpData(prev => ({
@@ -309,7 +309,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min={sipInvestmentType === 'sip' ? "100" : "100000"}
+                                        min="0"
                                         max={sipInvestmentType === 'sip' ? "100000" : "50000000"}
                                         step={sipInvestmentType === 'sip' ? "1000" : "100000"}
                                         value={sipInvestmentType === 'sip' ? sipData.monthlyInvestment : sipData.oneTimeInvestment}
@@ -328,13 +328,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>{sipInvestmentType === 'sip' ? '₹100' : '₹1,00,000'}</span>
+                                        <span>₹0</span>
                                         <span>{sipInvestmentType === 'sip' ? '₹1,00,000' : '₹5,00,00,000'}</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={sipInvestmentType === 'sip' ? 100 : 100000}
+                                    min={0}
                                     max={sipInvestmentType === 'sip' ? 100000 : 50000000}
                                     value={sipInvestmentType === 'sip' ? sipData.monthlyInvestment : sipData.oneTimeInvestment}
                                     onChange={(e) => {
@@ -356,7 +356,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="1"
+                                        min="0"
                                         max="50"
                                         value={sipData.duration}
                                         onChange={(e) => handleSipInputChange('duration', parseInt(e.target.value))}
@@ -366,13 +366,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>1 Year</span>
+                                        <span>0 Year</span>
                                         <span>50 Years</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={1}
+                                    min={0}
                                     max={50}
                                     value={sipData.duration}
                                     onChange={(e) => handleSipInputChange('duration', parseInt(e.target.value) || 0)}
@@ -388,7 +388,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="6"
+                                        min="0"
                                         max="50"
                                         step="0.5"
                                         value={sipData.expectedReturns}
@@ -399,13 +399,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>6%</span>
+                                        <span>0%</span>
                                         <span>50%</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={1}
+                                    min={0}
                                     max={50}
                                     step="0.5"
                                     value={sipData.expectedReturns}
@@ -476,7 +476,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="1000"
+                                        min="0"
                                         max="100000"
                                         step="1000"
                                         value={swpData.monthlyWithdrawal}
@@ -487,13 +487,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>₹1,000</span>
+                                        <span>₹0</span>
                                         <span>₹1,00,000</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={1000}
+                                    min={0}
                                     max={100000}
                                     value={swpData.monthlyWithdrawal}
                                     onChange={(e) => handleSwpInputChange('monthlyWithdrawal', parseInt(e.target.value) || 0)}
@@ -509,7 +509,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="1"
+                                        min="0"
                                         max="30"
                                         value={swpData.duration}
                                         onChange={(e) => handleSwpInputChange('duration', parseInt(e.target.value))}
@@ -519,13 +519,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>1 Year</span>
+                                        <span>0 Year</span>
                                         <span>30 Years</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={1}
+                                    min={0}
                                     max={30}
                                     value={swpData.duration}
                                     onChange={(e) => handleSwpInputChange('duration', parseInt(e.target.value) || 0)}
@@ -541,7 +541,7 @@ const CombinedNPSCalculator = () => {
                                 <div className="mb-2">
                                     <input
                                         type="range"
-                                        min="6"
+                                        min="0"
                                         max="50"
                                         step="0.5"
                                         value={swpData.expectedReturns}
@@ -552,13 +552,13 @@ const CombinedNPSCalculator = () => {
                                         } as React.CSSProperties}
                                     />
                                     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        <span>6%</span>
+                                        <span>0%</span>
                                         <span>50%</span>
                                     </div>
                                 </div>
                                 <input
                                     type="number"
-                                    min={1}
+                                    min={0}
                                     max={50}
                                     step="0.5"
                                     value={swpData.expectedReturns}

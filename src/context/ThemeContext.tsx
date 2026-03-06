@@ -14,18 +14,22 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
-  // Force light theme by default
   useEffect(() => {
-    setTheme("light");
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
+    const storedTheme = localStorage.getItem("theme");
+    const initialTheme: Theme =
+      storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
-    // Toggle intentionally disabled to keep website in white theme.
-    setTheme("light");
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
+    setTheme((currentTheme) => {
+      const nextTheme = currentTheme === "light" ? "dark" : "light";
+      document.documentElement.classList.toggle("dark", nextTheme === "dark");
+      localStorage.setItem("theme", nextTheme);
+      return nextTheme;
+    });
   };
 
   return (
