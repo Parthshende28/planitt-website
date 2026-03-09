@@ -46,27 +46,29 @@ export default function CaseStudiesPage() {
   const isFinancial = mode === "financial";
 
   const palette = isFinancial
-    ? {
+      ? {
         page: "from-[#fff8e8] via-white to-[#f3e0af] dark:from-[#1f1a11] dark:via-[#221c13] dark:to-[#3b2d17]",
         tabActive: "from-[#b78622] to-[#d8b35c] text-white",
         tabIdle:
           "text-gray-700 dark:text-gray-300 hover:bg-[#fff5dc] dark:hover:bg-[#44351b]",
         headerAccent: "text-[#b78622] dark:text-[#e7c973]",
+        cardBase: "bg-gray-50 dark:bg-gray-900",
         cardHover: "hover:border-[#c79a3a] dark:hover:border-[#e7c973]",
         iconTone:
           "bg-[#fff1cf] dark:bg-[#4a3818]/70 text-[#b78622] dark:text-[#e7c973]",
         textTone: "text-[#a9781e] dark:text-[#e7c973]",
       }
     : {
-        page: "from-zinc-100 via-white to-slate-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-slate-900",
-        tabActive: "from-zinc-600 to-slate-600 text-white",
+        page: "from-sky-50 via-white to-cyan-100 dark:from-[#0b1220] dark:via-[#0d1727] dark:to-[#122235]",
+        tabActive: "from-cyan-500 to-sky-600 text-white",
         tabIdle:
-          "text-gray-700 dark:text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800",
-        headerAccent: "text-zinc-700 dark:text-zinc-300",
-        cardHover: "hover:border-zinc-500 dark:hover:border-zinc-400",
+          "text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-slate-800",
+        headerAccent: "text-sky-700 dark:text-cyan-300",
+        cardBase: "bg-white dark:bg-gray-800",
+        cardHover: "hover:border-sky-400 dark:hover:border-cyan-400",
         iconTone:
-          "bg-zinc-200 dark:bg-zinc-700/60 text-zinc-700 dark:text-zinc-300",
-        textTone: "text-zinc-700 dark:text-zinc-300",
+          "bg-sky-100 dark:bg-cyan-900/40 text-sky-700 dark:text-cyan-300",
+        textTone: "text-sky-700 dark:text-cyan-300",
       };
 
   const filteredStudies = useMemo(
@@ -119,7 +121,7 @@ export default function CaseStudiesPage() {
               href={item.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 ${palette.cardHover} hover:shadow-xl transition`}
+              className={`group relative ${palette.cardBase} border border-gray-200 dark:border-gray-800 rounded-2xl p-6 ${palette.cardHover} hover:shadow-xl transition`}
             >
               <div
                 className={`mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl ${palette.iconTone}`}

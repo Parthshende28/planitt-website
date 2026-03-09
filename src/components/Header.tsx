@@ -70,6 +70,7 @@ const Header = () => {
             <div className="flex items-center gap-4">
               <SearchBar />
               <button
+                suppressHydrationWarning
                 onClick={toggleTheme}
                 className="inline-flex items-center justify-center h-10 w-10 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -83,6 +84,7 @@ const Header = () => {
           {/* Mobile Buttons */}
           <div className="md:hidden flex items-center gap-3">
             <button
+              suppressHydrationWarning
               onClick={toggleTheme}
               className="inline-flex items-center justify-center h-9 w-9 rounded-md border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -138,3 +140,4 @@ const Header = () => {
 };
 
 export default Header;
+

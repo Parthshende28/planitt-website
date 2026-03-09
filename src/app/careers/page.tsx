@@ -488,8 +488,8 @@ Thank You.`;
                                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#b78622] text-white font-bold z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">2</div>
                                     <div className="hidden md:block md:w-1/2 md:pr-8"></div>
                                     <div className="mt-4 md:mt-0 md:w-1/2 md:pl-12">
-                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Initial Phone Confirmation</h3>
-                                        <p className="text-gray-600 dark:text-gray-400">A 10-minute call to discuss your background and interest</p>
+                                        <h3 className="text-xl font-semibold text-[#b78622] dark:text-[#e7c973]">Assessment / Aptitude Test</h3>
+                                        <p className="text-gray-600 dark:text-gray-400">Short test to evaluate your problem-solving and role-related skills</p>
                                     </div>
                                 </div>
 
@@ -528,4 +528,5 @@ Thank You.`;
         </div>
     );
 }
+
 

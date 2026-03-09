@@ -37,6 +37,7 @@ export default function SearchBar() {
       <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-200 ${isOpen ? 'w-64 border-blue-500 ring-2 ring-blue-100 bg-white dark:bg-gray-900' : 'w-48 border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 bg-gray-50 dark:bg-gray-900/50'}`}>
         <Search size={18} className={`${isOpen ? 'text-blue-500' : 'text-gray-400 dark:text-gray-500'}`} />
         <input
+          suppressHydrationWarning
           type="text"
           placeholder="Search..."
           value={query}
@@ -105,3 +106,4 @@ export default function SearchBar() {
     </div>
   );
 }
+
