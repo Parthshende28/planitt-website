@@ -114,13 +114,6 @@ const Header = () => {
               <div className="mb-3">
                 <SearchBar />
               </div>
-              <button
-                onClick={toggleTheme}
-                className="w-full px-3 py-2 rounded-md text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus-visible:outline-none"
-              >
-                {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              </button>
-
               {navItems.map((item) => (
                 <Link
                   key={item.name}

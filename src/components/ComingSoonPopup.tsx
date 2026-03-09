@@ -30,11 +30,11 @@ export default function ComingSoonPopup() {
           className="fixed inset-0 z-[120] bg-black/55 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4"
         >
           <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="relative w-full max-w-4xl max-h-[88vh] sm:max-h-[92vh] overflow-y-auto rounded-2xl sm:rounded-3xl border border-white/20 bg-[#0f1117] text-white shadow-2xl"
+            className="relative w-full max-w-4xl overflow-hidden rounded-2xl sm:rounded-3xl border border-white/20 bg-[#0f1117] text-white shadow-2xl"
           >
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#b78622]/35 blur-3xl" />
