@@ -1,0 +1,1026 @@
+{
+  "meta": {
+    "sourceFile": "D:\\planitt-website\\src\\data\\mutual-funds.xlsx",
+    "extractedAt": "2026-03-10T18:08:47.935189",
+    "count": 113
+  },
+  "funds": [
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC MNC Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Non- Cyclical Consumer Fund",
+      "commissionPct": 0.89,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Housing Opportunitis",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Technology Fund",
+      "commissionPct": 0.85,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Transpotation & Logistic",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Pharma & Healthcare",
+      "commissionPct": 0.82,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Business Cycle",
+      "commissionPct": 0.78,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC innovation Fund",
+      "commissionPct": 0.78,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Banking & Fiancial",
+      "commissionPct": 0.78,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Euity Saving",
+      "commissionPct": 0.76,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Diversified Equity All Cap",
+      "commissionPct": 0.73,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "HDFC Mutual Funds",
+      "fundName": "HDFC Small Cap",
+      "commissionPct": 0.58,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Retirement fund Hybrid Conservative Plan",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Thematic Advantage Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Retirement Fund Aggressive Plan",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Asset Allocation Fund",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Innovation Fund",
+      "commissionPct": 0.76,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI MNC Fund",
+      "commissionPct": 0.76,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "ICICI Mutual Funds",
+      "fundName": "ICICI Small Cap Fund",
+      "commissionPct": 0.73,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Magnum Comma",
+      "commissionPct": 1.003,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Retirement Benefit - Aggessive Hybrid",
+      "commissionPct": 0.92,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Consuption Opptunities Fund",
+      "commissionPct": 0.83,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Healthcare Opportunity Fund",
+      "commissionPct": 0.83,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Quant Fund",
+      "commissionPct": 0.806,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Retirement Benefit - Aggessive",
+      "commissionPct": 0.806,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "SBI Mutual Fund Name Commision Pencentage",
+      "fundName": "SBI Technology Opptunity Fund",
+      "commissionPct": 0.78,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon MNC Fund",
+      "commissionPct": 1.029,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon Retirement Fund Income Genration",
+      "commissionPct": 1.029,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon India Consumption Fund",
+      "commissionPct": 0.986,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon Innovation Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon Vision Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon India Retirement Fund Wealth Creation Scheme",
+      "commissionPct": 0.94,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon Value Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon India Flexicap Fund",
+      "commissionPct": 0.86,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Nippon Mutual Funds",
+      "fundName": "Nippon Taiwan Equity Fund",
+      "commissionPct": 0.83,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Transportation Fund",
+      "commissionPct": 1.07,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Banking & Financial Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Consumption Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Energy Opportunity Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Healthcare",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak ESG Exclusionary Strategy Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Manufacturing in India Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Special Opportunity Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Active Momentum Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Kotak Mutual Fund",
+      "fundName": "Kotak Focused Equity Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Multi Asset Allocation",
+      "commissionPct": 1.02,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Smallcap Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Balanced Advantage Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Great Consumer Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Flexicap Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Multicap Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Mirea Mutual Fund",
+      "fundName": "Midcap Fund",
+      "commissionPct": 0.7,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Housing Opportunity Fund",
+      "commissionPct": 1.071,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Divided Yield Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Ethical Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Multi Asset Opportunity Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Resources & Energy Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "TATA Mutual Fund",
+      "fundName": "TATA Indian Innovation Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Retirement Fund- DYNAMIC",
+      "commissionPct": 1.26,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Multi Asset Allocation",
+      "commissionPct": 0.99,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Equity Saving Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Aggressive Hybrid Fund",
+      "commissionPct": 0.96,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Innovation Fund",
+      "commissionPct": 0.96,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Quant Fund",
+      "commissionPct": 0.96,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Value Fund",
+      "commissionPct": 0.96,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Retirement Fund - Aggressive Plan",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Axis Mutual Fund",
+      "fundName": "Axis Innovation FoF",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Healthcare Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Banking & Financial Service Funf",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Innovation Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Multicap Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI India Consumer Fund",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Children equity Fund",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Quant Fund",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Aggressive Hybrid Fund",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Large & Midcap Fund",
+      "commissionPct": 0.77,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "UTI Mutual Fund",
+      "fundName": "UTI Largecap Fund",
+      "commissionPct": 0.73,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Indian Balanced Advantage Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Multi Asset Allocation Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Opportunity Fund India",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Indian Technology",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Indian Value Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Flexicap Fund",
+      "commissionPct": 0.84,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin Feeder",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Franklin Mutual Fund",
+      "fundName": "Franklin US Opportunity",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP Banking & Financial Service",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP Dynamic Asset Allocation",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP Flexicap Fund",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP Indian TIGER Fund",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP National Resources & New Energy Fund",
+      "commissionPct": 0.81,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "DSP Mutual Fund",
+      "fundName": "DSP Focus Fund",
+      "commissionPct": 0.77,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Multi Asset Omni fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Recently Listed IPO Fund",
+      "commissionPct": 0.98,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Focused Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Technology Fund",
+      "commissionPct": 0.97,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Aggressive Hybrid Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Edelweiss Mutual Fund",
+      "fundName": "Edelweiss Cap Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Quantum Mutual Funds",
+      "fundName": "Quantum ESG Best in Class Statergy Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Quantum Mutual Funds",
+      "fundName": "Quantum Small cap Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "Quantum Mutual Funds",
+      "fundName": "Quantum Ethical Fund",
+      "commissionPct": 0.88,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "very high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM ELSS Tax Saver Fund",
+      "commissionPct": 1.24,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Focused Fund",
+      "commissionPct": 1.24,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Aggressive Hybrid Fund",
+      "commissionPct": 1.07,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Largecap Fund",
+      "commissionPct": 1.07,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Midcap Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Flexicap Fund",
+      "commissionPct": 0.77,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "JM Value Fund",
+      "commissionPct": 0.93,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Baroda BNP Paribas Children Fund",
+      "commissionPct": 1.41,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Motilal Oswal Infrastructure Fund",
+      "commissionPct": 1.32,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Motilal Oswal Service Fund",
+      "commissionPct": 1.32,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Shriram Aggressive Hybrid Fund",
+      "commissionPct": 1.32,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "moderate",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Shriram ELSS Tax Saver",
+      "commissionPct": 1.32,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    },
+    {
+      "amc": "JM Mutual Fund",
+      "fundName": "Shriram Flexicap",
+      "commissionPct": 1.32,
+      "sipAvailable": true,
+      "lumpsumAvailable": true,
+      "riskCategory": "high",
+      "minDurationYears": null
+    }
+  ]
+}

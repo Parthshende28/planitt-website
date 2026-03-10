@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ComingSoonPopup from "@/components/ComingSoonPopup";
+import WealthAdvisoryFab from "@/components/WealthAdvisoryFab";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <WealthAdvisoryFab />
         </ThemeProvider>
       </body>
     </html>

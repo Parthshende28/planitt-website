@@ -53,6 +53,8 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
+                  target={(item as { external?: boolean }).external ? "_blank" : undefined}
+                  rel={(item as { external?: boolean }).external ? "noreferrer" : undefined}
                   className="
                     nav-gradient-underline
                     text-gray-700 dark:text-gray-300
@@ -120,6 +122,8 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
+                  target={(item as { external?: boolean }).external ? "_blank" : undefined}
+                  rel={(item as { external?: boolean }).external ? "noreferrer" : undefined}
                   onClick={() => setIsMenuOpen(false)}
                   className="
                     block px-3 py-2 rounded-md

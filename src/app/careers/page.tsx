@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { Globe } from 'lucide-react';
 
 // Job data structure
 interface Job {
@@ -17,6 +19,61 @@ interface Job {
     responsibilities: string[];
     benefits: string[];
 }
+
+// Team member data structure
+interface TeamMember {
+    name: string;
+    role: string;
+    image: string;
+    portfolio?: string;
+}
+
+// Team members data
+const teamMembers: TeamMember[] = [
+    {
+        name: 'Piyush Tembhekar',
+        role: 'CEO, Financial Distribution',
+        image: '/CEO_Photo.png',
+        portfolio: '#',
+    },
+    {
+        name: 'Parth Shende',
+        role: 'CTO (Technical Lead)',
+        image: '/Parth_shende(Technical_Head).jpeg',
+        portfolio: '#',
+    },
+    {
+        name: 'Om Shrikhande',
+        role: 'Software Developer',
+        image: '/om_profile.jpeg', // Default image as requested
+        portfolio: 'https://omshrikhande.netlify.app/',
+    },
+    {
+        name: 'Ansh Mishra',
+        role: 'Software Developer',
+        image: '/ansh_profile.jpeg', // Default image as requested
+        portfolio: 'https://ansh-dev-portfolio.netlify.app/',
+    },
+    {
+        name: 'T. Devashish Pillay ',
+        role: 'Software Developer',
+        image: '/dev_profile.jpeg', // Default image as requested
+        portfolio: 'https://misude.netlify.app/',
+    },
+    {
+        name: 'Shivam Badade',
+        role: 'Software Developer',
+        image: '/shivam_profile.jpg', // Default image as requested
+        portfolio: 'https://dev.netlify.app/',
+    },
+    {
+        name: 'Harsh R. Meshram ',
+        role: 'Digital Marketer',
+        image: '/Harsh_profile.jpg', // Default image as requested
+        portfolio: 'https://harsh-meshram.netlify.app/',
+    },
+
+];
 
 // Sample job data
 const initialJobs: Job[] = [
@@ -241,6 +298,48 @@ Thank You.`;
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Hybrid work policy for better work-life balance</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Meet Our Team Section */}
+            <section className="py-16 bg-white dark:bg-gray-950">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">Meet Our Team</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {teamMembers.map((member, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                                className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 text-center hover:shadow-xl transition-shadow duration-300"
+                            >
+                                <div className="relative w-32 h-32 mx-auto mb-6 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-md border-4 border-white dark:border-gray-800">
+                                    <Image
+                                        src={member.image}
+                                        alt={member.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{member.name}</h3>
+                                <p className="text-[#b78622] dark:text-[#e7c973] font-semibold text-sm mb-6">{member.role}</p>
+                                
+                                {member.portfolio && member.portfolio !== '#' && (
+                                    <a
+                                        href={member.portfolio}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#b78622]/10 dark:bg-[#e7c973]/10 text-[#b78622] dark:text-[#e7c973] rounded-full text-sm font-medium hover:bg-[#b78622] hover:text-white dark:hover:bg-[#e7c973] dark:hover:text-gray-900 transition-all duration-300"
+                                    >
+                                        <Globe className="w-4 h-4" />
+                                        Portfolio
+                                    </a>
+                                )}
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
