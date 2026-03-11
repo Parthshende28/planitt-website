@@ -197,6 +197,7 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
 
                     <button
                         onClick={prevTestimonial}
+                        suppressHydrationWarning
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-gray-100 dark:border-gray-700"
                     >
                         <ChevronLeft className="h-6 w-6" />
@@ -204,6 +205,7 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
 
                     <button
                         onClick={nextTestimonial}
+                        suppressHydrationWarning
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 border border-gray-100 dark:border-gray-700"
                     >
                         <ChevronRight className="h-6 w-6" />
@@ -215,6 +217,7 @@ const Testimonials = ({ mode = 'all' }: TestimonialsProps) => {
                         <button
                             key={index}
                             onClick={() => goToTestimonial(index)}
+                            suppressHydrationWarning
                             className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentIndex
                                 ? `${palette.dotActive} scale-125`
                                 : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'

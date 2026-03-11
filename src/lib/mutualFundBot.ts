@@ -15,6 +15,7 @@ export interface InvestorProfile {
   riskTolerance: RiskTolerance;
   monthlyInvestment?: number;
   lumpSumInvestment?: number;
+  investmentAmount?: number;
 }
 
 export interface MutualFund {
@@ -36,6 +37,7 @@ export interface RecommendResult {
   normalizedProfile: InvestorProfile;
   suggestions: FundSuggestion[];
   disclaimer: string;
+  investmentSplit?: number;
 }
 
 const clampNumber = (value: number, min: number, max: number) =>
@@ -176,6 +178,7 @@ export const normalizeProfile = (input: Partial<InvestorProfile>): InvestorProfi
   const horizonYears = clampNumber(toFiniteNumber(input.horizonYears) ?? 5, 0, 50);
   const monthlyInvestment = toFiniteNumber(input.monthlyInvestment ?? null);
   const lumpSumInvestment = toFiniteNumber(input.lumpSumInvestment ?? null);
+  const investmentAmount = toFiniteNumber(input.investmentAmount ?? null);
 
   const riskTolerance: RiskTolerance =
     input.riskTolerance === "conservative" ||
@@ -200,6 +203,7 @@ export const normalizeProfile = (input: Partial<InvestorProfile>): InvestorProfi
     riskTolerance,
     monthlyInvestment: monthlyInvestment ?? undefined,
     lumpSumInvestment: lumpSumInvestment ?? undefined,
+    investmentAmount: investmentAmount ?? undefined,
   };
 };
 
@@ -260,6 +264,10 @@ export const recommendMutualFunds = (rawProfile: Partial<InvestorProfile>): Reco
   const disclaimer =
     "Educational preview only — not financial advice. Mutual funds are subject to market risk. Past performance doesn’t guarantee future results. Verify scheme details, risks, and costs (TER) before investing.";
 
-  return { normalizedProfile, suggestions, disclaimer };
+  const investmentSplit = normalizedProfile.investmentAmount && suggestions.length > 0
+    ? normalizedProfile.investmentAmount / suggestions.length
+    : undefined;
+
+  return { normalizedProfile, suggestions, disclaimer, investmentSplit };
 };
 

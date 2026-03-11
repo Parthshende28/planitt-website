@@ -29,6 +29,7 @@ type ApiResponse = {
   };
   suggestions: Suggestion[];
   disclaimer: string;
+  investmentSplit?: number;
 };
 
 const riskLabel = (risk: 1 | 2 | 3 | 4 | 5) => {
@@ -58,6 +59,7 @@ export default function MutualFundBotClient() {
   const [riskTolerance, setRiskTolerance] = useState<RiskTolerance>("moderate");
   const [monthlyInvestment, setMonthlyInvestment] = useState<number>(5000);
   const [lumpSumInvestment, setLumpSumInvestment] = useState<number>(0);
+  const [totalToInvest, setTotalToInvest] = useState<number>(5000);
 
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
@@ -70,8 +72,9 @@ export default function MutualFundBotClient() {
       riskTolerance,
       monthlyInvestment,
       lumpSumInvestment,
+      investmentAmount: totalToInvest,
     }),
-    [goal, horizonYears, riskTolerance, monthlyInvestment, lumpSumInvestment],
+    [goal, horizonYears, riskTolerance, monthlyInvestment, lumpSumInvestment, totalToInvest],
   );
 
   const reset = () => {
@@ -127,7 +130,8 @@ export default function MutualFundBotClient() {
         <div className="flex flex-wrap gap-2 items-center justify-between">
           <div className="text-sm text-gray-700 dark:text-gray-300">
             <span className="font-semibold">Your inputs:</span>{" "}
-            {goalLabel[goal]} · {horizonYears}y · {riskTolerance} · SIP ₹{prettyNumber(monthlyInvestment)}
+            {goalLabel[goal]} · {horizonYears}y · {riskTolerance} · ₹{prettyNumber(totalToInvest)} Total
+            {monthlyInvestment > 0 ? ` · SIP ₹${prettyNumber(monthlyInvestment)}` : ""}
             {lumpSumInvestment > 0 ? ` · Lump sum ₹${prettyNumber(lumpSumInvestment)}` : ""}
           </div>
           <button
@@ -235,34 +239,49 @@ export default function MutualFundBotClient() {
 
           {step === "amount" && (
             <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950/40 p-4">
-              <p className="font-semibold text-gray-900 dark:text-gray-100">4) Investment amount (optional)</p>
+              <p className="font-semibold text-gray-900 dark:text-gray-100">4) Investment amount</p>
               <div className="mt-3 grid sm:grid-cols-2 gap-3">
                 <label className="text-sm text-gray-700 dark:text-gray-300">
-                  Monthly SIP (₹)
-                  <input
-                    type="number"
-                    min={0}
-                    max={10000000}
-                    value={monthlyInvestment}
-                    onChange={(e) =>
-                      setMonthlyInvestment(Math.max(0, Math.min(10000000, Number(e.target.value))))
-                    }
-                    className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2"
-                  />
-                </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
-                  Lump sum (₹)
+                  Total Investment (to split across funds) (₹)
                   <input
                     type="number"
                     min={0}
                     max={100000000}
-                    value={lumpSumInvestment}
+                    value={totalToInvest}
                     onChange={(e) =>
-                      setLumpSumInvestment(Math.max(0, Math.min(100000000, Number(e.target.value))))
+                      setTotalToInvest(Math.max(0, Math.min(100000000, Number(e.target.value))))
                     }
                     className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2"
                   />
                 </label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-sm text-gray-700 dark:text-gray-300">
+                    Monthly SIP (₹) (optional)
+                    <input
+                      type="number"
+                      min={0}
+                      max={10000000}
+                      value={monthlyInvestment}
+                      onChange={(e) =>
+                        setMonthlyInvestment(Math.max(0, Math.min(10000000, Number(e.target.value))))
+                      }
+                      className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2"
+                    />
+                  </label>
+                  <label className="text-sm text-gray-700 dark:text-gray-300">
+                    Lump sum (₹) (optional)
+                    <input
+                      type="number"
+                      min={0}
+                      max={100000000}
+                      value={lumpSumInvestment}
+                      onChange={(e) =>
+                        setLumpSumInvestment(Math.max(0, Math.min(100000000, Number(e.target.value))))
+                      }
+                      className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2"
+                    />
+                  </label>
+                </div>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2 items-center">
@@ -322,6 +341,11 @@ export default function MutualFundBotClient() {
                         <p className="text-sm text-gray-700 dark:text-gray-300">
                           {s.fund.category} · Risk: {riskLabel(s.fund.riskLevel)} · Suggested horizon: {s.fund.minHorizonYears}y+
                         </p>
+                        {(result.investmentSplit || totalToInvest > 0) && (
+                          <p className="text-sm font-semibold text-[#b78622] mt-1">
+                            Suggested Investment: ₹{prettyNumber(result.investmentSplit || (totalToInvest / result.suggestions.length))}
+                          </p>
+                        )}
                       </div>
                       <div className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#b78622]/15 border border-[#b78622]/30 text-[#7a5611] dark:text-[#f2d789] dark:border-[#f2d789]/25">
                         Match score: {Math.round(s.score)}

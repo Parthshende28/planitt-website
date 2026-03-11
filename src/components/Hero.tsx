@@ -79,6 +79,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                         <div className="relative grid grid-cols-2 gap-1">
                             <button
                                 onClick={() => onModeChange?.('financial')}
+                                suppressHydrationWarning
                                 className={`h-12 rounded-xl px-4 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                                     !isTechnical
                                         ? 'text-white'
@@ -90,6 +91,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                             </button>
                             <button
                                 onClick={() => onModeChange?.('technical')}
+                                suppressHydrationWarning
                                 className={`h-12 rounded-xl px-4 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                                     isTechnical
                                         ? 'text-white'
@@ -157,6 +159,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                         <>
                                             <Link
                                                 href="/services/financial-services/budgeting"
+                                                suppressHydrationWarning
                                                 className={`inline-flex items-center justify-center px-8 py-4 bg-linear-to-r ${palette.primaryBtn} text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                                             >
                                                 Explore Financial
@@ -166,6 +169,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                                 href="https://www.assetplus.in/mfd/ARN-338883"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
+                                                suppressHydrationWarning
                                                 className={`inline-flex items-center justify-center px-8 py-4 bg-linear-to-r ${palette.secondaryBtn} text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                                             >
                                                 Contact Advisor
@@ -176,6 +180,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                         <>
                                             <Link
                                                 href="/services/technical-training"
+                                                suppressHydrationWarning
                                                 className={`inline-flex items-center justify-center px-8 py-4 bg-linear-to-r ${palette.primaryBtn} text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                                             >
                                                 Explore Technical
@@ -183,6 +188,7 @@ const Hero = ({ mode = 'financial', onModeChange }: HeroProps) => {
                                             </Link>
                                             <Link
                                                 href="/#contact"
+                                                suppressHydrationWarning
                                                 className={`inline-flex items-center justify-center px-8 py-4 bg-linear-to-r ${palette.secondaryBtn} text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                                             >
                                                 Start Project

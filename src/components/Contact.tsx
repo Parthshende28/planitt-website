@@ -228,6 +228,7 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
                                         id="firstName"
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
+                                        suppressHydrationWarning
                                         className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your first name"
                                         required
@@ -243,6 +244,7 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
+                                        suppressHydrationWarning
                                         className={`w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 ${palette.ring} focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500`}
                                         placeholder="Enter your phone number"
                                     />
@@ -250,6 +252,7 @@ const Contact = ({ mode = 'all' }: ContactProps) => {
 
                                 <button
                                     type="submit"
+                                    suppressHydrationWarning
                                     className={`w-full bg-gradient-to-r ${palette.button} text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center`}
                                 >
                                     <MessageCircle className="mr-2 h-5 w-5" />

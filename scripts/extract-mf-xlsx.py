@@ -5,7 +5,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 WORKSPACE = Path(__file__).resolve().parents[1]
-XLSX_PATH = WORKSPACE / "src" / "data" / "mutual-funds.xlsx"
+XLSX_PATH = WORKSPACE / "public" / "mutual_funds_dataset_with_commission.xlsx"
 OUT_PATH = WORKSPACE / "src" / "data" / "mutualFundsDataset.json"
 
 
@@ -71,6 +71,14 @@ def parse_float(value: str):
         return None
 
 
+def parse_duration(value: str):
+    if not value: return None
+    m = re.search(r"(\d+)", value)
+    if m:
+        return float(m.group(1))
+    return None
+
+
 def main():
     if not XLSX_PATH.exists():
         raise SystemExit(f"Missing XLSX: {XLSX_PATH}")
@@ -94,7 +102,7 @@ def main():
 
     funds = []
     for row in rows[1:]:
-        name = str(get(row, "mutual_fund_name") or get(row, "fund_name") or get(row, "scheme_name")).strip()
+        name = str(get(row, "fund_name") or get(row, "mutual_fund_name") or get(row, "scheme_name")).strip()
         amc = str(get(row, "amc") or get(row, "fund_house") or get(row, "fund_company")).strip()
         if not name:
             continue
@@ -102,11 +110,11 @@ def main():
         fund = {
             "amc": amc or "Unknown AMC",
             "fundName": name,
-            "commissionPct": parse_float(str(get(row, "commission_percentage") or get(row, "commission_pct") or get(row, "commission"))),
-            "sipAvailable": parse_bool(str(get(row, "sip") or get(row, "sip_available"))),
-            "lumpsumAvailable": parse_bool(str(get(row, "lumpsum") or get(row, "lump_sum") or get(row, "lumpsum_available"))),
-            "riskCategory": str(get(row, "risk") or get(row, "risk_category") or get(row, "risk_level")).strip().lower(),
-            "minDurationYears": parse_float(str(get(row, "min_duration_years") or get(row, "duration_years") or get(row, "min_duration"))),
+            "commissionPct": parse_float(str(get(row, "commission") or get(row, "commission_percentage") or get(row, "commission_pct"))),
+            "sipAvailable": parse_bool(str(get(row, "sip_available") or get(row, "sip"))),
+            "lumpsumAvailable": parse_bool(str(get(row, "lumpsum_available") or get(row, "lumpsum") or get(row, "lump_sum"))),
+            "riskCategory": str(get(row, "risk_category") or get(row, "risk") or get(row, "risk_level")).strip().lower(),
+            "minDurationYears": parse_duration(str(get(row, "minimum_recommended_duration") or get(row, "min_duration") or get(row, "duration_years"))),
         }
         funds.append(fund)
 

@@ -62,7 +62,7 @@ const teamMembers: TeamMember[] = [
     },
     {
         name: 'Shivam Badade',
-        role: 'Software Developer',
+        role: 'Software Developer', 
         image: '/shivam_profile.jpg', // Default image as requested
         portfolio: 'https://dev.netlify.app/',
     },
