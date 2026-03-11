@@ -66,34 +66,37 @@ export default function TechnicalFaqFab() {
             className={`fixed z-[100] ${
               fullScreen
                 ? "inset-4 sm:inset-6 lg:inset-10"
-                : "bottom-[5.75rem] right-4 h-[78vh] max-h-[760px] w-[calc(100vw-2rem)] sm:bottom-24 sm:right-6 sm:h-[72vh] sm:w-[440px] lg:right-8 lg:w-[540px]"
+                : "inset-x-3 bottom-3 top-20 sm:inset-auto sm:bottom-24 sm:right-6 sm:h-[72vh] sm:max-h-[760px] sm:w-[440px] lg:right-8 lg:w-[540px]"
             }`}
           >
-            <div className="h-full w-full overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,247,255,0.98))] shadow-[0_28px_80px_-28px_rgba(15,17,23,0.5)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,rgba(4,10,18,0.98),rgba(8,17,31,0.98))]">
+            <div className="flex h-full w-full flex-col overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,247,255,0.98))] shadow-[0_28px_80px_-28px_rgba(15,17,23,0.5)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,rgba(4,10,18,0.98),rgba(8,17,31,0.98))]">
               <div className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(135deg,#0b1220_0%,#11203c_52%,#18345a_100%)] px-4 py-3.5 text-white sm:px-5 sm:py-4">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(79,124,255,0.26),transparent_32%),radial-gradient(circle_at_left,rgba(255,255,255,0.06),transparent_26%)]" />
                 <div className="relative flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-3">
-                      <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#87a9ff] via-[#4f7cff] to-[#274cbc] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
+                    <div className="flex items-start gap-3 sm:items-center">
+                      <div className="relative mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#87a9ff] via-[#4f7cff] to-[#274cbc] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] sm:mt-0">
                         <HelpCircle className="h-5 w-5" />
                         <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-[#111318] bg-emerald-400" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/45">Planitt Tech Desk</p>
-                        <span className="block text-lg font-semibold leading-tight text-white">Technical FAQ</span>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/45 sm:text-[11px] sm:tracking-[0.28em]">Planitt Tech Desk</p>
+                        <span className="block text-base font-semibold leading-tight text-white sm:text-lg">Technical FAQ</span>
+                        <span className="mt-1 block text-xs leading-5 text-white/70 sm:hidden">
+                          Ask about pricing, scope, revisions, and support.
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center justify-between gap-2 sm:justify-end">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
+                    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 sm:tracking-[0.25em]">
                       <Sparkles className="h-3 w-3 text-[#a9c0ff]" />
                       Live
                     </span>
                     <button
                       type="button"
                       onClick={() => setFullScreen((v) => !v)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 transition-colors hover:bg-white/20"
+                      className="hidden h-9 w-9 items-center justify-center rounded-xl bg-white/10 transition-colors hover:bg-white/20 sm:inline-flex"
                       aria-label={fullScreen ? "Exit full screen" : "Full screen"}
                     >
                       {fullScreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
@@ -112,7 +115,7 @@ export default function TechnicalFaqFab() {
                   </div>
                 </div>
               </div>
-              <div className="h-[calc(100%-92px)] overflow-hidden sm:h-[calc(100%-86px)]">
+              <div className="min-h-0 flex-1 overflow-hidden">
                 <TechnicalFaqChatClient embedded />
               </div>
             </div>
