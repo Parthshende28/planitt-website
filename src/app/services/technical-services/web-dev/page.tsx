@@ -153,6 +153,22 @@ export default function WebDevPage() {
               liveLink: "https://krypsm.com/",
               tags: ["Web App", "Fintech", "Dashboard"],
             },
+            {
+              title: "Sawarnaratna",
+              description:
+                "A dry fruit gifting website where customers can build their own custom gift hampers for friends and family through a simple, responsive shopping flow.",
+              image: "/sawarnaratna.png",
+              liveLink: "https://sawarnaratna.netlify.app/",
+              tags: ["E-commerce", "Gift Hampers", "Custom Orders"],
+            },
+            {
+              title: "Capita Prime LLC",
+              description:
+                "A real estate website built for Dubai customers, focused on presenting land-selling opportunities with a professional layout and lead-oriented experience.",
+              image: "/CapitaPrime.png",
+              liveLink: "https://capitaprimellc.netlify.app/",
+              tags: ["Real Estate", "Dubai Market", "Lead Generation"],
+            },
           ]}
         />
 

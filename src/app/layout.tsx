@@ -4,8 +4,10 @@ import Header from '@/components/Header';
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { HomeModeProvider } from "@/context/HomeModeContext";
 import ComingSoonPopup from "@/components/ComingSoonPopup";
 import WealthAdvisoryFab from "@/components/WealthAdvisoryFab";
+import TechnicalFaqFab from "@/components/TechnicalFaqFab";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,11 +43,14 @@ export default function RootLayout({
         className={`${inter.variable} ${poppins.variable} antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
       >
         <ThemeProvider>
-          <ComingSoonPopup />
-          <Header />
-          {children}
-          <Footer />
-          <WealthAdvisoryFab />
+          <HomeModeProvider>
+            <ComingSoonPopup />
+            <Header />
+            {children}
+            <Footer />
+            <WealthAdvisoryFab />
+            <TechnicalFaqFab />
+          </HomeModeProvider>
         </ThemeProvider>
       </body>
     </html>

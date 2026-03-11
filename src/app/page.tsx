@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import { useHomeMode } from "@/context/HomeModeContext";
 // import Blogs from "@/components/Blogs";
 
 export default function Home() {
-  const [homeMode, setHomeMode] = useState<"financial" | "technical">("financial");
+  const { homeMode, setHomeMode } = useHomeMode();
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
