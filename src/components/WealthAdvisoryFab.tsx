@@ -57,7 +57,7 @@ export default function WealthAdvisoryFab() {
                 : "bottom-[5.75rem] right-4 sm:bottom-24 sm:right-6 lg:right-8 w-[calc(100vw-2rem)] sm:w-[440px] lg:w-[540px] h-[78vh] sm:h-[72vh] max-h-[760px]"
             }`}
           >
-            <div className="h-full w-full overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,244,238,0.98))] shadow-[0_28px_80px_-28px_rgba(15,17,23,0.5)] dark:border-gray-800 dark:bg-gray-950">
+            <div className="h-full w-full overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,244,238,0.98))] shadow-[0_28px_80px_-28px_rgba(15,17,23,0.5)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,rgba(4,10,18,0.98),rgba(8,17,31,0.98))]">
               <div className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(135deg,#0b0e14_0%,#121926_52%,#1e2837_100%)] px-4 py-3.5 text-white sm:px-5 sm:py-4">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(183,134,34,0.26),transparent_32%),radial-gradient(circle_at_left,rgba(255,255,255,0.06),transparent_26%)]" />
                 <div className="relative flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -118,7 +118,7 @@ export default function WealthAdvisoryFab() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open Wealth Advisory Bot"
-          className="group inline-flex items-center gap-3 rounded-[1.75rem] border border-white/60 bg-[linear-gradient(135deg,rgba(8,11,18,0.98),rgba(17,23,33,0.98))] px-3.5 py-3 text-left text-white shadow-[0_24px_60px_-24px_rgba(15,17,23,0.7)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-24px_rgba(15,17,23,0.8)]"
+          className="group inline-flex items-center gap-3 rounded-[1.75rem] border border-white/60 bg-[linear-gradient(135deg,rgba(8,11,18,0.98),rgba(17,23,33,0.98))] px-3.5 py-3 text-left text-white shadow-[0_24px_60px_-24px_rgba(15,17,23,0.7)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-24px_rgba(15,17,23,0.8)] dark:border-[#243047] dark:bg-[linear-gradient(135deg,rgba(5,10,18,0.98),rgba(11,20,35,0.98))]"
         >
           <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ddb866] via-[#b78622] to-[#8f651a] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
             <Bot className="h-5 w-5" />

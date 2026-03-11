@@ -138,7 +138,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
             Pick a starter or type your own question below.
           </p>
         </div>
-        <div className="hidden items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-gray-700 shadow-sm sm:inline-flex dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+        <div className="hidden items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-gray-700 shadow-sm sm:inline-flex dark:border-gray-700 dark:bg-[#0f1726] dark:text-gray-100">
           <Clock3 className="h-3.5 w-3.5 text-[#b78622]" />
           Guided flow
         </div>
@@ -156,11 +156,11 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
             onClick={() => {
               void sendMessage(prompt, true);
             }}
-            className="group rounded-[1.4rem] border border-gray-200 bg-white p-4 text-left shadow-sm transition-all hover:border-[#b78622]/45 hover:shadow-[0_18px_38px_-28px_rgba(183,134,34,0.7)] dark:border-gray-800 dark:bg-gray-900"
+            className="group rounded-[1.4rem] border border-gray-200 bg-white p-4 text-left shadow-sm transition-all hover:border-[#b78622]/45 hover:shadow-[0_18px_38px_-28px_rgba(183,134,34,0.7)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,#08111f_0%,#0d1728_100%)]"
           >
             <div className="flex items-start justify-between gap-3">
               <span className="text-sm font-medium leading-6 text-gray-800 dark:text-gray-100">{prompt}</span>
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-500 transition-colors group-hover:border-[#b78622]/30 group-hover:bg-[#b78622] group-hover:text-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-500 transition-colors group-hover:border-[#b78622]/30 group-hover:bg-[#b78622] group-hover:text-white dark:border-[#31415f] dark:bg-[#142136] dark:text-[#d6deee]">
                 <ArrowRight className="h-4 w-4" />
               </span>
             </div>
@@ -181,7 +181,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   );
 
   const activeSessionBar = hasConversation ? (
-    <div className="flex items-center justify-between gap-3 rounded-[1.2rem] border border-gray-200 bg-white px-4 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+    <div className="flex items-center justify-between gap-3 rounded-[1.2rem] border border-gray-200 bg-white px-4 py-3 shadow-sm dark:border-[#243047] dark:bg-[linear-gradient(180deg,#08111f_0%,#0d1728_100%)]">
       <div className="min-w-0">
         <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400 dark:text-gray-500">Current Session</p>
         <div className="mt-1 inline-flex max-w-full items-center gap-2 rounded-full bg-[#b78622]/10 px-3 py-1.5 text-xs font-semibold text-[#a67417] dark:text-[#e7c973]">
@@ -192,7 +192,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
       <button
         type="button"
         onClick={reset}
-        className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors hover:border-[#b78622]/30 hover:text-[#b78622] dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+        className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors hover:border-[#b78622]/30 hover:text-[#b78622] dark:border-[#31415f] dark:bg-[#142136] dark:text-gray-100"
       >
         <RefreshCcw className="h-3.5 w-3.5" />
         New chat
@@ -201,13 +201,13 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   ) : null;
 
   const chatThread = (
-    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.8rem] border border-gray-200 bg-white shadow-[0_24px_60px_-44px_rgba(15,17,23,0.45)] dark:border-gray-800 dark:bg-gray-950/60">
-      <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.8rem] border border-gray-200 bg-white shadow-[0_24px_60px_-44px_rgba(15,17,23,0.45)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,#07101d_0%,#091425_100%)]">
+      <div className="border-b border-gray-100 px-4 py-3 dark:border-[#1c2940]">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-sm font-semibold text-gray-900 dark:text-white">Conversation</p>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#111318] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-white">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#111318] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-white dark:bg-[#142136]">
             <ShieldCheck className="h-3.5 w-3.5 text-[#f2d789]" />
             Guided
           </span>
@@ -217,7 +217,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
       <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
         <div className="space-y-3">
           {!hasConversation ? (
-            <div className="rounded-[1.4rem] border border-dashed border-gray-200 bg-gray-50/80 p-4 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-900/50 dark:text-gray-300">
+            <div className="rounded-[1.4rem] border border-dashed border-gray-200 bg-gray-50/80 p-4 text-sm text-gray-600 dark:border-[#243047] dark:bg-[#0d1728]/70 dark:text-[#d3dbea]">
               <p className="font-semibold text-gray-900 dark:text-white">Start with a prompt or ask your question directly.</p>
               <p className="mt-1.5 leading-relaxed">Best results come from adding your amount, duration, goal, and preferred investment mode.</p>
             </div>
@@ -229,7 +229,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
               className={`max-w-[92%] rounded-[1.45rem] px-4 py-3 text-sm leading-relaxed shadow-sm ${
                 m.role === "user"
                   ? "ml-auto bg-[linear-gradient(135deg,#cc9a3d_0%,#b78622_55%,#8f651a_100%)] text-white"
-                  : "mr-auto border border-gray-200 bg-gray-50 text-gray-900 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100"
+                  : "mr-auto border border-gray-200 bg-gray-50 text-gray-900 dark:border-[#243047] dark:bg-[#0f1726] dark:text-[#eef2ff]"
               }`}
             >
               <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] opacity-60">
@@ -240,7 +240,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
           ))}
 
           {loading ? (
-            <div className="mr-auto inline-flex items-center gap-2 rounded-[1.45rem] border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+            <div className="mr-auto inline-flex items-center gap-2 rounded-[1.45rem] border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 dark:border-[#243047] dark:bg-[#0f1726] dark:text-[#d3dbea]">
               <TypingIndicator />
               Assistant is typing
             </div>
@@ -256,7 +256,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
                 {recommendations.map((r) => (
                   <div
                     key={`${r.amc}-${r.fundName}`}
-                    className="rounded-[1.2rem] border border-[#b78622]/15 bg-white p-3 shadow-sm dark:bg-gray-900"
+                    className="rounded-[1.2rem] border border-[#b78622]/15 bg-white p-3 shadow-sm dark:border-[#3b2f11] dark:bg-[#0f1726]"
                   >
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">{r.fundName}</p>
                     <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">{r.amc}</p>
@@ -300,7 +300,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   );
 
   const composer = (
-    <div className="shrink-0 rounded-[1.7rem] border border-gray-200 bg-white p-3 shadow-[0_20px_50px_-40px_rgba(15,17,23,0.45)] dark:border-gray-800 dark:bg-gray-900">
+    <div className="shrink-0 rounded-[1.7rem] border border-gray-200 bg-white p-3 shadow-[0_20px_50px_-40px_rgba(15,17,23,0.45)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,#08111f_0%,#0d1728_100%)]">
       <div className="flex flex-col gap-2.5 sm:flex-row">
         <textarea
           value={input}
@@ -313,7 +313,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
           }}
           placeholder="Type your message..."
           rows={2}
-          className="min-h-[64px] flex-1 resize-none rounded-[1.35rem] border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#b78622]/35 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+          className="min-h-[64px] flex-1 resize-none rounded-[1.35rem] border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b78622]/35 dark:border-[#31415f] dark:bg-[#020817] dark:text-white dark:placeholder:text-[#7f8aa3]"
         />
         <button
           type="button"
@@ -330,7 +330,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
 
   if (embedded) {
     return (
-      <div className="flex h-full min-h-0 flex-col gap-3 bg-[radial-gradient(circle_at_15%_0%,rgba(183,134,34,0.12),transparent_32%),linear-gradient(180deg,#f8f5ee_0%,#fcfbf8_45%,#ffffff_100%)] p-3 sm:p-4">
+      <div className="flex h-full min-h-0 flex-col gap-3 bg-[radial-gradient(circle_at_15%_0%,rgba(183,134,34,0.12),transparent_32%),linear-gradient(180deg,#f8f5ee_0%,#fcfbf8_45%,#ffffff_100%)] p-3 dark:bg-[radial-gradient(circle_at_top,rgba(183,134,34,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(39,76,119,0.24),transparent_28%),linear-gradient(180deg,#050b14_0%,#08111f_48%,#0b1320_100%)] sm:p-4">
         {hasConversation ? activeSessionBar : starterSection}
         {chatThread}
         {composer}
@@ -343,7 +343,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="overflow-hidden rounded-[2rem] border border-gray-200 bg-[linear-gradient(180deg,#f6f2e8_0%,#ffffff_28%)] shadow-[0_34px_90px_-55px_rgba(15,17,23,0.55)] dark:border-gray-800 dark:bg-gray-950"
+      className="overflow-hidden rounded-[2rem] border border-gray-200 bg-[linear-gradient(180deg,#f6f2e8_0%,#ffffff_28%)] shadow-[0_34px_90px_-55px_rgba(15,17,23,0.55)] dark:border-[#243047] dark:bg-[linear-gradient(180deg,#050b14_0%,#091120_28%)]"
     >
       <div className="border-b border-gray-200 bg-[linear-gradient(135deg,#0b0e14_0%,#152033_50%,#233247_100%)] px-6 py-8 text-white dark:border-gray-800 sm:px-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -368,22 +368,22 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-[1.6rem] border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-[1.6rem] border border-gray-200 bg-white p-5 shadow-sm dark:border-[#243047] dark:bg-[linear-gradient(180deg,#08111f_0%,#0d1728_100%)]">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400 dark:text-gray-500">How To Use</p>
             <div className="mt-3 space-y-3 text-sm text-gray-600 dark:text-gray-300">
-              <div className="rounded-2xl bg-gray-50 p-3 dark:bg-gray-950">
+               <div className="rounded-2xl bg-gray-50 p-3 dark:bg-[#0f1726]">
                 Start with a goal like retirement, income, or capital growth.
               </div>
-              <div className="rounded-2xl bg-gray-50 p-3 dark:bg-gray-950">
+               <div className="rounded-2xl bg-gray-50 p-3 dark:bg-[#0f1726]">
                 Add your investment amount and expected duration.
               </div>
-              <div className="rounded-2xl bg-gray-50 p-3 dark:bg-gray-950">
+               <div className="rounded-2xl bg-gray-50 p-3 dark:bg-[#0f1726]">
                 Mention SIP or lumpsum so the filtering stays precise.
               </div>
             </div>
           </div>
 
-          <div className="rounded-[1.6rem] border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-[1.6rem] border border-gray-200 bg-white p-5 shadow-sm dark:border-[#243047] dark:bg-[linear-gradient(180deg,#08111f_0%,#0d1728_100%)]">
             <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400 dark:text-gray-500">What Changed</p>
             <div className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-start gap-2">
