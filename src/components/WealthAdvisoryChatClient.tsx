@@ -71,6 +71,8 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   const [expandedQuickPrompts, setExpandedQuickPrompts] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const previousMessageCountRef = useRef(0);
+  const previousRecommendationCountRef = useRef(0);
   const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading]);
   const hasConversation = messages.length > 0 || loading;
   const visibleQuickPrompts = expandedQuickPrompts ? quickPrompts : quickPrompts.slice(0, 3);
@@ -134,8 +136,17 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, recommendations, notes, ceoPromotion]);
+    const recommendationCount = recommendations?.length ?? 0;
+    const hasNewMessages = messages.length > previousMessageCountRef.current;
+    const hasNewRecommendations = recommendationCount > previousRecommendationCountRef.current;
+
+    if (hasNewMessages && !hasNewRecommendations) {
+      scrollToBottom();
+    }
+
+    previousMessageCountRef.current = messages.length;
+    previousRecommendationCountRef.current = recommendationCount;
+  }, [messages, recommendations]);
 
   const starterSection = (
     <div className="space-y-3">
