@@ -8,6 +8,15 @@ type TechnicalFaqRequest = {
   pathname?: unknown;
 };
 
+const ctoPromotion = {
+  title: "Technical Support",
+  lines: [
+    "For the next step, if you want help with the technical process, we can assist you.",
+    "Please contact our CTO, Parth Shende, for further assistance.",
+    "Contact Number: +91 9145402183",
+  ],
+};
+
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as TechnicalFaqRequest;
@@ -18,7 +27,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Message is required." }, { status: 400 });
     }
 
-    return NextResponse.json(answerTechnicalFaq(message, pathname));
+    const answer = answerTechnicalFaq(message, pathname);
+
+    return NextResponse.json({
+      ...answer,
+      ctoPromotion,
+    });
   } catch {
     return NextResponse.json({ error: "Unable to answer technical FAQ right now." }, { status: 500 });
   }

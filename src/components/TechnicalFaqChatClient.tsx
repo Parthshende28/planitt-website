@@ -18,6 +18,10 @@ type Msg = { id: string; role: "user" | "bot"; text: string };
 type TechnicalFaqResponse = {
   reply: string;
   suggestions?: string[];
+  ctoPromotion?: {
+    title: string;
+    lines: string[];
+  } | null;
   error?: string;
 };
 
@@ -42,6 +46,7 @@ export default function TechnicalFaqChatClient({ embedded = false }: TechnicalFa
   const [loading, setLoading] = useState(false);
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>(technicalFaqPrompts.slice(0, 6));
+  const [ctoPromotion, setCtoPromotion] = useState<{ title: string; lines: string[] } | null>(null);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading]);
@@ -53,6 +58,7 @@ export default function TechnicalFaqChatClient({ embedded = false }: TechnicalFa
     setInput("");
     setSelectedPrompt(null);
     setSuggestions(technicalFaqPrompts.slice(0, 6));
+    setCtoPromotion(null);
   };
 
   const callApi = async (message: string) => {
@@ -79,6 +85,7 @@ export default function TechnicalFaqChatClient({ embedded = false }: TechnicalFa
       const data = await callApi(text);
       setMessages((prev) => [...prev, { id: uid(), role: "bot", text: data.reply }]);
       if (data.suggestions?.length) setSuggestions(data.suggestions);
+      if (data.ctoPromotion) setCtoPromotion(data.ctoPromotion);
     } catch (error) {
       setMessages((prev) => [
         ...prev,
@@ -91,7 +98,7 @@ export default function TechnicalFaqChatClient({ embedded = false }: TechnicalFa
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages, loading, ctoPromotion]);
 
   const starterSection = (
     <div className="space-y-3">
@@ -197,6 +204,24 @@ export default function TechnicalFaqChatClient({ embedded = false }: TechnicalFa
             <div className="mr-auto inline-flex items-center gap-2 rounded-[1.45rem] border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 dark:border-[#243047] dark:bg-[#0f1726] dark:text-[#d3dbea]">
               <TypingIndicator />
               Preparing answer
+            </div>
+          ) : null}
+
+          {ctoPromotion ? (
+            <div className="rounded-[1.5rem] border border-[#2563eb]/25 bg-[linear-gradient(135deg,#2563eb_0%,#0f172a_100%)] p-5 text-sm text-white shadow-[0_22px_44px_-24px_rgba(37,99,235,0.7)] dark:border-[#60a5fa]/20 dark:bg-[linear-gradient(135deg,#1d4ed8_0%,#082f49_100%)]">
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#bfdbfe]">
+                {ctoPromotion.title}
+              </p>
+              <div className="space-y-2">
+                {ctoPromotion.lines.map((line, index) => (
+                  <p
+                    key={`${ctoPromotion.title}-${index}`}
+                    className={index === ctoPromotion.lines.length - 1 ? "font-semibold text-[#93c5fd]" : "text-white/90"}
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
           ) : null}
 

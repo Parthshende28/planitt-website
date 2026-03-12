@@ -303,6 +303,15 @@ const lumpsumLowRiskPrompt =
   "Provide a simple explanation for each recommended fund.\n\n" +
   "All recommendations will strictly come from the uploaded dataset.";
 
+const ceoPromotionBlock = {
+  title: "Investment Support",
+  lines: [
+    "For the next step, if you want to invest, we can help you with the process.",
+    "Please contact our CEO, Piyush Tembhekar, for further assistance.",
+    "Contact Number: +91 8605727484",
+  ],
+};
+
 export async function POST(req: Request) {
   let body: unknown;
   try {
@@ -606,6 +615,7 @@ export async function POST(req: Request) {
         inferredRisk: result.inferredRisk,
         recommendations: structuredRecommendations,
         notes: result.notes,
+        ceoPromotion: structuredRecommendations.length > 0 ? ceoPromotionBlock : null,
       },
     { headers: { "Cache-Control": "no-store" } },
   );

@@ -28,6 +28,10 @@ type ChatResponse = {
   inferredRisk?: "low" | "moderate" | "high";
   recommendations?: Recommendation[];
   notes?: string[];
+  ceoPromotion?: {
+    title: string;
+    lines: string[];
+  } | null;
   error?: string;
 };
 
@@ -62,6 +66,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
   const [state, setState] = useState<ChatState>({});
   const [recommendations, setRecommendations] = useState<Recommendation[] | null>(null);
   const [notes, setNotes] = useState<string[] | null>(null);
+  const [ceoPromotion, setCeoPromotion] = useState<{ title: string; lines: string[] } | null>(null);
   const [selectedQuickPrompt, setSelectedQuickPrompt] = useState<string | null>(null);
   const [expandedQuickPrompts, setExpandedQuickPrompts] = useState(false);
 
@@ -89,6 +94,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
     setState({});
     setRecommendations(null);
     setNotes(null);
+    setCeoPromotion(null);
     setSelectedQuickPrompt(null);
     setExpandedQuickPrompts(false);
   };
@@ -100,6 +106,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
     setInput("");
     setRecommendations(null);
     setNotes(null);
+    setCeoPromotion(null);
     if (isQuickPrompt) setSelectedQuickPrompt(text);
 
     setMessages((prev) => [...prev, { id: uid(), role: "user", text }]);
@@ -111,6 +118,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
       setMessages((prev) => [...prev, { id: uid(), role: "bot", text: data.reply }]);
       if (data.recommendations?.length) setRecommendations(data.recommendations);
       if (data.notes?.length) setNotes(data.notes);
+      if (data.ceoPromotion) setCeoPromotion(data.ceoPromotion);
     } catch (e) {
       setMessages((prev) => [
         ...prev,
@@ -127,7 +135,7 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, recommendations, notes]);
+  }, [messages, recommendations, notes, ceoPromotion]);
 
   const starterSection = (
     <div className="space-y-3">
@@ -277,6 +285,24 @@ export default function WealthAdvisoryChatClient({ embedded = false }: WealthAdv
                       </ul>
                     ) : null}
                   </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {ceoPromotion ? (
+            <div className="rounded-[1.5rem] border border-[#0d6d77]/25 bg-[linear-gradient(135deg,#0f766e_0%,#0b3c5d_100%)] p-5 text-sm text-white shadow-[0_22px_44px_-24px_rgba(11,60,93,0.75)] dark:border-[#34d399]/15 dark:bg-[linear-gradient(135deg,#064e3b_0%,#082f49_100%)]">
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#99f6e4]">
+                {ceoPromotion.title}
+              </p>
+              <div className="space-y-2">
+                {ceoPromotion.lines.map((line, index) => (
+                  <p
+                    key={`${ceoPromotion.title}-${index}`}
+                    className={index === ceoPromotion.lines.length - 1 ? "font-semibold text-[#fde68a]" : "text-white/90"}
+                  >
+                    {line}
+                  </p>
                 ))}
               </div>
             </div>
