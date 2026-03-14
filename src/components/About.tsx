@@ -153,59 +153,105 @@ const About = ({ mode = 'all' }: AboutProps) => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <div className={`grid grid-cols-1 ${mode === 'all' ? 'md:grid-cols-2' : ''} gap-5`}>
-                            {!isTechnical && (
-                                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
-                                <div className="text-center mb-4">
-                                    <div className="relative w-36 h-36 mx-auto mb-4 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-xl border-4 border-white dark:border-gray-800 transition-all duration-300">
-                                        <Image
-                                            src="/CEO_Photo.png"
-                                            alt="Piyush Tembhekar"
-                                            fill
-                                            className="object-cover"
-                                            priority
-                                        />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                            <div className="space-y-5 h-full">
+                                {!isTechnical && (
+                                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300 flex flex-col h-full">
+                                        <div className="text-center mb-4">
+                                            <div className="relative w-44 h-44 mx-auto mb-4 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-xl border-4 border-white dark:border-gray-800 transition-all duration-300">
+                                                <Image
+                                                    src="/CEO_Photo.png"
+                                                    alt="Piyush Tembhekar"
+                                                    fill
+                                                    className="object-cover"
+                                                    priority
+                                                />
+                                            </div>
+                                            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
+                                                Piyush Tembhekar
+                                            </h3>
+                                            <p className="text-gray-900 dark:text-gray-100 text-xs font-semibold">
+                                                ARN - 338883
+                                            </p>
+                                            <p className={`${palette.roleText} font-semibold text-sm`}>
+                                                CEO, Financial Distribution
+                                            </p>
+                                        </div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400 text-center flex-1">
+                                            Leads planning across wealth management, insurance, NPS, and long-term advisory.
+                                        </p>
                                     </div>
-                                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
-                                        Piyush Tembhekar
-                                    </h3>
-                                    <p className="text-gray-900 dark:text-gray-100 text-xs font-semibold">
-                                        ARN - 338883
-                                    </p>
-                                    <p className={`${palette.roleText} font-semibold text-sm`}>
-                                        CEO, Financial Distribution
-                                    </p>
-                                </div>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                                    Leads planning across wealth management, insurance, NPS, and long-term advisory.
-                                </p>
-                            </div>
-                            )}
+                                )}
 
-                            {!isFinancial && (
-                                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
-                                <div className="text-center mb-4">
-                                    <div className="relative w-36 h-36 mx-auto mb-4 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-xl border-4 border-white dark:border-gray-800 transition-all duration-300">
-                                        <Image
-                                            src="/Parth_shende(Technical_Head).jpeg"
-                                            alt="Parth Shende"
-                                            fill
-                                            className="object-cover"
-                                            priority
-                                        />
+                                {!isFinancial && (
+                                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300 flex flex-col h-full">
+                                        <div className="text-center mb-4">
+                                            <div className="relative w-44 h-44 mx-auto mb-4 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-xl border-4 border-white dark:border-gray-800 transition-all duration-300">
+                                                <Image
+                                                    src="/Parth_shende(Technical_Head).jpeg"
+                                                    alt="Parth Shende"
+                                                    fill
+                                                    className="object-cover"
+                                                    priority
+                                                />
+                                            </div>
+                                            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
+                                                Parth Shende
+                                            </h3>
+                                            <p className="text-sky-700 dark:text-cyan-300 font-semibold text-sm">
+                                                Technical Lead
+                                            </p>
+                                        </div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400 text-center flex-1">
+                                            Leads technical services delivery across apps, websites, cloud, and automation.
+                                        </p>
                                     </div>
-                                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white">
-                                        Parth Shende
-                                    </h3>
-                                    <p className="text-sky-700 dark:text-cyan-300 font-semibold text-sm">
-                                        Technical Lead
-                                    </p>
-                                </div>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                                    Leads technical services delivery across apps, websites, cloud, and automation.
-                                </p>
+                                )}
                             </div>
-                            )}
+
+                            <div className="space-y-5">
+                                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 transition-colors duration-300">
+                                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                                        Certifications
+                                    </h3>
+
+                                    <div className="flex flex-col items-center gap-4">
+                                        <a
+                                            href="/private-limited-certification.pdf"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="group w-full max-w-md"
+                                        >
+<div className="relative w-full h-56 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm group-hover:shadow-md transition">
+                                                <Image
+                                                    src="/DIPP249094_PLANITT_SOLUTIONS_PRIVATE_LIMITED_RECOGNITION_5320703230074383307.jpg"
+                                                    alt="Startup India Certificate of Recognition"
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+
+                                            <div className="mt-3 flex items-center justify-between gap-4">
+                                                <div>
+                                                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                                                        Private Limited Company Certificate
+                                                    </p>
+                                                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                                                        Click the image to open the certificate in a new tab.
+                                                    </p>
+                                                </div>
+                                                <span className="inline-flex items-center justify-center h-9 px-3 rounded-lg bg-[#b78622] dark:bg-[#e7c973] text-xs font-semibold text-white dark:text-slate-900">
+                                                    Open
+                                                </span>
+                                            </div>
+                                        </a>
+
+                                        <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+                                            Registered Private Limited Company
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div className={`bg-gradient-to-r ${
