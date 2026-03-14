@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import Header from '@/components/Header';
 import "./globals.css";
-import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { HomeModeProvider } from "@/context/HomeModeContext";
 import ComingSoonPopup from "@/components/ComingSoonPopup";
-import WealthAdvisoryFab from "@/components/WealthAdvisoryFab";
-import TechnicalFaqFab from "@/components/TechnicalFaqFab";
+import ConditionalLayout from "@/components/ConditionalLayout";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -45,11 +42,9 @@ export default function RootLayout({
         <ThemeProvider>
           <HomeModeProvider>
             <ComingSoonPopup />
-            <Header />
-            {children}
-            <Footer />
-            <WealthAdvisoryFab />
-            <TechnicalFaqFab />
+            <ConditionalLayout>
+              {children}
+            </ConditionalLayout>
           </HomeModeProvider>
         </ThemeProvider>
       </body>
