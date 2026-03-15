@@ -100,18 +100,16 @@ export default function LandingPage() {
               <button
                 type="button"
                 onClick={() => setSelectedTab('problem')}
-                className={`rounded-full px-4 py-2 transition ${
-                  selectedTab === 'problem' ? 'bg-white/20 text-white' : 'hover:bg-white/15'
-                }`}
+                className={`rounded-full px-4 py-2 transition ${selectedTab === 'problem' ? 'bg-white/20 text-white' : 'hover:bg-white/15'
+                  }`}
               >
                 The problem
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedTab('solution')}
-                className={`rounded-full px-4 py-2 transition ${
-                  selectedTab === 'solution' ? 'bg-white/20 text-white' : 'hover:bg-white/15'
-                }`}
+                className={`rounded-full px-4 py-2 transition ${selectedTab === 'solution' ? 'bg-white/20 text-white' : 'hover:bg-white/15'
+                  }`}
               >
                 Our solution
               </button>
@@ -247,31 +245,13 @@ export default function LandingPage() {
       <section id="download" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
           <div className="space-y-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Why Planitt AI?</h2>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Why Planitt?</h2>
             <p className="text-lg text-white/70">
               Retail investors are forced to jump between multiple apps and unverified tips. Planitt unifies all major asset classes under one roof with AI-driven signals backed by human research.
             </p>
-
-            <div className="grid gap-5 lg:grid-cols-3">
-              <Callout
-                title="Multi‑asset coverage"
-                description="One dashboard for stocks, F&O, mutual funds, forex, and crypto — no switching apps."
-                icon={<Cpu className="h-5 w-5" />}
-              />
-              <Callout
-                title="AI + Analyst Validation"
-                description="Our models surface high-probability calls, and analysts validate with context and risk scoring."
-                icon={<Users className="h-5 w-5" />}
-              />
-              <Callout
-                title="Transparent, actionable calls"
-                description="Each recommendation includes entry, target, stop‑loss, risk score, and holding horizon."
-                icon={<ShieldCheck className="h-5 w-5" />}
-              />
-            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-xl shadow-black/20">
+          <div className="rounded-3xl border border-white/10 bg-white/5 py-5 px-7 shadow-xl shadow-black/20">
             <h3 className="text-xl font-semibold text-white">Download the PDF</h3>
             <p className="mt-3 text-white/70">
               Explore the full Planitt AI product concept and wireframes in the &quot;Planitt AI Multi Asset Stock Recommendation App&quot; PDF.
@@ -288,6 +268,26 @@ export default function LandingPage() {
               </a>
             </div>
           </div>
+
+        </div>
+
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <Callout
+            title="Multi‑asset coverage"
+            description="One dashboard for stocks, F&O, mutual funds, forex, and crypto — no switching apps."
+            icon={<Cpu className="h-5 w-5" />}
+          />
+          <Callout
+            title="AI + Analyst Validation"
+            description="Our models surface high-probability calls, and analysts validate with context and risk scoring."
+            icon={<Users className="h-5 w-5" />}
+          />
+          <Callout
+            title="Transparent, actionable calls"
+            description="Each recommendation includes entry, target, stop‑loss, risk score, and holding horizon."
+            icon={<ShieldCheck className="h-5 w-5" />}
+          />
         </div>
       </section>
 
@@ -344,7 +344,7 @@ export default function LandingPage() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-white/50">Ready to explore?</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Get started with Planitt AI
+              Get started with Planitt
             </h2>
           </div>
           <div className="flex flex-col items-center gap-3 sm:flex-row">
@@ -391,7 +391,7 @@ function Callout({
 }) {
   return (
     <div className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
-      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-emerald-300">{icon}</div>
+      <div className="flex h-7 items-center justify-center text-emerald-300">{icon}</div>
       <div>
         <p className="text-base font-semibold text-white">{title}</p>
         <p className="mt-1 text-sm text-white/70">{description}</p>
